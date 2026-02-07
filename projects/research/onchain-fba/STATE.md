@@ -275,9 +275,10 @@ This confirms our research addresses an **unsolved problem**.
 4. Specialized L2s as secondary (privacy, high-frequency)
 5. Agent/WE exploration → v2
 
-**Pending User Confirmation:**
-- [ ] Confirm L1 primary deployment strategy shift
-- [ ] Verify timeline alignment with Glamsterdam (H1 2026)
+**User Confirmed (Feb 7, 6PM):**
+- [x] ✅ L1 primary deployment strategy confirmed
+- [x] ✅ Glamsterdam (H1 2026) timeline alignment confirmed
+- [x] ✅ Verification strategy: formal verification core + multi-audit + bug bounty
 
 ## Key Insights
 
