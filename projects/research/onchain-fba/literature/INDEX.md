@@ -403,6 +403,53 @@
 
 ---
 
+## ⭐⭐⭐⭐⭐ ALLCOREDEVS & DEPLOYMENT UPDATES (2026-02-07 Evening)
+
+### EIP-8105: Universal Enshrined Encrypted Mempool — Hegotá Headliner Candidate
+- **Eth Magicians**: https://ethereum-magicians.org/t/hegota-headliner-proposal-eip-8105-universal-enshrined-encrypted-mempool-eem/27448
+- **Presenter**: Jannik Luhn (Shutter Network)
+- **Jan 29 ACD**: Formal presentation as Hegotá headliner
+- **Quote**: "it relies on trusted parties, which is bad for decentralisation and censorship resistance"
+- **Status**: Positioned as complementary to FOCIL
+
+### EIP-8141: Frame Transactions (Post-Quantum AA)
+- **Eth Magicians**: https://ethereum-magicians.org/t/eip-8141-frame-transaction/27617
+- **Presenter**: Felix Lange (EF)
+- **Vitalik endorsement**: "From a use cases perspective, this does basically satisfy everything... the entire list of goals of account abstraction"
+- **Key innovation**: Unlinks transactions from fixed signature schemes (ECDSA)
+- **Relevance**: Post-quantum signatures for encrypted mempool transactions
+
+### Uniswap CCA: Multi-Chain Deployment
+- **Base deployment**: Jan 22, 2026 (permissionless, no approvals needed)
+- **Web app UI**: Feb 2, 2026 (auction discovery + bidding)
+- **Arbitrum**: Also deploying (Jan 2026 reports)
+- **Key docs**: https://support.uniswap.org/hc/en-us/articles/43107626487437-What-are-Continuous-Clearing-Auctions
+
+### Consensys Acquires MEV Blocker
+- **Date**: Jan 26, 2026
+- **Source**: https://www.cryptotimes.io/2026/01/27/consensys-expands-mev-stack-with-mev-blocker-acquisition/
+- **Stats**: 4.5M+ unique wallets, ~6,177 ETH rebates distributed
+- **Significance**: Consolidation in MEV protection space
+
+### NIST MPTS 2026 Workshop
+- **URL**: https://csrc.nist.gov/events/2026/mpts2026
+- **Date**: March 10-11, 2026
+- **Topics**: Threshold schemes, MPC, ZKP, FHE, threshold-friendly primitives
+- **Relevance**: Standards-track discussion for threshold encryption
+
+### Anoma Intent Architecture
+- **URL**: https://www.chaincatcher.com/en/article/2241000
+- **Key innovation**: Users sign "intents" not transactions
+- **Encryption**: Intents encrypted until execution conditions met
+- **MEV mitigation**: Conditions-based execution, not ordering-based
+
+### Brevis ProverNet
+- **URL**: https://www.weex.com/news/detail/brevis-is-releasing-the-provernet-whitepaper...
+- **Contribution**: Decentralized ZK proof generation marketplace
+- **Relevance**: Could provide proving infrastructure for our ZK clearing layer
+
+---
+
 ## Update Log
 - [2026-02-04] Initial collection (7 papers)
 - [2026-02-04] Found Paradigm Leaderless Auctions
@@ -419,3 +466,11 @@
   - Jump DFBA: Maker/taker flow separation
   - a16z limits paper: Must-address counterarguments
   - Total: 45+ sources catalogued
+- [2026-02-07] **EVENING UPDATE**: AllCoreDevs & deployment tracking
+  - EIP-8105 formally presented as Hegotá headliner (Jan 29 ACD)
+  - EIP-8141 Frame Transactions (post-quantum AA) — Vitalik endorsed
+  - Uniswap CCA deployed to Base (permissionless, Jan 22)
+  - Uniswap web app auction UI live (Feb 2)
+  - Consensys acquired MEV Blocker from CoW (Jan 26)
+  - NIST MPTS 2026 workshop on threshold crypto (March 10-11)
+  - Total: 50+ sources catalogued

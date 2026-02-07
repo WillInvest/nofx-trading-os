@@ -1,6 +1,6 @@
 # Research State — On-Chain Trustless FBA
 
-**Last Updated**: 2026-02-07 (PM update)
+**Last Updated**: 2026-02-07 (Evening update)
 
 ## Current Focus
 **ECOSYSTEM CONVERGENCE**: The pieces are coming together! EIP-8105 proposes native encrypted mempool for Ethereum, Uniswap CCA proves uniform clearing works in production, and Jump's DFBA adds flow separation.
@@ -85,6 +85,15 @@
   - **a16z "Limits" paper**: Critical analysis we must address
     - Speculative MEV, strong trust assumptions, practical concerns
   - **Shutter+Primev**: First encrypted mempool in Ethereum PBS underway
+- [2026-02-07 PM] **📣 EIP-8105 & FOCIL: AllCoreDevs Update**
+  - EIP-8105 formally presented at Jan 29 ACD meeting as Hegotá headliner candidate!
+  - **Jannik Luhn** (Shutter) presented: "it relies on trusted parties, which is bad for decentralisation"
+  - **EIP-8141** (Frame Transactions) also proposed: post-quantum + account abstraction
+    - Vitalik personally endorsed: "satisfies entire list of goals of account abstraction"
+  - FOCIL + encrypted mempool positioned as **complementary** features for Hegotá
+  - Uniswap CCA now live on **Base** (permissionless deployment, Jan 22)
+  - Uniswap web app has **auction UI** (Feb 2, 2026)
+  - **Consensys acquired MEV Blocker** from CoW Protocol (Jan 26, 2026)
 
 ## Key Findings from Literature
 
@@ -111,12 +120,14 @@ This confirms our research addresses an **unsolved problem**.
 - [x] ~~Download and deep-read SoK paper (arXiv:2203.11520)~~ (summary in INDEX.md)
 - [x] ~~Find if Silent Setup + BTE combination exists~~ → BEAST-MEV!
 - [x] ~~Search for production implementations~~ → Found Uniswap CCA!
+- [x] ~~Track EIP-8105 progress~~ → Formal Hegotá headliner presentation Jan 29!
 - [ ] Deep-read BEAST-MEV paper and implementation code
 - [ ] Study Weighted BTE for PoS chain compatibility
 - [ ] Review HAL gas-optimization paper for clearing algorithms
-- [ ] **NEW**: Clone Uniswap CCA repo, study clearing price computation
-- [ ] **NEW**: Review Jump DFBA for maker/taker separation mechanics
-- [ ] **NEW**: Read EIP-8105 draft for integration requirements
+- [ ] Clone Uniswap CCA repo (now on Base!), study clearing price computation
+- [ ] Review Jump DFBA for maker/taker separation mechanics
+- [ ] **NEW**: Read EIP-8141 Frame Transaction spec (Vitalik-endorsed)
+- [ ] **NEW**: Explore Brevis ProverNet for decentralized ZK proving
 
 ### Short-term (This Month)
 - [ ] Design uniform clearing algorithm optimized for EVM
@@ -232,9 +243,24 @@ Jump's DFBA suggests maker/taker separation:
 - Two simpler auctions > one complex auction
 - **Application**: Could split BEAST-MEV batches into maker/taker sub-batches
 
+### Insight 14: Ethereum is Ready for This (ACD Update)
+Jan 29, 2026 AllCoreDevs meeting validated our direction:
+- EIP-8105 presented as Hegotá headliner (encryption layer)
+- FOCIL presented as complement (censorship resistance)
+- EIP-8141 endorsed by Vitalik (post-quantum readiness)
+- **Implication**: L1 will have native encrypted mempool; Layer 2 execution is the gap
+- **Timeline pressure**: Hegotá planning happening NOW — opportunity to contribute
+
+### Insight 15: Production Deployments Enable Empirical Study
+CCA on Base (Jan 22) and web app (Feb 2) mean:
+- Can study live clearing price algorithms
+- Can observe gas costs in production
+- Can analyze user behavior patterns
+- **Action**: Deploy monitoring to track CCA auctions
+
 ## Literature Search Queries for Next Update
-- "Uniswap CCA implementation" — study their clearing algorithm
-- "EIP-8105 discussion" — track proposal progress
-- "CoW Protocol solver algorithm" — existing clearing implementations
-- "Penumbra flow encryption internals" — privacy-preserving execution
-- "fraud proof optimistic clearing" — alternative to ZK
+- "Uniswap CCA clearing price algorithm" — study Solidity implementation
+- "EIP-8141 frame transaction" — track competing proposals
+- "NIST MPTS 2026 threshold" — academic workshop on March 10-11
+- "Brevis ProverNet ZK marketplace" — decentralized proof generation
+- "Anoma intent architecture" — alternative MEV mitigation approach

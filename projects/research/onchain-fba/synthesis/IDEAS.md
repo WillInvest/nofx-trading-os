@@ -555,6 +555,66 @@ Their concerns and our responses:
 
 ---
 
+## 🆕 AllCoreDevs Validation (2026-02-07 Evening)
+
+### EIP-8105 is Now Official
+- Jannik Luhn (Shutter) presented at Jan 29 ACD meeting
+- Positioned as **complementary to FOCIL** (censorship resistance + MEV protection)
+- Direct quote: "it relies on trusted parties, which is bad for decentralisation"
+- **Implication**: Our Layer 2 clearing work will have a native L1 foundation
+
+### Frame Transactions (EIP-8141) Adds Post-Quantum Dimension
+- Vitalik's endorsement signals priority
+- Post-quantum signatures = longer ciphertexts
+- **Design consideration**: Our clearing layer should be signature-agnostic
+
+### Production Validation: CCA on Base
+- Uniswap CCA is now **permissionless on Base** (Jan 22, 2026)
+- Web app has auction UI (Feb 2, 2026)
+- We can study live deployments, not just theory
+
+### New Research Direction: ZK-Proven Clearing
+
+Given discoveries today:
+1. **Brevis ProverNet**: Decentralized ZK proof marketplace exists
+2. **NIST MPTS 2026**: Threshold crypto standardization underway
+3. **EIP-8141**: Post-quantum considerations needed
+
+**Proposed Architecture for ZK Clearing:**
+```
+┌─────────────────────────────────────────────────┐
+│  Uniswap CCA-style UI (bidding interface)       │
+├─────────────────────────────────────────────────┤
+│  Our ZK Clearing Circuit                        │
+│  ┌─────────────────────────────────────────┐   │
+│  │ Inputs: Decrypted orders (from EIP-8105) │   │
+│  │ Prove: Clearing price P* is optimal      │   │
+│  │ Prove: Fill allocations are pro-rata     │   │
+│  │ Output: Proof π + settlements            │   │
+│  └─────────────────────────────────────────┘   │
+├─────────────────────────────────────────────────┤
+│  Brevis ProverNet (decentralized proving)       │
+├─────────────────────────────────────────────────┤
+│  EIP-8105 Encrypted Mempool                     │
+├─────────────────────────────────────────────────┤
+│  Ethereum L1 (Hegotá+)                          │
+└─────────────────────────────────────────────────┘
+```
+
+### Competitive Landscape Update
+
+| Project | Layer | Status | Gap We Fill |
+|---------|-------|--------|-------------|
+| Shutter/EIP-8105 | Encryption | In development | Execution mechanism |
+| Uniswap CCA | Clearing | Production | Multi-pair + general DEX |
+| Jump DFBA | Flow sep | Design | Encryption layer |
+| CoW Protocol | Intent | Production | Trustless solvers |
+| Penumbra | Full stack | Production | EVM compatibility |
+
+**Our unique position**: EVM-native, ZK-verified, trustless clearing on top of EIP-8105.
+
+---
+
 ## Update Log
 - [2026-02-04] Initial synthesis from literature review
 - [2026-02-04] Identified Approach 5 (Time-Lock + Uniform Price) as leading candidate
@@ -576,3 +636,10 @@ Their concerns and our responses:
   - Found TrX paper (production-ready encrypted BFT, 27ms overhead)
   - New synthesis: BEAST-MEV + CCA + DFBA "Triple-Layer" architecture
   - Addressed a16z concerns in our framework
+- [2026-02-07 PM] **ALLCOREDEVS VALIDATION**:
+  - EIP-8105 formally presented as Hegotá headliner (Jan 29 ACD)
+  - EIP-8141 Frame Transactions (post-quantum AA) endorsed by Vitalik
+  - CCA deployed to Base (permissionless) and web app live
+  - Consensys acquired MEV Blocker — consolidation in MEV protection
+  - NIST MPTS 2026 workshop (March) — threshold crypto standardization
+  - New direction: ZK-proven clearing with Brevis ProverNet integration
