@@ -1,0 +1,377 @@
+# Literature Index — AMM LVR Mitigation
+
+## Categories
+- [Foundational Theory](#foundational-theory)
+- [Oracle-Based AMMs](#oracle-based-amms)
+- [Batch/Auction-Based AMMs](#batchauction-based-amms)
+- [Dynamic Fees](#dynamic-fees)
+- [Novel AMM Designs](#novel-amm-designs)
+- [Insurance/Compensation](#insurancecompensation)
+- [Hedging Strategies](#hedging-strategies)
+- [Production Protocols](#production-protocols)
+- [Survey/Overview](#surveyoverview)
+
+---
+
+## Foundational Theory
+
+### Automated Market Making and Loss-Versus-Rebalancing (Milionis et al., 2022)
+- **arXiv**: 2208.06046
+- **URL**: https://arxiv.org/abs/2208.06046
+- **Authors**: Jason Milionis, Ciamac Moallemi, Tim Roughgarden, Anthony Lee Zhang
+- **Key contribution**: Introduces LVR as the "Black-Scholes for AMMs" — formalizes LP adverse selection cost
+- **Core insight**: LVR = σ²/8 * L per unit time (for constant-product AMM)
+- **Relevance**: THE foundational paper; all solutions benchmark against this
+
+### Automated Market Making and Arbitrage Profits in the Presence of Fees (Milionis et al., 2023)
+- **URL**: https://moallemi.com/ciamac/papers/lvr-fee-model-2023.pdf
+- **Key contribution**: Extends LVR model to include swap fees
+- **Core insight**: Fees can partially offset LVR but cannot eliminate it under continuous trading
+
+### Impermanent Loss and Loss-vs-Rebalancing II (2025)
+- **arXiv**: 2502.04097v2
+- **URL**: https://arxiv.org/html/2502.04097v2
+- **Key contribution**: Statistical properties of IL vs LVR, impact of fees and block times
+- **Core insight**: Continuous-time limit analysis; block time affects LVR extraction rate
+
+---
+
+## Oracle-Based AMMs
+
+### UAMM: Price-oracle based Automated Market Maker (Im et al., 2023)
+- **arXiv**: 2308.06375
+- **URL**: https://arxiv.org/abs/2308.06375
+- **Key contribution**: AMM that uses oracle prices to set swap prices
+- **Core insight**: Eliminates arbitrage when oracle prices are efficient
+- **Limitation**: Trust in oracle; oracle latency creates brief arbitrage windows
+- **Relevance**: Direct approach — if you trust oracles, LVR vanishes
+
+### Dynamic Curves for Decentralized Autonomous Cryptocurrency Exchanges (2021)
+- **URL**: https://drops.dagstuhl.de/storage/01oasics/oasics-vol092-fab2021/OASIcs.FAB.2021.5/OASIcs.FAB.2021.5.pdf
+- **Venue**: FAB 2021 (Financial Cryptography)
+- **Key contribution**: Bonding curve adjusted by oracle price feed
+- **Core insight**: Pool price = market price → no arbitrage opportunity
+- **Limitation**: Requires high-frequency oracle updates
+
+### Dynamic Automated Market Makers (USC)
+- **URL**: https://anrg.usc.edu/www/papers/dynamicautomation.pdf
+- **Key contribution**: Continuous curve adjustment to market price
+- **Core insight**: No room for arbitrage benefits both LPs and traders
+
+---
+
+## Batch/Auction-Based AMMs
+
+### Arbitrageurs' profits, LVR, and sandwich attacks: batch trading as an AMM design response (Canidio & Fritsch, 2023)
+- **arXiv**: 2307.02074
+- **URL**: https://arxiv.org/abs/2307.02074
+- **Venue**: AFT 2023
+- **Key contribution**: FM-AMM (Function-Maximizing AMM) — batches trades, eliminates LVR
+- **Core insight**: Competition between arbitrageurs in batch → fair price discovery
+- **Breakthrough**: Proves LVR elimination is possible without oracles!
+- **Relevance**: Theoretical foundation for CoW AMM
+
+### am-AMM: An Auction-Managed Automated Market Maker (Adams et al., 2024)
+- **arXiv**: 2403.03367
+- **URL**: https://arxiv.org/abs/2403.03367
+- **Authors**: Austin Adams, Ciamac Moallemi
+- **Key contribution**: Harberger lease auction for pool management rights
+- **Core insight**: Manager pays rent to LPs, captures arbitrage, sets dynamic fees
+- **Trade-off**: Complexity; requires active manager market
+
+### MEV capturing AMM (McAMM) (Herrmann, 2022)
+- **URL**: https://ethresear.ch/t/mev-capturing-amm-mcamm/13336
+- **Key contribution**: Auction first-trade-of-block rights
+- **Core insight**: LVR extraction is predictable → can auction it
+
+---
+
+## Dynamic Fees
+
+### Optimal Fees for Liquidity Provision in AMMs (Campbell, Bergault, Milionis, Nutz, 2025)
+- **arXiv**: 2508.08152
+- **URL**: https://arxiv.org/abs/2508.08152
+- **Key contribution**: Rigorous optimal fee calculation framework
+- **Core insight**: Optimal fee ≈ CEX trading cost normally; spike during volatility
+- **Implication**: Threshold-type dynamic fees are near-optimal
+- **Relevance**: Theoretical backing for Uniswap v4 dynamic fee hooks
+
+### Optimal Dynamic Fees in Automated Market Makers (2025)
+- **arXiv**: 2506.02869
+- **URL**: https://arxiv.org/html/2506.02869v2
+- **Key contribution**: Fee optimization under continuous-time dynamics
+- **Core insight**: Dynamic fees linear in inventory + price-sensitive are good approximation
+
+---
+
+## Novel AMM Designs
+
+### Maverick AMM — Dynamic Distribution AMM
+- **Docs**: https://docs.mav.xyz/
+- **Key contribution**: Directional liquidity + automated reconcentration
+- **Core insight**: LP can bet on price direction; AMM follows price to capture fees
+- **Modes**: Left, Right, Both, Static
+- **Maverick v2**: Adds directional fees (asymmetric by swap direction)
+- **Relevance**: Doesn't eliminate LVR but maximizes fee capture
+
+### Ambient (CrocSwap) — Hybrid Concentrated + Ambient Liquidity
+- **Docs**: https://docs.ambient.finance/
+- **GitHub**: https://github.com/CrocSwap/CrocSwap-protocol
+- **Key contribution**: Single-contract architecture; ambient + concentrated + knockout liquidity
+- **Core insight**: Ambient liquidity auto-compounds; low gas; flexible strategies
+- **Relevance**: Efficiency gains, not direct LVR mitigation
+
+### Angstrom by Sorella Labs — Uniswap v4 Hook
+- **URL**: https://sorellalabs.xyz/writing/introducing-sorella
+- **GitHub**: https://github.com/sorellaLabs/Angstrom
+- **Audit**: Cantina
+- **Key contribution**: Native MEV protection via Uniswap v4 hook
+- **Core insight**: Groups all transactions of an asset at same price per block
+- **Status**: Live on mainnet (July 2025)
+- **Funding**: $7.5M seed (Paradigm)
+- **Relevance**: Production MEV/LVR protection integrated with Uniswap
+
+---
+
+## Insurance/Compensation
+
+### Bancor v3 — Impermanent Loss Protection
+- **Docs**: https://docs.bancor.network/
+- **GitHub**: https://github.com/bancorprotocol/contracts-v3
+- **Key contribution**: 100% IL protection via BNT minting
+- **Mechanism**: Protocol-held liquidity compensates LPs for IL
+- **Limitation**: Depends on BNT token value; paused IL protection in June 2022 bear market
+- **Lesson**: Insurance model breaks under extreme market stress
+
+---
+
+## Hedging Strategies
+
+### Unified Approach for Hedging Impermanent Loss of Liquidity Provision (2024)
+- **arXiv**: 2407.05146
+- **URL**: https://arxiv.org/html/2407.05146v1
+- **Key contribution**: IL protection claim — financial instrument to hedge IL
+- **Core insight**: IL = short a portfolio of puts and calls (Fukasawa et al.)
+- **Implication**: Can hedge statically with options basket
+
+### Hedging IL with Power Perpetuals (Deri Protocol)
+- **URL**: https://deri-protocol.medium.com/hedging-impermanent-loss-with-power-perpetuals-2d54c16d6a23
+- **Key contribution**: Gamma hedging via power perpetuals (e.g., Squeeth)
+- **Core insight**: LP position has negative gamma; buy positive gamma to hedge
+- **Limitation**: Requires active rebalancing; hedging costs
+
+### Dynamic Hedging Strategies for Uniswap v3
+- **URL**: https://atise.medium.com/liquidity-provider-strategies-for-uniswap-v3-dynamic-hedging-9e6858bea8fa
+- **Key contribution**: Practical hedging with options + perpetuals
+- **Core insight**: LPs profitable when fee income > σ² loss (volatility drag)
+
+---
+
+## Production Protocols
+
+### CoW AMM (CoW Protocol)
+- **Docs**: https://docs.cow.fi/cow-amm
+- **GitHub**: https://github.com/cowprotocol/cow-amm
+- **Status**: Production on Ethereum mainnet
+- **Key contribution**: First production FM-AMM implementation
+- **Mechanism**: Batch auctions via CoW Protocol solvers
+- **Result**: Zero swap fees; surplus → LPs instead of arbitrageurs
+- **Limitation**: Relies on CoW Protocol infrastructure
+
+### Swaap Finance — Market-Neutral AMM
+- **URL**: https://www.swaap.finance/
+- **Network**: Polygon, Ethereum
+- **Key contribution**: Oracle + dynamic spread → no IL
+- **Mechanism**: Chainlink feeds determine prices; spread adapts to volatility
+- **Status**: Live, growing TVL
+- **Limitation**: Oracle dependency
+
+### Uniswap v4 — Hook-Based Customization
+- **Docs**: https://docs.uniswap.org/contracts/v4/overview
+- **Key contribution**: Modular AMM via hooks at swap/LP lifecycle points
+- **LVR-relevant hooks**: Dynamic fees, custom accounting, TWAMM
+- **Ecosystem**: Angstrom, various dynamic fee hooks
+- **Status**: Mainnet 2024
+
+---
+
+## Survey/Overview
+
+### Current Understanding of Impermanent Loss Risk in AMMs (2025)
+- **URL**: https://www.sciencedirect.com/science/article/pii/S2096720925000879
+- **Key contribution**: Systematic literature review
+- **Finding**: 55.7% of research focuses on CPMMs
+- **9 IL causes**: Price volatility (top), asset imbalance, risk/return management
+- **Mitigation strategies**: Investment strategies, decentralized tools, pool design, hedging
+
+### Ending LP's Losing Game (Fenbushi VC, 2024)
+- **URL**: https://fenbushi.vc/2024/01/20/ending-lps-losing-game-exploring-the-loss-versus-rebalancing-lvr-problem-and-its-solutions/
+- **Key contribution**: Practitioner overview of LVR solutions
+- **Approaches covered**: McAMM, dynamic fees, oracle-based, batch auctions
+
+### The AMM Renaissance (Arrakis Finance)
+- **URL**: https://arrakis.finance/blog/the-amm-renaissance-how-mev-auctions-and-dynamic-fees-prevent-lvr
+- **Key contribution**: Industry perspective on LVR solutions
+- **Coverage**: Dynamic fees, MEV auctions, Sorella Angstrom
+
+---
+
+## Key Papers to Deep-Read
+
+1. **Milionis et al. 2022** (LVR) — foundational theory
+2. **Canidio & Fritsch 2023** (FM-AMM) — batch auction solution
+3. **Campbell et al. 2025** (Optimal Fees) — dynamic fee theory
+4. **Adams et al. 2024** (am-AMM) — auction-managed design
+5. **Im et al. 2023** (UAMM) — oracle-based approach
+
+---
+
+## Gap Analysis
+
+| Approach | LVR Eliminated? | Trust Required | Capital Efficient | Production Ready |
+|----------|----------------|----------------|-------------------|------------------|
+| Standard CFMM | ❌ No | ✅ None | ✅ Yes | ✅ Yes |
+| Oracle-based | ✅ Yes* | ❌ Oracle | ✅ Yes | ⚠️ Partial |
+| FM-AMM/Batch | ✅ Yes | ⚠️ Solver/sequencer | ⚠️ Latency | ✅ CoW AMM |
+| Dynamic Fees | ⚠️ Partial | ✅ None | ✅ Yes | ⚠️ Emerging |
+| Auction Rights | ✅ Yes | ⚠️ Auction mechanism | ✅ Yes | ❌ Concept |
+| Insurance | ❌ (compensates) | ⚠️ Protocol solvency | ✅ Yes | ⚠️ Risky |
+| Hedging | ❌ (external) | ⚠️ Derivatives market | ❌ Capital cost | ✅ Yes |
+
+*When oracle is accurate and timely
+
+---
+
+## Research Frontier
+
+**Open questions:**
+1. Can dynamic fees fully capture LVR without external price information?
+2. What is the optimal batch duration for FM-AMMs?
+3. Can Angstrom-style hooks scale to high-volume pairs?
+4. Is there a pure on-chain solution without any trust assumptions?
+5. Can concentrated liquidity + dynamic fees outperform FM-AMM?
+
+**Promising directions:**
+- **Hybrid oracle + batch**: Use oracle for continuous pricing, batch for rebalancing
+- **Priority ordering exploitation**: Paradigm's MEV tax concept
+- **Threshold-dynamic fees**: Near-optimal with simple implementation
+
+---
+
+## New Additions (2026-02-07)
+
+### Defensive Rebalancing for Automated Market Makers (Herlihy, 2026) ⭐ NEW
+- **arXiv**: 2601.19950
+- **URL**: https://arxiv.org/abs/2601.19950
+- **Author**: Maurice Herlihy (Brown University)
+- **Date**: January 26, 2026
+- **Key contribution**: Introduces "defensive rebalancing" — direct asset transfers between CFMMs to reach arbitrage-free state
+- **Core insights**:
+  - Any arbitrage-prone configuration has a rebalancing that strictly improves some CFMMs without hurting others
+  - **Pareto efficiency ⟺ arbitrage-free** under rebalancing
+  - For log-concave trading functions (including CPMM), optimal rebalancing is a **convex optimization** with unique solution
+  - "Mixed rebalancing" can harvest arbitrage from non-participants and CEXs
+- **Implication**: CFMMs could coordinate to proactively defend LPs rather than passively losing to arbitrageurs
+- **Relevance**: Novel theoretical framework — could inspire new protocol designs where pools cooperate
+- **Connection**: Relates to Angstrom's same-price-per-block concept but at protocol level
+
+### How to Serve Your Sandwich? MEV Attacks in Private L2 Mempools (Gogol et al., 2026) ⭐ NEW
+- **arXiv**: 2601.19570
+- **URL**: https://arxiv.org/abs/2601.19570
+- **Date**: January 27, 2026
+- **Key contribution**: Formal analysis of sandwich attack feasibility on L2 rollups
+- **Core insights**:
+  - Private mempools make sandwiching **probabilistic, not deterministic**
+  - Empirical analysis: most flagged sandwich patterns are **false positives**
+  - **Median net return for L2 sandwiches is negative**
+  - Sandwiching is rare and largely unprofitable on rollups
+- **Implication**: L2s may naturally resist MEV/LVR extraction; design insight for sequencing policies
+- **Relevance**: Suggests L2 deployment may inherently reduce LP adverse selection costs
+
+### A Formal Approach to AMM Fee Mechanisms with Lean 4 (Bartoletti et al., 2026)
+- **arXiv**: 2602.00101
+- **URL**: https://arxiv.org/abs/2602.00101
+- **Authors**: Massimo Bartoletti et al.
+- **Key contribution**: Machine-checked formal verification of AMM fee mechanisms using Lean 4 proof assistant
+- **Core insights**:
+  - Trading fees break additivity: single large swap yields strictly more than split trades when φ < 1
+  - Output-boundedness and monotonicity preserved under fees
+  - Derives closed-form solution to arbitrage problem with fees (unique)
+- **Relevance**: Provides rigorous mathematical foundation for fee mechanism analysis; could inform smart contract verification
+
+### The Impact of Volatility Buffering in the Transition to Impermanent Loss Risk (Computational Economics, 2026)
+- **URL**: https://link.springer.com/article/10.1007/s10614-025-11297-1
+- **Venue**: Computational Economics (Springer)
+- **Key contribution**: Empirical study of how different volatility sources affect IL in Uniswap V2
+- **Core insights**:
+  - **Volatility buffering effect**: V-S (volatile-stable) pools mitigate external volatility → IL transmission vs V-V pools
+  - IL has autoregressive structure — cumulative exposure matters for hedging
+  - Traditional market volatility (VIX, OVX) also affects crypto IL
+- **Methodology**: Quantile regression, ARX models, PCA, dominance decomposition
+- **Relevance**: Practical guidance for LP strategy — V-S pools offer natural hedge; informs pool selection
+
+---
+
+## Industry & Practitioner Sources
+
+### Toxic Flow: The Hidden Cost of Providing Liquidity (Sandmark, Feb 2026) ⭐ NEW
+- **URL**: https://www.sandmark.com/news/features/toxic-flow-hidden-cost-providing-liquidity
+- **Date**: February 3, 2026
+- **Key contribution**: High-quality industry explainer of LVR/toxic flow concepts
+- **Notable data points**:
+  - References Wu et al. 2025 showing **Wintermute + SCP + Kayle = ~90% of arbitrage value** in Q1 2025
+  - Su Zhu's casino analogy: market makers are casinos, arbitrageurs are card counters
+  - DMMs provide liquidity on single-stock stress but consume liquidity during multi-stock stress
+- **Solutions surveyed**: Dynamic asymmetric fees, external price references, batch auctions, intent-based architectures
+- **Relevance**: Excellent accessible overview; confirms concentration of MEV extraction
+
+### Explainable Patterns in Cryptocurrency Microstructure (Bieganowski et al., 2026)
+- **arXiv**: 2602.00776
+- **URL**: https://arxiv.org/abs/2602.00776
+- **Date**: January 31, 2026
+- **Key contribution**: Universal microstructure features across crypto assets; flash crash analysis
+- **Core insights**:
+  - SHAP feature importance is stable across BTC, LTC, ETC, ENJ, ROSE
+  - Flash crash analysis validates adverse selection theory empirically
+  - Taker vs maker strategy divergence during stress confirms MM vulnerability
+- **Relevance**: Tangential — validates theoretical underpinnings of LVR; useful for empirical work
+
+### ASRI: Aggregated Systemic Risk Index for Cryptocurrency Markets (Farzulla, 2026)
+- **arXiv**: 2602.03874
+- **URL**: https://arxiv.org/abs/2602.03874
+- **Date**: February 1, 2026
+- **Key contribution**: Composite risk index for DeFi ecosystem monitoring
+- **Core insights**:
+  - Four weighted sub-indices: Stablecoin (30%), DeFi Liquidity (25%), Contagion (25%), Regulatory (20%)
+  - Validated against Terra/Luna, Celsius/3AC, FTX, SVB crises (all detected, t-stats 5.47-32.64)
+  - HMM identifies Low/Moderate/Elevated risk regimes with >94% persistence
+  - Captures DeFi-specific vulnerabilities: composability risk, flash loans, RWA linkages
+- **Relevance**: Tangential — systemic risk monitoring; could inform LP risk management strategies
+- **Live dashboard**: https://asri.dissensus.ai
+
+### TxRay: Agentic Postmortem of Live Blockchain Attacks (Wang et al., 2026)
+- **arXiv**: 2602.01317
+- **URL**: https://arxiv.org/abs/2602.01317
+- **Date**: February 1, 2026
+- **Key contribution**: LLM-based system for automated DeFi exploit analysis
+- **Core insights**:
+  - Introduces "Anyone-Can-Take" (ACT) opportunity taxonomy
+  - 92.11% end-to-end reproduction rate on 114 DeFiHackLabs incidents
+  - 40min median latency for root cause, 59min for executable PoC
+- **Relevance**: Tangential — attack detection/response; not directly about LVR but useful for security
+
+---
+
+## Industry Developments
+
+### Uniswap CCA on Base (February 2026) ⭐ NEW
+- **Source**: https://www.ainvest.com/news/uniswap-cca-base-game-changer-chain-token-launches-2601/
+- **What it is**: Continuous Clearing Auctions for token launches
+- **Mechanism**:
+  - Block-by-block price discovery
+  - Bidders submit max price limits
+  - Each block clears at market-clearing price
+  - Automatic Uniswap v4 pool seeding post-auction
+- **Case study**: Aztec Network raised $59-61M, $557M FDV, 16,700+ participants
+- **Relevance to LVR**: Validates batch auction approach (like FM-AMM) for fair pricing
+- **Key insight**: CCA is for launches, FM-AMM is for ongoing trading — different use cases, same theoretical foundation
