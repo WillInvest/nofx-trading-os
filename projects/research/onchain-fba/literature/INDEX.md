@@ -482,6 +482,131 @@
 
 ---
 
+## ⭐⭐⭐⭐⭐⭐⭐⭐ SATURDAY 5PM CRON UPDATE (2026-02-07)
+
+### NEW: Arcium Mainnet Alpha on Solana (Feb 2, 2026)
+- **Substack**: https://arcium.substack.com/p/arcium-mainnet-alpha-is-live
+- **Messari**: https://messari.io/report/arcium-mainnet-alpha-release
+- **Key contribution**: First production MPC-based encrypted computation on Solana mainnet
+- **Features**:
+  - Trustless computation over fully encrypted data
+  - 3,000+ distributed nodes on testnet
+  - Developing C-SPL (Confidential SPL) token standard
+  - First app: **Umbra Private Mainnet** (anonymous transfers, swaps)
+- **Architecture**: MPC-based (not threshold encryption)
+- **Status**: Mainnet Alpha (permissioned), moving toward decentralization
+- **Relevance**: Alternative encrypted execution layer for Solana; validates market demand
+
+### NEW: Fhenix Decomposable BFV (DBFV) (Feb 6, 2026)
+- **Source**: Business Insider, TheStreet (press release)
+- **Key contribution**: Major FHE breakthrough — solves scaling problem for large integers
+- **Innovation**:
+  - Decomposes large plaintexts into smaller "limbs" during encryption
+  - Dramatically improves noise management
+  - Enables sustained encrypted workloads without excessive bootstrapping
+  - Makes FHE viable for DeFi and financial logic
+- **Status**: Research completed; integration planned for later 2026
+- **Relevance**: FHE could eventually replace threshold encryption; watch for EVM integration
+
+### NEW: Uniswap CCA v1.1.0 Audits (Jan 2026)
+- **GitHub**: https://github.com/Uniswap/continuous-clearing-auction
+- **Audits**:
+  - OpenZeppelin (Jan 23, 2026)
+  - Spearbit (Jan 22, 2026)
+- **Key facts**:
+  - MIT licensed (can study/extend)
+  - Canonical addresses across EVM chains
+  - Bug bounty via Cantina
+  - Factory: 0xCCccCcCAE7503Cac057829BF2811De42E16e0bD5
+- **Relevance**: Production-ready uniform clearing; must study implementation
+
+### NEW: ePrint 2026/170 — gcVM: MPC via Garbled Circuits
+- **URL**: https://eprint.iacr.org/2026/170
+- **Key contribution**: Publicly auditable MPC for EVM-compatible computation
+- **Performance**: 83 cTPS current, ~500 cTPS projected
+- **Mechanism**: Garbled circuits for confidential transaction execution
+- **Relevance**: Alternative to threshold encryption for private computation
+
+### NEW: arXiv 2302.01177 — "The Case of FBA as a DEX Processing Model"
+- **URL**: https://arxiv.org/abs/2302.01177
+- **Key contribution**: Formal welfare analysis of FBA vs continuous matching
+- **Finding**: FBA reduces welfare loss from MEV in DEX order books
+- **Mechanism**: Discrete batch auctions with uniform price
+- **Relevance**: Academic validation of our core thesis
+
+### NEW: arXiv 2408.12225 — "Fair Combinatorial Auction for Blockchain Trade Intents"
+- **URL**: https://arxiv.org/abs/2408.12225
+- **Key contribution**: Novel fairness definition for combinatorial batch auctions
+- **Context**: Analyzes CoW Protocol-style intent-based trading
+- **Finding**: Compares batch auctions vs simultaneous individual auctions
+- **Relevance**: Fairness definitions applicable to our clearing layer
+
+---
+
+## ⭐⭐⭐⭐⭐⭐⭐ SATURDAY EVENING CRON UPDATE (2026-02-07 4:00 PM)
+
+### NEW: Implementable Witness Encryption (ePrint 2026/175, Feb 2026)
+- **URL**: https://eprint.iacr.org/2026/175
+- **Authors**: Soukhanov, Rebenko, El Gebali, Komarov ([[alloc] init])
+- **Key contribution**: Practical witness encryption for SNARK verification
+- **Mechanism**: Modified Affine Determinant Program framework for arithmetic circuits
+- **Relevance**: Alternative to threshold encryption — encrypt to proof of inclusion!
+- **Potential**: "Encrypt order until it's included in a valid batch proof"
+- **Gap for us**: Explore WE as alternative to threshold for encrypted orders
+
+### NEW: Bitcoin PIPEs v2 (ePrint 2026/186, Feb 2026)
+- **URL**: https://eprint.iacr.org/2026/186
+- **Key contribution**: Programmable covenants on Bitcoin via witness encryption
+- **Properties**: No soft forks, no trusted parties, no interactive fraud proofs
+- **Mechanism**: WE + digital signatures → SNARK-verifiable conditions
+- **Relevance**: Shows WE is becoming practical for blockchain applications
+- **Gap for us**: Cross-pollination of WE ideas to encrypted mempools
+
+### NEW: NIST MPTS 2026 Workshop (Jan 26-29, 2026 — COMPLETED)
+- **URL**: https://csrc.nist.gov/events/2026/mpts2026
+- **Status**: Already happened! (Not March as previously noted)
+- **Content**: 45 talks on threshold cryptography, 25 preview talks
+- **Format**: Virtual, free attendance via ZoomGov
+- **Action needed**: Find recordings/proceedings for standardization insights
+
+### NEW: a16z "17 Things for 2026" (Feb 6, 2026)
+- **URL**: https://a16zcrypto.com/posts/article/big-ideas-things-excited-about-crypto-2026/
+- **Key insights**:
+  - **SNARKs going mainstream**: "1,000,000× overhead" dropping rapidly, becoming practical outside blockchain
+  - **KYA (Know Your Agent)**: Critical primitive for agent economy; non-human identities 96:1 vs humans in finserv
+  - **Stablecoins**: $46T transaction volume (20× PayPal, 3× Visa)
+  - **x402 protocol**: Agent-to-agent payments, programmable settlement
+  - **Wealth management democratization**: On-chain portfolio management for all
+- **Relevance**: Framing of SNARK efficiency aligns with our ZK clearing direction
+
+### NEW: CryptoAPIs Glamsterdam Deep-Dive (Feb 5, 2026)
+- **URL**: https://cryptoapis.io/blog/553-ethereum-glamsterdam-upgrade
+- **Key timeline**:
+  - Q1 2026: Devnet testing (bals-devnet-2, epbs-devnet-0)
+  - Late Q1 2026: Scope freeze (end of February)
+  - H1 2026: Mainnet activation (May/June 2026)
+- **Key features**:
+  - **ePBS (EIP-7732)**: Enshrined proposer-builder separation, removes relay trust
+  - **BALs (EIP-7928)**: Block-level access lists for parallel execution
+  - **FOCIL**: Fork-choice enforced inclusion lists (may slip to Hegotá)
+- **Implications for us**:
+  - ePBS removes relay centralization bottleneck
+  - BALs enable parallel clearing (non-conflicting batches)
+  - Parallel execution = potential 3× throughput
+
+### Updated Competitive Analysis (Feb 2026)
+
+| Project | Focus | Status | Our Integration |
+|---------|-------|--------|-----------------|
+| EIP-8105 | L1 encrypted mempool | Hegotá headliner | Build on top |
+| BEAST-MEV | Threshold + batch | Academic | Reference impl |
+| Uniswap CCA | Token launch clearing | Production (Base) | Study & extend |
+| Jump DFBA | Flow separation | Design | Incorporate |
+| Shutter | Keyper network | Production (Gnosis) | Out-of-protocol |
+| Witness Encryption | Alt to threshold | Emerging (2026/175) | Explore |
+
+---
+
 ## ⭐⭐⭐⭐⭐⭐⭐ SATURDAY CRON UPDATE (2026-02-07 3:00 PM)
 
 ### NEW: Mempool Auditing Limitations (arXiv 2601.14996, Jan 2026)
@@ -613,7 +738,7 @@
 
 ---
 
-## Updated Source Count: 62+ sources catalogued
+## Updated Source Count: 80+ sources catalogued
 
 ### Sources Added This Cycle (Feb 7 PM)
 1. arXiv 2601.14996 — Mempool auditing effectiveness (Albrecht, Karame)
@@ -621,3 +746,44 @@
 3. DL News Hegota headliner coverage
 4. Phemex Hegota features summary
 5. VibeSwap Nervos proposal
+
+### Sources Added This Cycle (Feb 7 Evening — 4PM Cron)
+1. ePrint 2026/175 — Implementable Witness Encryption (Soukhanov et al.)
+2. ePrint 2026/186 — Bitcoin PIPEs v2 (WE for covenants)
+3. NIST MPTS 2026 Workshop — Proceedings (Jan 26-29, completed)
+4. a16z "17 Things for 2026" — SNARKs, KYA, stablecoins
+5. CryptoAPIs Glamsterdam timeline update (scope freeze, mainnet target)
+6. Multiple Hegota headliner news updates (Feb 3-5)
+
+### Sources Added This Cycle (Feb 7 — 5PM Cron)
+1. **Arcium Mainnet Alpha** (Feb 2, 2026) — MPC-based encrypted computation on Solana
+2. **Fhenix Decomposable BFV** (Feb 6, 2026) — FHE breakthrough for blockchain
+3. **Uniswap CCA v1.1.0** — Audited by OpenZeppelin (Jan 23) & Spearbit (Jan 22)
+4. **ePrint 2026/170** — gcVM: MPC via garbled circuits (~500 cTPS)
+5. **arXiv 2302.01177** — "The Case of FBA as a DEX Processing Model" (formal welfare analysis)
+6. **arXiv 2408.12225** — "Fair Combinatorial Auction for Blockchain Trade Intents"
+7. Uniswap CCA whitepaper fetched (docs.uniswap.org/whitepaper_cca.pdf)
+8. Uniswap CCA GitHub repo (open source, MIT licensed)
+
+### Sources Added This Cycle (Feb 7 — 6PM Cron)
+1. **Vitalik L2 Paradigm Shift** (Feb 3, 2026) — "Rollup-centric roadmap no longer makes sense"
+   - L2 usage dropped 50%: 58.4M → 30M addresses
+   - Ethereum L1 users doubled: 7M → 15M
+   - Proposed native rollup precompile for ZK-EVM verification
+   - Sources: CoinDesk, DL News, Decrypt, BeInCrypto
+2. **Ethereum Foundation Trillion Dollar Security Dashboard** (Feb 5-6, 2026)
+   - Six security dimensions: UX, smart contracts, infrastructure, consensus, monitoring, social governance
+   - Part of "1TS" (Trillion Dollar Security) initiative from May 2025
+   - URL: https://security.ethereum.org (implied from coverage)
+3. **ePrint 2026/189** — Shared and leakage free MAYO (threshold signatures)
+   - Post-quantum threshold signature scheme
+   - t-of-n threshold MAYO signatures
+4. **ePrint 2026/192** — Verification Theater (Feb 2026)
+   - Critical analysis of formal verification claims in crypto libraries
+   - Case study: Cryspen's libcrux and hpke-rs
+   - Warning: Marketing claims may exceed actual verification scope
+5. **Glamsterdam Timeline Confirmed** (CryptoAPIs Feb 5, 2026)
+   - Scope freeze: End of February 2026
+   - Mainnet: May/June 2026
+   - Key EIPs: 7732 (ePBS), 7928 (BALs)
+   - Gas limit: 60M → 200M (3× increase)

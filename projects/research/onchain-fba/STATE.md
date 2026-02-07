@@ -1,6 +1,6 @@
 # Research State — On-Chain Trustless FBA
 
-**Last Updated**: 2026-02-07 (Cron daily update, 3:00 PM)
+**Last Updated**: 2026-02-07 (Cron daily update, 6:00 PM)
 
 ## Current Focus
 **ECOSYSTEM CONVERGENCE**: The pieces are coming together! EIP-8105 proposes native encrypted mempool for Ethereum, Uniswap CCA proves uniform clearing works in production, and Jump's DFBA adds flow separation.
@@ -132,6 +132,70 @@
     - EIP-8141 (Frame Tx) has Vitalik endorsement for post-quantum
   - **VibeSwap proposal**: MEV-resistant batch DEX on Nervos (non-EVM validation)
   - **INDEX.md updated**: Now 60+ sources catalogued
+- [2026-02-07 4PM] **📊 Saturday Evening Cron Research Update**
+  - **New cryptographic direction discovered**: ePrint 2026/175 (Witness Encryption)
+    - Practical WE for SNARK verification — alternative to threshold encryption
+    - Authors: Soukhanov, Rebenko, El Gebali, Komarov ([[alloc] init])
+    - Potential: "Encrypt order until batch proof exists" — no committee!
+  - **ePrint 2026/186**: Bitcoin PIPEs v2 — WE for covenants (validates WE maturity)
+  - **NIST MPTS 2026**: Workshop already completed (Jan 26-29) — need to find recordings
+  - **a16z "17 Things for 2026"** (Feb 6):
+    - SNARKs going mainstream (1M× overhead dropping)
+    - KYA (Know Your Agent) as critical primitive for agent economy
+    - Stablecoins hit $46T volume (20× PayPal)
+  - **Glamsterdam deep-dive** (CryptoAPIs):
+    - Scope freeze end of February
+    - Mainnet target: May/June 2026
+    - ePBS + parallel execution via BALs
+  - **Updated architecture**: Added Layer 4 (Agent Economy) to vision
+  - **INDEX.md & IDEAS.md updated**: Now 65+ sources catalogued
+- [2026-02-07 5PM] **📊 Saturday 5PM Cron Research Update**
+  - **🚀 Arcium Mainnet Alpha** (Feb 2, 2026) — MPC-based encrypted computation on Solana!
+    - First production encrypted execution layer
+    - Umbra Private: anonymous transfers + swaps
+    - 3,000+ nodes on testnet, permissioned mainnet
+    - Alternative to threshold: MPC computes on encrypted data
+  - **🔬 Fhenix DBFV** (Feb 6, 2026) — FHE breakthrough for blockchain!
+    - Decomposable BFV solves noise scaling problem
+    - Enables sustained encrypted workloads
+    - Could eventually enable compute-on-encrypted clearing
+  - **📦 Uniswap CCA v1.1.0** — Production code available!
+    - MIT licensed, fully open source
+    - Audited by OpenZeppelin (Jan 23) & Spearbit (Jan 22)
+    - Bug bounty active via Cantina
+    - Factory: 0xCCccCcCAE7503Cac057829BF2811De42E16e0bD5
+  - **New ePrint papers:**
+    - 2026/170: gcVM — MPC via garbled circuits (~500 cTPS)
+  - **Academic validation:** arXiv 2302.01177 — formal FBA welfare analysis
+  - **New insight**: Encryption tech diversifying (threshold, MPC, FHE, GC, WE, TEE)
+  - **Design principle**: Build encryption-agnostic clearing layer
+  - **INDEX.md & IDEAS.md updated**: Now 75+ sources catalogued
+- [2026-02-07 6PM] **📊 Saturday 6PM Cron Research Update**
+  - **🔄 VITALIK L2 PARADIGM SHIFT** (Feb 3, 2026) — Major strategic implications!
+    - "Rollup-centric roadmap no longer makes sense"
+    - L2 usage dropped **50%**: 58.4M → 30M monthly addresses
+    - Ethereum L1 users **doubled**: 7M → 15M addresses
+    - L1 fees now very low; gas limit increasing 3× in 2026
+    - L2s must find new value: privacy, specialized VMs, non-financial apps
+    - **Native rollup precompile** proposed for ZK-EVM verification
+  - **🛡️ Ethereum Foundation "Trillion Dollar Security Dashboard"** (Feb 5-6, 2026)
+    - Part of "1TS" initiative from May 2025
+    - Six security dimensions: UX, smart contracts, infrastructure, consensus, monitoring, social governance
+    - Goal: Prepare network for trillions in on-chain value
+  - **📅 Glamsterdam Timeline Confirmed** (CryptoAPIs deep-dive):
+    - Q1 2026: Devnet testing (bals-devnet-2, epbs-devnet-0 active)
+    - Late Q1 2026: Scope freeze (end of February)
+    - H1 2026: Mainnet (May/June)
+    - ePBS (EIP-7732) + BALs (EIP-7928) for parallel execution
+    - Gas limit: 60M → 200M (3× increase)
+  - **New ePrint papers:**
+    - 2026/189: Shared and leakage free MAYO (threshold signatures)
+    - 2026/192: Verification Theater — critical analysis of formal verification claims
+  - **Strategic insight**: L1 scaling changes our deployment calculus
+    - Glamsterdam 3× gas + low fees = L1 uniform clearing now viable
+    - ePBS removes relay centralization
+    - BALs enable parallel batch clearing
+  - **INDEX.md & IDEAS.md updated**: Now 80+ sources catalogued
 
 ## Key Findings from Literature
 
@@ -187,6 +251,33 @@ This confirms our research addresses an **unsolved problem**.
 ## Blockers
 - ~~Brave API rate limited~~ → User upgraded to Pro! 🎉
 - None currently
+
+## Strategic Decisions (Feb 7, 2026)
+*From main session feedback on research questions:*
+
+| Decision | Direction | Rationale |
+|----------|-----------|-----------|
+| **Target Chain** | ~~L2 first~~ **Reconsider: L1 primary** | Vitalik L2 critique + L1 scaling changes calculus |
+| **Encryption** | Threshold (BEAST-MEV) primary | WE circular dependency unsolved; WE = Plan B |
+| **Agent Support** | Low priority for v1 | Get humans working first; architect for v2 |
+| **Timeline** | Glamsterdam compatibility | ePBS (EIP-7732) changes MEV landscape |
+
+**🆕 New Data Reshaping Strategy (Feb 7 6PM):**
+- L2 usage dropped 50% (58.4M → 30M addresses)
+- Ethereum L1 users doubled (7M → 15M addresses)
+- Glamsterdam: 3× gas limit (60M → 200M)
+- EIP-8105 provides native L1 encrypted mempool
+
+**Revised Priority Stack:**
+1. ~~L2 deployment~~ → **Ethereum L1 deployment (EIP-8105 + Glamsterdam)**
+2. Threshold encryption integration path
+3. Parallel execution design (BALs/EIP-7928)
+4. Specialized L2s as secondary (privacy, high-frequency)
+5. Agent/WE exploration → v2
+
+**Pending User Confirmation:**
+- [ ] Confirm L1 primary deployment strategy shift
+- [ ] Verify timeline alignment with Glamsterdam (H1 2026)
 
 ## Key Insights
 
@@ -337,20 +428,113 @@ Glamsterdam's EIP-7928 (Block-Level Access Lists) enables:
 - **MEV implication**: Some ordering games become harder with parallelization
 - **Open question**: Does parallel execution help or hurt uniform clearing?
 
+### Insight 21: Witness Encryption May Eliminate Committee Trust (NEW 2026-02-07 4PM)
+ePrint 2026/175 shows practical witness encryption for SNARK verification:
+- **Concept**: Encrypt order to statement "this order is in a batch with valid proof π"
+- **Decryption**: Anyone with proof π can decrypt — no committee needed!
+- **Trustless**: No threshold assumption, no key holders, no coordinator
+- **Challenge**: Circular dependency (need orders to prove, need proof to decrypt)
+- **Potential solution**: Homomorphic operations on encrypted orders?
+- **Status**: Research direction; may work for small batches or specific use cases
+- **Implication**: Threshold (BEAST-MEV) remains primary for high-throughput, but WE is interesting backup
+
+### Insight 22: SNARKs Going Mainstream — Cost Trajectory (NEW 2026-02-07 4PM)
+a16z's "17 Things for 2026" notes SNARK overhead is dropping dramatically:
+- Previously: 1,000,000× overhead vs native computation
+- Now: Becoming practical outside blockchain
+- Drivers: Hardware acceleration, proving markets (Brevis ProverNet), optimized circuits
+- **Implication for us**: ZK-verified clearing will become more practical over time
+- **Strategy**: Design for ZK now (even if expensive), costs will drop
+- **Backup**: Fraud-proof approach for near-term deployment
+
+### Insight 23: Agent Economy Requires New Order Formats (NEW 2026-02-07 4PM)
+a16z highlights "Know Your Agent" (KYA) as critical missing primitive:
+- Non-human identities 96:1 vs humans in financial services
+- Agents need cryptographic credentials linking to principals
+- x402 protocol enables agent-to-agent payments
+- **Design consideration**: Our order format should support agent-signed orders
+- **Components**: principal address, agent identity, constraints, approval chain
+- **Alignment**: EIP-8141 Frame Transactions (signature-scheme agnostic)
+
+### Insight 24: Encryption Technology Diversifying Rapidly (NEW 2026-02-07 5PM)
+The encrypted computation landscape is no longer threshold-only:
+- **Threshold** (BEAST-MEV, Shutter): Ethereum-focused, production-ready
+- **MPC** (Arcium): Solana mainnet alpha, compute on encrypted data
+- **FHE** (Fhenix DBFV): EVM research, breakthrough in noise management
+- **Garbled Circuits** (gcVM): ~500 cTPS for private EVM
+- **Witness Encryption** (ePrint 2026/175): Trustless, no committee
+- **TEE** (SUAVE): Hardware trust, in development
+- **Implication**: Design clearing layer to be **encryption-agnostic**
+- **Near-term**: Build on threshold (BEAST-MEV/EIP-8105)
+- **Future**: FHE integration when mature (compute-on-encrypted clearing)
+
+### Insight 25: MPC Enables Richer Private DeFi (Arcium lesson, NEW 2026-02-07 5PM)
+Arcium's MPC approach enables more than threshold:
+- Threshold: Encrypt → Decrypt → Execute (reveal at batch time)
+- MPC: Compute on encrypted data → Never reveal intermediate state
+- **Umbra Private** (first Arcium app) shows feasibility:
+  - Anonymous transfers and swaps
+  - Encrypted balances
+  - SDK for developers
+- **Trade-off**: MPC has higher coordination cost than threshold
+- **Strategic implication**: Arcium covers Solana; we focus on EVM/Ethereum
+
+### Insight 26: Production Code Availability Accelerates Research (NEW 2026-02-07 5PM)
+Uniswap CCA v1.1.0 being MIT-licensed and audited is a gift:
+- Can study production-grade clearing algorithm in Solidity
+- Can benchmark actual gas costs from test suite
+- Can extend/adapt rather than build from scratch
+- Three independent audits provide security confidence
+- **Action**: Clone repo, analyze clearing price computation
+- **Risk**: If CCA covers our use case, contribution space narrows
+
+### Insight 27: L1 Scaling Shifts Deployment Strategy (NEW 2026-02-07 6PM)
+Vitalik's "rollup-centric roadmap no longer makes sense" has major implications:
+- **L2 usage dropped 50%** (58.4M → 30M addresses) while L1 doubled (7M → 15M)
+- **L1 fees are now very low** — the scaling justification for L2s is weakening
+- **Glamsterdam 3× gas limit** (60M → 200M) makes L1 even more attractive
+- **Implication for us**: L1 deployment of clearing layer may be more viable than expected
+- **Strategy shift**: Don't assume "L2 first" — L1 uniform clearing could work with:
+  - EIP-8105 encrypted mempool (native)
+  - ePBS removing relay centralization
+  - BALs enabling parallel batch clearing
+- **L2 role redefined**: Privacy, specialized apps, not just "cheaper Ethereum"
+- **Our opportunity**: Clearing layer that works on L1 (primary) + L2s (for specialized use cases)
+
+### Insight 28: Defense in Depth Requires Formal Verification Awareness (NEW 2026-02-07 6PM)
+ePrint 2026/192 "Verification Theater" warns about false assurance:
+- Formally verified crypto libraries can still have vulnerabilities
+- Marketing claims often exceed actual verification scope
+- **Implication**: Our clearing layer shouldn't rely on single verification approach
+- **Strategy**: Multiple independent audits + formal verification + economic incentives
+- **Defense layers**:
+  1. Cryptographic (encryption, proofs)
+  2. Economic (slashing, bonds)
+  3. Social (reputation, transparency)
+  4. Operational (monitoring, incident response)
+
 ## Literature Search Queries for Next Update
-- "Uniswap CCA clearing price algorithm" — study Solidity implementation
+- "Uniswap CCA clearing price algorithm" — study Solidity implementation ✅ Found repo!
 - "EIP-8141 frame transaction" — track competing proposals
-- "NIST MPTS 2026 threshold" — academic workshop on March 10-11
+- "NIST MPTS 2026 recordings proceedings" — find workshop materials (already happened Jan 26-29!)
 - "Brevis ProverNet ZK marketplace" — decentralized proof generation
-- "Anoma intent architecture" — alternative MEV mitigation approach
+- "witness encryption SNARK blockchain" — track WE developments
+- "ePrint 2026/175 witness encryption" — follow-up on [[alloc] init] paper
 - "Rainbow RNBW Base transaction" — empirical CCA data analysis
 - "Chainlink Atlas SVR integration" — OEV capture mechanisms
-- "Shade Network encrypted mempool" — new competitor analysis
 - "ePrint 2026 batch threshold" — track new threshold crypto papers
-- "Glamsterdam ePBS" — monitor H1 2026 upgrade progress
+- "Glamsterdam scope freeze February" — monitor final feature list ✅ Confirmed end of Feb
 - "EIP-7928 Block-Level Access Lists parallel" — parallel execution MEV impact
-- "batch-fair ordering 30 seconds" — follow-up on Albrecht-Karame result
+- "Know Your Agent KYA crypto" — agent identity standardization
+- "x402 protocol payments" — agent-to-agent payment infrastructure
 - "Hegota headliner decision" — track which EIPs are selected
+- "Arcium Umbra SDK" — study private DEX reference implementation
+- "Fhenix DBFV paper" — get technical details on noise management
+- "gcVM MPC garbled circuits EVM" — alternative to threshold/FHE
+- **NEW**: "Vitalik L2 rollup roadmap February 2026" — track L1/L2 strategy evolution
+- **NEW**: "Ethereum Trillion Dollar Security Dashboard" — study 1TS initiative
+- **NEW**: "native rollup precompile ZK-EVM" — Vitalik's proposed L2 infrastructure
+- **NEW**: "Ethereum gas limit increase 2026" — track Glamsterdam throughput gains
 
 ## Next Research Cycle (Feb 8-14)
 ### Priority 1: Empirical Analysis
@@ -358,15 +542,39 @@ Glamsterdam's EIP-7928 (Block-Level Access Lists) enables:
 - [ ] Reverse-engineer CCA clearing price computation
 - [ ] Document gas costs for production clearing
 - [x] Study mempool auditing limitations (arXiv 2601.14996) ✅
+- [ ] Clone Uniswap CCA repo, analyze Solidity implementation
+- [ ] Benchmark CCA gas costs from test suite
 
 ### Priority 2: Technical Deep-Dives
+- [ ] Deep-read ePrint 2026/175 (witness encryption for SNARKs)
 - [ ] Study ePrint 2026/031 ThFHE attack implications
 - [ ] Review ePrint 2026/021 for post-quantum threshold applicability
-- [ ] Compare Chainlink Atlas vs CoW Protocol vs Flashbots architecture
 - [ ] Analyze EIP-7928 BALs impact on MEV (parallel execution)
+- [ ] Find NIST MPTS 2026 recordings/proceedings (workshop completed Jan 26-29)
+- [ ] Study ePrint 2026/170 gcVM for private EVM applications
+- [ ] Review arXiv 2302.01177 FBA welfare model
+- [ ] **NEW**: Analyze ePrint 2026/192 "Verification Theater" implications
 
 ### Priority 3: Design Work
 - [ ] Draft multi-provider clearing interface spec
 - [ ] Sketch ZK clearing circuit requirements
 - [ ] Outline formal security model for clearing layer
+- [ ] Evaluate WE as alternative to threshold for order encryption
+- [ ] Design "agent-compatible" order format (KYA considerations)
 - [ ] Address 30-second ordering limitation in our spec (from arXiv 2601.14996)
+- [ ] Design encryption-agnostic clearing interface (threshold/MPC/FHE)
+- [ ] Study Arcium/Umbra for private DEX UX patterns
+- [ ] **NEW**: Design for L1 parallel execution (BALs/EIP-7928 integration)
+- [ ] **NEW**: Draft multi-layer verification strategy (per ePrint 2026/192)
+
+### Priority 4: Strategic Questions for User Input
+1. **Target chain**: ~~L2 first~~ Given Vitalik's L2 critique, prioritize Ethereum L1?
+   - **New data**: L2 usage -50%, L1 users +114%, L1 fees now low
+   - **Recommendation**: L1 primary, specialized L2 secondary
+2. **Witness encryption**: Deep exploration track or keep focus on threshold?
+   - **Recommendation**: Threshold primary, WE as research track
+3. **Agent support**: Priority level for KYA/agent-signing in v1?
+4. **Timeline alignment**: Aim for Glamsterdam compatibility (H1 2026) first?
+   - **New data**: Scope freeze end of Feb, mainnet May/June
+5. **FHE path**: Monitor Fhenix DBFV or active research track?
+6. **NEW**: Verification strategy: How much formal verification vs other methods?
