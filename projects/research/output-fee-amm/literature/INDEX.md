@@ -117,6 +117,14 @@
 - **Relevance**: **Baseline formula to compare output-fee LVR against**
 - **Priority**: CRITICAL - use this formula as benchmark
 
+### Growth Rate of Liquidity Provider's Wealth in G3Ms (Tung et al., Sep 2025)
+- **URL**: https://arxiv.org/abs/2403.18177
+- **Key contribution**: Extends LP profitability analysis to general Geometric Mean Market Makers (beyond constant product)
+- **Methods**: Stochastic reflected diffusion processes under arbitrage-driven markets
+- **Key insight**: Long-term expected logarithmic growth of LP wealth derived for G3Ms including Balancer
+- **Relevance**: Theoretical framework that could be extended to output-fee analysis
+- **Added**: 2026-02-07
+
 ### A Derivative Pricing Perspective on Liquidity Tokens (Sep 2024)
 - **URL**: https://arxiv.org/html/2409.11339
 - **Key contribution**: LP token valuation framework

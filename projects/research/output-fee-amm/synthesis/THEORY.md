@@ -137,6 +137,55 @@ Output fees may provide "natural hedge" against IL direction.
 
 ---
 
+---
+
+## Regime Dependence Analysis (2026-02-07)
+
+### Empirical Observation
+
+Sensitivity analysis revealed the output fee advantage is **parameter-sensitive**:
+
+| Parameter | Sweet Spot | LVR Reduction |
+|-----------|------------|---------------|
+| Fee rate | 0.3% | 8.2% |
+| Fee 0.1% | — | 0.3% |
+| Fee 0.5%+ | — | diminishes |
+| Volatility 1%/block | — | 8.2% |
+| Other volatilities | — | 2-4% |
+
+### Theoretical Explanation
+
+**Why does fee rate matter?**
+
+The output fee advantage comes from taxing arbitrageur profit directly. The effect scales with:
+
+1. **Fee-to-profit ratio**: Arbitrageur profit per trade ≈ price discrepancy × trade size. At low fees (0.1%), the fee is small relative to profit, so both fee types perform similarly. At moderate fees (0.3%), the output fee captures a meaningful fraction of profit. At high fees (0.5%+), arbitrage becomes unprofitable for small discrepancies under both models, neutralizing the difference.
+
+2. **Mathematical intuition**: Let profit = $\pi$ and fee rate = $\gamma$:
+   - Input fee takes: $\gamma \cdot \Delta_x$ (scales with input)
+   - Output fee takes: $\gamma \cdot \Delta_y$ (scales with output, which includes profit)
+   
+   The ratio: $\Delta_y / \Delta_x \approx p(1 + \pi/\Delta_x \cdot p)$
+   
+   Output fee captures more when $\pi$ is large relative to the trade.
+
+**Why does volatility matter?**
+
+1. **Low volatility**: Few arbitrage opportunities → less LVR to reduce → smaller absolute benefit
+2. **Moderate volatility (~1%)**: Regular arbitrage with moderate profits → sweet spot for output fee advantage
+3. **High volatility**: Large price swings may overwhelm fee effects; pool reserves change dramatically
+
+**Key insight**: The output fee advantage is strongest when:
+- Arbitrage is frequent but not overwhelming
+- Fee rate is large enough to matter but not so large as to eliminate arbitrage
+- This matches typical ETH/USDC pool conditions (0.3% fee, moderate volatility)
+
+### Implications
+
+1. **Not a universal improvement**: Output fees are best for "standard" AMM pools (stablecoin pairs, major tokens)
+2. **May be suboptimal for exotic pairs**: Very volatile or very illiquid pairs may not benefit
+3. **Dynamic hybrid possible**: Could switch between input/output based on market conditions
+
 ## Open Questions
 
 1. **Equilibrium LP behavior**: Will LPs prefer one fee type?
@@ -144,6 +193,7 @@ Output fees may provide "natural hedge" against IL direction.
 3. **Concentrated liquidity**: Interaction with Uniswap v3 ranges?
 4. **Dynamic fees**: Output fees that adjust to volatility?
 5. **Hybrid models**: Optimal mix of input/output fees?
+6. **Why exactly 0.3%?**: Derive analytical formula for optimal fee rate
 
 ---
 

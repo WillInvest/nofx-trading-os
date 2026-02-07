@@ -23,6 +23,17 @@
 - [2026-02-07] **NEW PAPER FOUND:** Herlihy et al. "Defensive Rebalancing for AMMs" (arXiv:2601.19950) — complementary LVR mitigation approach via inter-CFMM transfers
 - [2026-02-07] **Created Uniswap v4 hook implementation:** `implementation/code/OutputFeeHook.sol`
 - [2026-02-07] **Created test suite:** `implementation/tests/OutputFeeHook.t.sol`
+- [2026-02-07] **Added new paper:** Tung et al. "Growth Rate of LP's Wealth in G3Ms" — extends LP theory to general G3Ms
+- [2026-02-07] **SENSITIVITY ANALYSIS COMPLETE** — Effect is regime-dependent:
+  - Fee 0.3%: 8.2% LVR reduction, 100% win rate
+  - Fee 0.1%: 0.3% reduction; Fee 0.5%+: benefit diminishes
+  - Volatility 1%: 8.2% reduction; other volatilities: 2-4% reduction
+  - **Key insight: Output fee advantage strongest at standard fee levels (0.3%) and moderate volatility**
+- [2026-02-07 PM] **THEORY.md updated:** Added formal explanation of regime dependence (fee-to-profit ratio, volatility effects)
+- [2026-02-07 PM] Literature search: No new papers found; arXiv:2602.00101 (Formal AMM Fees with Lean 4) already indexed
+- [2026-02-07 PM] **Defensive rebalancing comparison:** Created synthesis note comparing output fees with Herlihy et al.'s approach — they are COMPLEMENTARY mechanisms
+- [2026-02-07 PM] **Concentrated liquidity analysis:** Created synthesis note exploring how output fees interact with Uniswap v3-style concentrated liquidity — may provide "natural hedge" for range LPs
+- [2026-02-07 PM] Literature search: No new papers on output-based fees (gap confirmed); reviewed Campbell 2025 (Optimal Fees) and Feinstein 2025 (Price of Liquidity) — both already indexed
 
 ## Key Insights
 
@@ -33,11 +44,19 @@ No academic paper or protocol implements output-asset fees. All AMMs assume inpu
 Output fees may reduce LVR because they directly tax arbitrageur profits (the output token).
 
 ### ⭐ SIMULATION RESULT (2026-02-07)
-**Output fees reduce LVR by ~6.7% compared to input fees.**
+**Output fees reduce LVR by ~6.7% compared to input fees** (at optimal parameters).
 - Tested: 1000 Monte Carlo simulations, 10k blocks each
 - Output fee wins 100% of the time
 - Effect is small but consistent (~0.08% better LP returns)
 - Validates core hypothesis: taxing output directly taxes arbitrage profits
+
+### ⭐⭐ REGIME DEPENDENCE (2026-02-07)
+**The output fee advantage is parameter-sensitive:**
+- **Sweet spot:** 0.3% fee, ~1% block volatility → **8.2% LVR reduction**
+- At 0.1% fee: only 0.3% reduction
+- At 0.5%+ fees: benefit diminishes or reverses
+- At very low/high volatility: reduced effect
+- **Implication:** Best suited for standard ETH/USDC-style pools, not exotic pairs
 
 ### LP Accumulation Difference
 - Input fees → LP accumulates token being SOLD (often the depreciating asset in trends)
@@ -50,12 +69,15 @@ Uniswap v4 custom accounting hooks can modify swap outputs, enabling output-fee 
 - [x] Build Monte Carlo simulation comparing fee types ✅ (2026-02-07)
 - [x] Derive formal LVR formula under output fees ✅ (approximation validated)
 - [x] Create Uniswap v4 hook proof-of-concept ✅ (2026-02-07)
-- [ ] Set up Foundry project and run hook tests
-- [ ] Backtest on historical Uniswap ETH/USDC data
-- [ ] Write research note summarizing findings
-- [ ] Test sensitivity to fee rate and volatility levels
-- [ ] Analyze concentrated liquidity (Uni v3 style) implications
-- [ ] Compare with "Defensive Rebalancing" approach (new paper)
+- [x] Test sensitivity to fee rate and volatility levels ✅ (2026-02-07)
+- [x] Write research note summarizing findings ✅ (2026-02-07)
+- [x] Compare with "Defensive Rebalancing" approach ✅ (2026-02-07 PM) — see `synthesis/notes/defensive_rebalancing_comparison.md`
+- [x] Analyze concentrated liquidity implications ✅ (2026-02-07 PM) — see `synthesis/notes/concentrated_liquidity_analysis.md`
+- [ ] **Install Foundry** and run hook tests (`curl -L https://foundry.paradigm.xyz | bash`)
+- [ ] Backtest on historical Uniswap ETH/USDC data (validate 0.3% fee sweet spot)
+- [ ] Extend Monte Carlo to concentrated liquidity model
+- [ ] Model JIT LP behavior under output fees
+- [ ] Consider submitting to ethresear.ch or arXiv
 
 ## Blockers
 None
