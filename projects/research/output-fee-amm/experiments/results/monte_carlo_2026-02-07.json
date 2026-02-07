@@ -1,0 +1,36 @@
+{
+  "date": "2026-02-07",
+  "description": "Monte Carlo comparison of input vs output fee AMMs",
+  "n_simulations": 1000,
+  "parameters": {
+    "initial_x": 100.0,
+    "initial_y": 200000.0,
+    "fee_rate": 0.003,
+    "sigma": 0.01,
+    "n_blocks": 10000
+  },
+  "input_fee_stats": {
+    "mean_return": 0.2741,
+    "std_return": 0.6741,
+    "mean_lvr": 0.01234,
+    "std_lvr": 0.0087
+  },
+  "output_fee_stats": {
+    "mean_return": 0.2749,
+    "std_return": 0.6753,
+    "mean_lvr": 0.01151,
+    "std_lvr": 0.0095
+  },
+  "comparison": {
+    "output_minus_input_return": 0.00083,
+    "output_minus_input_lvr": -0.00083,
+    "output_better_pct": 1.0,
+    "lvr_reduction_pct": 6.7
+  },
+  "key_findings": [
+    "Output fee outperformed input fee in 100% of simulations",
+    "LVR reduced by ~6.7% under output-fee structure",
+    "Difference is consistent but relatively small (~0.08% return improvement)",
+    "Output fee accumulates more of the appreciating asset (as hypothesized)"
+  ]
+}
