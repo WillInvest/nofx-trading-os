@@ -1,0 +1,240 @@
+# Research State — On-Chain Trustless FBA
+
+**Last Updated**: 2026-02-07 (PM update)
+
+## Current Focus
+**ECOSYSTEM CONVERGENCE**: The pieces are coming together! EIP-8105 proposes native encrypted mempool for Ethereum, Uniswap CCA proves uniform clearing works in production, and Jump's DFBA adds flow separation.
+
+**OUR NICHE**: Build the **Trustless Uniform Clearing Layer** that:
+1. Integrates with EIP-8105's encrypted mempool
+2. Extends Uniswap CCA's clearing to general DEX trading
+3. Incorporates DFBA's maker/taker flow separation
+4. Addresses a16z's concerns via defense-in-depth
+
+## Research Questions
+
+### Primary (UPDATED 2026-02-07 PM)
+**How do we extend Uniswap CCA's uniform clearing to continuous DEX trading with BEAST-MEV/EIP-8105 encrypted orders?**
+
+### Sub-questions
+1. ✅ What are current solutions' trust assumptions? → All require trusting some third party
+2. ✅ What does academic literature say? → SoK confirms no complete solution exists
+3. ✅ What cryptographic primitives enable hiding order contents? → **BEAST-MEV solves this!**
+4. ✅ How can batch boundaries be determined without trusted coordinator? → Block boundaries + threshold encryption
+5. ✅ Is uniform clearing practical in production? → **Uniswap CCA proves yes!**
+6. 🔄 What's the gas cost tradeoff for on-chain clearing price computation?
+7. 🔄 Can ZK proofs make clearing verification practical?
+8. 🔄 How to handle partial fills fairly in uniform-price auctions?
+9. ❓ Can fraud-proof clearing compete with ZK approaches?
+10. 🆕 How to integrate with EIP-8105's key provider registry?
+11. 🆕 Can DFBA's flow separation reduce clearing complexity?
+12. 🆕 How to extend CCA from token launches to continuous trading?
+
+## Recent Progress
+- [2026-02-04] Project initialized
+- [2026-02-04] Initial literature search completed
+  - Found 7 key academic papers
+  - Analyzed Flashbots, CoW Protocol, Chainlink FSS
+  - Critical finding: SoK paper (Heimbach 2022) confirms no existing scheme meets all requirements
+  - Identified trust assumptions in all current solutions
+- [2026-02-04] **Daily research update - SIGNIFICANT DISCOVERY**
+  - Found Paradigm "Leaderless Auctions" paper (Feb 2024)
+  - This is the strongest existing design for trustless auction bid privacy
+  - 4-round protocol using threshold encryption + fault economics
+  - Solves "last look" problem without trusted party
+  - Key gap: doesn't address uniform price clearing or permissionless participation
+- [2026-02-04] **Evening update - BREAKTHROUGH PAPERS**
+  - Found **Silent Setup** (ePrint 2024/263): NO interactive threshold setup!
+    - Joint pubkey computed deterministically → enables PERMISSIONLESS
+  - Found **BTE** (ePrint 2024/669): O(n) batched decryption, not O(nB)
+    - Makes mempool encryption practical for high-throughput chains
+  - Found **Shutter Network**: Production implementation on Gnosis Chain
+  - **New approach**: "Silent Batch Auction" = Silent Setup + BTE + Uniform Clearing
+- [2026-02-07] **🔥 CRITICAL DISCOVERY: BEAST-MEV EXISTS**
+  - Found **BEAST-MEV** (ePrint 2025/1419) — combines Silent Setup + BTE
+  - Same authors as original papers (Choudhuri, Faust, Garg, Policharla)
+  - Our "Silent Batch Auction" core concept is already implemented!
+  - Security proven in Generic Group Model
+- [2026-02-07] **Additional major papers found:**
+  - **Weighted BTE** (2025/2115): 6× improvement, PoS stake-weighted support
+  - **Silent Threshold Crypto** (2025/1547, Waters & Wu): Standard model security!
+  - **USENIX Security '25**: BTE formal publication
+  - **HAL paper**: Gas-optimized sealed-bid auctions
+  - **Accountability papers**: SSS, self-incriminating proofs, traceable TE
+- [2026-02-07] **PIVOTED research direction:**
+  - BEAST-MEV handles Layer 1 (encrypted mempool)
+  - Our contribution: Layer 2 (uniform price clearing on top of decrypted orders)
+  - New ideas: ZK-verified clearing, fraud-proof clearing
+- [2026-02-07 PM] **🚀 ECOSYSTEM VALIDATION — Major Production Discoveries**
+  - **EIP-8105**: Native encrypted mempool proposed for Ethereum Hegotá fork!
+    - Technology-agnostic key provider registry
+    - Sub-slot decryption key inclusion
+    - This is the Layer 0/1 we'll build on
+  - **TrX** (ePrint 2025/2032): Production-ready encrypted mempool in BFT
+    - Only 27ms overhead (14%)! Proves viability.
+    - Authors include Policharla (BEAST-MEV)
+  - **Uniswap CCA**: Continuous Clearing Auctions LIVE on Uniswap v4
+    - Uniform clearing price per block ✅
+    - ZK Passport for privacy (with Aztec) ✅
+    - $59M Aztec token launch
+    - **This is our Layer 2 concept in production!**
+  - **Jump Crypto DFBA**: Dual Flow Batch Auction design
+    - Maker/taker flow separation
+    - Sub-100ms batch auctions
+    - Addresses toxic flow problem
+  - **a16z "Limits" paper**: Critical analysis we must address
+    - Speculative MEV, strong trust assumptions, practical concerns
+  - **Shutter+Primev**: First encrypted mempool in Ethereum PBS underway
+
+## Key Findings from Literature
+
+### All Current Solutions Fail Trustlessness
+1. **Flashbots**: Builders/relays see transactions → can front-run
+2. **CoW Protocol**: Solvers are trusted third parties
+3. **Chainlink FSS**: Oracle network is trusted (better, but still trust)
+4. **L2 Sequencers**: Same problem as miners, just different party
+
+### Promising Cryptographic Directions
+1. **Commit-Reveal**: Simple, no new assumptions, but has griefing risk
+2. **Threshold Encryption**: Needs m-of-n key holders → who holds keys?
+3. **Time-Lock Puzzles/VDFs**: No trusted party, but computational cost
+4. **On-Chain Uniform Clearing**: Make order irrelevant via same price
+
+### Critical Gap in Literature
+The Heimbach 2022 SoK paper concludes: "Currently no scheme fully meets all the demands of the blockchain ecosystem. All approaches demonstrate unsatisfactory performance in at least one area."
+
+This confirms our research addresses an **unsolved problem**.
+
+## Next Actions
+
+### Immediate (This Week)
+- [x] ~~Download and deep-read SoK paper (arXiv:2203.11520)~~ (summary in INDEX.md)
+- [x] ~~Find if Silent Setup + BTE combination exists~~ → BEAST-MEV!
+- [x] ~~Search for production implementations~~ → Found Uniswap CCA!
+- [ ] Deep-read BEAST-MEV paper and implementation code
+- [ ] Study Weighted BTE for PoS chain compatibility
+- [ ] Review HAL gas-optimization paper for clearing algorithms
+- [ ] **NEW**: Clone Uniswap CCA repo, study clearing price computation
+- [ ] **NEW**: Review Jump DFBA for maker/taker separation mechanics
+- [ ] **NEW**: Read EIP-8105 draft for integration requirements
+
+### Short-term (This Month)
+- [ ] Design uniform clearing algorithm optimized for EVM
+- [ ] Prototype ZK circuit for clearing price verification
+- [ ] Estimate gas costs: direct vs ZK vs fraud-proof approaches
+- [ ] Compare with CoW Protocol's Uniform Directed Prices (UDP) implementation
+- [ ] Study Penumbra's in-protocol arbitrage mechanism
+- [ ] **NEW**: Address a16z "Limits" concerns in our design doc
+- [ ] **NEW**: Spec how our clearing layer integrates with EIP-8105
+- [ ] **NEW**: Design DFBA-style flow separation for our clearing layer
+
+### Medium-term
+- [ ] Draft THEORY.md: "BEAST-MEV + Uniform Clearing" formal spec
+- [ ] Implement clearing layer prototype on testnet
+- [ ] Benchmark end-to-end latency and gas
+- [ ] Write paper draft or spec document
+- [ ] **NEW**: Contribute to EIP-8105 discussion (execution layer perspective)
+
+## Blockers
+- ~~Brave API rate limited~~ → User upgraded to Pro! 🎉
+- None currently
+
+## Key Insights
+
+### Insight 1: The Trust Spectrum
+Not binary trustless/trusted. There's a spectrum:
+- Full trust in single party (worst)
+- Distributed trust among competing parties (CoW)
+- Threshold trust (FSS)
+- Economic/cryptographic trust (commit-reveal with penalties)
+- Fully trustless (goal)
+
+### Insight 2: The Timing Problem
+All batch auctions need to answer: "When does the batch close?"
+- Block boundaries? (natural but coarse)
+- Fixed intervals? (who enforces?)
+- Smart contract state? (can be manipulated?)
+
+### Insight 3: Griefing is the Achilles' Heel
+Commit-reveal is simple but:
+- If you don't reveal, batch can't execute
+- Penalizing non-reveal requires deposits
+- Deposits create capital inefficiency
+- May need "forced reveal" via time-lock encryption
+
+### Insight 4: Paradigm's Fault Economics
+Paradigm's Leaderless Auctions solves the griefing problem elegantly:
+- **Absence fault**: If your bid is missing from f+1 bid sets, you pay penalty
+- **Penalty > option value**: Makes cancellation economically unviable
+- **Threshold encryption**: Forces reveal without explicit reveal phase
+- This is "forced reveal via cryptography + economics" — exactly what we speculated!
+
+### Insight 5: Separation of Concerns
+The problem splits into two parts:
+1. **Bid Privacy**: How to hide bids until batch boundary (Paradigm solves this)
+2. **Execution Fairness**: How to ensure fair price/order once revealed (still open!)
+Our contribution: Layer uniform price clearing on top of Leaderless Auctions
+
+### Insight 6: BEAST-MEV = Silent Batch Auction (NEW 2026-02-07)
+Our conceptual synthesis has been implemented by the original paper authors!
+- Silent Setup (Garg et al.) + BTE (Choudhuri et al.) = BEAST-MEV
+- Same research group independently reached same conclusion
+- Validates our research direction but shifts our contribution point
+
+### Insight 7: The Execution Layer Gap (NEW 2026-02-07)
+BEAST-MEV solves privacy → Our opportunity is fairness:
+- BEAST-MEV decrypts transactions but doesn't specify execution order
+- After decryption, transactions are visible — back-running still possible
+- Uniform price clearing makes order irrelevant → eliminates back-running too
+- **Architecture**: BEAST-MEV = Layer 1 (privacy), Our work = Layer 2 (fair execution)
+
+### Insight 8: Accountability as Defense-in-Depth (NEW 2026-02-07)
+New cryptographic primitives provide collusion deterrence:
+- **Secret Sharing with Snitching**: Reconstruction creates proof of participation
+- **Self-Incriminating Proofs**: At least one colluder exposed
+- **Traceable TE with Public Tracing**: Smart contract enforcement
+- Can combine with BEAST-MEV for stronger guarantees
+
+### Insight 9: Weighted BTE for PoS Integration (NEW 2026-02-07)
+Weighted BTE paper extends BEAST-MEV for proof-of-stake:
+- Communication cost independent of total stake weight
+- 50× improvement over naive virtualization
+- Critical for Ethereum, Solana integration
+- Makes "validators as Keypers" practical
+
+### Insight 10: The Ecosystem Is Converging (NEW 2026-02-07 PM)
+Multiple teams independently building toward same vision:
+- **Shutter** → EIP-8105 for native encrypted mempool
+- **Uniswap** → CCA for uniform clearing auctions
+- **Jump** → DFBA for flow separation
+- **Aptos** → TrX for production encrypted BFT
+- **Thesis validated**: The pieces exist, need synthesis
+
+### Insight 11: Encryption Alone Is Not Enough (a16z insight)
+Critical reality check from a16z's "Limits" paper:
+- Speculative MEV: Attackers can guess and try
+- Threshold trust is STRONGER than consensus trust (undetectable violation)
+- Solution: Defense in depth — encryption + uniform clearing + accountability
+- Encryption makes MEV harder; clearing makes it pointless
+
+### Insight 12: Production Validation (NEW 2026-02-07 PM)
+Uniswap CCA proves key elements work:
+- Single clearing price per block IS practical
+- ZK privacy for participants IS achievable
+- Automatic liquidity seeding IS valuable
+- BUT: CCA is for token launches, not general DEX trading
+- **Our gap**: Extend to continuous trading with encrypted orders
+
+### Insight 13: Flow Separation Reduces Complexity (DFBA insight)
+Jump's DFBA suggests maker/taker separation:
+- Makers don't compete with each other on latency
+- Takers don't suffer from toxic maker flow
+- Two simpler auctions > one complex auction
+- **Application**: Could split BEAST-MEV batches into maker/taker sub-batches
+
+## Literature Search Queries for Next Update
+- "Uniswap CCA implementation" — study their clearing algorithm
+- "EIP-8105 discussion" — track proposal progress
+- "CoW Protocol solver algorithm" — existing clearing implementations
+- "Penumbra flow encryption internals" — privacy-preserving execution
+- "fraud proof optimistic clearing" — alternative to ZK
