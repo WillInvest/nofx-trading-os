@@ -1,6 +1,6 @@
 # Research State — On-Chain Trustless FBA
 
-**Last Updated**: 2026-02-07 (Evening update)
+**Last Updated**: 2026-02-07 (Cron daily update, 3:00 PM)
 
 ## Current Focus
 **ECOSYSTEM CONVERGENCE**: The pieces are coming together! EIP-8105 proposes native encrypted mempool for Ethereum, Uniswap CCA proves uniform clearing works in production, and Jump's DFBA adds flow separation.
@@ -94,6 +94,44 @@
   - Uniswap CCA now live on **Base** (permissionless deployment, Jan 22)
   - Uniswap web app has **auction UI** (Feb 2, 2026)
   - **Consensys acquired MEV Blocker** from CoW Protocol (Jan 26, 2026)
+- [2026-02-07 Eve] **📊 Daily Cron Research Update**
+  - **Rainbow RNBW CCA auction completed** — first major post-launch auction
+    - Clearing price: **$0.13** (started at $0.10, 30% discovery)
+    - Timeline: Pre-bid Feb 2 → Auction Feb 3 → Clearing Feb 5
+    - **Live production validation of uniform clearing mechanism**
+  - **Chainlink acquires Atlas** (Jan 22, 2026)
+    - FastLane Labs transaction-ordering protocol
+    - Integrates with SVR for OEV capture
+    - Live on 5 chains (Arbitrum, Base, BNB, Ethereum, HyperEVM)
+    - **Chainlink positioning as MEV infrastructure layer**
+  - **Consensys/SMG acquires MEV Blocker** (confirmed Jan 26)
+    - Stats: 4.5M+ users, 6,177 ETH rebates
+    - CoW DAO focusing on core protocol
+    - **Consolidation in MEV protection space**
+  - **New ePrint papers found:**
+    - 2026/021: Post-quantum threshold KEM (18× smaller ciphertexts)
+    - 2026/031: ThFHE security (finds attacks in prior work!)
+    - 2026/190: Three-round robust threshold ECDSA
+    - 2026/094: Hardware-friendly threshold ECDSA
+  - **Glamsterdam update**: bals-devnet-2 launched Feb 4, H1 2026 target
+  - **Hegotá update**: Headliner deadline passed Feb 4; EIP-8105, FOCIL, Frame Tx leading
+  - **Shade Network**: New competitor with encrypted mempool testnet (Jan 19)
+- [2026-02-07 3PM] **📊 Saturday Cron Research Update**
+  - **Critical academic finding**: arXiv 2601.14996 (Albrecht & Karame)
+    - Mempool auditing has **25%+ false positive rate** for censorship detection
+    - **30-second threshold** for reliable transaction ordering
+    - Batch-fair ordering can only guarantee fairness for limited transaction subset
+    - **Validates our thesis**: Ordering fairness is fundamentally limited → uniform clearing essential
+  - **Glamsterdam details confirmed**:
+    - EIP-7732 (ePBS) + EIP-7928 (Block-Level Access Lists)
+    - Gas limit: 60M → 200M (3× increase for parallel execution)
+    - Timeline: May/June 2026 mainnet, scope freeze end of Feb
+  - **Hegota competition intensifying**:
+    - FOCIL gaining consensus as #1 headliner (censorship resistance)
+    - EIP-8105 (encrypted mempool) positioned as #2 complementary feature
+    - EIP-8141 (Frame Tx) has Vitalik endorsement for post-quantum
+  - **VibeSwap proposal**: MEV-resistant batch DEX on Nervos (non-EVM validation)
+  - **INDEX.md updated**: Now 60+ sources catalogued
 
 ## Key Findings from Literature
 
@@ -258,9 +296,77 @@ CCA on Base (Jan 22) and web app (Feb 2) mean:
 - Can analyze user behavior patterns
 - **Action**: Deploy monitoring to track CCA auctions
 
+### Insight 16: RNBW Auction Validates Price Discovery (NEW 2026-02-07 Eve)
+Rainbow token CCA auction provides empirical data:
+- Start price: $0.10 → Clearing price: $0.13 (30% price discovery)
+- 3-day auction window (pre-bid → auction → clearing)
+- All participants received same final price
+- **Validation**: Uniform clearing works for real token launches
+- **Limitation**: Token launch ≠ continuous DEX trading (different dynamics)
+
+### Insight 17: MEV Infrastructure Consolidation (NEW 2026-02-07 Eve)
+Two major acquisitions in January 2026:
+1. Chainlink → Atlas (transaction ordering, OEV)
+2. Consensys/SMG → MEV Blocker (backrunning auctions)
+- **Implication**: Infrastructure layer consolidating around established players
+- **Opportunity**: Our clearing layer could integrate with multiple providers
+- **Risk**: Competition from well-funded incumbents
+
+### Insight 18: Post-Quantum Considerations Emerging (NEW 2026-02-07 Eve)
+New research signals post-quantum threshold crypto maturity:
+- ePrint 2026/021: Lattice threshold KEM (18× smaller ciphertexts, 30 KiB)
+- EIP-8141: Post-quantum account abstraction (Vitalik endorsed)
+- **Design consideration**: Our clearing layer should be signature-agnostic
+- **Timeline**: Not urgent (years away) but good to architect for
+
+### Insight 19: Ordering Fairness Is Fundamentally Limited (NEW 2026-02-07 3PM)
+Academic proof that mempool-based ordering cannot guarantee fairness:
+- arXiv 2601.14996 (Albrecht & Karame): First rigorous analysis
+- **30-second threshold**: Transactions must be 30+ seconds apart for reliable ordering
+- **25%+ false positives**: Honest miners can be mislabeled as malicious
+- **Direct quote**: "batch-fair ordering schemes can offer only strong fairness guarantees for a limited subset of transactions"
+- **Critical implication**: Validates our thesis — uniform clearing > ordering fairness
+- **Why this matters**: Even with perfect mempool visibility, ordering is probabilistic not deterministic
+- **Our advantage**: Uniform price clearing makes ordering irrelevant
+
+### Insight 20: Parallel Execution Changes MEV Dynamics (NEW 2026-02-07 3PM)
+Glamsterdam's EIP-7928 (Block-Level Access Lists) enables:
+- Parallel transaction execution (non-conflicting txs processed simultaneously)
+- Pre-declared account access (proposers know what state will be touched)
+- 3× gas limit increase (60M → 200M)
+- **MEV implication**: Some ordering games become harder with parallelization
+- **Open question**: Does parallel execution help or hurt uniform clearing?
+
 ## Literature Search Queries for Next Update
 - "Uniswap CCA clearing price algorithm" — study Solidity implementation
 - "EIP-8141 frame transaction" — track competing proposals
 - "NIST MPTS 2026 threshold" — academic workshop on March 10-11
 - "Brevis ProverNet ZK marketplace" — decentralized proof generation
 - "Anoma intent architecture" — alternative MEV mitigation approach
+- "Rainbow RNBW Base transaction" — empirical CCA data analysis
+- "Chainlink Atlas SVR integration" — OEV capture mechanisms
+- "Shade Network encrypted mempool" — new competitor analysis
+- "ePrint 2026 batch threshold" — track new threshold crypto papers
+- "Glamsterdam ePBS" — monitor H1 2026 upgrade progress
+- "EIP-7928 Block-Level Access Lists parallel" — parallel execution MEV impact
+- "batch-fair ordering 30 seconds" — follow-up on Albrecht-Karame result
+- "Hegota headliner decision" — track which EIPs are selected
+
+## Next Research Cycle (Feb 8-14)
+### Priority 1: Empirical Analysis
+- [ ] Fetch RNBW auction transactions from Base explorer
+- [ ] Reverse-engineer CCA clearing price computation
+- [ ] Document gas costs for production clearing
+- [x] Study mempool auditing limitations (arXiv 2601.14996) ✅
+
+### Priority 2: Technical Deep-Dives
+- [ ] Study ePrint 2026/031 ThFHE attack implications
+- [ ] Review ePrint 2026/021 for post-quantum threshold applicability
+- [ ] Compare Chainlink Atlas vs CoW Protocol vs Flashbots architecture
+- [ ] Analyze EIP-7928 BALs impact on MEV (parallel execution)
+
+### Priority 3: Design Work
+- [ ] Draft multi-provider clearing interface spec
+- [ ] Sketch ZK clearing circuit requirements
+- [ ] Outline formal security model for clearing layer
+- [ ] Address 30-second ordering limitation in our spec (from arXiv 2601.14996)

@@ -474,3 +474,150 @@
   - Consensys acquired MEV Blocker from CoW (Jan 26)
   - NIST MPTS 2026 workshop on threshold crypto (March 10-11)
   - Total: 50+ sources catalogued
+- [2026-02-07] **CRON PM UPDATE**: Daily automated research
+  - RNBW CCA auction completed ($0.10→$0.13 clearing)
+  - Chainlink acquired Atlas, Consensys/SMG acquired MEV Blocker
+  - New ePrint papers on post-quantum threshold crypto
+  - Total: 58+ sources catalogued
+
+---
+
+## ⭐⭐⭐⭐⭐⭐⭐ SATURDAY CRON UPDATE (2026-02-07 3:00 PM)
+
+### NEW: Mempool Auditing Limitations (arXiv 2601.14996, Jan 2026)
+- **URL**: https://arxiv.org/html/2601.14996v1
+- **Authors**: Jannik Albrecht, Ghassan Karame (Runtime Verification)
+- **Key contribution**: First rigorous analysis of mempool-based transaction auditing
+- **Critical findings**:
+  - 25%+ false positive rate for censorship detection
+  - 30-second threshold for reliable transaction ordering
+  - Batch-fair ordering schemes can only guarantee fairness for limited subset
+- **Quote**: "mempool auditing can mislabel honest miners as 'malicious' with probability > 25%"
+- **Relevance**: Validates need for batch auctions over ordering-based fairness
+- **Our insight**: Ordering-based fairness is fundamentally limited → uniform clearing is essential
+
+### NEW: Glamsterdam Deep Dive (CryptoAPIs, Feb 2026)
+- **URL**: https://cryptoapis.io/blog/553-ethereum-glamsterdam-upgrade
+- **Key details confirmed**:
+  - **EIP-7732**: Enshrined Proposer-Builder Separation (ePBS)
+  - **EIP-7928**: Block-Level Access Lists (BALs) for parallel execution
+  - **Gas limit**: 60M → 200M (3× increase)
+  - **Timeline**: May/June 2026 mainnet
+  - **Devnets**: bals-devnet-2, epbs-devnet-0 active in Q1 2026
+  - **Scope freeze**: End of February 2026
+- **Relevance**: ePBS removes relay trust, BALs enable higher L1 throughput
+
+### NEW: Hegota Headliner Competition Intensifies
+- **Source**: DL News, Phemex News (Feb 2-3, 2026)
+- **Leading candidates**:
+  1. **FOCIL** (Fork-Choice Inclusion Lists) — gaining consensus as #1 headliner
+  2. **EIP-8105** (Encrypted Mempool) — Jannik Luhn (Shutter) championing
+  3. **EIP-8141** (Frame Transactions) — Vitalik personally endorsed
+- **Key dynamics**:
+  - FOCIL + EIP-8105 positioned as "complementary" (censorship + MEV)
+  - EIP-8141 competes for headliner slot but focused on post-quantum
+  - Vitalik quote on EIP-8141: "entire list of goals of account abstraction"
+- **Our strategic position**: Layer 2 clearing works with any winning combination
+
+### NEW: VibeSwap Proposal (Nervos, Feb 2026)
+- **URL**: https://talk.nervos.org/t/vibe-swap-a-new-decentralized-exchange-giving-fair-price-discovery-as-a-human-right/9897
+- **Chain**: Nervos Network (CKB)
+- **Tagline**: "Fair price discovery as a human right"
+- **Mechanism**: MEV-resistant batch auction on UTXO-based chain
+- **Relevance**: Shows MEV-resistant DEX interest beyond EVM; validates problem space
+
+---
+
+## ⭐⭐⭐⭐⭐⭐ DAILY UPDATE (2026-02-07 Evening, Cron Run)
+
+### New ePrint Papers (2026)
+
+#### IND-CCA Lattice Threshold KEM under 30 KiB (ePrint 2026/021)
+- **URL**: https://eprint.iacr.org/2026/021
+- **Authors**: Boudgoust, Lapiha, del Pino, Prest (Royal Holloway, PQShield)
+- **Key contribution**: Post-quantum threshold KEM with 18× smaller ciphertexts
+- **Stats**: 30 KiB ciphertext (vs 540 KiB prior), T=32 threshold, 128-bit security
+- **Relevance**: Post-quantum threshold encryption for future-proof encrypted mempools
+- **Gap**: Applied to KEM, not mempool; could inspire post-quantum BEAST-MEV
+
+#### Threshold FHE with Synchronized Decryptors (ePrint 2026/031)
+- **URL**: https://eprint.iacr.org/2026/031
+- **Authors**: Colin de Verdière, Passelègue, Stehlé (CryptoLab)
+- **Key contribution**: First proper security model for synchronized ThFHE
+- **CRITICAL**: **Finds key-recovery attacks against Mouchet et al. (2023, 2024)**!
+- **Proposed fix**: Masking partial decryption shares with PRFs
+- **Relevance**: Security of threshold FHE schemes — applicable to encrypted computation
+
+#### Three-Round Robust Threshold ECDSA (ePrint 2026/190)
+- **URL**: https://eprint.iacr.org/2026/190
+- **Authors**: Jiang, Tang, Xue
+- **Key contribution**: Robust threshold ECDSA from CL encryption
+- **Relevance**: Threshold signatures for validator committee coordination
+
+#### Hardware-Friendly Robust Threshold ECDSA (ePrint 2026/094)
+- **URL**: https://eprint.iacr.org/2026/094
+- **Key contribution**: ART-ECDSA for asymmetric settings (hardware wallets)
+- **Relevance**: Could enable hardware-secured Keyper nodes
+
+### Production Developments
+
+#### Rainbow RNBW CCA Auction Completed (Feb 3-5, 2026)
+- **Source**: Multiple (Phemex, Bitrue, Longbridge)
+- **Mechanism**: First major token launch using CCA post-web-app-launch
+- **Timeline**: Pre-bid Feb 2 → Auction Feb 3 → Clearing Feb 5
+- **Clearing Price**: **$0.13** (started at $0.10) — 30% price discovery
+- **FDV at clearing**: ~$130 million
+- **Significance**: Live production validation of uniform clearing price mechanism
+- **Platform**: Base chain via Uniswap v4
+
+#### Chainlink Acquires Atlas (Jan 22, 2026)
+- **Source**: PRNewswire, The Block, multiple crypto news
+- **Acquired from**: FastLane Labs
+- **Product**: Transaction-ordering and order-flow auction protocol
+- **Integration**: Now exclusively supports Chainlink SVR (Smart Value Recapture)
+- **Live on**: Arbitrum, Base, BNB Chain, Ethereum, HyperEVM
+- **Strategy**: OEV (Oracle Extractable Value) capture and redistribution
+- **Relevance**: Chainlink positioning as MEV infrastructure layer
+
+#### Consensys/SMG Acquires MEV Blocker (Jan 26, 2026)
+- **Source**: CoW DAO announcement, Consensys
+- **Acquirer**: Special Mechanisms Group (SMG), Consensys subsidiary
+- **Stats**: 4.5M+ unique users, 6,177 ETH in rebates returned
+- **Model**: Backrunning auction infrastructure
+- **Significance**: Consolidation in MEV protection space; CoW focusing on protocol
+- **Relevance**: Shift from DAO-operated to corporate-operated MEV protection
+
+### Ethereum Upgrade Timeline Updates
+
+#### Glamsterdam Status
+- **bals-devnet-2**: Launched Feb 4, 2026
+- **Target**: H1 2026 mainnet
+- **Key features**: enshrined Proposer-Builder Separation (ePBS)
+- **Status**: On track despite earlier Fusaka issues
+
+#### Hegotá Status
+- **Headliner deadline**: Feb 4, 2026 (passed)
+- **Leading candidates**:
+  1. FOCIL (Fork-Choice Inclusion Lists) — consensus building
+  2. EIP-8105 (Encrypted Mempool) — Shutter Network's proposal
+  3. EIP-8141 (Frame Transactions) — Vitalik-endorsed post-quantum AA
+- **Expected timeline**: Following Glamsterdam (likely late 2026 or 2027)
+
+### Emerging Competitors
+
+#### Shade Network Testnet (Jan 19, 2026)
+- **Source**: Airdrops.io
+- **Features**: Private transactions, encrypted mempool, private contracts
+- **Status**: Testnet live
+- **Relevance**: New entrant in encrypted execution space
+
+---
+
+## Updated Source Count: 62+ sources catalogued
+
+### Sources Added This Cycle (Feb 7 PM)
+1. arXiv 2601.14996 — Mempool auditing effectiveness (Albrecht, Karame)
+2. CryptoAPIs Glamsterdam deep-dive
+3. DL News Hegota headliner coverage
+4. Phemex Hegota features summary
+5. VibeSwap Nervos proposal

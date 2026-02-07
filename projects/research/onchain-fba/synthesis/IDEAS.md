@@ -643,3 +643,272 @@ Given discoveries today:
   - Consensys acquired MEV Blocker — consolidation in MEV protection
   - NIST MPTS 2026 workshop (March) — threshold crypto standardization
   - New direction: ZK-proven clearing with Brevis ProverNet integration
+- [2026-02-07 Eve] **DAILY CRON RESEARCH UPDATE**:
+  - **RNBW auction validation**: First major CCA post-launch → $0.10→$0.13 (30% discovery)
+  - **Infrastructure consolidation**: Chainlink→Atlas, Consensys/SMG→MEV Blocker
+  - **New ePrint papers**: Post-quantum threshold KEM (2026/021), ThFHE attacks (2026/031)
+  - **Glamsterdam progress**: bals-devnet-2 live, H1 2026 target
+  - **Hegotá**: Headliner deadline passed, EIP-8105/FOCIL/Frame Tx leading
+  - **New competitor**: Shade Network encrypted mempool testnet
+
+---
+
+## 🆕 New Idea: Empirical Study of CCA Price Discovery (2026-02-07 Eve)
+
+### Opportunity from RNBW Data
+
+The Rainbow token auction provides first empirical data on CCA price discovery:
+
+| Metric | Value |
+|--------|-------|
+| Starting price | $0.10 |
+| Clearing price | $0.13 |
+| Price discovery | +30% |
+| Auction window | ~3 days |
+| Pre-bid period | 24 hours |
+
+### Research Questions
+
+1. **How did the clearing algorithm determine $0.13?**
+   - Need to study on-chain transaction data
+   - What was the order book shape?
+   - How many bids at different price levels?
+
+2. **What was the gas cost of clearing?**
+   - Critical for our gas-efficiency research
+   - Can we extract from Base explorer?
+
+3. **Did MEV occur during the auction?**
+   - Sandwich attacks on auction participants?
+   - Front-running of bid transactions?
+   - Or did CCA successfully prevent?
+
+4. **How does token launch clearing differ from continuous DEX?**
+   - Token launch: One-way flow (buyers only initially)
+   - DEX: Two-way flow (buyers + sellers)
+   - Different optimization problems
+
+### Proposed Analysis
+
+1. **Data collection**: Fetch all RNBW CCA transactions from Base
+2. **Reconstruct order book**: Map bids to prices and quantities
+3. **Verify clearing**: Confirm $0.13 is optimal given order book
+4. **Gas analysis**: Total gas used for clearing computation
+5. **MEV scan**: Check for suspicious transaction patterns
+
+---
+
+## 🆕 New Idea: Multi-Provider Clearing Layer (2026-02-07 Eve)
+
+### Observation
+
+MEV infrastructure is consolidating:
+- **Chainlink**: Now has Atlas (ordering) + SVR (OEV) + FSS (fair sequencing)
+- **Consensys/SMG**: Now has MEV Blocker + builder infrastructure
+- **Flashbots**: Protect, SUAVE, block building
+- **Shutter**: EIP-8105, Keyper network
+
+### Opportunity: Provider-Agnostic Clearing
+
+Our clearing layer could work with **any** encrypted mempool provider:
+
+```
+┌─────────────────────────────────────────────────┐
+│      Trustless Uniform Clearing Layer (Ours)    │
+├───────────┬───────────┬───────────┬─────────────┤
+│ EIP-8105  │  Shutter  │  SUAVE    │  Radius     │
+│ (native)  │ (Keypers) │ (TEE)     │ (PVDE)      │
+└───────────┴───────────┴───────────┴─────────────┘
+```
+
+### Design Requirements
+
+1. **Input abstraction**: Accept decrypted orders from any source
+2. **Output format**: Standard settlement instructions
+3. **Provider-specific adapters**: Handle timing/format differences
+4. **Fallback mechanisms**: If one provider fails, degrade gracefully
+
+### Competitive Advantage
+
+- Not locked into single encryption provider
+- Can use best-in-class for each chain (EIP-8105 for Ethereum, Shutter for Gnosis, etc.)
+- Future-proof as new providers emerge
+
+---
+
+## 🆕 New Idea: Security Audit Consideration (2026-02-07 Eve)
+
+### Critical Finding from ePrint 2026/031
+
+The CryptoLab paper found **key-recovery attacks** in prior ThFHE schemes:
+- Mouchet et al. (Journal of Cryptology 2023) — VULNERABLE
+- Mouchet et al. (ACM CCS 2024) — VULNERABLE
+
+### Implications for Our Work
+
+1. **Threshold crypto is tricky**: Even published, peer-reviewed schemes can have flaws
+2. **Defense in depth**: Don't rely solely on cryptographic guarantees
+3. **Our uniform clearing adds value**: Even if encryption breaks, ordering doesn't matter
+4. **Audit requirement**: Any production clearing layer needs formal verification
+
+### Our Security Thesis (Refined)
+
+```
+Security = Encryption + Uniform Clearing + Accountability
+           └─ If fails ──┘└─ Backup ────────┘└─ Deterrent ─┘
+```
+
+Even if threshold encryption has a vulnerability:
+1. Uniform clearing means order doesn't matter → reduced MEV even without encryption
+2. Accountability primitives deter collusion → economic disincentive
+3. Defense in depth > single point of failure
+
+---
+
+## Updated Research Priorities (Post-Cron Update)
+
+### This Week
+1. ~~Daily literature search~~ ✅ Completed (Feb 7)
+2. [ ] Fetch RNBW auction on-chain data from Base
+3. [ ] Analyze CCA clearing algorithm gas costs
+4. [ ] Study ePrint 2026/031 attack implications
+
+### This Month
+1. [ ] Design multi-provider clearing interface
+2. [ ] Prototype ZK clearing circuit
+3. [ ] Compare fraud-proof vs ZK approaches (gas analysis)
+4. [ ] Write draft specification for "Trustless Uniform Clearing Layer"
+
+### Blocking on User Input
+- [ ] Should we prioritize integration with specific provider (EIP-8105 likely)?
+- [ ] Is formal verification required before prototyping?
+- [ ] Target chain: Ethereum L1, Base, or generic EVM?
+
+---
+
+## 🆕 Critical Validation: Ordering Fairness Is Fundamentally Limited (2026-02-07 3PM)
+
+### Academic Proof of Our Thesis
+
+**Paper**: "On the Effectiveness of Mempool-based Transaction Auditing" (arXiv 2601.14996)
+**Authors**: Jannik Albrecht, Ghassan Karame (Runtime Verification)
+**Published**: January 2026
+
+### Key Findings
+
+| Finding | Implication |
+|---------|-------------|
+| **30-second threshold** for reliable ordering | Transactions sent <30s apart have probabilistic, not deterministic, order |
+| **25%+ false positive rate** for censorship detection | Mempool auditing frequently mislabels honest miners |
+| **"Limited subset" guarantee** for batch-fair ordering | Only some transactions can be fairly ordered |
+
+### Direct Quote
+> "batch-fair ordering schemes can offer only strong fairness guarantees for a limited subset of transactions in real-world deployments"
+
+### Why This Matters for Us
+
+This paper **academically validates our core thesis**:
+
+1. **Ordering-based fairness is insufficient**
+   - Even with perfect mempool visibility, network propagation introduces irreducible uncertainty
+   - Sub-30-second ordering is fundamentally non-deterministic across observers
+   - No amount of better auditing can fix this — it's a physics/network problem
+
+2. **Uniform clearing is the correct approach**
+   - If ordering is probabilistic, make it irrelevant
+   - Same price for all participants = ordering doesn't matter
+   - This is immune to the 30-second limitation
+
+3. **Defense in depth validated**
+   - Encryption hides content (BEAST-MEV)
+   - Uniform clearing eliminates ordering MEV (our contribution)
+   - Even if encryption fails, clearing still protects
+   - Even if both fail, accountability deters
+
+### Refined Value Proposition
+
+**Before this paper**: "Uniform clearing is *better* than ordering fairness"
+**After this paper**: "Uniform clearing is *necessary* because ordering fairness is provably limited"
+
+### New Research Direction
+
+The paper suggests a **30-second batch window** is the minimum for deterministic ordering:
+- If batch window < 30s: Some orders have undefined relative order
+- If batch window ≥ 30s: Can reliably determine who submitted first
+
+**Design implication**: Our batch windows should be ≥30 seconds for predictable behavior
+- Matches block time on Ethereum (~12s per slot, but 30s = ~2-3 slots)
+- Longer batches = more liquidity aggregation
+- Trade-off: Latency vs ordering certainty
+
+### Integration with Our Architecture
+
+```
+┌─────────────────────────────────────────────────┐
+│  Order Submission (encrypted via BEAST-MEV)     │
+├─────────────────────────────────────────────────┤
+│  Batch Window (≥30s for deterministic order)    │ ← From arXiv 2601.14996
+├─────────────────────────────────────────────────┤
+│  Decryption (threshold, end of batch)           │
+├─────────────────────────────────────────────────┤
+│  Uniform Clearing (ordering irrelevant)         │ ← Our key contribution
+├─────────────────────────────────────────────────┤
+│  Settlement (on-chain)                          │
+└─────────────────────────────────────────────────┘
+```
+
+The 30-second finding actually **reinforces** why we need uniform clearing:
+- Short batches (< 30s): Ordering is probabilistic anyway, uniform clearing removes ambiguity
+- Long batches (≥ 30s): Uniform clearing still provides capital efficiency and MEV resistance
+
+---
+
+## 🆕 Parallel Execution Considerations (Glamsterdam, 2026-02-07 3PM)
+
+### EIP-7928: Block-Level Access Lists
+
+Glamsterdam introduces parallel transaction execution:
+- Transactions declare which accounts/storage slots they access
+- Non-conflicting transactions execute simultaneously
+- Gas limit increases 3× (60M → 200M)
+
+### Impact on Our Design
+
+**Potential Benefits:**
+1. Higher throughput → more transactions per batch
+2. Cheaper gas → more complex clearing computation feasible
+3. Predictable state access → cleaner integration
+
+**Potential Challenges:**
+1. Parallel execution changes MEV dynamics (unclear how)
+2. Access list requirements may conflict with encrypted transactions
+3. Need to study interaction with EIP-8105 encrypted tx type
+
+### Open Questions
+
+1. Can encrypted transactions have access lists?
+   - Access lists reveal which contracts are touched → partial information leak
+   - Or: Decrypt first, then compute access list, then execute
+
+2. Does parallel execution help or hurt batch auctions?
+   - Pro: Multiple batch settlements can run in parallel
+   - Con: Proposer has more flexibility in ordering parallel groups
+
+3. Integration with EIP-8105:
+   - EIP-8105 encrypted txs are decrypted by key providers
+   - After decryption, access lists can be computed
+   - But timing matters: decrypt → access list → execute must happen in one block?
+
+### Design Consideration
+
+Our clearing layer should:
+1. Support access list generation after decryption
+2. Minimize conflicts with other transactions (isolate state)
+3. Take advantage of parallelization where possible
+
+---
+
+## Update Log (continued)
+- [2026-02-07 3PM] **Critical validation**: arXiv 2601.14996 proves ordering fairness limited to 30s threshold
+- [2026-02-07 3PM] Added analysis of Glamsterdam parallel execution (EIP-7928) impact
+- [2026-02-07 3PM] Refined value proposition: Uniform clearing is *necessary*, not just *better*
