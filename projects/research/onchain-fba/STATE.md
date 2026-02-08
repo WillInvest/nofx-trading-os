@@ -1,6 +1,6 @@
 # Research State — On-Chain Trustless FBA
 
-**Last Updated**: 2026-02-07 (Cron daily update, 7:00 PM)
+**Last Updated**: 2026-02-08 (Cron research update, 1:03 AM)
 
 ## Current Focus
 **ECOSYSTEM CONVERGENCE**: The pieces are coming together! EIP-8105 proposes native encrypted mempool for Ethereum, Uniswap CCA proves uniform clearing works in production, and Jump's DFBA adds flow separation.
@@ -189,6 +189,123 @@
   - **⏰ Glamsterdam Scope Freeze**: End of February (~3 weeks to influence)
   - **MPC Benchmarking**: ePrint 2026/183 evaluates HPMPC, MPyC, MP-SPDZ, MOTION
   - **INDEX.md updated**: Now 85+ sources catalogued
+- [2026-02-08 9PM] **📊 Saturday Night Cron Research Update**
+  - **📚 Foundational paper added**: Budish-Cramton-Shim "Frequent Batch Auctions" (QJE 2015)
+    - Seminal academic paper for uniform-price batch auctions
+    - 1000+ citations — theoretical foundation for all blockchain batch auction research
+    - Key insight: Convert "speed competition → price competition"
+    - Directly underlies Uniswap CCA and our work
+  - **🔬 ePrint 2026 scan completed**: 
+    - ePrint 2026/190 (Three-round threshold ECDSA) — O(1) communication, improves on NDSS24
+    - ePrint 2026/186 (Bitcoin PIPEs v2) — WE for covenants now production-ready concept
+    - ePrint 2026/175 (Witness Encryption) — SNARK-verifiable WE practical
+    - ePrint 2026/192 (Verification Theater) — security warning on formal verification claims
+  - **📦 Uniswap CCA deep-dive**:
+    - v1.1.0 canonical address: 0xCCccCcCAE7503Cac057829BF2811De42E16e0bD5
+    - MIT licensed, audited by OpenZeppelin + Spearbit + ABDK
+    - Technical docs and whitepaper available for study
+    - Factory pattern enables permissionless auction deployment
+  - **🔍 Hegota headliner competition**: Frame Tx (EIP-8141) vs EIP-8105 narratives in tension
+    - Both competing for "protocol-level MEV protection" positioning
+    - FOCIL appears to be gaining consensus as #1
+  - **📊 No major new developments today** — Sunday quiet period
+  - **INDEX.md updated**: Now 100+ sources catalogued
+- [2026-02-07 8PM] **📊 Saturday 8PM Cron Research Update**
+  - **🤖 ERC-8004 DISCOVERY — Agent Economy Infrastructure LIVE!**
+    - Deployed to Ethereum mainnet January 29, 2026
+    - Developed by EF dAI Team + MetaMask + Google + Coinbase
+    - Already adopted by Base, BNB Chain, Polygon
+    - On-chain registries: Identity, Reputation, Discovery
+    - Pairs with x402 protocol for agent-to-agent payments
+    - **Critical for us**: Native infrastructure for agent-signed DEX orders!
+  - **🏆 Hegota Competition Dynamics**:
+    - FOCIL: Building consensus as #1 headliner candidate
+    - EIP-8105: Championed by Jannik Luhn (Shutter)
+    - EIP-8141: Vitalik personally endorsed for AA + post-quantum
+  - **📅 Glamsterdam Scope Freeze Confirmed**: End of February 2026
+  - **⚠️ Verification Theater Warning** (ePrint 2026/192):
+    - 5 vulnerabilities in "formally verified" libcrux/hpke-rs
+    - Reinforces multi-layer security approach
+  - **New ePrint papers found**:
+    - 2026/190: Three-round threshold ECDSA with O(1) communication
+  - **INDEX.md updated**: Now 95+ sources catalogued
+  - **IDEAS.md updated**: Added agent-compatible order format design
+- [2026-02-08 12AM] **📊 Sunday Midnight Cron Research Update**
+  - **🚀 ERC-8004 Adoption Explosion**:
+    - Virtuals Protocol: All ACP agents auto-register on ERC-8004
+    - Avalanche C-Chain: Now supports ERC-8004 (5+ chains total!)
+    - Davide Crapis (EF dAI lead) interview on Unchained
+    - Agent infrastructure reaching critical mass
+  - **New ePrint papers (Feb 6-7)**:
+    - ePrint 2026/194: Unified hardware for hash-based signatures
+    - ePrint 2026/193: Atkin/Weber modular polynomials (39% improvement)
+    - ePrint 2026/191: PEARL-SCALLOP active attack (4 oracle calls!)
+    - ePrint 2026/189: Shared/leakage-free MAYO (PQ threshold sigs)
+  - **NIST MPTS 2026 details**: Workshop completed Jan 26-29, talks identified
+  - **Ecosystem status**: Glamsterdam/Hegotá timelines confirmed
+  - **INDEX.md updated**: Now 120+ sources catalogued
+- [2026-02-08 1AM] **📊 Sunday Early Morning Cron Research Update**
+  - **No major new ePrint papers** — Sunday quiet period confirmed
+  - **FairTraDEX paper added** (arXiv 2202.06384): Foundational FBA+ZK DEX work
+    - Formal game-theoretic guarantees against MEV
+    - Fixed-fee model independent of order size
+    - Uses ZK set-membership proofs
+  - **ERC-8004 architecture detailed** (from Odaily deep-dive):
+    - Three registries: Identity (NFT), Reputation (reviews), Verification (ZK/TEE)
+    - Designed as chain-agnostic universal standard
+    - Vision extends beyond trading to full agent collaboration
+  - **Hegota competition stable**: FOCIL vs EIP-8105 vs EIP-8141 dynamics unchanged
+  - **Strategic window**: ~3 weeks until Feb 26 headliner decision
+  - **INDEX.md updated**: Now 125+ sources catalogued
+- [2026-02-07 11PM] **📊 Late Saturday Cron Research Update**
+  - **🏛️ EF Checkpoint #8 Deep-Dive** (Jan 20, 2026 blog post):
+    - Glamsterdam headliners CONFIRMED: ePBS (EIP-7732) + BALs (EIP-7928)
+    - **FOCIL moved OUT of Glamsterdam** to Hegotá (scope reduction!)
+    - Hegotá headliner decision: **Feb 26, 2026** (3 weeks away)
+    - Non-headliner EIP deadline: 30 days after headliner decision
+    - 17 Considered EIPs for Glamsterdam (down from 50!)
+    - Fusaka successfully shipped PeerDAS; BPO forks now reality
+  - **📊 Hegotá Competition Clarified**:
+    - FOCIL vs EIP-8105 explicitly competing for headliner slot
+    - Only "one competing proposal" besides FOCIL per EF blog
+    - EIP-8141 (Frame Tx) mentioned but not in direct headliner race
+    - Community feedback period: Feb 5-26
+  - **🔬 Research Coverage Confirmed**:
+    - All major search queries returning known sources
+    - No significant new ePrint papers since 10PM update
+    - Uniswap CCA documentation comprehensive and available
+    - ERC-8004 adoption trajectory confirmed (24k+ agents)
+  - **⏰ Timeline Pressure**:
+    - Glamsterdam scope freeze: End of February
+    - Hegotá headliner decision: Feb 26
+    - Our opportunity window for influence: ~3 weeks
+- [2026-02-08 10PM] **📊 Saturday Night Cron Research Update**
+  - **🤖 ERC-8004 Adoption Accelerating**:
+    - **24,000+ agents registered** on mainnet — major adoption milestone!
+    - **The Graph backing ERC-8004 + x402** — critical indexing infrastructure
+    - **MultiversX integrated x402** — cross-chain adoption expanding
+    - **x402 Hackathon** in SF with Google, Coinbase, SKALE
+    - Agent identity now first-class concern for DEX design
+  - **🔬 New ePrint Papers (Feb 7-8)**:
+    - **BABE** (verification theater follow-up): Bitcoin proof verification 1000× cheaper using witness encryption
+    - **PQC Migration for Blockchain**: Comprehensive Dec 2025 analysis of post-quantum challenges
+    - **Beyond LWE**: Lattice-based HE framework with LIP instantiation
+    - **Collaborative Traceable SS**: Full paper on public tracing (builds on 2026/181)
+  - **📦 RNBW Auction Final Confirmation**:
+    - Clearing price: **$0.13** (started $0.10, +30% price discovery)
+    - FDV at clearing: **~$130 million**
+    - KuCoin listed with bot support (Feb 5)
+    - **Validates CCA price discovery mechanism empirically**
+  - **⚙️ Glamsterdam Status**:
+    - **On track** despite Fusaka testing issues
+    - bals-devnet-2 launched Feb 4
+    - Scope freeze confirmed: end of February
+    - Mainnet target: May/June 2026
+  - **🆕 Vitalik "Glamsterdam Ultimatum"**:
+    - Frustration with L2 "copypasta" driving L1 focus
+    - Gas limit 3× increase (60M → 200M) enables L1 clearing
+    - Reinforces our L1-first strategy
+  - **INDEX.md updated**: Now 110+ sources catalogued
 - [2026-02-07 6PM] **📊 Saturday 6PM Cron Research Update**
   - **🔄 VITALIK L2 PARADIGM SHIFT** (Feb 3, 2026) — Major strategic implications!
     - "Rollup-centric roadmap no longer makes sense"
@@ -271,15 +388,16 @@ This confirms our research addresses an **unsolved problem**.
 - ~~Brave API rate limited~~ → User upgraded to Pro! 🎉
 - None currently
 
-## Strategic Decisions (Feb 7, 2026)
+## Strategic Decisions (Feb 7-8, 2026)
 *From main session feedback on research questions:*
 
 | Decision | Direction | Rationale |
 |----------|-----------|-----------|
-| **Target Chain** | ~~L2 first~~ **Reconsider: L1 primary** | Vitalik L2 critique + L1 scaling changes calculus |
+| **Target Chain** | ~~L2 first~~ **L1 primary** ✅ | Vitalik L2 critique + L1 scaling changes calculus |
 | **Encryption** | Threshold (BEAST-MEV) primary | WE circular dependency unsolved; WE = Plan B |
-| **Agent Support** | Low priority for v1 | Get humans working first; architect for v2 |
+| **Agent Support** | ~~Low priority~~ **V1 REQUIRED** ✅ | 24k agents week 1 = real demand (Feb 8 update) |
 | **Timeline** | Glamsterdam compatibility | ePBS (EIP-7732) changes MEV landscape |
+| **Chainlink Outreach** | **YES** ✅ | Manuel Vidigueira (ePrint 2026/182) — angle: accountability layer for EIP-8105 clearing |
 
 **🆕 New Data Reshaping Strategy (Feb 7 6PM):**
 - L2 usage dropped 50% (58.4M → 30M addresses)
@@ -575,6 +693,53 @@ Flow Network claims native MEV resistance via different architecture:
 - **Key difference**: Flow still has ordering; we eliminate ordering importance entirely
 - **Worth studying**: Their VRF + scheduling mechanism for hybrid approaches
 
+### Insight 32: Agent Economy Infrastructure Is Production-Ready (NEW 2026-02-07 8PM)
+ERC-8004 deployment marks a paradigm shift:
+- **The standard**: On-chain identity, reputation, and discovery for AI agents
+- **Adoption velocity**: Base, BNB Chain, Polygon deployed within days of mainnet
+- **Key collaborators**: EF dAI Team, MetaMask, Google, Coinbase
+- **Companion protocol**: x402 for HTTP-based agent-to-agent payments
+- **Implication for DEX**: Agent-signed orders are now a first-class concern
+- **Design requirement**: Our clearing layer must support agent-native order formats
+- **Strategic opportunity**: First MEV-resistant DEX with agent compatibility = competitive moat
+- **Data point**: 96:1 ratio of non-human to human identities in finserv (a16z)
+
+### Insight 33: Hegota Headliner Competition Favors Layered Approach (NEW 2026-02-07 8PM)
+Three proposals competing, but not mutually exclusive:
+- **FOCIL**: Censorship resistance (consensus building, likely #1)
+- **EIP-8105**: Encrypted mempool (Shutter champion, MEV protection)
+- **EIP-8141**: Frame Transactions (Vitalik endorsed, post-quantum + AA)
+- **Key dynamic**: FOCIL + EIP-8105 positioned as "complementary"
+- **Implication**: Encrypted mempool likely to ship in Hegota, even if not headliner
+- **Our strategy**: Design for EIP-8105 integration, support out-of-protocol fallback
+- **Bonus**: EIP-8141's signature-agnostic design aligns with agent-signed orders
+
+### Insight 34: Agent Economy Infrastructure Reaching Critical Mass (NEW 2026-02-08)
+ERC-8004 adoption is accelerating faster than expected:
+- **24,000+ agents registered** on mainnet in first week
+- **Cross-chain adoption**: Base, BNB Chain, Polygon, now MultiversX
+- **Infrastructure support**: The Graph providing indexing for agent registries
+- **Payment rails**: x402 protocol enables HTTP-native agent-to-agent payments
+- **Implications for our DEX design**:
+  1. Agent-signed orders are now a production requirement, not future consideration
+  2. Integration with ERC-8004 identity verification adds value
+  3. x402 could enable pay-per-trade agent authorization
+  4. Clearing layer should validate agent constraints (spending limits, allowed pairs)
+- **Competitive advantage**: First MEV-resistant DEX with native agent support = market positioning
+
+### Insight 35: Witness Encryption for Bitcoin Validates WE Research Direction (NEW 2026-02-08)
+BABE paper (ePrint 2026) shows WE becoming practical for blockchain:
+- **Bitcoin proof verification 1000× cheaper** using witness encryption
+- **Mechanism**: WE + 2PC for pairing-based Groth16 verification
+- **Off-chain**: 42 GiB garbled circuits (vs prior BitVM3)
+- **On-chain**: Minimal verification costs
+- **Relevance to us**:
+  1. WE is maturing beyond theoretical — production-adjacent research now
+  2. Could eventually enable trustless order encryption (no committee)
+  3. WE + ZK clearing could be ultimate trustless design
+  4. Keep WE as research track, threshold (BEAST-MEV) for production
+- **Timeline**: WE for DEX likely 2027+; focus on threshold for 2026
+
 ## Literature Search Queries for Next Update
 - "Uniswap CCA clearing price algorithm" — study Solidity implementation ✅ Found repo!
 - "EIP-8141 frame transaction" — track competing proposals
@@ -587,8 +752,8 @@ Flow Network claims native MEV resistance via different architecture:
 - "ePrint 2026 batch threshold" — track new threshold crypto papers
 - "Glamsterdam scope freeze February" — monitor final feature list ✅ Confirmed end of Feb
 - "EIP-7928 Block-Level Access Lists parallel" — parallel execution MEV impact
-- "Know Your Agent KYA crypto" — agent identity standardization
-- "x402 protocol payments" — agent-to-agent payment infrastructure
+- "Know Your Agent KYA crypto" — agent identity standardization ✅ ERC-8004 found!
+- "x402 protocol payments" — agent-to-agent payment infrastructure ✅ Pairs with ERC-8004
 - "Hegota headliner decision" — track which EIPs are selected
 - "Arcium Umbra SDK" — study private DEX reference implementation
 - "Fhenix DBFV paper" — get technical details on noise management
@@ -597,11 +762,16 @@ Flow Network claims native MEV resistance via different architecture:
 - "Ethereum Trillion Dollar Security Dashboard" — study 1TS initiative
 - "native rollup precompile ZK-EVM" — Vitalik's proposed L2 infrastructure
 - "Ethereum gas limit increase 2026" — track Glamsterdam throughput gains
-- **NEW**: "ePrint 2026/181 traceable secret sharing" — CTSS public tracing details
-- **NEW**: "ePrint 2026/182 accountable UC" — τ_{zk-scr} compiler implementation
-- **NEW**: "Chainlink Labs Manuel Vidigueira" — potential collaboration contact
-- **NEW**: "AUC framework S&P 2023" — formal accountability foundations
-- **NEW**: "Flow blockchain VRF scheduled transactions MEV" — alternative approach analysis
+- "ePrint 2026/181 traceable secret sharing" — CTSS public tracing details
+- "ePrint 2026/182 accountable UC" — τ_{zk-scr} compiler implementation
+- "Chainlink Labs Manuel Vidigueira" — potential collaboration contact
+- "AUC framework S&P 2023" — formal accountability foundations
+- "Flow blockchain VRF scheduled transactions MEV" — alternative approach analysis
+- **NEW**: "ERC-8004 trustless agent registry" — study implementation details
+- **NEW**: "ERC-8004 Ethereum Foundation dAI Team" — track development
+- **NEW**: "x402 HTTP payment protocol agent" — agent payment mechanics
+- **NEW**: "Uniswap CCA GitHub source code" — analyze clearing algorithm
+- **NEW**: "ePrint 2026/190 threshold ECDSA" — O(1) communication threshold
 
 ## Next Research Cycle (Feb 8-14)
 ### Priority 1: Empirical Analysis
@@ -620,36 +790,66 @@ Flow Network claims native MEV resistance via different architecture:
 - [ ] Find NIST MPTS 2026 recordings/proceedings (workshop completed Jan 26-29)
 - [ ] Study ePrint 2026/170 gcVM for private EVM applications
 - [ ] Review arXiv 2302.01177 FBA welfare model
-- [ ] Analyze ePrint 2026/192 "Verification Theater" implications
-- [ ] **NEW**: Deep-read ePrint 2026/181 (CTSS) — public tracing mechanisms
-- [ ] **NEW**: Deep-read ePrint 2026/182 (τ_{zk-scr} compiler) — accountability guarantees
-- [ ] **NEW**: Study AUC framework (S&P 2023) — formal foundations for accountability
-- [ ] **NEW**: Analyze Flow's VRF + scheduled tx approach (alternative MEV resistance)
+- [x] Analyze ePrint 2026/192 "Verification Theater" implications ✅ (multi-layer strategy)
+- [ ] Deep-read ePrint 2026/181 (CTSS) — public tracing mechanisms
+- [ ] Deep-read ePrint 2026/182 (τ_{zk-scr} compiler) — accountability guarantees
+- [ ] Study AUC framework (S&P 2023) — formal foundations for accountability
+- [ ] Analyze Flow's VRF + scheduled tx approach (alternative MEV resistance)
+- [ ] **🆕 NEW**: Study ERC-8004 implementation and registry interfaces
+- [ ] **🆕 NEW**: Analyze x402 protocol for agent payment flows
+- [ ] **🆕 NEW**: Review ePrint 2026/190 three-round threshold ECDSA
 
 ### Priority 3: Design Work
 - [ ] Draft multi-provider clearing interface spec
 - [ ] Sketch ZK clearing circuit requirements
 - [ ] Outline formal security model for clearing layer
 - [ ] Evaluate WE as alternative to threshold for order encryption
-- [ ] Design "agent-compatible" order format (KYA considerations)
+- [x] Design "agent-compatible" order format (KYA considerations) ✅ (draft in IDEAS.md)
 - [ ] Address 30-second ordering limitation in our spec (from arXiv 2601.14996)
 - [ ] Design encryption-agnostic clearing interface (threshold/MPC/FHE)
 - [ ] Study Arcium/Umbra for private DEX UX patterns
 - [ ] Design for L1 parallel execution (BALs/EIP-7928 integration)
-- [ ] Draft multi-layer verification strategy (per ePrint 2026/192)
-- [ ] **NEW**: Integrate CTSS (ePrint 2026/181) into Keyper accountability spec
-- [ ] **NEW**: Apply τ_{zk-scr} compiler (ePrint 2026/182) to clearing protocol design
-- [ ] **NEW**: Reach out to Chainlink Labs (Manuel Vidigueira) re: accountability collab
-- [ ] **NEW**: Compare VRF-based vs uniform-clearing MEV approaches (Flow vs our design)
+- [x] Draft multi-layer verification strategy (per ePrint 2026/192) ✅ (outlined in IDEAS.md)
+- [ ] Integrate CTSS (ePrint 2026/181) into Keyper accountability spec
+- [ ] Apply τ_{zk-scr} compiler (ePrint 2026/182) to clearing protocol design
+- [ ] **🔥 PRIORITY**: Reach out to Chainlink Labs (Manuel Vidigueira) — angle: accountability layer for EIP-8105 clearing
+- [ ] Compare VRF-based vs uniform-clearing MEV approaches (Flow vs our design)
+- [ ] **🔥 PRIORITY (v1)**: Integrate ERC-8004 identity verification into order validation
+- [ ] **🔥 PRIORITY (v1)**: Design agent constraint system (allowedPairs, maxOrderSize, etc.)
+- [ ] **🆕 NEW**: Spec Hegota compatibility (EIP-8105 + EIP-8141 alignment)
 
-### Priority 4: Strategic Questions for User Input
+### Priority 4: Confirmed Actions (Feb 7 11PM)
+1. ✅ **Hegotá EIP proposal**: Prepare "ZK-Verified Uniform Clearing Layer" non-headliner proposal
+   - Target: Submit within 30 days of Feb 26 headliner decision
+   - Compatibility: Works with EIP-8105 OR FOCIL+Shutter
+2. ✅ **Chainlink outreach**: Contact Manuel Vidigueira (ePrint 2026/182) this week
+   - Angle: Accountability layer for clearing
+   - Platform: Email/DM
+3. ✅ **Agent support v1**: ERC-8004 compatible order format is v1 requirement
+   - 24k+ agents registered proves demand
+
+### Priority 5: Strategic Questions for User Input
 1. **Target chain**: ~~L2 first~~ Given Vitalik's L2 critique, prioritize Ethereum L1?
    - **New data**: L2 usage -50%, L1 users +114%, L1 fees now low
    - **Recommendation**: L1 primary, specialized L2 secondary
+   - **Status**: ✅ Confirmed by user (Feb 7, 6PM)
 2. **Witness encryption**: Deep exploration track or keep focus on threshold?
    - **Recommendation**: Threshold primary, WE as research track
 3. **Agent support**: Priority level for KYA/agent-signing in v1?
+   - **🆕 NEW DATA**: ERC-8004 deployed to mainnet Jan 29, 2026!
+   - Already adopted by Base, BNB Chain, Polygon
+   - **Recommendation**: Integrate agent support in v1 (competitive advantage)
 4. **Timeline alignment**: Aim for Glamsterdam compatibility (H1 2026) first?
    - **New data**: Scope freeze end of Feb, mainnet May/June
+   - **Status**: ✅ Confirmed by user (Feb 7, 6PM)
 5. **FHE path**: Monitor Fhenix DBFV or active research track?
-6. **NEW**: Verification strategy: How much formal verification vs other methods?
+6. **Verification strategy**: How much formal verification vs other methods?
+   - **Status**: ✅ Confirmed by user (Feb 7, 6PM) — multi-layer approach
+7. **🆕 Chainlink collaboration**: Reach out to Manuel Vidigueira (ePrint 2026/182)?
+   - **Status**: ✅ Confirmed YES — reach out this week (Feb 8-14)
+   - **Angle**: Accountability layer for EIP-8105 clearing
+8. **🆕 Agent priority**: Given ERC-8004 is now live, prioritize agent compatibility?
+   - **Status**: ✅ Confirmed — v1 REQUIREMENT (24k+ agents = proven demand)
+9. **🆕 Hegotá EIP proposal**: Should we prepare a non-headliner proposal?
+   - **Status**: ✅ Confirmed YES — prepare "ZK-Verified Uniform Clearing Layer"
+   - **Deadline**: ~30 days after Feb 26 headliner decision

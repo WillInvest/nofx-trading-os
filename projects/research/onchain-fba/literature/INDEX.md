@@ -1,6 +1,6 @@
 # Literature Index — On-Chain Trustless FBA
 
-**Last Updated**: 2026-02-04 (comprehensive initial sweep)
+**Last Updated**: 2026-02-08 (125+ sources catalogued)
 
 ## Categories
 - [Foundational MEV Research](#foundational-mev-research)
@@ -45,6 +45,17 @@
 ### A2MM (Zhou et al., 2021)
 - **ArXiv**: https://arxiv.org/abs/2106.07371
 - **Key contribution**: On-chain atomic MEV collection
+
+### ⭐ FairTraDEX: DEX Preventing Value Extraction (McMenamin et al., 2022)
+- **ArXiv**: https://arxiv.org/abs/2202.06384
+- **Key contribution**: First FBA-based DEX with formal game-theoretic guarantees
+- **Mechanism**:
+  - ZK set-membership proofs for bid privacy
+  - Escrow-enforced commit-reveal protocol
+  - Handles monopolistic/malicious liquidity providers
+- **Key result**: Fixed-fee model independent of order size (first guarantee of its kind)
+- **Implementation**: Detailed Solidity code provided
+- **Relevance**: Foundational academic work validating our approach
 
 ### Gnosis Batch Auction Research
 - **GitHub**: https://github.com/gnosis/dex-research/releases
@@ -168,6 +179,18 @@
 ---
 
 ## Traditional Finance Literature
+
+### ⭐⭐ The High-Frequency Trading Arms Race: Frequent Batch Auctions (Budish, Cramton, Shim, 2015)
+- **SSRN**: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2388265
+- **Published**: The Quarterly Journal of Economics, Vol. 130, Issue 4 (Nov 2015)
+- **PDF**: https://conference.nber.org/confer/2013/MDf13/Budish_Cramton_Shim.pdf
+- **Key contribution**: **FOUNDATIONAL PAPER** for uniform-price batch auctions as MEV mitigation
+- **Core argument**: Financial exchanges should use frequent batch auctions (uniform price double auctions, e.g., every 100ms) instead of continuous limit order books
+- **Key insight**: Converts competition on speed → competition on price
+- **Benefits proven**: Eliminates latency arbitrage, enhances liquidity, simplifies market computationally
+- **Authors**: Eric Budish (Chicago Booth), Peter Cramton (Maryland), John Shim
+- **Citations**: 1000+ — highly influential in market design literature
+- **Relevance**: Theoretical foundation for all blockchain batch auction research including Uniswap CCA
 
 ### Call Auction Trading
 - **Springer**: https://link.springer.com/rwe/10.1007/978-3-030-73443-5_36-1
@@ -479,6 +502,11 @@
   - Chainlink acquired Atlas, Consensys/SMG acquired MEV Blocker
   - New ePrint papers on post-quantum threshold crypto
   - Total: 58+ sources catalogued
+- [2026-02-08] **SATURDAY NIGHT CRON UPDATE**:
+  - Added Budish-Cramton-Shim (2015) — foundational batch auction paper
+  - Uniswap CCA technical documentation added
+  - ePrint 2026 index scanned — no major new papers today
+  - Total: 100+ sources catalogued
 
 ---
 
@@ -508,17 +536,29 @@
 - **Status**: Research completed; integration planned for later 2026
 - **Relevance**: FHE could eventually replace threshold encryption; watch for EVM integration
 
-### NEW: Uniswap CCA v1.1.0 Audits (Jan 2026)
+### NEW: Uniswap CCA v1.1.0 (Production, Jan 2026)
 - **GitHub**: https://github.com/Uniswap/continuous-clearing-auction
+- **Docs**: https://docs.uniswap.org/contracts/liquidity-launchpad/CCA
+- **Whitepaper**: https://docs.uniswap.org/whitepaper_cca.pdf (Hayden Adams, Nov 2025)
 - **Audits**:
   - OpenZeppelin (Jan 23, 2026)
-  - Spearbit (Jan 22, 2026)
+  - Spearbit (Jan 22, 2026) + additional
+  - ABDK Consulting
 - **Key facts**:
   - MIT licensed (can study/extend)
   - Canonical addresses across EVM chains
-  - Bug bounty via Cantina
   - Factory: 0xCCccCcCAE7503Cac057829BF2811De42E16e0bD5
-- **Relevance**: Production-ready uniform clearing; must study implementation
+  - Bug bounty via Cantina
+- **Technical**:
+  - Uses Foundry for build/test
+  - BTT unit tests + fuzz + invariant tests
+  - Pairs with Uniswap Liquidity Launcher
+- **Mechanism**: Uniform-price auction generalized to continuous time
+  - Tokens released per block (configurable schedule)
+  - Clearing price = price where all supply sells to active bids
+  - Bids have max price → removed when clearing exceeds max
+  - Early bidders get better exposure to lower prices
+- **Relevance**: **CRITICAL** — Production uniform clearing implementation to study
 
 ### NEW: ePrint 2026/170 — gcVM: MPC via Garbled Circuits
 - **URL**: https://eprint.iacr.org/2026/170
@@ -738,7 +778,7 @@
 
 ---
 
-## Updated Source Count: 80+ sources catalogued
+## Updated Source Count: 110+ sources catalogued
 
 ### Sources Added This Cycle (Feb 7 PM)
 1. arXiv 2601.14996 — Mempool auditing effectiveness (Albrecht, Karame)
@@ -864,7 +904,7 @@
 
 ---
 
-## Updated Source Count: 85+ sources catalogued
+## Updated Source Count: 95+ sources catalogued
 
 ### Sources Added This Cycle (Feb 7 — 7PM Cron)
 1. **ePrint 2026/181** — Collaborative Traceable Secret Sharing (public tracing!)
@@ -873,3 +913,239 @@
 4. **Flow Network** — 40M users milestone, native MEV resistance claims
 5. **Vitalik L2 follow-up** — "copypasta L2 chains" critique (Feb 5 CoinDesk)
 6. **L2 ecosystem response** — Base, Polygon reactions to Vitalik's comments
+
+---
+
+## ⭐⭐⭐⭐⭐⭐⭐⭐⭐ SATURDAY 8PM CRON UPDATE (2026-02-07)
+
+### NEW: ERC-8004 — Trustless Agent Standard (Mainnet Jan 29, 2026)
+- **Bitget News**: https://www.bitget.com/news/detail/12560605183395
+- **Biometric Update**: https://www.biometricupdate.com/202602/no-trust-required-with-8004-a-new-ethereum-protocol-for-trustless-agents
+- **Bankless Podcast**: https://www.bankless.com/podcast/ai-on-ethereum-erc-8004-x402
+- **Key contribution**: On-chain registry for AI agent identity, capabilities, and reputation
+- **Collaborators**: Ethereum Foundation dAI Team, MetaMask, Google, Coinbase
+- **Architecture**:
+  - Identity Registry: Agent names, skills, endpoints
+  - Reputation Registry: On-chain performance history
+  - Discovery: Agents can find and interact trustlessly
+- **Adoption**: Base (first L2), BNB Chain, Polygon already deployed
+- **Pairs with**: x402 protocol for agent-to-agent payments
+- **Critical for us**: Native infrastructure for agent-signed orders in DEX!
+
+### NEW: EIP-8105 vs EIP-8141 Hegota Competition
+- **DL News**: https://www.dlnews.com/articles/defi/ethereum-devs-begin-debate-over-hegota-upgrade/
+- **BitcoinEthereumNews**: https://bitcoinethereumnews.com/ethereum/ethereum-eyes-frame-transactions-as-hegota-headliner/
+- **Key dynamics**:
+  - EIP-8105 (Shutter/Luhn): Encrypted mempool for MEV protection
+  - EIP-8141 (Frame Tx): Post-quantum + account abstraction
+  - FOCIL: Censorship resistance (consensus building)
+  - All competing for headliner slot
+- **Jannik Luhn quote**: "relies on trusted parties, which is bad for decentralisation"
+- **Vitalik on EIP-8141**: "satisfies entire list of goals of account abstraction"
+- **Implication**: L1 encrypted mempool increasingly likely, but encryption-agnostic design needed
+
+### NEW: Glamsterdam Scope Freeze Confirmed
+- **CryptoAPIs**: https://cryptoapis.io/blog/553-ethereum-glamsterdam-upgrade
+- **Timeline Confirmed**:
+  - Scope freeze: End of February 2026 (~3 weeks)
+  - Mainnet target: H1 2026 (May/June)
+  - bals-devnet-2 launched Feb 4
+- **Key EIPs**:
+  - EIP-7732 (ePBS): Enshrined Proposer-Builder Separation
+  - EIP-7928 (BALs): Block-Level Access Lists for parallel execution
+- **Gas limit**: 60M → 200M (3× increase!)
+- **Implication**: L1 clearing more viable with higher gas limit + ePBS
+
+### NEW: Uniswap CCA Web App Live
+- **CryptoAdventure**: https://cryptoadventure.com/uniswap-web-adds-continuous-clearing-auctions-what-cca-changes-for-routing-and-liquidity/
+- **Phemex**: https://phemex.com/news/article/uniswap-launches-auction-feature-on-web-app-57600
+- **Launched**: February 2, 2026
+- **Features**:
+  - Discover, bid, and claim tokens in web interface
+  - Powered by CCA contracts on Base
+  - Continuous price discovery with gradual supply release
+- **First use case**: Token launches (RNBW auction completed)
+
+### NEW: arXiv 2602.01392 — Electricity Market Clearing Mechanisms
+- **URL**: https://arxiv.org/html/2602.01392
+- **Key contribution**: Reinforcement learning evaluation of uniform vs pay-as-bid clearing
+- **Finding**: Uniform price mechanism values all accepted offers at System Marginal Price
+- **Relevance**: Methodological insights for evaluating clearing mechanism efficiency
+
+### UPDATE: ePrint 2026/192 — Verification Theater
+- **URL**: https://eprint.iacr.org/2026/192
+- **Authors**: Nadim Kobeissi
+- **Key finding**: Five vulnerabilities in "formally verified" libcrux and hpke-rs
+- **Vulnerabilities found**:
+  1. Platform-dependent SHA-3 failure
+  2. Missing X25519 DH output validation
+  3. Nonce reuse via integer overflow
+  4. ECDSA signature malleability
+  5. Ed25519 entropy reduction
+- **Critical insight**: "Verification boundary problem" — formal methods cover limited scope
+- **Implication**: Multi-layer security essential, formal verification insufficient alone
+
+### UPDATE: ePrint 2026/190 — Three-Round Threshold ECDSA
+- **URL**: https://eprint.iacr.org/2026/190
+- **Authors**: Jiang, Tang, Xue
+- **Key contribution**: First 3-round threshold ECDSA with O(1) outgoing communication
+- **Comparison**: Wong et al. (NDSS24) required 4 rounds
+- **Relevance**: Efficient committee coordination for encrypted mempool key management
+
+### Sources Added This Cycle (Feb 7 — 8PM Cron)
+1. **ERC-8004** — Trustless Agent Standard (mainnet Jan 29, 2026)
+2. **Bankless podcast** — ERC-8004 + x402 deep dive (Feb 4)
+3. **DL News Hegota coverage** — EIP competition dynamics
+4. **arXiv 2602.01392** — Electricity market clearing via RL
+5. **Glamsterdam scope freeze confirmation** — End of February
+6. **Uniswap CCA web app launch** — February 2, 2026
+7. **Multiple L2 response articles** — Base, Polygon on Vitalik's critique
+
+### Sources Added This Cycle (Feb 8 — 9PM Cron)
+1. **Budish-Cramton-Shim (2015)** — "Frequent Batch Auctions" QJE paper (FOUNDATIONAL)
+2. **Uniswap CCA whitepaper** — Hayden Adams, Nov 2025
+3. **Uniswap CCA technical docs** — Full mechanism specification
+4. **ePrint 2026 index scan** — Confirmed no major new threshold/MEV papers today
+5. **Hegota competition updates** — Frame Tx vs EIP-8105 positioning
+
+### Sources Added This Cycle (Feb 7 — 11PM Cron)
+1. **EF Checkpoint #8 Blog Post** (Jan 20, 2026) — Official Glamsterdam/Hegotá timeline
+   - FOCIL moved to Hegotá, competing with EIP-8105 for headliner
+   - Headliner decision: Feb 26; scope freeze: end of Feb
+   - URL: https://blog.ethereum.org/en/2026/01/20/checkpoint-8
+
+### Sources Added This Cycle (Feb 8 — 10PM Cron)
+1. **ERC-8004 adoption news** — 24k+ agents registered (CryptoRank, Bitget)
+2. **The Graph + ERC-8004/x402** — Major indexing infrastructure support (BitcoinEthereumNews)
+3. **MultiversX x402 integration** — Cross-chain adoption (The Block)
+4. **x402 Protocol explainer** — HTTP 402 for agent payments (JoinedCrypto)
+5. **BABE (ePrint 2026)** — Bitcoin proof verification 1000× cheaper via WE
+6. **PQC Migration for Blockchain** — Comprehensive blockchain quantum readiness (ePrint, Dec 2025)
+7. **Beyond LWE** — Lattice-based HE framework, LIP instantiation (ePrint 2026)
+8. **RNBW auction final data** — $0.13 clearing confirmed, $130M FDV (HokaNews, BingX)
+9. **Vitalik "Glamsterdam Ultimatum"** — L2 criticism driving L1 focus (BitcoinEthereumNews)
+10. **Glamsterdam on track** — bals-devnet-2 live, scope freeze end of Feb (TronWeekly, CryptoAPIs)
+
+---
+
+## ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ SUNDAY 12AM CRON UPDATE (2026-02-08)
+
+### 🚀 ERC-8004 Adoption Explosion (Past 24 Hours!)
+
+#### NEW: Virtuals Protocol ACP Integration
+- **Source**: Bitget News (Feb 7, 5 PM)
+- **URL**: https://www.bitget.com/news/detail/12560605187604
+- **Key**: All graduated AI agents on ACP (Agency Commerce Protocol) will be **automatically registered on ERC-8004**
+- **Significance**: Major agent platform integrating → network effects accelerating
+- **Implication**: Agent economy infrastructure reaching critical mass
+
+#### NEW: Avalanche C-Chain Support
+- **Source**: Bitget News (Feb 7, 5 PM)
+- **URL**: https://www.bitget.com/news/detail/12560605187590
+- **Key**: Avalanche now supports ERC-8004 natively
+- **Features**: On-chain identity, discovery, portable reputation for AI agents
+- **Chain count**: Now 5+ chains (Base, BNB, Polygon, MultiversX, Avalanche)
+- **Velocity**: New chain every 2-3 days → exponential adoption
+
+#### NEW: Davide Crapis Interview (EF dAI Team Lead)
+- **Source**: CryptoBriefing / Unchained (Feb 8, 2 AM)
+- **URL**: https://cryptobriefing.com/davide-crapis-erc-8004-enables-decentralized-ai-agent-interactions-establishes-trustless-commerce-and-enhances-reputation-systems-on-ethereum-unchained/
+- **Key quotes**:
+  - "ERC 8004 aims to build trust between agents in decentralized environments"
+  - "I think that's where really the magic of 8,004 that you cannot have in a smaller like centralized service can like be realized."
+- **Focus**: Trust, reputation, specialized agents providing services
+- **Implication**: Vision extends beyond trading to full agent economy
+
+### NEW ePrint Papers (Feb 6-7, 2026)
+
+#### ePrint 2026/194 — Unified Hardware for Hash-Based Signatures
+- **URL**: https://eprint.iacr.org/2026/194
+- **Authors**: Zhang, Chu, Wei, Dai, Shen, Tian
+- **Key contribution**: Single FPGA architecture for LMS, XMSS, and SPHINCS+
+- **Efficiency**: 4.12×/10.92× lower Area-Time Product for signing
+- **Relevance**: Hardware acceleration for post-quantum signatures (future Keyper nodes?)
+
+#### ePrint 2026/193 — Atkin/Weber Modular Polynomials for Isogeny Proofs
+- **URL**: https://eprint.iacr.org/2026/193
+- **Authors**: den Hollander, Mula, Slamanig, Spindler
+- **Key contribution**: Up to 39% sparser R1CS constraint systems using Weber polynomials
+- **Relevance**: More efficient ZK proofs for cryptographic primitives
+
+#### ePrint 2026/191 — PEARL-SCALLOP Active Attack
+- **URL**: https://eprint.iacr.org/2026/191
+- **Authors**: Fouotsa, Houben, Lorenzon, Rueger, Tasbihgou
+- **Key contribution**: Active attack requires only 4 oracle calls to recover secret
+- **Warning**: Demonstrates cryptographic schemes can have subtle vulnerabilities
+- **Relevance**: Reinforces need for multi-layer security (not just cryptographic)
+
+#### ePrint 2026/189 — Shared and Leakage-Free MAYO
+- **URL**: https://eprint.iacr.org/2026/189
+- **Authors**: Azevedo-Oliveira, Beraud, Varjabedian
+- **Key contribution**: Threshold instantiation of UOV/MAYO post-quantum signatures
+- **Methods**: Newton polynomials + Samuelson-Berkowitz for shared determinant computation
+- **Relevance**: Post-quantum threshold signatures for future Keyper committees
+
+### NIST MPTS 2026 Workshop Details (Completed Jan 26-29)
+- **URL**: https://csrc.nist.gov/events/2026/mpts2026
+- **Key talks identified**:
+  - TECLA/THE CLASH: Two-party and threshold ECDSA from class groups
+  - (Red)ETA: Refreshable extensible DLOG enhanced threshold algorithms
+  - SplitForge: Two-party signing with extra features
+- **Status**: Virtual via ZoomGov, recordings likely available
+- **Action**: Find and review proceedings for standardization insights
+
+### Ecosystem Status Confirmations
+
+#### Glamsterdam Timeline (Locked)
+- **Scope freeze**: End of February 2026 (~3 weeks)
+- **Mainnet target**: May/June 2026 (H1)
+- **EIPs confirmed**: ePBS (7732), BALs (7928)
+- **Gas limit**: 60M → 200M (3× increase)
+
+#### Hegotá Headliner Competition (Active)
+- **Decision date**: February 26, 2026
+- **Leading candidates**:
+  1. FOCIL — gaining consensus as #1 (censorship resistance)
+  2. EIP-8105 — encrypted mempool (MEV protection)
+  3. EIP-8141 — Frame Transactions (post-quantum + AA)
+- **Non-headliner deadline**: ~30 days after Feb 26 decision
+- **Our window**: ~3 weeks to contribute/influence
+
+---
+
+## Updated Source Count: 120+ sources catalogued
+
+### Sources Added This Cycle (Feb 8 — 12AM Cron)
+1. **Virtuals Protocol ACP + ERC-8004** — Auto-registration for graduated agents
+2. **Avalanche C-Chain ERC-8004** — New chain support, 5+ total
+3. **Davide Crapis interview** — EF dAI Team lead on ERC-8004 vision
+4. **ePrint 2026/194** — Unified hardware for hash-based signatures
+5. **ePrint 2026/193** — Atkin/Weber modular polynomials (39% improvement)
+6. **ePrint 2026/191** — PEARL-SCALLOP active attack (4 oracle calls!)
+7. **ePrint 2026/189** — Shared/leakage-free MAYO (post-quantum threshold)
+8. **NIST MPTS 2026** — Workshop talk details (TECLA, RED-ETA, SplitForge)
+9. **UW Fair Ordering Thesis** — Foundational PhD thesis (2023)
+
+### Sources Added This Cycle (Feb 8 — 1AM Cron)
+1. **FairTraDEX** (arXiv 2202.06384, Aug 2022) — DEX based on FBA with formal game-theoretic guarantees
+   - Uses ZK set-membership + commit-reveal
+   - Fixed-fee guarantee independent of order size
+   - Foundational academic work for our approach
+2. **Odaily ERC-8004 Deep-Dive** (Feb 7, 2026) — Comprehensive analysis of the three registries
+   - Identity Registry: ERC-721 based agent NFTs
+   - Reputation Registry: Payment-linked reviews ("Yelp for AI")
+   - Verification Registry: ZK/TEE endorsements for high-risk tasks
+   - Goal is "universal standard for AI Agent discovery and trust"
+3. **Davide Crapis interview (Unchained)** — "ERC 8004 enables decentralized AI agent interactions"
+4. **ePrint 2026 scan** — No major new threshold/MEV papers today (Sunday quiet period)
+
+### Key Synthesis Update
+
+**ERC-8004 Adoption Velocity:**
+| Date | Chains | Agents |
+|------|--------|--------|
+| Jan 29 | 1 (mainnet) | Launch |
+| Feb 1 | 3 (Base, BNB, Polygon) | 24k+ |
+| Feb 7 | 5+ (+ MultiversX, Avalanche) | Growing |
+
+**Implication**: Agent economy infrastructure is real and accelerating. Our DEX design MUST support agent-signed orders in v1.

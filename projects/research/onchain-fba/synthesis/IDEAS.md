@@ -1,6 +1,6 @@
 # Novel Ideas — On-Chain Trustless FBA
 
-**Last Updated**: 2026-02-04
+**Last Updated**: 2026-02-08
 
 ## Synthesized Insights from Literature
 
@@ -1781,3 +1781,409 @@ Based on new accountability primitives, updated architecture:
 4. **Timeline**: Hegotá is late 2026/2027 — aim for Glamsterdam compatibility first?
 5. **NEW**: Should we reach out to Chainlink Labs (Manuel Vidigueira) re: accountability collab?
 6. **NEW**: How much should we invest in CTSS integration vs other accountability approaches?
+
+---
+
+## 🆕🆕🆕 ERC-8004: Agent Economy Infrastructure Arrives (Feb 7, 8PM Cron)
+
+### The Discovery
+
+**ERC-8004** deployed to Ethereum mainnet on **January 29, 2026** — the foundation for trustless AI agent interactions is now live!
+
+**Key Details**:
+- **Developers**: Ethereum Foundation dAI Team + MetaMask + Google + Coinbase
+- **Adoption**: Already deployed on Base, BNB Chain, Polygon (within days of mainnet!)
+- **Companion**: x402 protocol for agent-to-agent HTTP payments
+
+### What ERC-8004 Provides
+
+| Component | Function |
+|-----------|----------|
+| **Identity Registry** | Agent names, skills, endpoints (on-chain) |
+| **Reputation Registry** | Performance history, trust scores |
+| **Discovery** | Agents find each other without intermediaries |
+| **Credential Verification** | Cryptographic proof of capabilities |
+
+### Direct Quote from Bankless Podcast
+> "8004 was born... around the same time that X402 went live. Because essentially what was happening is like we're already working in this space and we started thinking, OK, if this agentic commerce becomes real, then you want like agent to agent trustless interaction."
+
+### Why This Matters for Our Clearing Layer
+
+**The Agent Economy is real and shipping NOW:**
+- 96:1 ratio of non-human to human identities in finserv (a16z data)
+- x402 enables machine-to-machine payments
+- ERC-8004 provides identity infrastructure
+- Our clearing layer needs agent-native order formats
+
+### Revised Order Format (Agent-Compatible)
+
+```solidity
+struct AgentOrder {
+    // Principal (human) authorization
+    address principal;          // Ultimate beneficiary
+    bytes principalAuth;        // Signature/approval for agent to trade
+
+    // Agent identity (ERC-8004 compatible)
+    address agent;              // ERC-8004 registered agent
+    bytes32 agentCredential;    // Registry reference for capabilities
+    bytes agentSignature;       // Agent's signature on order
+
+    // Order details
+    address tokenIn;
+    address tokenOut;
+    uint256 amountIn;
+    uint256 minAmountOut;
+    uint256 deadline;
+
+    // Agent constraints (set by principal)
+    uint256 maxSlippage;        // e.g., 50 = 0.5%
+    uint256 maxOrderSize;       // Per-trade limit
+    bytes32[] allowedPairs;     // Whitelisted trading pairs
+}
+```
+
+### Integration Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  Layer 5: Agent Orchestration (NEW!)                           │
+│  ┌─────────────────────────────────────────────────────────────┐│
+│  │ ERC-8004 Identity │ x402 Payments │ Agent Wallets          ││
+│  └─────────────────────────────────────────────────────────────┘│
+├─────────────────────────────────────────────────────────────────┤
+│  Layer 4: Order Submission                                     │
+│  ┌─────────────────────────────────────────────────────────────┐│
+│  │ Human-signed OR Agent-signed orders                        ││
+│  │ EIP-8105 encryption                                        ││
+│  └─────────────────────────────────────────────────────────────┘│
+├─────────────────────────────────────────────────────────────────┤
+│  Layer 3: Accountability (CTSS + τ_{zk-scr})                   │
+├─────────────────────────────────────────────────────────────────┤
+│  Layer 2: Uniform Clearing (OUR CORE)                          │
+├─────────────────────────────────────────────────────────────────┤
+│  Layer 1: Encrypted Mempool (BEAST-MEV/EIP-8105)               │
+├─────────────────────────────────────────────────────────────────┤
+│  Layer 0: Settlement (Ethereum L1)                             │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Strategic Implications
+
+1. **Immediate**: Design clearing layer to accept agent-signed orders
+2. **Short-term**: Integrate ERC-8004 credential verification
+3. **Medium-term**: Enable agent-to-agent trading (no human in loop)
+4. **Long-term**: Agent-optimized batch aggregation strategies
+
+### Competitive Positioning
+
+**First-mover opportunity**: No existing MEV-resistant DEX has agent-native order formats:
+- Uniswap CCA: Human-focused UI
+- CoW Protocol: Intent-based but human-signed
+- Penumbra: Privacy-focused, no agent primitives
+- **Our gap**: Agent-compatible trustless clearing
+
+---
+
+## 🆕 Hegota Headliner Competition Analysis (Feb 7, 8PM)
+
+### Current Standing
+
+Based on AllCoreDevs discussions and news coverage:
+
+| Proposal | Support Level | Key Advocate | Core Value |
+|----------|---------------|--------------|------------|
+| **FOCIL** | Building consensus | Multiple devs | Censorship resistance |
+| **EIP-8105** | Shutter champion | Jannik Luhn | MEV protection |
+| **EIP-8141** | Vitalik endorsed | Felix Lange | Post-quantum + AA |
+
+### Implications for Our Timeline
+
+**If EIP-8105 wins headliner:**
+- Native encrypted mempool by Hegotá (late 2026/2027)
+- Our Layer 2 clearing becomes immediately deployable
+- Clear integration path
+
+**If FOCIL wins headliner:**
+- Encrypted mempool deferred to subsequent fork
+- Continue with out-of-protocol (Shutter) for now
+- Our clearing layer still works, just with external encryption
+
+**If EIP-8141 wins:**
+- Post-quantum readiness, account abstraction
+- Encrypted mempool could still be included as secondary
+- Agent-compatible transaction types align with our ERC-8004 direction
+
+### Strategic Recommendation
+
+**Build for EIP-8105 integration** (likely to ship in Hegotá even if not headliner):
+1. Assume encrypted tx type will exist
+2. Design for technology-agnostic key provider registry
+3. Support out-of-protocol fallback (Shutter) for near-term
+
+**Also support EIP-8141 direction**:
+1. Agent-signed orders align with Frame Transactions
+2. Post-quantum signature compatibility
+3. Account abstraction primitives
+
+---
+
+## Update Log (continued)
+- [2026-02-07 8PM] **8PM Cron Update**: Major agent economy discovery
+  - ERC-8004 deployed to mainnet Jan 29, 2026
+  - Already adopted by Base, BNB Chain, Polygon
+  - x402 protocol for agent payments
+  - Designed agent-compatible order format
+  - Updated architecture with Layer 5 (Agent Orchestration)
+- [2026-02-07 8PM] Hegota headliner competition analysis
+  - FOCIL building consensus
+  - EIP-8105 championed by Shutter
+  - EIP-8141 endorsed by Vitalik
+- [2026-02-07 8PM] Strategic: Build for EIP-8105 + EIP-8141 compatibility
+
+---
+
+## Research Priorities Update (Feb 7, 8PM)
+
+### Immediate (Next 24 Hours)
+- [x] Daily literature search ✅
+- [x] Update INDEX.md ✅
+- [x] Update IDEAS.md ✅ (this update)
+- [ ] Update STATE.md with progress
+
+### This Week (Feb 8-14)
+1. [ ] Study Uniswap CCA source code
+2. [ ] Design ERC-8004 compatible order format
+3. [ ] Analyze RNBW auction on-chain data
+4. [ ] Draft clearing layer interface spec
+
+### Strategic Questions for User
+1. **Agent priority**: Given ERC-8004 is live, should we prioritize agent compatibility in v1?
+2. **Hegota alignment**: Which proposal(s) should we optimize for?
+3. **Chainlink outreach**: Worth exploring accountability collaboration?
+
+---
+
+## 🆕 Saturday Night Research Update (2026-02-08 10PM)
+
+### Agent Economy Reaching Production Scale
+
+**Key finding**: ERC-8004 adoption is faster than expected:
+- **24,000+ agents registered** on Ethereum mainnet in first week
+- **The Graph** providing indexing infrastructure for agent registries
+- **MultiversX** integrated x402 — cross-chain adoption accelerating
+- **x402 Hackathon** in SF with Google, Coinbase, SKALE — ecosystem building
+
+### Implications for Our Clearing Layer
+
+**Agent-native design is now production requirement, not future consideration.**
+
+```
+Agent Order Flow (Updated)
+┌─────────────────────────────────────────────────────────┐
+│  1. Agent receives trading intent from principal       │
+│     - Via x402 payment or direct instruction          │
+│     - Constraints: maxOrderSize, allowedPairs, slippage│
+├─────────────────────────────────────────────────────────┤
+│  2. Agent validates intent against ERC-8004 identity   │
+│     - Check agent is authorized by principal          │
+│     - Verify spending limits not exceeded             │
+├─────────────────────────────────────────────────────────┤
+│  3. Agent constructs encrypted order                   │
+│     - Sign with agent key (link to principal)         │
+│     - Encrypt via EIP-8105 encrypted tx type          │
+├─────────────────────────────────────────────────────────┤
+│  4. Order enters batch auction                         │
+│     - Decrypted at batch boundary                     │
+│     - Agent identity verified against ERC-8004 registry│
+├─────────────────────────────────────────────────────────┤
+│  5. Clearing + Settlement                              │
+│     - Uniform price execution                         │
+│     - Fills credited to principal's address           │
+│     - Agent reputation updated in ERC-8004 registry   │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Witness Encryption Progress
+
+**BABE paper** (ePrint 2026) demonstrates WE is production-adjacent:
+- Bitcoin proof verification 1000× cheaper using WE
+- Combines WE with 2-party computation for Groth16 verification
+- Off-chain garbled circuits (42 GiB) still large but dramatically smaller than prior art
+
+**Research direction update**:
+- WE remains research track (not production for 2026)
+- Threshold encryption (BEAST-MEV/EIP-8105) for production
+- WE could enable fully trustless design in 2027+
+
+### RNBW Auction — Empirical Validation
+
+Final auction data confirms CCA price discovery works:
+| Metric | Value |
+|--------|-------|
+| Starting price | $0.10 |
+| Clearing price | $0.13 |
+| Price discovery | **+30%** |
+| FDV at clearing | ~$130 million |
+| Exchange listings | KuCoin (Feb 5), others following |
+
+**Key observation**: 30% price discovery in 3-day auction shows market can efficiently converge on fair price when ordering is irrelevant.
+
+### Glamsterdam Status — On Track
+
+Despite Fusaka testing issues, Glamsterdam is confirmed:
+- **bals-devnet-2** launched Feb 4
+- **Scope freeze** end of February (~3 weeks)
+- **Mainnet target** May/June 2026
+- **Key EIPs**: 7732 (ePBS), 7928 (BALs), gas limit 3×
+
+Vitalik's "Glamsterdam ultimatum" reinforces L1 focus:
+> "to infra what forking Compound is to governance"
+
+**Translation**: L2s need to differentiate beyond just "cheaper Ethereum."
+
+---
+
+## Updated Competitive Analysis (Feb 8, 2026)
+
+| Project | Focus | Status | Our Relationship |
+|---------|-------|--------|------------------|
+| **EIP-8105** | L1 encrypted mempool | Hegotá candidate | Build on top |
+| **BEAST-MEV** | Threshold + batch | Academic | Reference implementation |
+| **Uniswap CCA** | Token launch clearing | **Production** | Study + extend |
+| **Jump DFBA** | Flow separation | Design | Incorporate ideas |
+| **Shutter** | Keyper network | Production (Gnosis) | Out-of-protocol fallback |
+| **ERC-8004** | Agent identity | **Production** | Integrate for agent support |
+| **x402** | Agent payments | **Production** | Pair with clearing layer |
+| **Witness Encryption** | Trustless crypto | Research | Future direction |
+
+### Market Position
+
+**Our unique value proposition** (refined):
+1. **EVM-native** uniform clearing (not a separate chain)
+2. **ZK-verified** clearing price (trustless computation)
+3. **Agent-compatible** order format (ERC-8004 integration)
+4. **Encryption-agnostic** (works with EIP-8105, Shutter, or future)
+5. **L1-first** deployment (aligned with Vitalik's L1 scaling push)
+
+---
+
+## Research Priorities (Feb 8-15)
+
+### Immediate (Sunday/Monday)
+- [x] Literature search completed ✅
+- [x] INDEX.md updated ✅
+- [x] IDEAS.md updated ✅
+- [x] STATE.md updated ✅
+- [ ] Begin Uniswap CCA source code analysis
+- [ ] Fetch RNBW on-chain data from Base explorer
+
+### This Week
+1. [ ] Draft ERC-8004 compatible order format spec
+2. [ ] Prototype simplified ZK clearing circuit (5-10 orders)
+3. [ ] Benchmark ZK vs fraud-proof gas costs
+4. [ ] Study BABE paper for WE implementation insights
+
+### Strategic Questions (Unchanged)
+1. **Agent priority**: ERC-8004 adoption accelerating — prioritize v1 agent support?
+2. **Hegota alignment**: Still recommend EIP-8105 + EIP-8141 dual track
+3. **L1 vs L2**: L1 focus confirmed by Vitalik's statements — agree?
+
+---
+
+## Update Log (continued)
+- [2026-02-08 10PM] **Saturday Night Cron Update**:
+  - ERC-8004 adoption: 24k+ agents, The Graph backing, MultiversX integration
+  - BABE paper: WE for Bitcoin proofs 1000× cheaper (validates WE research)
+  - RNBW auction: $0.13 clearing confirmed (+30% price discovery)
+  - Glamsterdam: On track despite Fusaka issues
+  - Vitalik "Glamsterdam ultimatum": L1 focus reinforced
+  - Updated competitive analysis and market positioning
+  - 110+ sources now catalogued
+- [2026-02-07 11PM] **Late Saturday Cron Update**:
+  - Deep-read EF Checkpoint #8: Critical timeline updates
+    - FOCIL moved out of Glamsterdam to reduce scope
+    - FOCIL vs EIP-8105 competing for Hegotá headliner
+    - Headliner decision: Feb 26 (3 weeks away!)
+    - Scope freeze imminent: end of February
+  - Research coverage comprehensive — no major gaps identified
+  - Strategic window: ~3 weeks to contribute to Hegotá discussion
+  - 111 sources now catalogued
+- [2026-02-08 12AM] **Sunday Midnight Cron Update**:
+  - **🚀 ERC-8004 Explosion**: Virtuals Protocol + Avalanche adoption in 24h
+    - 5+ chains now supporting ERC-8004 (from 1 chain 10 days ago!)
+    - Agent infrastructure reaching network effect threshold
+    - Davide Crapis (EF dAI) interview confirms vision extends beyond trading
+  - **New cryptographic papers** (ePrint 2026/189, 191, 193, 194):
+    - Post-quantum threshold signatures (MAYO) maturing
+    - Hardware acceleration for PQ signatures
+    - Active attacks on isogeny schemes (security reminder)
+  - **NIST MPTS 2026**: Workshop details found — threshold crypto standardization
+  - **120+ sources** now catalogued
+  - **No major gaps** — comprehensive coverage maintained
+
+---
+
+## 🆕 Insight 36: Agent Economy Network Effects Beginning (Feb 8, 2026)
+
+### The Acceleration
+
+| Date | ERC-8004 Chains | Key Event |
+|------|-----------------|-----------|
+| Jan 29 | 1 (mainnet) | Initial deployment |
+| Feb 1 | 3 | Base, BNB, Polygon |
+| Feb 5 | 4 | MultiversX |
+| Feb 7 | 5+ | Avalanche, Virtuals ACP |
+
+**Velocity**: New chain every ~2 days. This is network effect territory.
+
+### Virtuals Protocol Integration is Significant
+
+Virtuals Protocol's ACP (Agency Commerce Protocol) is a **major agent launchpad**.
+- All "graduated" agents automatically register on ERC-8004
+- This creates a **pipeline** of agents flowing into the ecosystem
+- Not just one-off registrations but continuous stream
+
+### Updated Strategic Implication
+
+**Previous**: "Agent support is nice-to-have for v2"
+**Now**: "Agent support is **table stakes** for v1"
+
+If we launch without ERC-8004 compatibility:
+- Competing DEXs that support agents will capture agent-driven flow
+- Agent wallets will route to agent-friendly venues
+- We miss the first-mover window
+
+### Design Priority: Agent-Native Order Format
+
+```solidity
+struct AgentOrder {
+    // Principal identification
+    address principal;           // Human's address
+    bytes32 agentId;            // ERC-8004 registered agent ID
+    
+    // Order details
+    address tokenIn;
+    address tokenOut;
+    uint256 amountIn;
+    uint256 minAmountOut;
+    
+    // Agent constraints (enforced by clearing layer)
+    uint256 maxOrderSize;       // Per-trade limit
+    bytes32[] allowedPairs;     // Pair whitelist
+    uint256 expirationBlock;    // Order validity
+    
+    // Authorization
+    bytes agentSignature;       // Agent signs order
+    bytes principalApproval;    // Principal pre-approves agent
+    
+    // Reputation tracking
+    bool updateReputation;      // Write success/failure to ERC-8004?
+}
+```
+
+### Integration with x402
+
+x402 enables HTTP-native agent payments. Could extend to:
+- Agent pays gas for order submission (x402 → gas tank)
+- Agent receives trading fee rebates (clearing layer → agent wallet)
+- Reputation updates trigger x402 micropayments (incentive layer)
