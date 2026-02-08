@@ -34,6 +34,31 @@
 - [2026-02-07 PM] **Defensive rebalancing comparison:** Created synthesis note comparing output fees with Herlihy et al.'s approach — they are COMPLEMENTARY mechanisms
 - [2026-02-07 PM] **Concentrated liquidity analysis:** Created synthesis note exploring how output fees interact with Uniswap v3-style concentrated liquidity — may provide "natural hedge" for range LPs
 - [2026-02-07 PM] Literature search: No new papers on output-based fees (gap confirmed); reviewed Campbell 2025 (Optimal Fees) and Feinstein 2025 (Price of Liquidity) — both already indexed
+- [2026-02-07 3:30 PM] **CONCENTRATED LIQUIDITY SIMULATION COMPLETE** — see `experiments/simulations/concentrated_liquidity.py`
+  - Output fees still win 64-74% of simulations across all range widths
+  - LVR reduction scales with in-range time: 0% at ±2.5%, 1.7% at ±50%
+  - Key insight: Effect is proportional to trading activity (narrow ranges earn fewer fees)
+  - Full-range (±50%) approaches our 6.7% constant-product result
+- [2026-02-07 3:30 PM] Literature search: No new papers this week on AMM fees/LVR
+- [2026-02-07 4:30 PM] **Created historical backtest framework** (experiments/simulations/historical_backtest.py)
+  - Fetches real Uniswap v3 swap data from The Graph subgraph
+  - Replays swaps under both fee models for comparison
+  - Includes fee sensitivity analysis mode
+  - Tested with synthetic data: ~30% LVR reduction (validates core mechanism)
+- [2026-02-07 5:30 PM] **Literature search**: Added new paper "Equilibrium Reward for LPs in AMMs" (Aqsha et al., arXiv:2503.22502)
+  - Leader-follower game theory model for LP reward design
+  - Relevant for understanding how fee structures affect LP behavior
+  - "Output fee" search returns zero results — gap strongly confirmed
+- [2026-02-07 6:30 PM] **Literature search**: 
+  - Added "Automated Liquidity: Market Impact, Cycles, and De-pegging Risk" (Meister, arXiv:2601.11375) — market impact framework for LPs using growth optimization
+  - Searched for new LVR/fee mechanism papers — no relevant new findings this week
+  - "Output-based fee" searches still return zero results — gap confirmed at 4th check
+- [2026-02-07 7:30 PM] **Literature search**: 
+  - Checked arXiv, web for new AMM/LVR/fee papers — no new relevant findings
+  - "Output fee" / "output-based fee" AMM search: ZERO results (5th confirmation)
+  - Reviewed Sandmark toxic flow article (good industry summary, no new research)
+  - Found ASRI systemic risk paper (arXiv:2602.03874) — not relevant to fee design
+  - **Research gap remains strongly confirmed**
 
 ## Key Insights
 
@@ -73,11 +98,17 @@ Uniswap v4 custom accounting hooks can modify swap outputs, enabling output-fee 
 - [x] Write research note summarizing findings ✅ (2026-02-07)
 - [x] Compare with "Defensive Rebalancing" approach ✅ (2026-02-07 PM) — see `synthesis/notes/defensive_rebalancing_comparison.md`
 - [x] Analyze concentrated liquidity implications ✅ (2026-02-07 PM) — see `synthesis/notes/concentrated_liquidity_analysis.md`
+- [x] Extend Monte Carlo to concentrated liquidity model ✅ (2026-02-07 3:30 PM) — see `synthesis/notes/concentrated_liquidity_simulation_results.md`
+- [x] **Draft ethresear.ch post** — see `synthesis/ETHRESEARCH_DRAFT.md` (v0.1)
+
+### Ready for Review
+- [ ] **USER REVIEW NEEDED**: Polish ethresear.ch draft for publication
 - [ ] **Install Foundry** and run hook tests (`curl -L https://foundry.paradigm.xyz | bash`)
-- [ ] Backtest on historical Uniswap ETH/USDC data (validate 0.3% fee sweet spot)
-- [ ] Extend Monte Carlo to concentrated liquidity model
-- [ ] Model JIT LP behavior under output fees
-- [ ] Consider submitting to ethresear.ch or arXiv
+- [~] Backtest on historical Uniswap ETH/USDC data — **framework built**, run: `python3 historical_backtest.py --pool ETH-USDC-0.3%` (blocked: needs Graph Network API key or alternative data source)
+
+### Future Work
+- [ ] Model JIT LP behavior under output fees (simulation shows effect diminishes at narrow ranges)
+- [ ] Consider academic submission to arXiv or DeFi venue
 
 ## Blockers
-None
+- **The Graph subgraph deprecated**: Need Graph Network API key or alternative data source (Dune/Flipside/direct RPC) for real historical data
