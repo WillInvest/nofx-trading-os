@@ -1590,6 +1590,172 @@ For future: FHE integration when mature (enables compute-on-encrypted)
 
 ---
 
+## 🆕🆕 Breakthrough: Public Accountability Without Designated Authority (Feb 7, 7PM)
+
+### The "Who Watches the Watchers" Problem
+
+Prior traceable secret sharing and accountability schemes had a critical flaw:
+- **Goyal-Song-Srinivasan (CRYPTO'21)**: Needed designated tracer with private keys
+- **Boneh-Partap-Rotem (CRYPTO'24)**: Made it practical but still required authority
+- **Problem**: The tracer could be bribed, coerced, or itself malicious
+
+For encrypted mempools, this translates to:
+> "If Keypers collude to decrypt early, who catches them?"
+> "If the catcher is a single entity, why trust THEM?"
+
+### Solution: Collaborative Traceable Secret Sharing (ePrint 2026/181)
+
+**Key Innovation**: CTSS eliminates both:
+1. Private trace keys (no tracer authority needed)
+2. Private verification keys (anyone can verify proofs)
+
+**How It Works**:
+- Tracing requires collaboration from t threshold parties
+- These can be ANY t parties, not a designated authority
+- Verification of misbehavior proofs is FULLY PUBLIC
+- Based on classical Shamir/Blakley (easy to integrate)
+- Polynomial-time tracing with minimal overhead
+
+**Application to Our Clearing Layer**:
+
+```
+Current BEAST-MEV Trust Model:
+  ┌─────────────────────────────────────────┐
+  │ Keyper Network (t-of-n threshold)       │
+  │                                         │
+  │ If t collude → decrypt early → MEV      │
+  │ Detection: ???                          │
+  └─────────────────────────────────────────┘
+
+With CTSS Integration:
+  ┌─────────────────────────────────────────┐
+  │ Keyper Network (t-of-n threshold)       │
+  │ + CTSS for public tracing               │
+  │                                         │
+  │ If t collude → decrypt early → caught!  │
+  │ Detection: ANY t parties can trace      │
+  │ Verification: FULLY PUBLIC              │
+  │ Penalty: Automatic slashing via proof   │
+  └─────────────────────────────────────────┘
+```
+
+**This is HUGE because**:
+- Closes the accountability gap in threshold encryption
+- No designated tracer = no single point of compromise
+- Public verification = community enforcement
+- Aligns with Ethereum's decentralization ethos
+
+---
+
+## 🆕🆕 Universal Compiler for Accountable Protocols (ePrint 2026/182)
+
+### The τ_{zk-scr} Compiler
+
+**What It Does**: Transforms ANY semi-honest crash-failure protocol into a Byzantine-tolerant accountable version.
+
+**Guarantees**:
+- For f ≤ t_ε: Preserves all hyperproperties (privacy, correctness, output delivery)
+- For f > t_ε: Either (1) safety preserved, OR (2) externally verifiable misbehavior proofs
+
+**Key Properties**:
+- Proofs involve "significant subset" of faulty parties (collective deterrent)
+- Uses AUC framework (S&P 2023) for formal composability
+- Communication overhead: o(n²) multiplicative (surprisingly efficient)
+
+**Application to Clearing Layer**:
+
+Instead of designing accountability from scratch, we could:
+1. Design clearing protocol for semi-honest crash failures (simpler!)
+2. Apply τ_{zk-scr} compiler automatically
+3. Get Byzantine tolerance + accountability "for free"
+
+**Theoretical Implications**:
+- Accountability becomes a modular property, not a bespoke design
+- Formal guarantees via AUC framework
+- Composable with other UC-secure components
+
+**Collaboration Potential**:
+- Co-author Manuel Vidigueira is at Chainlink Labs
+- Chainlink already in MEV space (FSS, Atlas acquisition)
+- Natural partnership opportunity
+
+---
+
+## 🆕 Alternative MEV Resistance: Flow's VRF Approach
+
+### Flow Network Architecture
+
+Flow claims "native MEV resistance" via:
+1. **VRF-based ordering**: Unpredictable transaction ordering within blocks
+2. **Scheduled Transactions**: Users specify execution time, not ordering
+3. **Actions**: Automated trigger-based execution (like smart-contract cron)
+
+**Key Insight**: Flow addresses MEV through RANDOMNESS, not PRIVACY.
+
+### Comparison: Random Ordering vs Uniform Clearing
+
+| Aspect | Flow (VRF Randomness) | Our Design (Uniform Clearing) |
+|--------|----------------------|------------------------------|
+| MEV type mitigated | Ordering-based (frontrun) | All (ordering irrelevant) |
+| Information leakage | Orders visible | Orders encrypted until batch |
+| Sandwich attacks | Reduced (random order) | Eliminated (same price) |
+| Price discovery | Continuous | Discrete batches |
+| Latency | Low | Batch interval |
+| Complexity | Lower | Higher |
+
+**Hybrid Opportunity**:
+- VRF for INTRA-batch ordering (residual fairness)
+- Uniform clearing for INTER-order fairness
+- Encryption for pre-batch privacy
+
+---
+
+## Updated Architecture: Four-Layer Defense-in-Depth
+
+Based on new accountability primitives, updated architecture:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│ Layer 4: Social Accountability                                 │
+│ - Reputation systems                                           │
+│ - Community monitoring                                         │
+│ - Public dashboards                                            │
+└────────────────────────────────────────────────────────────────┘
+                                ▲
+┌─────────────────────────────────────────────────────────────────┐
+│ Layer 3: Cryptographic Accountability (NEW!)                   │
+│ - CTSS for public tracing (ePrint 2026/181)                    │
+│ - τ_{zk-scr} compiler (ePrint 2026/182)                        │
+│ - Self-incriminating proofs (ePrint 2024/794)                  │
+│ - Externally verifiable misbehavior detection                  │
+└────────────────────────────────────────────────────────────────┘
+                                ▲
+┌─────────────────────────────────────────────────────────────────┐
+│ Layer 2: Execution Fairness (OUR CORE)                         │
+│ - Uniform clearing price                                       │
+│ - On-chain verification (ZK or fraud-proof)                    │
+│ - DFBA-style flow separation (optional)                        │
+└────────────────────────────────────────────────────────────────┘
+                                ▲
+┌─────────────────────────────────────────────────────────────────┐
+│ Layer 1: Privacy (BEAST-MEV / EIP-8105)                        │
+│ - Threshold encryption of orders                               │
+│ - Batched decryption at block boundary                         │
+│ - Key provider registry (technology-agnostic)                  │
+└────────────────────────────────────────────────────────────────┘
+                                ▲
+┌─────────────────────────────────────────────────────────────────┐
+│ Layer 0: Economic Security                                     │
+│ - Staked Keypers (slashable)                                   │
+│ - Penalty > option value (Paradigm fault economics)            │
+│ - Insurance/bond markets                                       │
+└────────────────────────────────────────────────────────────────┘
+```
+
+**Key Addition**: Layer 3 (Cryptographic Accountability) is now possible with 2026/181 and 2026/182.
+
+---
+
 ## Update Log (continued)
 - [2026-02-07 5PM] **5PM Cron Update**: Major new discoveries
   - Arcium Mainnet Alpha: MPC alternative on Solana (production)
@@ -1599,5 +1765,19 @@ For future: FHE integration when mature (enables compute-on-encrypted)
   - arXiv FBA welfare paper: Academic validation of batch auctions
 - [2026-02-07 5PM] New insight: Encryption technology diversifying rapidly
 - [2026-02-07 5PM] Design principle: Build encryption-agnostic clearing layer
+- [2026-02-07 7PM] **7PM Cron Update**: Accountability breakthrough!
+  - ePrint 2026/181: CTSS enables PUBLIC tracing without designated authority
+  - ePrint 2026/182: τ_{zk-scr} universal compiler for accountability
+  - Chainlink Labs co-author on 2026/182 → collaboration potential
+  - Flow Network: Alternative MEV approach via VRF + scheduling
+  - Updated architecture: Added Layer 3 (Cryptographic Accountability)
+- [2026-02-07 7PM] New insight: "Who watches the watchers" now has cryptographic answer
+- [2026-02-07 7PM] Vitalik L2 critique continues to reinforce L1-first strategy
+
+## Open Questions for User
+1. **Target chain**: L1-first confirmed; how much L2 compatibility in v1?
+2. **Witness encryption**: Deep exploration track or keep focus on threshold?
 3. **Agent support**: How important is KYA/agent-signing in initial design?
 4. **Timeline**: Hegotá is late 2026/2027 — aim for Glamsterdam compatibility first?
+5. **NEW**: Should we reach out to Chainlink Labs (Manuel Vidigueira) re: accountability collab?
+6. **NEW**: How much should we invest in CTSS integration vs other accountability approaches?

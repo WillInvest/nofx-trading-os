@@ -1,6 +1,6 @@
 # Research State — On-Chain Trustless FBA
 
-**Last Updated**: 2026-02-07 (Cron daily update, 6:00 PM)
+**Last Updated**: 2026-02-07 (Cron daily update, 7:00 PM)
 
 ## Current Focus
 **ECOSYSTEM CONVERGENCE**: The pieces are coming together! EIP-8105 proposes native encrypted mempool for Ethereum, Uniswap CCA proves uniform clearing works in production, and Jump's DFBA adds flow separation.
@@ -170,6 +170,25 @@
   - **New insight**: Encryption tech diversifying (threshold, MPC, FHE, GC, WE, TEE)
   - **Design principle**: Build encryption-agnostic clearing layer
   - **INDEX.md & IDEAS.md updated**: Now 75+ sources catalogued
+- [2026-02-07 7PM] **📊 Saturday 7PM Cron Research Update**
+  - **🔬 New Accountability Primitives Discovered**:
+    - **ePrint 2026/181**: Collaborative Traceable Secret Sharing (CTSS)
+      - PUBLIC tracing without designated tracer!
+      - Eliminates private trace/verification keys
+      - Based on Shamir/Blakley schemes
+      - Polynomial-time tracing, minimal overhead
+    - **ePrint 2026/182**: Accountable UC Async Secure Distributed Computing
+      - Universal compiler τ_{zk-scr} for accountability
+      - Chainlink Labs co-author (potential collaboration!)
+      - Externally verifiable proofs of misbehavior
+      - Uses AUC framework (S&P 2023)
+  - **🌊 Flow Network**: 40M users, claims native MEV resistance + VRF + scheduled transactions
+  - **📢 Vitalik L2 Critique**: "copypasta L2 chains" comment continues to reverberate
+    - Base/Polygon responding: "L2s can't just be cheaper"
+    - Reinforces our L1-first strategy
+  - **⏰ Glamsterdam Scope Freeze**: End of February (~3 weeks to influence)
+  - **MPC Benchmarking**: ePrint 2026/183 evaluates HPMPC, MPyC, MP-SPDZ, MOTION
+  - **INDEX.md updated**: Now 85+ sources catalogued
 - [2026-02-07 6PM] **📊 Saturday 6PM Cron Research Update**
   - **🔄 VITALIK L2 PARADIGM SHIFT** (Feb 3, 2026) — Major strategic implications!
     - "Rollup-centric roadmap no longer makes sense"
@@ -514,6 +533,48 @@ ePrint 2026/192 "Verification Theater" warns about false assurance:
   3. Social (reputation, transparency)
   4. Operational (monitoring, incident response)
 
+### Insight 29: Public Tracing Eliminates Tracer Trust Assumption (NEW 2026-02-07 7PM)
+ePrint 2026/181 Collaborative Traceable Secret Sharing (CTSS) is a breakthrough:
+- Prior traceable SS (Goyal-Song-Srinivasan, Boneh-Partap-Rotem) needed designated tracer
+- CTSS eliminates private trace keys AND private verification keys
+- Tracing requires collaboration from threshold parties (aligns with decentralization)
+- **Verification is FULLY PUBLIC** — anyone can verify misbehavior proofs
+- Polynomial-time tracing with minimal share overhead
+- **Application to encrypted mempools**:
+  - Keyper shares become traceable without central authority
+  - Collusion to decrypt early produces public proof
+  - Integrates with existing Shamir/Blakley infrastructure
+- **Critical implication**: Closes the "who watches the watchers" gap in threshold encryption
+
+### Insight 30: Universal Accountability Compiler Enables Formal Guarantees (NEW 2026-02-07 7PM)
+ePrint 2026/182 presents τ_{zk-scr} — a universal compiler for accountability:
+- Transforms ANY semi-honest crash-failure protocol into Byzantine-tolerant accountable version
+- Uses Accountable Universal Composability (AUC) framework (S&P 2023)
+- **Guarantees**:
+  - For f ≤ t_ε: preserves privacy, correctness, output delivery
+  - For f > t_ε: either safety preserved OR all correct processes get verifiable misbehavior proofs
+- **Relevance for clearing layer**:
+  - Could apply compiler to our batch clearing protocol
+  - Get formal accountability guarantees "for free"
+  - Proofs involve "significant subset" of faulty parties — deterrent effect
+- **Collaboration potential**: Chainlink Labs co-author (Manuel Vidigueira)
+  - Already have Chainlink relationship through FSS
+  - Could explore joint work on accountable clearing
+
+### Insight 31: Flow's Alternative Approach to MEV Resistance (NEW 2026-02-07 7PM)
+Flow Network claims native MEV resistance via different architecture:
+- Native VRF for unpredictable ordering
+- Scheduled Transactions for time-locked execution
+- "Actions" for automated trigger-based execution
+- 40M users, 950M transactions — proven at scale
+- **Trade-offs vs our approach**:
+  - Flow: Proprietary chain, not EVM-compatible
+  - Ours: Works on existing Ethereum ecosystem
+  - Flow: VRF-based (probabilistic ordering fairness)
+  - Ours: Uniform clearing (ordering irrelevant)
+- **Key difference**: Flow still has ordering; we eliminate ordering importance entirely
+- **Worth studying**: Their VRF + scheduling mechanism for hybrid approaches
+
 ## Literature Search Queries for Next Update
 - "Uniswap CCA clearing price algorithm" — study Solidity implementation ✅ Found repo!
 - "EIP-8141 frame transaction" — track competing proposals
@@ -532,10 +593,15 @@ ePrint 2026/192 "Verification Theater" warns about false assurance:
 - "Arcium Umbra SDK" — study private DEX reference implementation
 - "Fhenix DBFV paper" — get technical details on noise management
 - "gcVM MPC garbled circuits EVM" — alternative to threshold/FHE
-- **NEW**: "Vitalik L2 rollup roadmap February 2026" — track L1/L2 strategy evolution
-- **NEW**: "Ethereum Trillion Dollar Security Dashboard" — study 1TS initiative
-- **NEW**: "native rollup precompile ZK-EVM" — Vitalik's proposed L2 infrastructure
-- **NEW**: "Ethereum gas limit increase 2026" — track Glamsterdam throughput gains
+- "Vitalik L2 rollup roadmap February 2026" — track L1/L2 strategy evolution
+- "Ethereum Trillion Dollar Security Dashboard" — study 1TS initiative
+- "native rollup precompile ZK-EVM" — Vitalik's proposed L2 infrastructure
+- "Ethereum gas limit increase 2026" — track Glamsterdam throughput gains
+- **NEW**: "ePrint 2026/181 traceable secret sharing" — CTSS public tracing details
+- **NEW**: "ePrint 2026/182 accountable UC" — τ_{zk-scr} compiler implementation
+- **NEW**: "Chainlink Labs Manuel Vidigueira" — potential collaboration contact
+- **NEW**: "AUC framework S&P 2023" — formal accountability foundations
+- **NEW**: "Flow blockchain VRF scheduled transactions MEV" — alternative approach analysis
 
 ## Next Research Cycle (Feb 8-14)
 ### Priority 1: Empirical Analysis
@@ -554,7 +620,11 @@ ePrint 2026/192 "Verification Theater" warns about false assurance:
 - [ ] Find NIST MPTS 2026 recordings/proceedings (workshop completed Jan 26-29)
 - [ ] Study ePrint 2026/170 gcVM for private EVM applications
 - [ ] Review arXiv 2302.01177 FBA welfare model
-- [ ] **NEW**: Analyze ePrint 2026/192 "Verification Theater" implications
+- [ ] Analyze ePrint 2026/192 "Verification Theater" implications
+- [ ] **NEW**: Deep-read ePrint 2026/181 (CTSS) — public tracing mechanisms
+- [ ] **NEW**: Deep-read ePrint 2026/182 (τ_{zk-scr} compiler) — accountability guarantees
+- [ ] **NEW**: Study AUC framework (S&P 2023) — formal foundations for accountability
+- [ ] **NEW**: Analyze Flow's VRF + scheduled tx approach (alternative MEV resistance)
 
 ### Priority 3: Design Work
 - [ ] Draft multi-provider clearing interface spec
@@ -565,8 +635,12 @@ ePrint 2026/192 "Verification Theater" warns about false assurance:
 - [ ] Address 30-second ordering limitation in our spec (from arXiv 2601.14996)
 - [ ] Design encryption-agnostic clearing interface (threshold/MPC/FHE)
 - [ ] Study Arcium/Umbra for private DEX UX patterns
-- [ ] **NEW**: Design for L1 parallel execution (BALs/EIP-7928 integration)
-- [ ] **NEW**: Draft multi-layer verification strategy (per ePrint 2026/192)
+- [ ] Design for L1 parallel execution (BALs/EIP-7928 integration)
+- [ ] Draft multi-layer verification strategy (per ePrint 2026/192)
+- [ ] **NEW**: Integrate CTSS (ePrint 2026/181) into Keyper accountability spec
+- [ ] **NEW**: Apply τ_{zk-scr} compiler (ePrint 2026/182) to clearing protocol design
+- [ ] **NEW**: Reach out to Chainlink Labs (Manuel Vidigueira) re: accountability collab
+- [ ] **NEW**: Compare VRF-based vs uniform-clearing MEV approaches (Flow vs our design)
 
 ### Priority 4: Strategic Questions for User Input
 1. **Target chain**: ~~L2 first~~ Given Vitalik's L2 critique, prioritize Ethereum L1?

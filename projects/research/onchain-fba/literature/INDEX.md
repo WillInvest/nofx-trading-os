@@ -787,3 +787,89 @@
    - Mainnet: May/June 2026
    - Key EIPs: 7732 (ePBS), 7928 (BALs)
    - Gas limit: 60M → 200M (3× increase)
+
+---
+
+## ⭐⭐⭐⭐⭐⭐⭐⭐ SATURDAY 7PM CRON UPDATE (2026-02-07)
+
+### NEW: Collaborative Traceable Secret Sharing (ePrint 2026/181, Feb 2026)
+- **URL**: https://eprint.iacr.org/2026/181
+- **Authors**: Pousali Dey, Rittwik Hajra, Subha Kar, Soumit Pal (Indian Statistical Institute)
+- **Key contribution**: Public tracing for secret sharing WITHOUT designated tracer
+- **Mechanism**:
+  - Eliminates private trace keys and private verification keys
+  - Tracing requires collaboration from threshold parties
+  - Verification is FULLY PUBLIC
+  - Based on Shamir and Blakley schemes
+- **Properties**: Secrecy, traceability, non-imputability
+- **Minimal share size overhead, polynomial-time tracing**
+- **Builds on**: Goyal-Song-Srinivasan (CRYPTO'21), Boneh-Partap-Rotem (CRYPTO'24)
+- **Relevance**: **CRITICAL for accountability in encrypted mempools!**
+  - Could enable public verification of Keyper misbehavior
+  - No designated authority needed for tracing
+  - Aligns with decentralization goals
+
+### NEW: Accountable UC Asynchronous Secure Distributed Computing (ePrint 2026/182, Feb 2026)
+- **URL**: https://eprint.iacr.org/2026/182
+- **Authors**: Civit, Collins (NYU), Gramoli (Sydney/Redbelly), Guerraoui (EPFL), Komatovic (Category Labs), Vidigueira (Chainlink Labs), Zarbafian (Amaroo)
+- **Key contribution**: Universal compiler for accountability in distributed protocols
+- **Mechanism**: τ_{zk-scr} compiler transforms any semi-honest crash-failure protocol into Byzantine-tolerant accountable counterpart
+- **Guarantees**:
+  - Preserves privacy, input-independence, correctness, output delivery for f ≤ t_ε
+  - If f > t_ε: either (1) hypersafety preserved, or (2) all correct processes get verifiable proofs of misbehavior
+  - Externally verifiable proofs involving significant subset of faulty parties
+- **Formalized**: Using Accountable Universal Composability (AUC) framework (S&P 2023)
+- **Relevance**: **EXTREMELY relevant for our clearing layer!**
+  - Could apply τ_{zk-scr} to batch clearing protocols
+  - Provides formal accountability guarantees we need
+  - Authors include Chainlink Labs (potential collaboration)
+
+### NEW: MPC Benchmarking Framework (ePrint 2026/183, Feb 2026)
+- **URL**: https://eprint.iacr.org/2026/183
+- **Authors**: Harth-Kitzerow, Schiller, Schwanke, Prantl, Carle (Würzburg, TUM)
+- **Key contribution**: First systematic cross-framework MPC evaluation
+- **Frameworks tested**: HPMPC, MPyC, MP-SPDZ, MOTION
+- **Evaluation**: Varying bandwidth, latency, packet loss, input sizes
+- **Value**: Evidence-based framework selection guidance
+- **Relevance**: Useful for evaluating MPC alternatives to threshold encryption
+
+### NEW: Flow Network MEV Resistance Milestone (Feb 5, 2026)
+- **Source**: GlobeNewswire press release
+- **Stats**: 40 million unique users, 950 million transactions
+- **MEV Features Claimed**:
+  - Native MEV Resistance
+  - Native VRF (verifiable randomness)
+  - Scheduled Transactions
+  - "Actions" for automated execution
+- **Context**: Dapper Labs chain (NBA Top Shot, NFL ALL DAY, Disney Pinnacle)
+- **Architecture**: Not threshold-based; appears to use VRF + scheduling
+- **Relevance**: Alternative approach to MEV resistance; worth studying mechanism
+- **Gap**: Not EVM-compatible, proprietary approach
+
+### UPDATE: Vitalik's L2 Critique Continues to Reverberate (Feb 3-6, 2026)
+- **Sources**: CoinDesk, Yahoo Finance, Bankless, Unchained Crypto
+- **Key quote**: "make yet another EVM chain and add an optimistic bridge... is to infra what forking Compound is to governance"
+- **L2 response**:
+  - Base (Jesse Pollak): "L2s can't just be 'Ethereum but cheaper'"
+  - Polygon (Marc Boiron): "Scaling alone is insufficient"
+  - Unchained: Framing shift from "branded shards" to "sovereign systems"
+- **Strategic implication**: Reinforces our L1-first deployment strategy
+- **Our opportunity**: Uniform clearing layer provides differentiation L2s now need
+
+### UPDATE: Glamsterdam Scope Freeze Imminent
+- **Deadline**: End of February 2026
+- **Source**: Multiple (CryptoAPIs, Motley Fool, ad-hoc-news.de)
+- **Final feature list** being determined NOW
+- **Our window**: ~3 weeks to influence or contribute to discussion
+
+---
+
+## Updated Source Count: 85+ sources catalogued
+
+### Sources Added This Cycle (Feb 7 — 7PM Cron)
+1. **ePrint 2026/181** — Collaborative Traceable Secret Sharing (public tracing!)
+2. **ePrint 2026/182** — Accountable UC Async Secure Distributed Computing (Chainlink Labs co-author)
+3. **ePrint 2026/183** — MPC Benchmarking Framework (HPMPC, MPyC, MP-SPDZ, MOTION)
+4. **Flow Network** — 40M users milestone, native MEV resistance claims
+5. **Vitalik L2 follow-up** — "copypasta L2 chains" critique (Feb 5 CoinDesk)
+6. **L2 ecosystem response** — Base, Polygon reactions to Vitalik's comments
