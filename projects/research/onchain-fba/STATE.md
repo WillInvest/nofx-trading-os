@@ -257,6 +257,60 @@
   - **Hegota competition stable**: FOCIL vs EIP-8105 vs EIP-8141 dynamics unchanged
   - **Strategic window**: ~3 weeks until Feb 26 headliner decision
   - **INDEX.md updated**: Now 125+ sources catalogued
+- [2026-02-08 3AM] **📊 Sunday 3AM Cron Research Update**
+  - **No major new papers overnight** — Sunday quiet period continues
+  - **ePrint 2026 index scanned** — No new threshold/MEV papers since 2AM
+  - **ERC-8004 infrastructure deepening**:
+    - **GraphTally** (live since late 2024): Batches micropayments via signed vouchers
+    - **The Graph**: Maintaining ERC-8004 Subgraphs across **8 blockchains** with Agent0
+    - Infrastructure enabling sub-cent agent payments without gas overhead
+  - **Hegota timeline stable**: Feb 26 headliner decision; end-Feb scope freeze
+  - **FOCIL consensus building** as likely #1 headliner (censorship resistance)
+  - **EIP-8105 positioned complementary** — encrypted mempool likely alongside FOCIL
+  - **Research saturation confirmed** — All major search queries returning known sources
+  - **INDEX.md**: 125+ sources (stable)
+- [2026-02-08 4AM] **📊 Sunday Early Morning Cron Research Update**
+  - **Sunday overnight quiet period confirmed** — No significant new papers or developments
+  - **ePrint 2026 index scanned**: Recent threshold papers catalogued, no new MEV-related work
+  - **ERC-8004 adoption update**:
+    - BNB Chain officially deployed ERC-8004 on Feb 4, 2026 (BSC Mainnet + Testnet)
+    - Now 5+ chains supporting: Ethereum, Base, BNB Chain, Polygon, MultiversX
+    - Verifiable identity and on-chain reputation for autonomous agents
+  - **Hegota competition stable**:
+    - FOCIL gaining consensus as #1 headliner (censorship resistance)
+    - EIP-8105 (Shutter) positioned as complementary encrypted mempool
+    - EIP-8141 (Frame Tx) has Vitalik endorsement for post-quantum + AA
+    - Headliner decision: Feb 26 (~2.5 weeks)
+  - **Glamsterdam timeline confirmed**: Scope freeze end of Feb, mainnet May/June 2026
+  - **Fhenix DBFV coverage expanding**: TheStreet covered Feb 6 press release
+  - **No major new literature** — Research saturation continues
+  - **Strategic window**: ~2.5 weeks to Feb 26 headliner decision
+  - **INDEX.md**: 125+ sources (stable)
+- [2026-02-08 2AM] **📊 Sunday 2AM Cron Research Update**
+  - **No major new developments** — Sunday overnight quiet period
+  - **ERC-8004 coverage continues**: Davide Crapis interview on Unchained (Feb 7)
+    - The Graph now backing ERC-8004 + x402 — critical indexing infrastructure
+    - Agent economy positioning accelerating
+  - **Hegota timeline confirmed from multiple sources**:
+    - Feb 4: Headliner proposal deadline PASSED
+    - Feb 26: Headliner decision date
+    - End of Feb: Glamsterdam scope freeze
+    - H1 2026: Glamsterdam mainnet
+  - **FOCIL gaining clear consensus** as #1 Hegota headliner for censorship resistance
+  - **EIP-8105 positioned as "complementary"** — encrypted mempool likely to ship alongside FOCIL
+  - **New ePrint papers** from past week (low relevance to our core focus):
+    - MQ-based W-OTS+ (post-quantum signatures)
+    - Quantum sampling of supersingular curves
+    - Polynomial generators distance preservation
+    - Committing authenticated encryption
+    - Poseidon(2)b binary field hash variants
+  - **Vitalik's trustlessness vision** (TechFlow Feb 6):
+    - ZK-EVM + BALs for full node running
+    - Helios light client for verifiable RPCs
+    - FOCIL for censorship-resistant block building
+    - Reinforces our L1-first strategy
+  - **Research saturation indicator**: Searches returning primarily known sources
+  - **INDEX.md**: 125+ sources (stable, no new critical additions)
 - [2026-02-07 11PM] **📊 Late Saturday Cron Research Update**
   - **🏛️ EF Checkpoint #8 Deep-Dive** (Jan 20, 2026 blog post):
     - Glamsterdam headliners CONFIRMED: ePBS (EIP-7732) + BALs (EIP-7928)

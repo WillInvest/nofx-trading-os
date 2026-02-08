@@ -1014,6 +1014,15 @@
    - Headliner decision: Feb 26; scope freeze: end of Feb
    - URL: https://blog.ethereum.org/en/2026/01/20/checkpoint-8
 
+### Sources Added This Cycle (Feb 8 — 3AM Cron)
+1. **GraphTally** — The Graph's micropayment batching (live since late 2024)
+   - Cryptographically signed vouchers, settled in batches
+   - Enables sub-cent payments without per-tx gas
+   - Critical for x402/ERC-8004 agent economy viability
+2. **The Graph ERC-8004 Subgraphs** — 8 blockchain coverage (with Agent0)
+   - Cross-chain agent reputation queries via single lookup
+   - Base, Arbitrum, Polygon, etc.
+
 ### Sources Added This Cycle (Feb 8 — 10PM Cron)
 1. **ERC-8004 adoption news** — 24k+ agents registered (CryptoRank, Bitget)
 2. **The Graph + ERC-8004/x402** — Major indexing infrastructure support (BitcoinEthereumNews)
@@ -1149,3 +1158,20 @@
 | Feb 7 | 5+ (+ MultiversX, Avalanche) | Growing |
 
 **Implication**: Agent economy infrastructure is real and accelerating. Our DEX design MUST support agent-signed orders in v1.
+
+### Sources Added This Cycle (Feb 8 — 4AM Cron)
+1. **BNB Chain ERC-8004 Deployment** (Feb 4, 2026) — Official deployment to BSC Mainnet + Testnet
+   - Sources: Chainwire, Business Insider, Cryptopolitan, BanklessTimes
+   - BNB Chain now supports "Trustless Agents" standard
+   - Verifiable identity and on-chain reputation for autonomous agents
+   - Joins Base, Polygon, MultiversX, Avalanche in ERC-8004 support
+2. **ePrint 2026 scan** — No new major threshold/MEV papers (Sunday quiet period continues)
+3. **Hegota competition stable** — FOCIL, EIP-8105, EIP-8141 dynamics unchanged
+
+### Research Saturation Note (Feb 8 4AM)
+All major search queries now returning known sources. Literature collection reaching maturity.
+Shifting focus to:
+- Implementation analysis (Uniswap CCA, BEAST-MEV code)
+- Empirical data collection (RNBW auction, Base transactions)
+- Design work (ZK clearing, multi-provider interface)
+- Hegotá proposal preparation
