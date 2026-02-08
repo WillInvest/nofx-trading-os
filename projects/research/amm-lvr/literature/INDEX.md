@@ -258,6 +258,40 @@
 
 ---
 
+## New Additions (2026-02-08)
+
+### A Derivative Pricing Perspective on Liquidity Tokens in CPMMs (Bichuch & Feinstein, 2026) ⭐ NEW
+- **arXiv**: 2409.11339
+- **URL**: https://arxiv.org/abs/2409.11339
+- **Authors**: Maxim Bichuch, Zachary Feinstein
+- **Revised**: January 23, 2026 (v4)
+- **Key contribution**: Treats LP tokens as derivative positions; derives Black-Scholes-like pricing/hedging formulas
+- **Core insights**:
+  - LP token should be valued as derivative of underlying assets
+  - Under risk-neutral pricing, hedged position grows at risk-free rate
+  - Prevailing on-chain LP token price doesn't reflect this (mispriced!)
+  - Method to calibrate "implied volatility" from LP token behavior
+  - Novel AMM design considerations from derivative-pricing perspective
+- **Relevance**: Provides rigorous valuation framework for LP positions; could inform sophisticated hedging strategies
+- **Connection**: Complements LVR theory by giving LP a proper derivative pricing lens
+
+### Modeling Loss-Versus-Rebalancing via Continuous-Installment Options (Singh et al., 2025) ⭐ NEW
+- **arXiv**: 2508.02971
+- **URL**: https://arxiv.org/abs/2508.02971
+- **Author**: Srisht Fateh Singh et al.
+- **Date**: August 5, 2025
+- **Key contribution**: Models CFAMM position as portfolio of exotic options (perpetual American continuous-installment options)
+- **Core insights**:
+  - **LVR = Theta of embedded CI option** (formally proven!)
+  - AMM's adverse selection cost is identical to time decay of at-the-money CI option
+  - Derives liquidity profiles that achieve approximately constant LVR over arbitrary time windows
+  - Provides practical framework for estimating future adverse-selection costs
+  - Method to calibrate constant volatility from implied vol term structure
+- **Implication**: LP can now choose position parameters to target specific, predictable LVR
+- **Relevance**: Major theoretical advancement — connects LVR rigorously to options theory; actionable for position optimization
+
+---
+
 ## New Additions (2026-02-07)
 
 ### Defensive Rebalancing for Automated Market Makers (Herlihy, 2026) ⭐ NEW
@@ -360,11 +394,76 @@
   - 40min median latency for root cause, 59min for executable PoC
 - **Relevance**: Tangential — attack detection/response; not directly about LVR but useful for security
 
+### DeXposure-FM: Time-series Graph Foundation Model for DeFi Credit Exposure (He et al., 2026) ⭐ NEW
+- **arXiv**: 2602.03981
+- **URL**: https://arxiv.org/abs/2602.03981
+- **Date**: February 3, 2026
+- **Key contribution**: First foundation model for DeFi inter-protocol credit exposure forecasting
+- **Core insights**:
+  - Graph-tabular encoder trained on 43.7M data entries across 4,300+ protocols
+  - Enables protocol-level systemic importance scoring
+  - Sector-level spillover and concentration metrics
+  - Outperforms SOTA graph neural networks on forecasting benchmarks
+- **Model**: https://huggingface.co/EVIEHub/DeXposure-FM
+- **Code**: https://github.com/EVIEHub/DeXposure-FM
+- **Relevance**: Tangential — systemic risk monitoring; could inform LP risk management for cross-protocol exposure
+
+---
+
+## New Additions (2026-02-08, Update #2)
+
+### Automated Liquidity: Market Impact, Cycles, and De-pegging Risk (Meister, 2026) ⭐ NEW
+- **arXiv**: 2601.11375
+- **URL**: https://arxiv.org/abs/2601.11375
+- **Author**: Bernhard Meister
+- **Date**: January 16, 2026
+- **Key contribution**: Novel thermodynamic perspective on CPMMs
+- **Core insights**:
+  - **CPMM as Carnot engine**: Multi-phase cycle where one phase = liquidity taker swap, another = LP deposit/withdrawal
+  - **Market impact for optimal-growth LPs**: Derives square-root impact for random walk, extends to fractional O-U processes
+  - **Breaks with linearized liquidity models** used in most DEXs
+  - **Stablecoin de-pegging as catastrophe risk**: Links default odds to catastrophe bond pricing
+- **Relevance**: Provides thermodynamic lens on AMM efficiency; suggests linearized models underestimate impact
+- **Connection to LVR**: The "entropy leak" concept maps to LVR — LPs are under-compensated for variance drag
+
 ---
 
 ## Industry Developments
 
-### Uniswap CCA on Base (February 2026) ⭐ NEW
+### Whetstone Research / Doppler Protocol (February 2026) ⭐ NEW
+- **URL**: https://whetstone.cc / https://doppler.lol
+- **Funding**: $9M Seed led by Pantera Capital (Variant, Figment, Coinbase Ventures)
+- **Founder**: Austin Adams (former Uniswap Labs, author of am-AMM paper)
+- **Key contribution**: Price discovery and liquidity bootstrapping protocol on Uniswap ecosystem
+- **Core features**:
+  - **Price discovery auctions** designed to limit sniper impact
+  - **Protocol-owned liquidity** from day 1
+  - Compresses token deployment, vesting, liquidity bootstrapping into single interface
+  - Integrated with aggregators, routers, explorers
+- **Stats**: 40,000+ assets created daily, $1.5B+ value, $1B+ cumulative volume
+- **Business model**: Trading fees on all assets created, regardless of trading venue
+- **Relevance**: Austin Adams bringing am-AMM theoretical work to production; validates batch auction concepts
+- **Connection to LVR**: Fair launch mechanism reduces initial MEV extraction; could extend to continuous trading
+
+### Sorella Labs Funding Update (February 2026)
+- **Source**: SEC Filing (Feb 2, 2026)
+- **New funding**: $5.2M (10 investors; $5.5M total offering)
+- **Total raised**: $12.4M
+- **Implication**: Continued investment in Angstrom development; expanding team
+- **Relevance**: Confirms industry confidence in hook-based MEV protection approach
+
+### Bitwise Files S-1 for Uniswap ETF (February 2026) ⭐ NEW
+- **Source**: SEC S-1 Filing (Feb 6, 2026)
+- **URL**: https://www.hokanews.com/2026/02/defi-goes-wall-street-bitwise-files-for.html
+- **Key development**: First direct attempt to package DEX exposure in traditional ETF format
+- **Implications**:
+  - Signals institutional appetite for DeFi protocol exposure
+  - If approved, validates Uniswap as institutional-grade asset
+  - Regulatory scrutiny will focus on governance, decentralization, smart contract risks
+  - Could accelerate similar filings for other DeFi protocols
+- **Relevance**: While not directly about LVR, institutional adoption of Uniswap increases importance of LP protection mechanisms — funds allocating to UNI ETF will care about LP profitability
+
+### Uniswap CCA on Base (February 2026)
 - **Source**: https://www.ainvest.com/news/uniswap-cca-base-game-changer-chain-token-launches-2601/
 - **What it is**: Continuous Clearing Auctions for token launches
 - **Mechanism**:

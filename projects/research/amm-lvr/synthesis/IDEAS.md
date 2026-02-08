@@ -356,3 +356,158 @@ The TxRay paper's "Anyone-Can-Take" (ACT) taxonomy is relevant:
 - Implication: AMMs need proactive defense, not just reactive
 
 **Connection**: Both LVR and exploits arise from deterministic, permissionless execution. FM-AMM/batching address LVR; could similar approaches help with exploit defense?
+
+### DeXposure-FM (2026) — Credit Exposure Modeling ⭐ NEW
+
+The DeXposure-FM paper introduces a foundation model for inter-protocol credit exposure. While not directly about LVR, it's relevant for:
+
+**Idea 16: Cross-Protocol LVR Cascade Analysis**
+- LVR extracted from one AMM can trigger liquidations or depegs in connected protocols
+- DeXposure-style modeling could predict LVR contagion paths
+- Example: Large arb on WETH-USDC pool → USDC briefly deviates from peg → Triggers liquidations in lending protocols using that AMM price as oracle
+- Could inform "systemic LVR" beyond single-pool analysis
+
+**Practical application**:
+- Use DeXposure-FM to identify protocols most exposed to AMM price shocks
+- Priority for LVR mitigation should include systemically important pools
+- Could weight LVR mitigation investment by protocol centrality score
+
+---
+
+## New Insights (2026-02-08)
+
+### From Singh et al. (2025) — LVR = Theta ⭐ MAJOR THEORETICAL ADVANCE
+
+The continuous-installment option framework provides actionable LP optimization:
+
+**Idea 17: Constant-LVR LP Vaults**
+- Use Singh's calibration method to set position parameters
+- Target specific LVR rate (e.g., 5% annualized)
+- Boundaries automatically adjust to maintain constant theta
+- Users know exactly what adverse selection cost to expect
+- Implementation: Vault rebalances positions to maintain constant-LVR profile
+
+**Idea 18: LVR Insurance Pricing via Options**
+- Now that LVR = theta is proven, can price LVR insurance accurately
+- Sell "LVR protection" as an options product
+- Premium = theta of CI option portfolio
+- Could create structured products: "LP + LVR hedge = risk-free rate + fees"
+
+**Idea 19: Term-Structure-Informed Dynamic Fees**
+- Use implied vol term structure to forecast near-term volatility
+- Front of curve steep? → High short-term vol expected → Raise fees
+- Curve flat/inverted? → Low vol expected → Lower fees
+- More sophisticated than spot vol estimation
+
+### From Bichuch & Feinstein (2026) — LP Token Mispricing
+
+**Key finding**: On-chain LP token prices ≠ risk-neutral derivative valuation
+
+**Idea 20: LP Token Arbitrage Strategy**
+- If LP tokens are mispriced vs. derivative value:
+  - Underpriced: Buy LP token, delta-hedge → earn alpha
+  - Overpriced: Sell LP token, reverse-hedge → earn alpha
+- Requires liquid secondary market for LP tokens
+- Could inform LP token lending/borrowing rates
+
+**Idea 21: Implied LP Volatility as Signal**
+- Back out σ_implied from LP token market prices
+- If σ_implied > realized vol → LPs are overpaying for risk
+- If σ_implied < realized vol → LPs are underpaying (cheap protection)
+- Could use as trading signal or for dynamic fee adjustment
+
+### Combined Framework Idea
+
+**Idea 22: Full Greeks Dashboard for LPs**
+- Display all LP Greeks (Δ, Γ, θ, ν) in real-time
+- θ = estimated LVR rate (from Singh model)
+- Γ = hedge ratio for gamma neutrality
+- ν = exposure to vol changes
+- Helps LPs make informed decisions about position management
+
+**Idea 23: Automated LP Hedging Protocol**
+- Vault that automatically hedges LP Greeks
+- Delta-hedge with perps (minimize Δ)
+- Gamma-hedge with options/power perps (minimize Γ)
+- Result: Pure fee exposure with minimized LVR
+- Premium over raw LP: hedging cost recaptured from better risk-adjusted returns
+
+---
+
+## New Insights (2026-02-08, Update #2)
+
+### From Meister (2026) — Thermodynamic AMM Framework ⭐ NOVEL PERSPECTIVE
+
+The "Automated Liquidity" paper provides a completely different lens on AMM mechanics:
+
+**Core concept**: CPMM as a multi-phase Carnot engine
+
+| AMM Action | Thermodynamic Analog |
+|------------|---------------------|
+| Liquidity taker swap | Work extraction phase |
+| LP deposit/withdrawal | Reservoir coupling phase |
+| Arbitrage flow | Entropy leak (irreversibility) |
+| Fee income | Heat recovery |
+
+**Why this matters**:
+- Current AMM models assume linearized liquidity — this paper derives **square-root market impact** as optimal for random walk prices
+- Extends to fractional Ornstein-Uhlenbeck processes (better models for mean-reverting assets)
+- **Entropy leak = LVR**: LPs are under-compensated for variance drag
+
+**Idea 24: Thermodynamic Efficiency Metric**
+- Measure AMM "efficiency" as ratio of work extracted to entropy generated
+- η = (Fee Income) / (Fee Income + LVR)
+- Efficient AMM → η → 1 (all value captured as fees)
+- Current CPMMs: η ≈ 0.3-0.5 typical (significant LVR leakage)
+- Could use as benchmarking metric across AMM designs
+
+**Idea 25: Non-Linear Impact Curves**
+- Meister derives that linearized price curves are sub-optimal
+- Square-root impact better matches information content of trades
+- Could design AMM with square-root invariant: x^α · y^β = k where α, β ≠ 1
+- Trade-off: More complex, but potentially lower LVR
+
+**Idea 26: Catastrophe-Theoretic Depeg Insurance**
+- Stablecoin depeg as "catastrophe" in dynamical systems sense
+- Can price depeg insurance using catastrophe bond math
+- Application: LP vaults that auto-exit when depeg risk elevates
+- Uses growth optimization framework rather than Black-Scholes
+
+### Whetstone/Doppler Implications
+
+Austin Adams (am-AMM paper author) bringing theory to production:
+
+**Idea 27: am-AMM → Doppler Pipeline**
+- Doppler's price discovery auctions are practical implementation of am-AMM concepts
+- Currently for token launches; could extend to continuous trading
+- 40K+ daily assets = massive real-world data for mechanism design research
+- Empirical validation: "sniping prevention" = MEV mitigation = reduced LVR
+
+**Idea 28: Integrated Token Lifecycle LVR Management**
+- Launch: Use Doppler/CCA-style batch auctions (fair initial price)
+- Growth: Transition to FM-AMM-style continuous batch trading
+- Maturity: Standard AMM with dynamic fees (established price discovery)
+- Each phase has appropriate LVR mitigation for market maturity
+
+### Combined Framework Insight
+
+All recent theoretical advances converge on treating LP positions as derivatives:
+
+| Paper | LP as... | LVR = ... |
+|-------|----------|-----------|
+| Singh et al. | CI option portfolio | Theta (θ) |
+| Bichuch & Feinstein | Derivative position | Hedging cost |
+| Meister | Heat engine | Entropy leak |
+| Milionis et al. | Rebalancing strategy | Trading cost |
+
+**Meta-insight**: LVR is fundamentally about **information asymmetry pricing**. All frameworks capture the same phenomenon from different angles:
+- Options: Time decay (theta)
+- Thermodynamics: Irreversibility (entropy)
+- Market microstructure: Adverse selection (toxic flow)
+- Mechanism design: Stale price exploitation
+
+**Idea 29: Unified LVR Theory**
+- Develop single framework that subsumes all perspectives
+- θ (options) ≈ S (entropy) ≈ AS (adverse selection) under appropriate mappings
+- Could lead to more general LVR mitigation principles
+- Research direction: Category-theoretic unification?
