@@ -1,0 +1,336 @@
+{
+  "timestamp": "2026-02-22T14:13:48.034014+00:00",
+  "block_range": [
+    24512635,
+    24512935
+  ],
+  "stablecoin_exchange_flows": {
+    "usdt_inflow_usd": 17632791.54,
+    "usdt_outflow_usd": 4013741.24,
+    "usdc_inflow_usd": 0,
+    "usdc_outflow_usd": 0,
+    "net_flow_usd": 13619050.29,
+    "signal": "selling_pressure"
+  },
+  "whale_transfers": {
+    "ETH": {
+      "large_transfers": [],
+      "net_exchange_flow": -11664488.96
+    },
+    "AAVE": {
+      "large_transfers": [
+        {
+          "tx": "0x4c3a2546188faee7...",
+          "from": "0x215091c6...",
+          "to": "0x28c6c062...",
+          "value": 999.9749,
+          "usd": 119996.99,
+          "direction": "to_exchange"
+        }
+      ],
+      "net_exchange_flow": 119996.99,
+      "count": 1
+    },
+    "LINK": {
+      "large_transfers": [
+        {
+          "tx": "0xa143e2ac795a6e0f...",
+          "from": "0x9b5ba753...",
+          "to": "0x059ff12b...",
+          "value": 30064.5763,
+          "usd": 270581.19,
+          "direction": null
+        },
+        {
+          "tx": "0x7acd6d38f5dfeea1...",
+          "from": "0x00000000...",
+          "to": "0x79146637...",
+          "value": 18513.9341,
+          "usd": 166625.41,
+          "direction": null
+        },
+        {
+          "tx": "0x7acd6d38f5dfeea1...",
+          "from": "0x79146637...",
+          "to": "0xfbd4cdb4...",
+          "value": 18513.9341,
+          "usd": 166625.41,
+          "direction": null
+        },
+        {
+          "tx": "0x3fc60add80d9fc1f...",
+          "from": "0x059ff12b...",
+          "to": "0x9b5ba753...",
+          "value": 30064.5763,
+          "usd": 270581.19,
+          "direction": null
+        },
+        {
+          "tx": "0xdac9395455f3fcd5...",
+          "from": "0x9b5ba753...",
+          "to": "0x059ff12b...",
+          "value": 30064.5763,
+          "usd": 270581.19,
+          "direction": null
+        },
+        {
+          "tx": "0x1c82ae098a7e4d92...",
+          "from": "0x059ff12b...",
+          "to": "0x9b5ba753...",
+          "value": 30064.5763,
+          "usd": 270581.19,
+          "direction": null
+        },
+        {
+          "tx": "0xa355d00d90db263d...",
+          "from": "0x9b5ba753...",
+          "to": "0x059ff12b...",
+          "value": 30064.5763,
+          "usd": 270581.19,
+          "direction": null
+        },
+        {
+          "tx": "0x6afaadd82f11f2d9...",
+          "from": "0x059ff12b...",
+          "to": "0x9b5ba753...",
+          "value": 30064.5763,
+          "usd": 270581.19,
+          "direction": null
+        },
+        {
+          "tx": "0x5c63d4dabd9f9889...",
+          "from": "0x9b5ba753...",
+          "to": "0x059ff12b...",
+          "value": 30064.5763,
+          "usd": 270581.19,
+          "direction": null
+        },
+        {
+          "tx": "0xe54655b86ea7bd75...",
+          "from": "0x059ff12b...",
+          "to": "0x9b5ba753...",
+          "value": 30064.5763,
+          "usd": 270581.19,
+          "direction": null
+        },
+        {
+          "tx": "0xbfe5f2796ec9e3b6...",
+          "from": "0x9b5ba753...",
+          "to": "0x059ff12b...",
+          "value": 30064.5763,
+          "usd": 270581.19,
+          "direction": null
+        },
+        {
+          "tx": "0x9d4f9458bd1cb863...",
+          "from": "0x059ff12b...",
+          "to": "0x9b5ba753...",
+          "value": 30064.5763,
+          "usd": 270581.19,
+          "direction": null
+        },
+        {
+          "tx": "0x9b64f61aec6c6aa6...",
+          "from": "0x9b5ba753...",
+          "to": "0x059ff12b...",
+          "value": 30064.5763,
+          "usd": 270581.19,
+          "direction": null
+        }
+      ],
+      "net_exchange_flow": 0,
+      "count": 13
+    },
+    "UNI": {
+      "large_transfers": [],
+      "net_exchange_flow": 0,
+      "count": 0
+    },
+    "LDO": {
+      "large_transfers": [
+        {
+          "tx": "0xdfc6fcf047a294cb...",
+          "from": "0x431696ee...",
+          "to": "0x96dfbd28...",
+          "value": 85866.8661,
+          "usd": 171733.73,
+          "direction": null
+        }
+      ],
+      "net_exchange_flow": 0,
+      "count": 1
+    },
+    "CRV": {
+      "large_transfers": [
+        {
+          "tx": "0x1750a0b5192bdcf3...",
+          "from": "0x8fa129f8...",
+          "to": "0xf8191d98...",
+          "value": 270342.0,
+          "usd": 135171.0,
+          "direction": null
+        }
+      ],
+      "net_exchange_flow": 0,
+      "count": 1
+    },
+    "PENDLE": {
+      "large_transfers": [
+        {
+          "tx": "0xd9071cdcd05a5413...",
+          "from": "0x8a850efb...",
+          "to": "0x28c6c062...",
+          "value": 66754.93,
+          "usd": 200264.79,
+          "direction": "to_exchange"
+        },
+        {
+          "tx": "0x8416642162f733f1...",
+          "from": "0x65798fe5...",
+          "to": "0x187c9fbf...",
+          "value": 68432.277,
+          "usd": 205296.83,
+          "direction": null
+        },
+        {
+          "tx": "0xa9911d889b717fdd...",
+          "from": "0x031dde93...",
+          "to": "0x28c6c062...",
+          "value": 48861.07,
+          "usd": 146583.21,
+          "direction": "to_exchange"
+        }
+      ],
+      "net_exchange_flow": 346848.0,
+      "count": 3
+    },
+    "ARB": {
+      "large_transfers": [],
+      "net_exchange_flow": 0,
+      "count": 0
+    },
+    "ENA": {
+      "large_transfers": [
+        {
+          "tx": "0x90d5e09c1f1e3e3b...",
+          "from": "0xa5e52507...",
+          "to": "0x4defb3cb...",
+          "value": 799706.5,
+          "usd": 399853.25,
+          "direction": null
+        },
+        {
+          "tx": "0x6c5f7cfd54babc30...",
+          "from": "0x15f46551...",
+          "to": "0x4defb3cb...",
+          "value": 285230.7274,
+          "usd": 142615.36,
+          "direction": null
+        },
+        {
+          "tx": "0xc995143c2057102b...",
+          "from": "0xe14a46dd...",
+          "to": "0x0c36fda8...",
+          "value": 657181.8404,
+          "usd": 328590.92,
+          "direction": null
+        },
+        {
+          "tx": "0x577aef211c47ddd7...",
+          "from": "0x4defb3cb...",
+          "to": "0x0c36fda8...",
+          "value": 731538.6948,
+          "usd": 365769.35,
+          "direction": null
+        },
+        {
+          "tx": "0x085231e6d2f0af88...",
+          "from": "0x28c6c062...",
+          "to": "0xa7a5c760...",
+          "value": 238540.42,
+          "usd": 119270.21,
+          "direction": "from_exchange"
+        },
+        {
+          "tx": "0x71edcb74930f8c5e...",
+          "from": "0xa7a5c760...",
+          "to": "0xb334a61a...",
+          "value": 238540.42,
+          "usd": 119270.21,
+          "direction": null
+        },
+        {
+          "tx": "0x1a2dae9b5ac9fae5...",
+          "from": "0x4655b6a1...",
+          "to": "0x40e9b406...",
+          "value": 204715.1313,
+          "usd": 102357.57,
+          "direction": null
+        },
+        {
+          "tx": "0x4620e9adf4186dc5...",
+          "from": "0x40e9b406...",
+          "to": "0x33f5d91c...",
+          "value": 221157.4832,
+          "usd": 110578.74,
+          "direction": null
+        },
+        {
+          "tx": "0x8e9bf83f1b9efc4d...",
+          "from": "0x4655b6a1...",
+          "to": "0x3189fb72...",
+          "value": 2000166.2097,
+          "usd": 1000083.1,
+          "direction": null
+        },
+        {
+          "tx": "0x28f0d0a22732a3e7...",
+          "from": "0x3189fb72...",
+          "to": "0x33f5d91c...",
+          "value": 2000166.2097,
+          "usd": 1000083.1,
+          "direction": null
+        },
+        {
+          "tx": "0xf0c97838836ff9e5...",
+          "from": "0x33f5d91c...",
+          "to": "0x28c6c062...",
+          "value": 2221323.6928,
+          "usd": 1110661.85,
+          "direction": "to_exchange"
+        },
+        {
+          "tx": "0x90f60c3534ad5b0b...",
+          "from": "0x28c6c062...",
+          "to": "0x8afd8542...",
+          "value": 480889.0,
+          "usd": 240444.5,
+          "direction": "from_exchange"
+        }
+      ],
+      "net_exchange_flow": 750947.14,
+      "count": 12
+    },
+    "ZRO": {
+      "large_transfers": [],
+      "net_exchange_flow": 0,
+      "count": 0
+    }
+  },
+  "gas": {
+    "avg_gwei": 0.0508,
+    "min_gwei": 0.0398,
+    "max_gwei": 0.073,
+    "trend": "rising"
+  },
+  "exchange_eth_reserves": {
+    "total_eth": 198881.2877,
+    "change_1h": -5891.156
+  },
+  "stablecoin_supply": {
+    "usdt": 96121766396.86,
+    "usdt_change": 0.0,
+    "usdc": 52292450256.43,
+    "usdc_change": 331703.89
+  }
+}

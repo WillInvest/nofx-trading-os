@@ -1,26 +1,8 @@
 {
-  "timestamp": "2026-02-22T14:25:04.764584+00:00",
+  "timestamp": "2026-02-22T14:30:03.054312+00:00",
   "blocks_scanned": 50,
-  "total_swaps": 45,
+  "total_swaps": 55,
   "large_swaps": [
-    {
-      "pool": "uni-v3-eth-usdc",
-      "block": 24512954,
-      "tx_hash": "0x9d0d2064...",
-      "amount0": -542149866406,
-      "amount1": 278317700000000000000,
-      "usd_value": 551069.05,
-      "is_large": true
-    },
-    {
-      "pool": "uni-v3-eth-usdc",
-      "block": 24512954,
-      "tx_hash": "0x8b42fc2d...",
-      "amount0": 496785203987,
-      "amount1": -254793381587673792040,
-      "usd_value": 504490.9,
-      "is_large": true
-    },
     {
       "pool": "uni-v3-eth-usdc",
       "block": 24512973,
@@ -50,6 +32,15 @@
     },
     {
       "pool": "uni-v3-eth-usdc",
+      "block": 24513006,
+      "tx_hash": "0x78b11756...",
+      "amount0": -128978561139,
+      "amount1": 66189359697572108422,
+      "usd_value": 131054.93,
+      "is_large": true
+    },
+    {
+      "pool": "uni-v3-eth-usdc",
       "block": 24512978,
       "tx_hash": "0xaf160e27...",
       "amount0": 105923851142,
@@ -59,20 +50,11 @@
     },
     {
       "pool": "uni-v3-eth-usdc",
-      "block": 24512958,
-      "tx_hash": "0x87aa2b1d...",
-      "amount0": -101067978590,
-      "amount1": 51853356776992063488,
-      "usd_value": 102669.65,
-      "is_large": true
-    },
-    {
-      "pool": "uni-v3-eth-usdc",
-      "block": 24512964,
-      "tx_hash": "0xac39cb27...",
-      "amount0": -93643119091,
-      "amount1": 48060149424090986421,
-      "usd_value": 95159.1,
+      "block": 24513002,
+      "tx_hash": "0x2b5d3340...",
+      "amount0": -71056733258,
+      "amount1": 36448247477095064908,
+      "usd_value": 72167.53,
       "is_large": true
     },
     {
@@ -95,6 +77,15 @@
     },
     {
       "pool": "uni-v3-eth-usdc",
+      "block": 24512996,
+      "tx_hash": "0xb455a079...",
+      "amount0": -57311201289,
+      "amount1": 29386073122342928384,
+      "usd_value": 58184.42,
+      "is_large": true
+    },
+    {
+      "pool": "uni-v3-eth-usdc",
       "block": 24512976,
       "tx_hash": "0xff982456...",
       "amount0": 57202035029,
@@ -112,8 +103,8 @@
       "is_large": true
     }
   ],
-  "large_swap_count": 12,
-  "swap_volume_eth": 1352.0798,
-  "net_buy_sell_eth": -68.1482,
+  "large_swap_count": 11,
+  "swap_volume_eth": 881.2686,
+  "net_buy_sell_eth": -4.5587,
   "error": null
 }

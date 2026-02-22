@@ -1,0 +1,46 @@
+{
+  "scan_mode": false,
+  "active_coin": "ETH",
+  "timestamp": "2026-02-22T14:31:09Z",
+  "valid_until": "2026-02-22T15:31:47.580973+00:00",
+  "brain": "MiniMax Trading Brain",
+  "position_review": {
+    "symbol": "ETH",
+    "action": "hold",
+    "confidence": 0,
+    "reasoning": "No existing position to review"
+  },
+  "new_candidate": {
+    "symbol": "ETH",
+    "action": "open_long",
+    "confidence": 0,
+    "entry_price": null,
+    "stop_loss": null,
+    "take_profit": null,
+    "size_usd": 0,
+    "leverage": 0
+  },
+  "market_context": "Bearish setup confirmed: price dropped $30 from $1980 to $1950 with high volume selloff (28k at 08:00). Price below daily SMA 20 (1949 < 2016). 1H EMA bearish cross (1967 < 1970). MACD histogram negative (-3.1). On-chain shows clear distribution: $13.6M stablecoin net selling, whales moving -$11.6M OUT of exchanges, ETH reserves down 5,891 ETH in 1h. Gas rising. Only 1 confirming signal (RSI oversold at 32), but rules: oversold can get MORE oversold in downtrends. Need 2+ confirming signals for ",
+  "strategies": [
+    {
+      "id": "brain_decision",
+      "name": "MiniMax Brain Decision",
+      "type": "no_trade",
+      "priority": 1,
+      "allocation_pct": 100,
+      "allocation_usd": 0,
+      "description": "Bearish setup confirmed: price dropped $30 from $1980 to $1950 with high volume selloff (28k at 08:00). Price below daily SMA 20 (1949 < 2016). 1H EMA bearish cross (1967 < 1970). MACD histogram negat",
+      "symbol": "ETH",
+      "params": {
+        "direction": "NONE",
+        "leverage": 0,
+        "entry_price": null,
+        "entry_type": "market",
+        "stop_loss_pct": null,
+        "take_profit_pct": null
+      },
+      "rationale": "Bearish setup confirmed: price dropped $30 from $1980 to $1950 with high volume selloff (28k at 08:00). Price below daily SMA 20 (1949 < 2016). 1H EMA bearish cross (1967 < 1970). MACD histogram negative (-3.1). On-chain shows clear distribution: $13.6M stablecoin net selling, whales moving -$11.6M OUT of exchanges, ETH reserves down 5,891 ETH in 1h. Gas rising. Only 1 confirming signal (RSI oversold at 32), but rules: oversold can get MORE oversold in downtrends. Need 2+ confirming signals for any trade. With strong bearish evidence across all 3 pillars (price action, technicals, on-chain), no_trade is correct.",
+      "exit_condition": "Monitor for exit conditions"
+    }
+  ]
+}

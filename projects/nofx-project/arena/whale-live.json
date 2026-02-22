@@ -1,25 +1,7 @@
 {
-  "timestamp": "2026-02-22T14:25:03.608258+00:00",
+  "timestamp": "2026-02-22T14:30:01.837924+00:00",
   "blocks_scanned": 50,
   "whale_txs": [
-    {
-      "hash": "0x80c643c4...",
-      "block": 24512960,
-      "from": "0x38c385df...",
-      "to": "0x37c86bd0...",
-      "value_eth": 5733.4599,
-      "from_exchange": false,
-      "to_exchange": false
-    },
-    {
-      "hash": "0x9d0d2064...",
-      "block": 24512954,
-      "from": "0xd7140166...",
-      "to": "0x66a9893c...",
-      "value_eth": 292.966,
-      "from_exchange": false,
-      "to_exchange": false
-    },
     {
       "hash": "0x6613fba2...",
       "block": 24512968,
@@ -39,15 +21,6 @@
       "to_exchange": false
     },
     {
-      "hash": "0xf5d7be2a...",
-      "block": 24512943,
-      "from": "0xf72a532f...",
-      "to": "0x62425cd6...",
-      "value_eth": 200.0178,
-      "from_exchange": false,
-      "to_exchange": false
-    },
-    {
       "hash": "0xa8690fe3...",
       "block": 24512973,
       "from": "0x24b24587...",
@@ -57,11 +30,20 @@
       "to_exchange": false
     },
     {
-      "hash": "0xdf720ff9...",
-      "block": 24512952,
-      "from": "0xd8b6eda5...",
-      "to": "0xba3cb449...",
-      "value_eth": 133.8,
+      "hash": "0x83b820b5...",
+      "block": 24512989,
+      "from": "0xbc3a058d...",
+      "to": "0x11111112...",
+      "value_eth": 131.5478,
+      "from_exchange": false,
+      "to_exchange": false
+    },
+    {
+      "hash": "0xf6cb0980...",
+      "block": 24513002,
+      "from": "0xbcd98656...",
+      "to": "0x0003b5aa...",
+      "value_eth": 130.64,
       "from_exchange": false,
       "to_exchange": false
     },
@@ -75,8 +57,8 @@
       "to_exchange": false
     }
   ],
-  "whale_count": 8,
-  "whale_volume_eth": 7114.0289,
+  "whale_count": 6,
+  "whale_volume_eth": 1015.973,
   "exchange_flows": {
     "binance": -220.0587,
     "coinbase": 0,
@@ -87,24 +69,6 @@
   },
   "net_exchange_flow": -220.0587,
   "top_5_txs": [
-    {
-      "hash": "0x80c643c4...",
-      "block": 24512960,
-      "from": "0x38c385df...",
-      "to": "0x37c86bd0...",
-      "value_eth": 5733.4599,
-      "from_exchange": false,
-      "to_exchange": false
-    },
-    {
-      "hash": "0x9d0d2064...",
-      "block": 24512954,
-      "from": "0xd7140166...",
-      "to": "0x66a9893c...",
-      "value_eth": 292.966,
-      "from_exchange": false,
-      "to_exchange": false
-    },
     {
       "hash": "0x6613fba2...",
       "block": 24512968,
@@ -124,11 +88,29 @@
       "to_exchange": false
     },
     {
-      "hash": "0xf5d7be2a...",
-      "block": 24512943,
-      "from": "0xf72a532f...",
-      "to": "0x62425cd6...",
-      "value_eth": 200.0178,
+      "hash": "0xa8690fe3...",
+      "block": 24512973,
+      "from": "0x24b24587...",
+      "to": "0x66a9893c...",
+      "value_eth": 195.6875,
+      "from_exchange": false,
+      "to_exchange": false
+    },
+    {
+      "hash": "0x83b820b5...",
+      "block": 24512989,
+      "from": "0xbc3a058d...",
+      "to": "0x11111112...",
+      "value_eth": 131.5478,
+      "from_exchange": false,
+      "to_exchange": false
+    },
+    {
+      "hash": "0xf6cb0980...",
+      "block": 24513002,
+      "from": "0xbcd98656...",
+      "to": "0x0003b5aa...",
+      "value_eth": 130.64,
       "from_exchange": false,
       "to_exchange": false
     }

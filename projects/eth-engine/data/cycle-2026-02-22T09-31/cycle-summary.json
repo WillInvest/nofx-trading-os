@@ -1,0 +1,15 @@
+{
+  "cycle_id": "2026-02-22T09-31",
+  "timestamp": "2026-02-22T14:31:58Z",
+  "status": "executed",
+  "eth_price": 1949.95,
+  "decision": "hold",
+  "confidence": 0,
+  "position_after": {
+    "size": 0,
+    "entry": 0,
+    "pnl": 0
+  },
+  "balance": 0,
+  "error": null
+}
