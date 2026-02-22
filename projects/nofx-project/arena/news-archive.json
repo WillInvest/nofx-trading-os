@@ -222,5 +222,702 @@
     "url": "https://cryptoslate.com/election-betting-etfs-crypto-blast-radius/",
     "published": "2026-02-22",
     "scraped_at": "2026-02-22T04:10:26.999209+00:00"
+  },
+  {
+    "headline": "OpenClaw Discord Ban Signals Crypto Scam Risks",
+    "summary": "The ban on crypto discussion on OpenClaw's Discord highlights the ongoing threat of scams and manipulation within the AI and crypto space, potentially increasing risk aversion and impacting DeFi protocols reliant on AI.",
+    "impact": "bearish",
+    "importance": 3,
+    "tags": [
+      "eth",
+      "defi",
+      "ai",
+      "scams",
+      "regulation"
+    ],
+    "source": "CoinDesk",
+    "url": "https://www.coindesk.com/tech/2026/02/22/mentioning-bitcoin-or-crypto-on-ai-agent-openclaw-s-discord-will-get-you-banned",
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T05:40:16.465566+00:00"
+  },
+  {
+    "headline": "Investors Diversifying Beyond Bitcoin & Ethereum",
+    "summary": "Increased investor interest in alternative crypto assets suggests a potential shift in market demand, possibly impacting ETH's dominance and driving DeFi activity.",
+    "impact": "neutral",
+    "importance": 3,
+    "tags": [
+      "eth",
+      "defi",
+      "altcoins",
+      "market sentiment"
+    ],
+    "source": "CoinTelegraph",
+    "url": "https://cointelegraph.com/news/crypto-investors-explore-assets-bitcoin-ethereum-market-uncertainty-robinhood",
+    "published": "2024-02-22",
+    "scraped_at": "2026-02-22T05:59:54.231554+00:00"
+  },
+  {
+    "headline": "Robinhood's Kerbrat Highlights Investor Shift",
+    "summary": "Robinhood's data reinforces the trend of investors seeking exposure beyond the major cryptocurrencies, potentially reducing immediate ETH support.",
+    "impact": "bearish",
+    "importance": 4,
+    "tags": [
+      "eth",
+      "defi",
+      "robinhood",
+      "market adoption"
+    ],
+    "source": "CoinTelegraph",
+    "url": "https://cointelegraph.com/news/crypto-investors-explore-assets-bitcoin-ethereum-market-uncertainty-robinhood",
+    "published": "2024-02-22",
+    "scraped_at": "2026-02-22T05:59:54.231564+00:00"
+  },
+  {
+    "headline": "Market Uncertainty Fuels Asset Exploration",
+    "summary": "Ongoing market volatility is driving investors to seek higher-risk, higher-reward assets, which could lead to capital rotation away from ETH.",
+    "impact": "bearish",
+    "importance": 2,
+    "tags": [
+      "eth",
+      "defi",
+      "market volatility",
+      "risk assets"
+    ],
+    "source": "CoinTelegraph",
+    "url": "https://cointelegraph.com/news/crypto-investors-explore-assets-bitcoin-ethereum-market-uncertainty-robinhood",
+    "published": "2024-02-22",
+    "scraped_at": "2026-02-22T05:59:54.231565+00:00"
+  },
+  {
+    "headline": "Investors Seeking Alternatives to Bitcoin & Ethereum",
+    "summary": "Increased investor interest in exploring crypto assets beyond Bitcoin and Ethereum suggests a potential shift in demand, possibly benefiting altcoins and DeFi projects.",
+    "impact": "neutral",
+    "importance": 3,
+    "tags": [
+      "eth",
+      "altcoins",
+      "defi",
+      "market sentiment"
+    ],
+    "source": "CoinTelegraph",
+    "url": "https://cointelegraph.com/news/crypto-investors-explore-assets-bitcoin-ethereum-market-uncertainty-robinhood",
+    "published": "2024-02-22",
+    "scraped_at": "2026-02-22T06:10:05.021683+00:00"
+  },
+  {
+    "headline": "Robinhood's Kerbrat Highlights Investor Diversification",
+    "summary": "Robinhood's data confirms a trend of investors seeking diversification, potentially leading to increased trading volume across the crypto space – including ETH.",
+    "impact": "neutral",
+    "importance": 2,
+    "tags": [
+      "eth",
+      "robinhood",
+      "trading volume"
+    ],
+    "source": "CoinTelegraph",
+    "url": "https://cointelegraph.com/news/crypto-investors-explore-assets-bitcoin-ethereum-market-uncertainty-robinhood",
+    "published": "2024-02-22",
+    "scraped_at": "2026-02-22T06:10:05.021693+00:00"
+  },
+  {
+    "headline": "Market Uncertainty Drives Asset Exploration",
+    "summary": "The ongoing market uncertainty is a key driver behind investor exploration of alternative crypto assets, creating opportunity for ETH within a broader DeFi context.",
+    "impact": "neutral",
+    "importance": 4,
+    "tags": [
+      "eth",
+      "defi",
+      "market volatility"
+    ],
+    "source": "CoinTelegraph",
+    "url": "https://cointelegraph.com/news/crypto-investors-explore-assets-bitcoin-ethereum-market-uncertainty-robinhood",
+    "published": "2024-02-22",
+    "scraped_at": "2026-02-22T06:10:05.021696+00:00"
+  },
+  {
+    "headline": "Yen Carry Trade Unwind Fuels Bitcoin Sell-Off",
+    "summary": "The unwinding of a yen-funded carry trade, triggered by a surging yen, is forcing margin calls and impacting Bitcoin, which is experiencing correlated selling pressure.",
+    "impact": "bearish",
+    "importance": 4,
+    "tags": [
+      "BTC",
+      "carry trade",
+      "margin calls",
+      "risk assets"
+    ],
+    "source": "CryptoSlate",
+    "url": "https://cryptoslate.com/yen-carry-trade-unwind-margin-call-bitcoin-btc/",
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T06:20:18.593734+00:00"
+  },
+  {
+    "headline": "Bitcoin Volatility Linked to Yen Strength",
+    "summary": "Increased volatility in Bitcoin is directly correlated with the broader risk-off sentiment driven by the yen carry unwind.",
+    "impact": "bearish",
+    "importance": 3,
+    "tags": [
+      "BTC",
+      "volatility",
+      "risk sentiment"
+    ],
+    "source": "CryptoSlate",
+    "url": "https://cryptoslate.com/yen-carry-trade-unwind-margin-call-bitcoin-btc/",
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T06:20:18.593742+00:00"
+  },
+  {
+    "headline": "Risk Asset Deleveraging Impacts Crypto",
+    "summary": "The broader market deleveraging, initiated by the yen surge, is spilling over into crypto markets, particularly Bitcoin.",
+    "impact": "bearish",
+    "importance": 2,
+    "tags": [
+      "risk assets",
+      "leverage",
+      "crypto markets"
+    ],
+    "source": "CryptoSlate",
+    "url": "https://cryptoslate.com/yen-carry-trade-unwind-margin-call-bitcoin-btc/",
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T06:20:18.593743+00:00"
+  },
+  {
+    "headline": "Bitdeer Sells All BTC, Zero Holdings",
+    "summary": "Bitdeer's complete divestment from BTC signals reduced demand for Bitcoin and potentially increased ETH supply, impacting Bitcoin's dominance and potentially supporting ETH's relative value.",
+    "impact": "bearish",
+    "importance": 4,
+    "tags": [
+      "BTC",
+      "ETH",
+      "Bitcoin",
+      "Mining",
+      "DeFi",
+      "Market Sentiment"
+    ],
+    "source": "CoinTelegraph",
+    "url": "https://cointelegraph.com/news/bitdeer-sells-bitcoin-treasury-zero-holdings",
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T08:20:28.501043+00:00"
+  },
+  {
+    "headline": "BTC Miner Shift – Reduced Bitcoin Demand",
+    "summary": "This move highlights a potential shift in mining strategy away from Bitcoin, which could lead to increased ETH mining rewards and, if demand remains stable, upward pressure on ETH.",
+    "impact": "neutral",
+    "importance": 3,
+    "tags": [
+      "ETH",
+      "BTC",
+      "Mining",
+      "Rewards",
+      "DeFi"
+    ],
+    "source": "CoinTelegraph",
+    "url": "https://cointelegraph.com/news/bitdeer-sells-bitcoin-treasury-zero-holdings",
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T08:20:28.501050+00:00"
+  },
+  {
+    "headline": "Yen Surge Triggers Bitcoin Margin Calls",
+    "summary": "The unwinding of yen-funded carry trades is forcing margin calls across risk assets, including Bitcoin, potentially creating downward pressure on BTC and indirectly impacting ETH due to correlated risk sentiment.",
+    "impact": "bearish",
+    "importance": 4,
+    "tags": [
+      "Bitcoin",
+      "Carry Trade",
+      "Risk Sentiment",
+      "Deleveraging"
+    ],
+    "source": "CryptoSlate",
+    "url": "https://cryptoslate.com/yen-carry-trade-unwind-margin-call-bitcoin-btc/",
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T09:40:20.622897+00:00"
+  },
+  {
+    "headline": "Bitcoin Sell-Off Linked to Yen Strength",
+    "summary": "Bitcoin's price action is being driven by the broader risk-off environment caused by the yen's rapid appreciation and subsequent deleveraging.",
+    "impact": "bearish",
+    "importance": 3,
+    "tags": [
+      "Bitcoin",
+      "Currency",
+      "Macroeconomics",
+      "Risk"
+    ],
+    "source": "CryptoSlate",
+    "url": "https://cryptoslate.com/yen-carry-trade-unwind-margin-call-bitcoin-btc/",
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T09:40:20.622907+00:00"
+  },
+  {
+    "headline": "ETH Price Correlation to Bitcoin Remains Key",
+    "summary": "ETH's price movement will likely remain closely tied to Bitcoin's performance as investors react to the overall risk sentiment.",
+    "impact": "neutral",
+    "importance": 2,
+    "tags": [
+      "ETH",
+      "Bitcoin Correlation",
+      "Risk Sentiment"
+    ],
+    "source": "Internal Analysis",
+    "url": null,
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T09:40:20.622910+00:00"
+  },
+  {
+    "headline": "Bitcoin's Yield Shift Impacts Crypto",
+    "summary": "Bitcoin's performance mirroring rates products due to rising real yields is a significant shift, potentially drawing capital away from risk assets like ETH and impacting DeFi lending yields.",
+    "impact": "bearish",
+    "importance": 4,
+    "tags": [
+      "Bitcoin",
+      "Yields",
+      "Macro",
+      "ETH",
+      "DeFi"
+    ],
+    "source": "CryptoSlate",
+    "url": "https://cryptoslate.com/jobs-revisions-cpi-cools-bitcoin-trades-like-bond/",
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T10:21:34.122167+00:00"
+  },
+  {
+    "headline": "Rising Real Yields Pressure Crypto",
+    "summary": "Increased real yields incentivize investors to shift assets to bonds and other fixed-income investments, creating downward pressure on ETH.",
+    "impact": "bearish",
+    "importance": 3,
+    "tags": [
+      "Interest Rates",
+      "Asset Allocation",
+      "ETH",
+      "DeFi"
+    ],
+    "source": "CryptoSlate",
+    "url": "https://cryptoslate.com/jobs-revisions-cpi-cools-bitcoin-trades-like-bond/",
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T10:21:34.122175+00:00"
+  },
+  {
+    "headline": "Job Revisions & CPI Cool Down",
+    "summary": "The cooling of the US labor market and CPI data, while not directly impacting ETH, reinforces the broader macroeconomic narrative of lower inflation and potentially reduced risk appetite.",
+    "impact": "neutral",
+    "importance": 2,
+    "tags": [
+      "Macro",
+      "CPI",
+      "Jobs",
+      "ETH"
+    ],
+    "source": "CryptoSlate",
+    "url": "https://cryptoslate.com/jobs-revisions-cpi-cools-bitcoin-trades-like-bond/",
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T10:21:34.122176+00:00"
+  },
+  {
+    "headline": "Bitcoin Trades Like a Bond – Yields Drive Demand",
+    "summary": "The shift in Bitcoin's trading behavior, driven by rising real yields, suggests increased institutional interest and potentially reduced speculative demand for ETH, impacting DeFi yields.",
+    "impact": "bearish",
+    "importance": 4,
+    "tags": [
+      "bitcoin",
+      "yields",
+      "interest rates",
+      "macro"
+    ],
+    "source": "CryptoSlate",
+    "url": "https://cryptoslate.com/jobs-revisions-cpi-cools-bitcoin-trades-like-bond/",
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T10:30:37.747528+00:00"
+  },
+  {
+    "headline": "Job Revisions & CPI Cool – Reduced Inflation Pressure",
+    "summary": "Lower CPI data and revised job numbers indicate a slowdown in inflation, potentially leading to less aggressive Fed rate hikes and a more stable macroeconomic environment, which could benefit ETH’s correlation with risk assets.",
+    "impact": "neutral",
+    "importance": 3,
+    "tags": [
+      "macro",
+      "inflation",
+      "fed",
+      "risk assets"
+    ],
+    "source": "CryptoSlate",
+    "url": "https://cryptoslate.com/jobs-revisions-cpi-cools-bitcoin-trades-like-bond/",
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T10:30:37.747537+00:00"
+  },
+  {
+    "headline": "Real Yields as 'Gravity' – Impact on Crypto Assets",
+    "summary": "The concept of real yields dominating market behavior suggests a shift away from speculative assets like ETH and towards fixed income, potentially leading to lower ETH valuations.",
+    "impact": "bearish",
+    "importance": 3,
+    "tags": [
+      "yields",
+      "fixed income",
+      "asset allocation",
+      "crypto"
+    ],
+    "source": "CryptoSlate",
+    "url": "https://cryptoslate.com/jobs-revisions-cpi-cools-bitcoin-trades-like-bond/",
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T10:30:37.747538+00:00"
+  },
+  {
+    "headline": "Supreme Court Ruling Could Boost Bitcoin Liquidity",
+    "summary": "The Supreme Court's decision regarding Trump tariffs could inject significant liquidity into the Bitcoin market, potentially creating upward pressure on prices and indirectly benefiting DeFi protocols reliant on Bitcoin.",
+    "impact": "bullish",
+    "importance": 3,
+    "tags": [
+      "bitcoin",
+      "btc",
+      "liquidity",
+      "defi",
+      "regulation"
+    ],
+    "source": "CryptoSlate",
+    "url": "https://cryptoslate.com/supreme-court-just-nuked-trumps-ieepa-tariffs-and-bitcoin-is-bracing-for-a-179-billion-surprise-payout/",
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T10:40:51.714357+00:00"
+  },
+  {
+    "headline": "Potential Bitcoin Liquidity Impacts DeFi",
+    "summary": "Increased Bitcoin liquidity may incentivize lending and borrowing activities within the DeFi ecosystem, particularly those utilizing wrapped Bitcoin (WBTC).",
+    "impact": "bullish",
+    "importance": 4,
+    "tags": [
+      "defi",
+      "btc",
+      "wbbtc",
+      "liquidity"
+    ],
+    "source": "Analysis",
+    "url": null,
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T10:40:51.714365+00:00"
+  },
+  {
+    "headline": "ECB's Digital Euro Push Raises Crypto Alert",
+    "summary": "The European Central Bank's significant investment (€1.3B) in a digital euro, coupled with open auditions for CBDC design, introduces regulatory uncertainty that could pressure ETH and DeFi projects seeking institutional adoption.",
+    "impact": "bearish",
+    "importance": 4,
+    "tags": [
+      "eth",
+      "defi",
+      "regulation",
+      "cbdc",
+      "ecb",
+      "digital euro"
+    ],
+    "source": "CryptoSlate",
+    "url": "https://cryptoslate.com/ecb-slaps-a-e1-3b-price-tag-on-the-digital-euro-and-crypto-is-on-alert-as-open-auditions-start-next-month/",
+    "published": "2026-02-20",
+    "scraped_at": "2026-02-22T10:41:50.977917+00:00"
+  },
+  {
+    "headline": "Lagarde's Leadership Shift Fuels Regulatory Scrutiny",
+    "summary": "Changes in ECB leadership, particularly surrounding the digital euro, amplify concerns about increased regulatory oversight impacting decentralized finance and potentially driving capital away from Ethereum.",
+    "impact": "bearish",
+    "importance": 3,
+    "tags": [
+      "eth",
+      "defi",
+      "regulation",
+      "ecb"
+    ],
+    "source": "CryptoSlate",
+    "url": "https://cryptoslate.com/ecb-slaps-a-e1-3b-price-tag-on-the-digital-euro-and-crypto-is-on-alert-as-open-auditions-start-next-month/",
+    "published": "2026-02-20",
+    "scraped_at": "2026-02-22T10:41:50.977923+00:00"
+  },
+  {
+    "headline": "Supreme Court Ruling Boosts Bitcoin Liquidity",
+    "summary": "The Supreme Court's decision regarding Trump tariffs is injecting significant liquidity into the Bitcoin market, potentially creating upward pressure on BTC prices and indirectly benefiting ETH through reduced macroeconomic uncertainty.",
+    "impact": "bullish",
+    "importance": 4,
+    "tags": [
+      "bitcoin",
+      "btc",
+      "liquidity",
+      "macro",
+      "regulation"
+    ],
+    "source": "CryptoSlate",
+    "url": "https://cryptoslate.com/supreme-court-just-nuked-trumps-ieepa-tariffs-and-bitcoin-is-bracing-for-a-179-billion-surprise-payout/",
+    "published": "2026-02-22T02:45:16+00:00",
+    "scraped_at": "2026-02-22T10:50:29.220131+00:00"
+  },
+  {
+    "headline": "IEEPA Liquidity Impact - ETH Considerations",
+    "summary": "Increased Bitcoin liquidity could lead to a slight shift in capital towards higher-yielding DeFi protocols on Ethereum, potentially increasing demand for ETH.",
+    "impact": "bullish",
+    "importance": 3,
+    "tags": [
+      "eth",
+      "defi",
+      "liquidity",
+      "bitcoin"
+    ],
+    "source": "Analysis",
+    "url": null,
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T10:50:29.220141+00:00"
+  },
+  {
+    "headline": "Macro Uncertainty - ETH Volatility",
+    "summary": "Reduced tariff-related uncertainty generally reduces volatility across asset classes, which could translate to lower volatility for ETH.",
+    "impact": "neutral",
+    "importance": 2,
+    "tags": [
+      "eth",
+      "volatility",
+      "macro",
+      "risk"
+    ],
+    "source": "General Market Analysis",
+    "url": null,
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T10:50:29.220143+00:00"
+  },
+  {
+    "headline": "OpenClaw Bans Crypto Talk on Discord",
+    "summary": "OpenClaw's strict moderation, banning Bitcoin and crypto discussions, signals increased regulatory scrutiny and potential friction for DeFi protocols reliant on Discord for communication.",
+    "impact": "bearish",
+    "importance": 4,
+    "tags": [
+      "eth",
+      "defi",
+      "discord",
+      "regulation",
+      "bitcoin"
+    ],
+    "source": "CoinTelegraph",
+    "url": "https://cointelegraph.com/news/openclaw-discord-bans-bitcoin-crypto-discussions?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T11:02:20.283048+00:00"
+  },
+  {
+    "headline": "Increased Regulatory Pressure on Crypto",
+    "summary": "The OpenClaw action highlights intensifying efforts to limit crypto discussion and activity, potentially impacting DeFi innovation and user adoption.",
+    "impact": "bearish",
+    "importance": 3,
+    "tags": [
+      "eth",
+      "defi",
+      "regulation",
+      "compliance"
+    ],
+    "source": "CoinTelegraph",
+    "url": "https://cointelegraph.com/news/openclaw-discord-bans-bitcoin-crypto-discussions?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T11:02:20.283054+00:00"
+  },
+  {
+    "headline": "Election Betting ETFs Filed – New Tradable Risk",
+    "summary": "The introduction of ETFs allowing trading of election outcomes via brokerage accounts represents a significant expansion of 'ambient gambling' into the traditional financial system, potentially increasing volatility and demand for crypto assets used in these platforms.",
+    "impact": "bearish",
+    "importance": 4,
+    "tags": [
+      "eth",
+      "defi",
+      "regulation",
+      "risk",
+      "bets"
+    ],
+    "source": "CryptoSlate",
+    "url": "https://cryptoslate.com/election-betting-etfs-crypto-blast-radius/",
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T11:20:30.249609+00:00"
+  },
+  {
+    "headline": "Brokerage Accounts Expanding Crypto Access",
+    "summary": "The ETF filings highlight a broader trend of integrating crypto trading into mainstream brokerage platforms, which could drive increased ETH adoption and liquidity.",
+    "impact": "bullish",
+    "importance": 3,
+    "tags": [
+      "eth",
+      "defi",
+      "brokerage",
+      "adoption"
+    ],
+    "source": "CryptoSlate",
+    "url": "https://cryptoslate.com/election-betting-etfs-crypto-blast-radius/",
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T11:20:30.249616+00:00"
+  },
+  {
+    "headline": "Political Risk as a Tradable Asset",
+    "summary": "Creating 'political risk' as a tradable asset could lead to speculative activity and price fluctuations, potentially impacting ETH correlated with geopolitical events.",
+    "impact": "neutral",
+    "importance": 2,
+    "tags": [
+      "eth",
+      "defi",
+      "geopolitics",
+      "risk"
+    ],
+    "source": "CryptoSlate",
+    "url": "https://cryptoslate.com/election-betting-etfs-crypto-blast-radius/",
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T11:20:30.249617+00:00"
+  },
+  {
+    "headline": "Bitcoin Tariffs Trigger Market Uncertainty",
+    "summary": "Trump's invocation of the 1974 Trade Act and potential 15% tariffs on Bitcoin create significant regulatory risk, increasing volatility and potentially impacting ETH as investors seek safe-haven assets.",
+    "impact": "bearish",
+    "importance": 4,
+    "tags": [
+      "btc",
+      "regulation",
+      "tariffs",
+      "risk",
+      "eth",
+      "defi"
+    ],
+    "source": "CryptoSlate",
+    "url": "https://cryptoslate.com/bitcoin-enters-a-150-day-danger-zone-as-trump-pivots-to-a-1974-trade-law-the-supreme-court-hasnt-touched-yet",
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T12:21:38.801504+00:00"
+  },
+  {
+    "headline": "150-Day Moving Average Watch",
+    "summary": "Bitcoin's movement within the 150-day moving average is being closely monitored, a key technical indicator often used to predict short-term trends and potentially influence ETH's performance.",
+    "impact": "neutral",
+    "importance": 3,
+    "tags": [
+      "btc",
+      "technical analysis",
+      "eth",
+      "trading"
+    ],
+    "source": "CryptoSlate",
+    "url": "https://cryptoslate.com/bitcoin-enters-a-150-day-danger-zone-as-trump-pivots-to-a-1974-trade-law-the-supreme-court-hasnt-touched-yet",
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T12:21:38.801513+00:00"
+  },
+  {
+    "headline": "Supreme Court Limits IEEPA Authority",
+    "summary": "The Supreme Court's decision limiting the IEEPA's application impacts Bitcoin's legal status and potential regulatory pathways, adding further uncertainty to the crypto market and indirectly affecting ETH.",
+    "impact": "bearish",
+    "importance": 3,
+    "tags": [
+      "btc",
+      "regulation",
+      "legal",
+      "eth",
+      "defi"
+    ],
+    "source": "CryptoSlate",
+    "url": "https://cryptoslate.com/bitcoin-enters-a-150-day-danger-zone-as-trump-pivots-to-a-1974-trade-law-the-supreme-court-hasnt-touched-yet",
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T12:21:38.801515+00:00"
+  },
+  {
+    "headline": "SportFi Shifts to On-Chain Sports Markets",
+    "summary": "SportFi's pivot from fan tokens to directly betting on match outcomes introduces a new layer of on-chain activity and potential demand for Ethereum-based decentralized wagering, impacting DeFi liquidity.",
+    "impact": "bullish",
+    "importance": 3,
+    "tags": [
+      "eth",
+      "defi",
+      "sportfi",
+      "gaming",
+      "wagering"
+    ],
+    "source": "CoinDesk",
+    "url": "https://www.coindesk.com/business/2026/02/20/sportfi-s-next-act-from-fan-tokens-to-on-chain-markets-built-around-match-day-results",
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T13:00:55.337411+00:00"
+  },
+  {
+    "headline": "Increased DeFi Activity Fuels Ethereum Demand",
+    "summary": "Expansion of decentralized betting platforms like SportFi drives increased usage of Ethereum for smart contract execution and liquidity provision.",
+    "impact": "bullish",
+    "importance": 2,
+    "tags": [
+      "eth",
+      "defi",
+      "gaming",
+      "liquidity"
+    ],
+    "source": "CoinDesk",
+    "url": "https://www.coindesk.com/business/2026/02/20/sportfi-s-next-act-from-fan-tokens-to-on-chain-markets-built-around-match-day-results",
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T13:00:55.337419+00:00"
+  },
+  {
+    "headline": "Investor Shift: Tokens to Stocks",
+    "summary": "Increased IPO and M&A activity in crypto signals a shift in investor preference away from tokens, potentially impacting ETH trading volume and DeFi project funding.",
+    "impact": "bearish",
+    "importance": 4,
+    "tags": [
+      "ETH",
+      "DeFi",
+      "Token Launch",
+      "Investment"
+    ],
+    "source": "CoinTelegraph",
+    "url": "https://cointelegraph.com/news/crypto-capital-rotates-from-tokens-to-stocks-as-new-launches-struggle-dwf",
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T13:01:10.172404+00:00"
+  },
+  {
+    "headline": "Token Launch Failures Impact ETH",
+    "summary": "Over 80% of new token launches trading below listing price indicates a lack of investor confidence, potentially reducing demand for ETH as a store of value.",
+    "impact": "bearish",
+    "importance": 3,
+    "tags": [
+      "ETH",
+      "Tokenomics",
+      "Market Sentiment"
+    ],
+    "source": "CoinTelegraph",
+    "url": "https://cointelegraph.com/news/crypto-capital-rotates-from-tokens-to-stocks-as-new-launches-struggle-dwf",
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T13:01:10.172412+00:00"
+  },
+  {
+    "headline": "Equity Preference Signals Risk Aversion",
+    "summary": "The preference for equity investments over tokens suggests a broader market risk aversion, which could negatively affect ETH's performance.",
+    "impact": "bearish",
+    "importance": 2,
+    "tags": [
+      "ETH",
+      "Risk Sentiment",
+      "Market Dynamics"
+    ],
+    "source": "CoinTelegraph",
+    "url": "https://cointelegraph.com/news/crypto-capital-rotates-from-tokens-to-stocks-as-new-launches-struggle-dwf",
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T13:01:10.172413+00:00"
+  },
+  {
+    "headline": "Bitcoin's Bullish Forecast Boosts Crypto Sentiment",
+    "summary": "Bitcoin's historical return projections, particularly the 88% odds of higher prices by early 2027, are likely to increase overall investor confidence and potentially drive capital flows into the broader crypto market, positively impacting ETH.",
+    "impact": "bullish",
+    "importance": 4,
+    "tags": [
+      "bitcoin",
+      "btc",
+      "crypto",
+      "market sentiment",
+      "defi"
+    ],
+    "source": "CoinTelegraph",
+    "url": "https://cointelegraph.com/news/bitcoin-historical-price-metric-122k-average-return-over-10-months?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T14:01:34.243208+00:00"
+  },
+  {
+    "headline": "ETH Price Correlation to BTC Remains Key",
+    "summary": "Continued bullishness in BTC directly impacts ETH's price correlation, suggesting potential upside for ETH as it's often considered a bellwether asset.",
+    "impact": "bullish",
+    "importance": 3,
+    "tags": [
+      "eth",
+      "btc",
+      "correlation",
+      "defi"
+    ],
+    "source": "General Market Analysis",
+    "url": null,
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T14:01:34.243217+00:00"
   }
 ]

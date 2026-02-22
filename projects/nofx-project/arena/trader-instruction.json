@@ -1,0 +1,38 @@
+{
+  "timestamp": "2026-02-22T06:15:17Z",
+  "from": "MiniMax Trading Brain",
+  "priority": "HIGH",
+  "strategy": "DIRECTIONAL",
+  "instructions": "Contrarian bullish setup: Fear & Greed at 9 (Extreme Fear - historically bullish reversal signal), Daily RSI at 38.0 (oversold), price near Bollinger lower band (1965.91). EMA 12 crossing above EMA 26 suggesting momentum shifting bullish. ETH rejected from $2015 area, now consolidating near support. On-chain stale so reducing confidence. Using $15 at 3x for $45 exposure with tight SL at 1960.",
+  "positions": [
+    {
+      "id": "eth_brain",
+      "name": "ETH Brain Trade",
+      "type": "directional",
+      "priority": 1,
+      "allocation_usd": 15,
+      "symbol": "ETH",
+      "params": {
+        "direction": "LONG",
+        "leverage": 3,
+        "entry_price": null,
+        "entry_type": "market",
+        "stop_loss_pct": null,
+        "take_profit_pct": null
+      },
+      "execution": "Open market at market. Size: $15 notional ($5.00 margin). Leverage: 3x.",
+      "rationale": "Contrarian bullish setup: Fear & Greed at 9 (Extreme Fear - historically bullish reversal signal), Daily RSI at 38.0 (oversold), price near Bollinger lower band (1965.91). EMA 12 crossing above EMA 26 suggesting momentum shifting bullish. ETH rejected from $2015 area, now consolidating near support. On-chain stale so reducing confidence. Using $15 at 3x for $45 exposure with tight SL at 1960.",
+      "exit": "SL at $1960.0 / TP at $2020.0"
+    }
+  ],
+  "monitoring": {
+    "check_frequency": "hourly",
+    "sl_tp": "monitor SL/TP conditions",
+    "position_size": "$15 at 3x = $45 exposure"
+  },
+  "risk_management": {
+    "max_daily_loss": 5,
+    "kill_switch": "If account < $20, close all positions",
+    "max_positions": 3
+  }
+}

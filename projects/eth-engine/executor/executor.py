@@ -1,6 +1,9 @@
 """Hyperliquid ETH Executor - Main trading class."""
+import json
 import logging
 import time
+import urllib.request
+import urllib.error
 from typing import Optional, Dict, List, Any
 
 from hyperliquid import HyperliquidSync
@@ -30,43 +33,104 @@ class HyperliquidExecutor:
         self.wallet_address = wallet_address
         self.testnet = testnet
         
-        # Initialize Hyperliquid sync
-        self.hl = HyperliquidSync(
-            private_key=private_key,
-            wallet_address=wallet_address,
-            testnet=testnet
-        )
+        # Initialize Hyperliquid sync with ccxt-style config
+        # BUG FIX: API changed - now uses config dict instead of kwargs
+        config = {
+            'privateKey': private_key,
+            'walletAddress': wallet_address,
+            'enableRateLimit': True,
+        }
+        if testnet:
+            # Testnet uses different URL - check if supported
+            config['options'] = {'testnet': True}
+        
+        self.hl = HyperliquidSync(config)
         
         logger.info(f"Initialized Hyperliquid executor for {wallet_address[:10]}... (testnet={testnet})")
     
+    @staticmethod
+    def _hl_api_call(payload: dict) -> Optional[dict]:
+        """Direct REST call to Hyperliquid info API."""
+        try:
+            req = urllib.request.Request(
+                "https://api.hyperliquid.xyz/info",
+                data=json.dumps(payload).encode(),
+                headers={"Content-Type": "application/json"}
+            )
+            with urllib.request.urlopen(req, timeout=10) as resp:
+                return json.loads(resp.read())
+        except Exception as e:
+            logger.error(f"Hyperliquid API call failed ({payload.get('type', '?')}): {e}")
+            return None
+
     def get_balance(self) -> Dict[str, float]:
         """Get account balance information.
         
+        Supports Unified Account mode where Spot USDC is used as
+        collateral for Perpetual trading. Queries both spot and perp
+        clearinghouse states via direct REST API.
+        
         Returns:
-            dict: {equity, available, unrealized_pnl, wallet_balance} in USD
+            dict: {equity, available, unrealized_pnl, wallet_balance, spot_usdc} in USD
         """
+        result = {
+            "equity": 0.0,
+            "available": 0.0,
+            "unrealized_pnl": 0.0,
+            "wallet_balance": 0.0,
+            "spot_usdc": 0.0
+        }
         try:
-            user_state = self.hl.get_user_state(self.wallet_address)
-            if not user_state:
-                logger.warning("No user state returned")
-                return {"equity": 0.0, "available": 0.0, "unrealized_pnl": 0.0, "wallet_balance": 0.0}
-            
-            # Parse margin summary
-            margin_summary = user_state.get("marginSummary", {})
-            equity = float(margin_summary.get("totalValue", 0))
-            available = float(margin_summary.get("available", 0))
-            wallet_balance = float(margin_summary.get("walletBalance", 0))
-            unrealized_pnl = float(margin_summary.get("unrealizedPnl", 0))
-            
-            return {
-                "equity": equity,
-                "available": available,
-                "unrealized_pnl": unrealized_pnl,
-                "wallet_balance": wallet_balance
-            }
+            # 1. Query Spot balance
+            spot_usdc = 0.0
+            spot_state = self._hl_api_call({
+                "type": "spotClearinghouseState",
+                "user": self.wallet_address
+            })
+            if spot_state and isinstance(spot_state, dict):
+                for b in spot_state.get("balances", []):
+                    if b.get("coin") == "USDC":
+                        spot_usdc = float(b.get("total", 0))
+                        break
+            result["spot_usdc"] = spot_usdc
+
+            # 2. Query Perp state
+            perp_equity = 0.0
+            perp_available = 0.0
+            unrealized_pnl = 0.0
+            perp_state = self._hl_api_call({
+                "type": "clearinghouseState",
+                "user": self.wallet_address
+            })
+            if perp_state and isinstance(perp_state, dict):
+                margin = perp_state.get("crossMarginSummary", perp_state.get("marginSummary", {}))
+                perp_equity = float(margin.get("accountValue", 0))
+                total_margin_used = float(margin.get("totalMarginUsed", 0))
+                perp_available = perp_equity - total_margin_used
+                # Sum unrealized PnL from positions
+                for ap in perp_state.get("assetPositions", []):
+                    pos = ap.get("position", {})
+                    unrealized_pnl += float(pos.get("unrealizedPnl", 0))
+
+            # 3. Compute unified equity
+            # In unified mode, perp accountValue already includes spot as collateral.
+            # If perp shows 0 but spot has USDC, use spot as equity.
+            if perp_equity > 0:
+                equity = perp_equity
+            else:
+                equity = spot_usdc
+
+            available = max(perp_available, 0) if perp_equity > 0 else spot_usdc
+
+            result["equity"] = equity
+            result["available"] = available
+            result["unrealized_pnl"] = unrealized_pnl
+            result["wallet_balance"] = equity - unrealized_pnl
+
+            return result
         except Exception as e:
             logger.error(f"Error getting balance: {e}")
-            return {"equity": 0.0, "available": 0.0, "unrealized_pnl": 0.0, "wallet_balance": 0.0}
+            return result
     
     def get_position(self) -> Optional[Dict[str, Any]]:
         """Get current ETH position.
@@ -75,20 +139,24 @@ class HyperliquidExecutor:
             dict: {side, size, entry_price, unrealized_pnl, leverage} or None
         """
         try:
-            positions = self.hl.get_positions(self.wallet_address)
+            # Use ccxt-style fetch_positions
+            positions = self.hl.fetch_positions()
             if not positions:
                 return None
             
             # Find ETH position
             for pos in positions:
-                if pos.get("coin") == ETH_SYMBOL:
-                    size = float(pos.get("size", 0))
+                info = pos.get('info', {})
+                coin = info.get('coin', '')
+                if coin == ETH_SYMBOL:
+                    size = float(info.get('size', 0))
                     if size == 0:
                         return None
                     
-                    entry_price = float(pos.get("entryPrice", 0))
-                    unrealized_pnl = float(pos.get("unrealizedPnl", 0))
-                    leverage = float(pos.get("leverage", {"value": 0}).get("value", 0))
+                    entry_price = float(info.get('entryPrice', 0))
+                    unrealized_pnl = float(info.get('unrealizedPnl', 0))
+                    leverage_val = info.get('leverage', {})
+                    leverage = float(leverage_val.get('value', 0)) if isinstance(leverage_val, dict) else float(leverage_val)
                     
                     # Determine side
                     side = "long" if size > 0 else "short"
@@ -115,18 +183,10 @@ class HyperliquidExecutor:
             float: ETH mid price in USDC
         """
         try:
-            info = self.hl.get_info(self.wallet_address)
-            asset_contexts = info.get("assetContexts", [])
-            
-            for ctx in asset_contexts:
-                if ctx.get("coin") == ETH_SYMBOL:
-                    mark_price = float(ctx.get("markPrice", 0))
-                    oracle_price = float(ctx.get("oraclePrice", 0))
-                    # Use oracle price as it's more accurate
-                    return oracle_price if oracle_price > 0 else mark_price
-            
-            logger.warning("Could not find ETH price, returning 0")
-            return 0.0
+            # Use ccxt-style fetch_ticker
+            ticker = self.hl.fetch_ticker(ETH_CCXT)
+            # Use last price or mid price
+            return float(ticker.get('last', 0)) or float(ticker.get('mid', 0)) or 0.0
         except Exception as e:
             logger.error(f"Error getting market price: {e}")
             return 0.0
@@ -180,13 +240,12 @@ class HyperliquidExecutor:
             # Determine order side for Hyperliquid
             is_buy = side == "long"
             
-            # Place market order
-            order_result = self.hl.order(
-                self.wallet_address,
-                ETH_SYMBOL,
-                is_buy=is_buy,
-                size=size_eth,
-                # Use 5 sig figs for price precision
+            # Place market order using ccxt-style create_order
+            order_result = self.hl.create_order(
+                symbol=ETH_CCXT,
+                type='market',
+                side='buy' if is_buy else 'sell',
+                amount=size_eth,
                 price=round(current_price, 5)
             )
             
@@ -215,11 +274,11 @@ class HyperliquidExecutor:
             # Close by trading opposite side
             is_buy = position["side"] == "short"
             
-            order_result = self.hl.order(
-                self.wallet_address,
-                ETH_SYMBOL,
-                is_buy=is_buy,
-                size=position["size"],
+            order_result = self.hl.create_order(
+                symbol=ETH_CCXT,
+                type='market',
+                side='buy' if is_buy else 'sell',
+                amount=position["size"],
                 price=round(current_price, 5)
             )
             
@@ -240,7 +299,8 @@ class HyperliquidExecutor:
             bool: Success status
         """
         try:
-            self.hl.update_leverage(self.wallet_address, ETH_SYMBOL, leverage)
+            # Use ccxt-style set_leverage
+            self.hl.set_leverage(leverage, ETH_CCXT)
             logger.info(f"Set leverage to {leverage}x")
             return True
         except Exception as e:
@@ -287,15 +347,16 @@ class HyperliquidExecutor:
             # Determine trigger side (opposite of position)
             is_buy = position["side"] == "short"
             
-            # For stop loss: sell if long, buy if short
-            # For take profit: same logic
-            trigger_result = self.hl.trigger_order(
-                self.wallet_address,
-                ETH_SYMBOL,
-                is_buy=is_buy,
-                size=position["size"],
-                trigger_price=round(price, 5),
-                is_market=True
+            # Use ccxt-style trigger order
+            trigger_result = self.hl.create_order(
+                symbol=ETH_CCXT,
+                type='stop_market',
+                side='buy' if is_buy else 'sell',
+                amount=position["size"],
+                params={
+                    'triggerPrice': round(price, 5),
+                    'reduceOnly': True
+                }
             )
             
             logger.info(f"Set {order_type} at {price}")
@@ -308,7 +369,7 @@ class HyperliquidExecutor:
     def cancel_all_orders(self) -> None:
         """Cancel all open orders."""
         try:
-            self.hl.cancel_all(self.wallet_address)
+            self.hl.cancel_all_orders(ETH_CCXT)
             logger.info("Cancelled all orders")
         except Exception as e:
             logger.error(f"Error cancelling orders: {e}")
@@ -320,7 +381,8 @@ class HyperliquidExecutor:
             list: List of open orders
         """
         try:
-            orders = self.hl.get_open_orders(self.wallet_address)
+            # Use ccxt-style fetch_open_orders
+            orders = self.hl.fetch_open_orders(ETH_CCXT)
             return orders if orders else []
         except Exception as e:
             logger.error(f"Error getting open orders: {e}")
@@ -336,18 +398,9 @@ class HyperliquidExecutor:
             list: List of recent fills
         """
         try:
-            # Get user's recent orders/fills
-            user_state = self.hl.get_user_state(self.wallet_address)
-            if not user_state:
-                return []
-            
-            # Try to get fills from various endpoints
-            # Note: API may vary, handle gracefully
-            fills = user_state.get("fills", [])
-            if fills:
-                return fills[:limit]
-            
-            return []
+            # Use ccxt-style fetch_my_trades
+            trades = self.hl.fetch_my_trades(ETH_CCXT, limit=limit)
+            return trades if trades else []
         except Exception as e:
             logger.error(f"Error getting recent trades: {e}")
             return []
@@ -366,11 +419,12 @@ class HyperliquidExecutor:
         try:
             is_buy = side == "long"
             
-            order_result = self.hl.order(
-                self.wallet_address,
-                ETH_SYMBOL,
-                is_buy=is_buy,
-                size=size,
+            # Use ccxt-style create_order for limit order
+            order_result = self.hl.create_order(
+                symbol=ETH_CCXT,
+                type='limit',
+                side='buy' if is_buy else 'sell',
+                amount=size,
                 price=round(price, 5)
             )
             

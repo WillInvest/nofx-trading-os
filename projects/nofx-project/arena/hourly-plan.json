@@ -1,86 +1,43 @@
 {
-  "timestamp": "2026-02-21T11:29:20.065480-05:00",
+  "timestamp": "2026-02-22T06:15:17Z",
   "market_regime": "EXTREME_FEAR_HIGH_VOL",
-  "fear_greed": 8,
-  "macro_context": "US-Iran geopolitical tensions driving crypto fear. All CVDs show sellers dominant. Funding turning negative on alts = shorts crowded.",
+  "fear_greed": 9,
+  "macro_context": "Contrarian bullish setup: Fear & Greed at 9 (Extreme Fear - historically bullish reversal signal), Daily RSI at 38.0 (oversold), price near Bollinger lower band (1965.91). EMA 12 crossing above EMA 26 suggesting momentum shifting bullish. ETH rejected from $2015 area, now consolidating near support. On-chain stale so reducing confidence. Using $15 at 3x for $45 exposure with tight SL at 1960.",
   "strategies": [
     {
-      "id": "grid_vol",
-      "name": "Grid Trading (Long Volatility)",
-      "type": "grid_trading",
-      "priority": 1,
-      "allocation_pct": 50,
-      "allocation_usd": 13,
-      "description": "Profit from oscillations in high-vol environment. Grid catches every bounce and dip regardless of direction.",
-      "symbol": "ETH",
-      "params": {
-        "grid_count": 10,
-        "leverage": 2,
-        "use_atr_bounds": true,
-        "atr_multiplier": 2.0,
-        "distribution": "uniform",
-        "max_drawdown_pct": 15,
-        "stop_loss_pct": 5
-      },
-      "rationale": "ETH is most liquid, will have largest absolute swings. F&G=8 means 3-5% daily swings likely. Grid profits from each oscillation. Low leverage (2x) to survive volatility.",
-      "exit_condition": "F&G recovers above 25 OR daily loss >15%"
-    },
-    {
-      "id": "funding_harvest",
-      "name": "Funding Rate Harvest",
-      "type": "directional_bias",
-      "priority": 2,
-      "allocation_pct": 25,
-      "allocation_usd": 6.5,
-      "description": "Go long coins with negative funding. Shorts are crowded and paying longs every hour on Hyperliquid.",
-      "symbol": "UNI",
-      "params": {
-        "direction": "LONG",
-        "leverage": 2,
-        "entry_type": "limit",
-        "stop_loss_pct": 4,
-        "take_profit_pct": 0
-      },
-      "rationale": "UNI has most negative funding (-2.8% annualized). On Hyperliquid, funding is paid EVERY HOUR. Going long = collecting funding from shorts. In extreme fear, shorts get more crowded = funding goes more negative = more income. Even if price drops 2%, funding income can offset. If shorts unwind (squeeze), both price + funding profit.",
-      "exit_condition": "Funding turns positive OR price drops >4% from entry"
-    },
-    {
-      "id": "mean_reversion",
-      "name": "Mean Reversion Sniper",
+      "id": "brain_decision",
+      "name": "MiniMax Brain Decision",
       "type": "directional",
-      "priority": 3,
-      "allocation_pct": 25,
-      "allocation_usd": 6.5,
-      "description": "Wait for extreme oversold bounce. F&G=8 historically precedes sharp reversals. Position for the snapback.",
-      "coins_watchlist": [
-        "ARB",
-        "CRV",
-        "PENDLE"
-      ],
+      "priority": 1,
+      "allocation_pct": 100,
+      "allocation_usd": 15,
+      "description": "Contrarian bullish setup: Fear & Greed at 9 (Extreme Fear - historically bullish reversal signal), Daily RSI at 38.0 (oversold), price near Bollinger lower band (1965.91). EMA 12 crossing above EMA 26",
+      "symbol": "ETH",
       "params": {
         "direction": "LONG",
         "leverage": 3,
-        "trigger": "RSI7 < 20 AND positive CVD divergence (price making new low but CVD not)",
-        "stop_loss_pct": 3,
-        "take_profit_pct": 8
+        "entry_price": null,
+        "entry_type": "market",
+        "stop_loss_pct": null,
+        "take_profit_pct": null
       },
-      "rationale": "ARB OI dropped 9% = mass liquidation already happened. CRV RSI at 21. When fear peaks, the bounce is violent. 3x leverage on a confirmed reversal signal with tight 3% SL gives 3:1 R/R.",
-      "exit_condition": "TP hit OR no trigger within 4 hours \u2192 reallocate to grid"
+      "rationale": "Contrarian bullish setup: Fear & Greed at 9 (Extreme Fear - historically bullish reversal signal), Daily RSI at 38.0 (oversold), price near Bollinger lower band (1965.91). EMA 12 crossing above EMA 26 suggesting momentum shifting bullish. ETH rejected from $2015 area, now consolidating near support. On-chain stale so reducing confidence. Using $15 at 3x for $45 exposure with tight SL at 1960.",
+      "exit_condition": "SL at $1960.0 / TP at $2020.0"
     }
   ],
   "risk_rules": {
     "max_total_exposure_usd": 26,
-    "max_single_position_usd": 13,
+    "max_single_position_usd": 15,
     "max_daily_loss_usd": 5,
-    "max_concurrent_positions": 2,
+    "max_concurrent_positions": 3,
     "kill_switch": "If account drops below $20, close ALL positions and switch to grid-only with $15",
-    "no_trade_hours": "23:00-08:00 EST (low liquidity = wider spreads)"
+    "no_trade_hours": "23:00-08:00 EST"
   },
   "decision": "EXECUTE",
-  "confidence": 80,
+  "confidence": 60,
   "selected_coin": "ETH",
-  "action": "grid_trading",
-  "reasoning": "Instead of picking a direction in extreme fear, long volatility itself. Grid trading on ETH captures every oscillation. Supplement with funding harvest on UNI (shorts pay us) and mean reversion sniper on ARB/CRV for the eventual bounce. Total risk managed: $5 max daily loss on $26 account.",
-  "fao_instructions": "Fao, execute in this order: 1) Set up ETH grid (priority \u2014 this is your main income engine). 2) Open UNI long at market with 2x leverage, $6.5 size. 3) Set limit buy orders on ARB at $0.095 and CRV at $0.235 (below current price) for mean reversion, 3x leverage, $3.25 each. Monitor funding rates hourly \u2014 if UNI funding turns positive, close UNI long and move capital to grid.",
-  "next_review": "2026-02-21T12:29:20.065632-05:00"
+  "action": "directional",
+  "reasoning": "Contrarian bullish setup: Fear & Greed at 9 (Extreme Fear - historically bullish reversal signal), Daily RSI at 38.0 (oversold), price near Bollinger lower band (1965.91). EMA 12 crossing above EMA 26 suggesting momentum shifting bullish. ETH rejected from $2015 area, now consolidating near support. On-chain stale so reducing confidence. Using $15 at 3x for $45 exposure with tight SL at 1960.",
+  "fao_instructions": "Fao, execute LONG open_long on ETH: size $15, leverage 3x, entry market, SL $1960.0, TP $2020.0. Contrarian bullish setup: Fear & Greed at 9 (Extreme Fear - historically bullish reversal signal), Daily RSI at 38.0 (oversold), price near Bollinger lower band (1965.91). EMA 12 crossing above EMA 26 suggesting momentum shifting bullish. ETH rejected from $2015 area, now consolidating near support. On-chain stale so reducing confidence. Using $15 at 3x for $45 exposure with tight SL at 1960.",
+  "next_review": "2026-02-22T07:19:27.203455+00:00"
 }

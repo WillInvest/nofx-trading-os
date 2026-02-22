@@ -375,12 +375,39 @@ def generate_summary(archive):
     ]
     top_stories = sorted(top_stories, key=lambda x: (-x.get("importance", 0), x.get("published", "")), reverse=True)
     
-    # Recent news: past 1 hour only
+    # Recent news logic:
+    # 1. Get all articles from past 1 hour
+    # 2. Remove articles that are already in top_stories (dedup by title or url)
+    # 3. If < 10 remaining, backfill with next-newest articles (also deduped)
+    # 4. Sort by published time, newest first
     hour_ago = now - timedelta(hours=1)
-    recent_news = [
-        a for a in archive
-        if a.get("published") and a["published"] >= hour_ago.isoformat()
-    ]
+    
+    # Get top story titles/urls for dedup
+    top_titles = {(a.get("headline") or a.get("title", "")).lower().strip() for a in top_stories}
+    top_urls = {a.get("url", "") for a in top_stories if a.get("url")}
+    
+    def is_duplicate(article):
+        h = (article.get("headline") or article.get("title", "")).lower().strip()
+        return (h in top_titles or article.get("url", "") in top_urls)
+    
+    # All articles sorted newest first
+    all_sorted = sorted(archive, key=lambda x: x.get("published", ""), reverse=True)
+    
+    # Past hour articles (not in top stories)
+    hour_articles = [a for a in all_sorted if a.get("published") and a["published"] >= hour_ago.isoformat() and not is_duplicate(a)]
+    
+    # If we have >= 10 from past hour, use all of them
+    if len(hour_articles) >= 10:
+        recent_news = hour_articles
+    else:
+        # Backfill: start with hour articles, add more newest-first until we have 10
+        recent_news = list(hour_articles)
+        for a in all_sorted:
+            if len(recent_news) >= 10:
+                break
+            if a not in recent_news and not is_duplicate(a):
+                recent_news.append(a)
+    
     recent_news = sorted(recent_news, key=lambda x: x.get("published", ""), reverse=True)
     
     # Fetch indices

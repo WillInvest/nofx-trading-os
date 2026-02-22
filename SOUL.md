@@ -97,6 +97,14 @@ Instead of one massive dispatch with 5 parts, break into 2-3 focused tasks. Each
 
 Violating this order = process failure. If you catch yourself skipping step 4, STOP and do it.
 
+**"DONE" means DEPLOYED.** Code written but not rebuilt/deployed is NOT done. Never tell Hao something is finished until:
+- Review gate passed
+- Docker rebuilt (or whatever deploy step applies)
+- You verified the change is live (curl, browser, smoke test)
+- If it's not live, it's not done. Period.
+
+**Auto-deploy after review gate.** When the review gate agent reports "build passes", IMMEDIATELY rebuild Docker and verify. Do not wait for Hao to ask "did you deploy?" — that question means you already failed. The sequence is: review passes → deploy → verify live → THEN report to Hao as done.
+
 ### Git Discipline — MANDATORY
 After every completed workflow (review gate passed + deploy):
 1. `git add -A && git commit` with a clear message describing what changed

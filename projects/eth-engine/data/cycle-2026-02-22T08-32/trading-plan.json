@@ -1,0 +1,46 @@
+{
+  "scan_mode": false,
+  "active_coin": "ETH",
+  "timestamp": "2026-02-22T06:15:17Z",
+  "valid_until": "2026-02-22T14:33:57.089075+00:00",
+  "brain": "MiniMax Trading Brain",
+  "position_review": {
+    "symbol": "ETH",
+    "action": "hold",
+    "confidence": 0,
+    "reasoning": "No existing position to review"
+  },
+  "new_candidate": {
+    "symbol": "ETH",
+    "action": "open_long",
+    "confidence": 60,
+    "entry_price": null,
+    "stop_loss": 1960.0,
+    "take_profit": 2020.0,
+    "size_usd": 15,
+    "leverage": 3
+  },
+  "market_context": "Contrarian bullish setup: Fear & Greed at 9 (Extreme Fear - historically bullish reversal signal), Daily RSI at 38.0 (oversold), price near Bollinger lower band (1965.91). EMA 12 crossing above EMA 26 suggesting momentum shifting bullish. ETH rejected from $2015 area, now consolidating near support. On-chain stale so reducing confidence. Using $15 at 3x for $45 exposure with tight SL at 1960.",
+  "strategies": [
+    {
+      "id": "brain_decision",
+      "name": "MiniMax Brain Decision",
+      "type": "open_long",
+      "priority": 1,
+      "allocation_pct": 100,
+      "allocation_usd": 15,
+      "description": "Contrarian bullish setup: Fear & Greed at 9 (Extreme Fear - historically bullish reversal signal), Daily RSI at 38.0 (oversold), price near Bollinger lower band (1965.91). EMA 12 crossing above EMA 26",
+      "symbol": "ETH",
+      "params": {
+        "direction": "LONG",
+        "leverage": 3,
+        "entry_price": null,
+        "entry_type": "market",
+        "stop_loss_pct": null,
+        "take_profit_pct": null
+      },
+      "rationale": "Contrarian bullish setup: Fear & Greed at 9 (Extreme Fear - historically bullish reversal signal), Daily RSI at 38.0 (oversold), price near Bollinger lower band (1965.91). EMA 12 crossing above EMA 26 suggesting momentum shifting bullish. ETH rejected from $2015 area, now consolidating near support. On-chain stale so reducing confidence. Using $15 at 3x for $45 exposure with tight SL at 1960.",
+      "exit_condition": "SL at $1960.0 / TP at $2020.0"
+    }
+  ]
+}

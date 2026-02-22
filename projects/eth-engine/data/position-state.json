@@ -1,0 +1,14 @@
+{
+  "timestamp": "2026-02-22T14:00:59.119340+00:00",
+  "position": null,
+  "balance": {
+    "equity": 26.080769,
+    "available": 26.080769,
+    "unrealized_pnl": 0.0,
+    "wallet_balance": 26.080769,
+    "spot_usdc": 26.080769,
+    "perp_equity": 0.0
+  },
+  "open_orders": [],
+  "eth_price": 1950.45
+}
