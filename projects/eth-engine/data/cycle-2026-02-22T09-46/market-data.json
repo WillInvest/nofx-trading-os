@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-22T14:47:14.838457+00:00",
+  "timestamp": "2026-02-22T14:45:43.703175+00:00",
   "liquidations": {
     "long_liquidations_1h": 0,
     "short_liquidations_1h": 0,
@@ -7,10 +7,10 @@
   },
   "options": {
     "put_call_ratio": 0.675,
-    "total_put_oi": 834656.0,
-    "total_call_oi": 1236010.0,
+    "total_put_oi": 833707.0,
+    "total_call_oi": 1236011.0,
     "signal": "neutral",
-    "avg_iv": 79.7
+    "avg_iv": 79.68
   },
   "btc_eth": {
     "btc_price": 0,

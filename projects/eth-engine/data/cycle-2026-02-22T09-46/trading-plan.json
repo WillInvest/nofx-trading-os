@@ -1,0 +1,46 @@
+{
+  "scan_mode": false,
+  "active_coin": "ETH",
+  "timestamp": "2026-02-22T14:46:15Z",
+  "valid_until": "2026-02-22T15:46:45.587241+00:00",
+  "brain": "MiniMax Trading Brain",
+  "position_review": {
+    "symbol": "ETH",
+    "action": "hold",
+    "confidence": 0,
+    "reasoning": "No existing position to review"
+  },
+  "new_candidate": {
+    "symbol": "ETH",
+    "action": "open_long",
+    "confidence": 0,
+    "entry_price": null,
+    "stop_loss": null,
+    "take_profit": null,
+    "size_usd": 0,
+    "leverage": 0
+  },
+  "market_context": "All three pillars align BEARISH: (1) Node shows distribution pattern, (2) Price broken below SMA 20 with bearish EMA cross and negative MACD, (3) News mixed with yen carry unwind. Only 1 confirming signal (RSI oversold) but rules explicitly state oversold can get MORE oversold in downtrends. Need 2+ confirming signals for any directional trade. With 7 opposing signals and strong bearish alignment across all metrics, no_trade is the disciplined choice.",
+  "strategies": [
+    {
+      "id": "brain_decision",
+      "name": "MiniMax Brain Decision",
+      "type": "no_trade",
+      "priority": 1,
+      "allocation_pct": 100,
+      "allocation_usd": 0,
+      "description": "All three pillars align BEARISH: (1) Node shows distribution pattern, (2) Price broken below SMA 20 with bearish EMA cross and negative MACD, (3) News mixed with yen carry unwind. Only 1 confirming si",
+      "symbol": "ETH",
+      "params": {
+        "direction": "NONE",
+        "leverage": 0,
+        "entry_price": null,
+        "entry_type": "market",
+        "stop_loss_pct": null,
+        "take_profit_pct": null
+      },
+      "rationale": "All three pillars align BEARISH: (1) Node shows distribution pattern, (2) Price broken below SMA 20 with bearish EMA cross and negative MACD, (3) News mixed with yen carry unwind. Only 1 confirming signal (RSI oversold) but rules explicitly state oversold can get MORE oversold in downtrends. Need 2+ confirming signals for any directional trade. With 7 opposing signals and strong bearish alignment across all metrics, no_trade is the disciplined choice.",
+      "exit_condition": "Monitor for exit conditions"
+    }
+  ]
+}
