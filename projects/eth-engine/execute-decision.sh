@@ -261,3 +261,12 @@ echo "=== CYCLE SUMMARY ==="
 cat "$CYCLE_DIR/cycle-summary.json"
 echo ""
 echo "====================="
+
+# Step 10: Copy cycle data to NOFX arena dir for frontend
+NOFX_ARENA="/home/openclaw/.openclaw/workspace/projects/nofx-project/nofx/data/arena"
+NOFX_CYCLE_DIR="$NOFX_ARENA/cycle-$CYCLE_ID"
+mkdir -p "$NOFX_CYCLE_DIR"
+cp "$CYCLE_DIR"/*.json "$NOFX_CYCLE_DIR/" 2>/dev/null
+cp "$CYCLE_DIR"/*.md "$NOFX_CYCLE_DIR/" 2>/dev/null
+cp "$DATA_DIR/cycles-history.json" "$NOFX_ARENA/cycles-history.json" 2>/dev/null
+log "Cycle data copied to $NOFX_CYCLE_DIR"

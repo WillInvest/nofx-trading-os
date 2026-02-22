@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-22T14:00:59.119340+00:00",
+  "timestamp": "2026-02-22T14:17:26.793248+00:00",
   "position": null,
   "balance": {
     "equity": 26.080769,
@@ -10,5 +10,5 @@
     "perp_equity": 0.0
   },
   "open_orders": [],
-  "eth_price": 1950.45
+  "eth_price": 1951.25
 }

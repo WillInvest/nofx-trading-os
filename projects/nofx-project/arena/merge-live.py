@@ -176,5 +176,13 @@ def main():
     print(f"Merged -> {output_path}")
     print(f"Sources: onchain={'✓' if onchain else '✗'} protocol={'✓' if protocol else '✗'} market_hourly={'✓' if market_hourly else '✗'} market_live={'✓' if market_live else '✗'} mempool={'✓' if mempool else '✗'} whale={'✓' if whale else '✗'} dex={'✓' if dex_trades else '✗'} liq={'✓' if liquidations else '✗'}")
 
+    # Also copy raw source files to Docker data dir for trading-cron.sh
+    import shutil
+    for f in ["onchain-hourly.json", "protocol-hourly.json", "market-data-hourly.json", "market-live.json"]:
+        src = f"{ARENA_DIR}/{f}"
+        dst = f"{OUTPUT_DIR}/{f}"
+        if os.path.exists(src):
+            shutil.copy2(src, dst)
+
 if __name__ == "__main__":
     main()

@@ -919,5 +919,53 @@
     "url": null,
     "published": "2026-02-22",
     "scraped_at": "2026-02-22T14:01:34.243217+00:00"
+  },
+  {
+    "headline": "SEC's Cardano ETF Shortcut Fuels ETF Hopes",
+    "summary": "Cardano's expedited ETF pathway, driven by the SEC's new generic listing standards, increases the likelihood of faster ETF approvals for other cryptocurrencies, potentially benefiting Ethereum's ecosystem.",
+    "impact": "bullish",
+    "importance": 4,
+    "tags": [
+      "eth",
+      "defi",
+      "etf",
+      "regulation",
+      "cardano"
+    ],
+    "source": "CryptoSlate",
+    "url": "https://cryptoslate.com/the-sec-just-gave-cardano-a-75-day-shortcut-to-a-spot-etf-that-took-bitcoin-240-days/",
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T14:21:37.135236+00:00"
+  },
+  {
+    "headline": "Faster ETF Approvals Could Boost Institutional Demand",
+    "summary": "Reduced ETF approval timelines could accelerate institutional investment into crypto assets, increasing demand and potentially driving up ETH prices.",
+    "impact": "bullish",
+    "importance": 3,
+    "tags": [
+      "eth",
+      "defi",
+      "etf",
+      "institutional"
+    ],
+    "source": "General Analysis",
+    "url": null,
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T14:21:37.135244+00:00"
+  },
+  {
+    "headline": "Regulatory Clarity Benefits DeFi",
+    "summary": "SEC’s approach to ETFs creates regulatory clarity, which is generally positive for the broader DeFi ecosystem, including Ethereum-based protocols.",
+    "impact": "neutral",
+    "importance": 2,
+    "tags": [
+      "eth",
+      "defi",
+      "regulation"
+    ],
+    "source": "Market Sentiment",
+    "url": null,
+    "published": "2026-02-22",
+    "scraped_at": "2026-02-22T14:21:37.135245+00:00"
   }
 ]

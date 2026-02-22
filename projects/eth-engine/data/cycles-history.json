@@ -13,5 +13,50 @@
     },
     "balance": 0,
     "error": null
+  },
+  {
+    "cycle_id": "2026-02-22T09-15",
+    "timestamp": "2026-02-22T14:16:27Z",
+    "status": "executed",
+    "eth_price": 1950.55,
+    "decision": "open_long",
+    "confidence": 60,
+    "position_after": {
+      "size": 0,
+      "entry": 0,
+      "pnl": 0
+    },
+    "balance": 0,
+    "error": null
+  },
+  {
+    "cycle_id": "2026-02-22T09-17",
+    "timestamp": "2026-02-22T14:17:50Z",
+    "status": "executed",
+    "eth_price": 1951.25,
+    "decision": "hold",
+    "confidence": 0,
+    "position_after": {
+      "size": 0,
+      "entry": 0,
+      "pnl": 0
+    },
+    "balance": 0,
+    "error": null
+  },
+  {
+    "cycle_id": "2026-02-22T09-17",
+    "timestamp": "2026-02-22T14:20:54Z",
+    "status": "executed",
+    "eth_price": 1951.25,
+    "decision": "hold",
+    "confidence": 0,
+    "position_after": {
+      "size": 0,
+      "entry": 0,
+      "pnl": 0
+    },
+    "balance": 0,
+    "error": null
   }
 ]

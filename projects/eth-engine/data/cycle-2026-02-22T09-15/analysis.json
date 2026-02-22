@@ -1,0 +1,19 @@
+{
+  "data_validation": {
+    "eth_price_ok": true,
+    "candles_fresh": true,
+    "onchain_fresh": false,
+    "market_fresh": true,
+    "issues": ["On-chain data is 8 hours old - marked as STALE"]
+  },
+  "strategy": "open_long",
+  "direction": "long",
+  "size_usd": 15,
+  "leverage": 3,
+  "entry_price": null,
+  "stop_loss": 1960.00,
+  "take_profit": 2020.00,
+  "reasoning": "Contrarian bullish setup: Fear & Greed at 9 (Extreme Fear - historically bullish reversal signal), Daily RSI at 38.0 (oversold), price near Bollinger lower band (1965.91). EMA 12 crossing above EMA 26 suggesting momentum shifting bullish. ETH rejected from $2015 area, now consolidating near support. On-chain stale so reducing confidence. Using $15 at 3x for $45 exposure with tight SL at 1960.",
+  "confidence": 60,
+  "timestamp": "2026-02-22T06:15:17Z"
+}

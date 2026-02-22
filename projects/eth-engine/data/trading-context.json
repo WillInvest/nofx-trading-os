@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-02-22T14:00:54.586632+00:00",
-  "eth_price": 1950.45,
+  "timestamp": "2026-02-22T14:17:22.097153+00:00",
+  "eth_price": 1951.25,
   "candles_1h": [
     {
       "t": 1771048800000,
@@ -1806,40 +1806,13 @@
       "t": 1771768800000,
       "T": 1771772399999,
       "o": 1950.1,
-      "h": 1950.7,
-      "l": 1949.6,
-      "c": 1950.4,
-      "v": 441.3681
+      "h": 1951.7,
+      "l": 1943.0,
+      "c": 1951.3,
+      "v": 1606.2008
     }
   ],
   "candles_5m": [
-    {
-      "t": 1771732800000,
-      "T": 1771733099999,
-      "o": 1973.8,
-      "h": 1975.4,
-      "l": 1973.5,
-      "c": 1975.3,
-      "v": 247.3462
-    },
-    {
-      "t": 1771733100000,
-      "T": 1771733399999,
-      "o": 1975.3,
-      "h": 1975.4,
-      "l": 1973.2,
-      "c": 1973.3,
-      "v": 32.5686
-    },
-    {
-      "t": 1771733400000,
-      "T": 1771733699999,
-      "o": 1973.3,
-      "h": 1974.4,
-      "l": 1973.3,
-      "c": 1973.8,
-      "v": 252.8275
-    },
     {
       "t": 1771733700000,
       "T": 1771733999999,
@@ -2898,9 +2871,36 @@
       "T": 1771769099999,
       "o": 1950.1,
       "h": 1950.7,
-      "l": 1949.6,
-      "c": 1950.4,
-      "v": 441.3681
+      "l": 1945.8,
+      "c": 1946.6,
+      "v": 641.8287
+    },
+    {
+      "t": 1771769100000,
+      "T": 1771769399999,
+      "o": 1946.7,
+      "h": 1950.2,
+      "l": 1943.0,
+      "c": 1947.7,
+      "v": 685.7037
+    },
+    {
+      "t": 1771769400000,
+      "T": 1771769699999,
+      "o": 1947.8,
+      "h": 1950.8,
+      "l": 1947.2,
+      "c": 1950.5,
+      "v": 188.3324
+    },
+    {
+      "t": 1771769700000,
+      "T": 1771769999999,
+      "o": 1950.5,
+      "h": 1951.7,
+      "l": 1950.5,
+      "c": 1951.3,
+      "v": 90.336
     }
   ],
   "candles_daily": [
@@ -3179,43 +3179,43 @@
       "T": 1771804799999,
       "o": 1972.4,
       "h": 1982.6,
-      "l": 1944.6,
-      "c": 1950.4,
-      "v": 102309.1028
+      "l": 1943.0,
+      "c": 1951.3,
+      "v": 103473.9355
     }
   ],
   "indicators_1h": {
-    "sma_7": 1967.19,
-    "sma_25": 1975.56,
+    "sma_7": 1967.31,
+    "sma_25": 1975.6,
     "sma_99": 1962.42,
-    "ema_12": 1967.48,
-    "ema_26": 1970.63,
-    "rsi_14": 32.8,
-    "macd_line": -3.1468,
-    "macd_signal": -0.0781,
-    "macd_histogram": -3.0686,
-    "bollinger_upper": 1988.26,
-    "bollinger_middle": 1972.54,
-    "bollinger_lower": 1956.82,
-    "atr_14": 9.21,
-    "stoch_rsi_k": 3.33,
-    "stoch_rsi_d": 1.11,
-    "williams_r": -84.74,
-    "cci_20": -306.39,
-    "obv": -79795.41,
-    "mfi_14": 43.08,
-    "vwap": 1982.71
+    "ema_12": 1967.62,
+    "ema_26": 1970.69,
+    "rsi_14": 33.74,
+    "macd_line": -3.075,
+    "macd_signal": -0.0638,
+    "macd_histogram": -3.0112,
+    "bollinger_upper": 1988.31,
+    "bollinger_middle": 1972.59,
+    "bollinger_lower": 1956.86,
+    "atr_14": 9.75,
+    "stoch_rsi_k": 13.13,
+    "stoch_rsi_d": 4.38,
+    "williams_r": -79.04,
+    "cci_20": -320.3,
+    "obv": -78630.58,
+    "mfi_14": 42.56,
+    "vwap": 1982.7
   },
   "indicators_5m": {
-    "ema_12": 1955.76,
-    "ema_26": 1962.07,
-    "rsi_14": 24.7,
-    "volume_ratio": 0.23
+    "ema_12": 1953.15,
+    "ema_26": 1959.34,
+    "rsi_14": 33.49,
+    "volume_ratio": 0.05
   },
   "indicators_daily": {
-    "sma_20": 2016.91,
+    "sma_20": 2016.95,
     "sma_50": 0.0,
-    "rsi_14": 36.94
+    "rsi_14": 36.97
   },
   "position": null,
   "balance": {
@@ -3228,7 +3228,7 @@
   },
   "open_orders": [],
   "market_data": {
-    "timestamp": "2026-02-22T14:00:30.868309+00:00",
+    "timestamp": "2026-02-22T14:17:20.023484+00:00",
     "liquidations": {
       "long_liquidations_1h": 0,
       "short_liquidations_1h": 0,
@@ -3236,10 +3236,10 @@
     },
     "options": {
       "put_call_ratio": 0.674,
-      "total_put_oi": 833043.0,
-      "total_call_oi": 1235840.0,
+      "total_put_oi": 833561.0,
+      "total_call_oi": 1235948.0,
       "signal": "neutral",
-      "avg_iv": 79.68
+      "avg_iv": 79.7
     },
     "btc_eth": {
       "btc_price": 0,
@@ -3251,9 +3251,9 @@
       "dex_volume_24h": 0
     },
     "stablecoins": {
-      "usdt_market_cap": 183604111396,
+      "usdt_market_cap": 183585397601,
       "usdc_market_cap": 0,
-      "total": 183604111396
+      "total": 183585397601
     },
     "fear_greed": {
       "value": 9,
@@ -3261,42 +3261,147 @@
     }
   },
   "onchain_data": {
-    "timestamp": "2026-02-21T22:21:00.805000+00:00",
+    "timestamp": "2026-02-22T14:13:48.034014+00:00",
     "block_range": [
-      24507889,
-      24508189
+      24512635,
+      24512935
     ],
     "stablecoin_exchange_flows": {
-      "usdt_inflow_usd": 3187043.65,
-      "usdt_outflow_usd": 2256862.89,
+      "usdt_inflow_usd": 17632791.54,
+      "usdt_outflow_usd": 4013741.24,
       "usdc_inflow_usd": 0,
       "usdc_outflow_usd": 0,
-      "net_flow_usd": 930180.76,
-      "signal": "neutral"
+      "net_flow_usd": 13619050.29,
+      "signal": "selling_pressure"
     },
     "whale_transfers": {
       "ETH": {
         "large_transfers": [],
-        "net_exchange_flow": 1694703.73
+        "net_exchange_flow": -11664488.96
       },
       "AAVE": {
         "large_transfers": [
           {
-            "tx": "0xb5bcef2b84a7fd68...",
-            "from": "0x91d40e48...",
-            "to": "0x4a4aaa01...",
-            "value": 2164.0,
-            "usd": 259680.0,
+            "tx": "0x4c3a2546188faee7...",
+            "from": "0x215091c6...",
+            "to": "0x28c6c062...",
+            "value": 999.9749,
+            "usd": 119996.99,
+            "direction": "to_exchange"
+          }
+        ],
+        "net_exchange_flow": 119996.99,
+        "count": 1
+      },
+      "LINK": {
+        "large_transfers": [
+          {
+            "tx": "0xa143e2ac795a6e0f...",
+            "from": "0x9b5ba753...",
+            "to": "0x059ff12b...",
+            "value": 30064.5763,
+            "usd": 270581.19,
+            "direction": null
+          },
+          {
+            "tx": "0x7acd6d38f5dfeea1...",
+            "from": "0x00000000...",
+            "to": "0x79146637...",
+            "value": 18513.9341,
+            "usd": 166625.41,
+            "direction": null
+          },
+          {
+            "tx": "0x7acd6d38f5dfeea1...",
+            "from": "0x79146637...",
+            "to": "0xfbd4cdb4...",
+            "value": 18513.9341,
+            "usd": 166625.41,
+            "direction": null
+          },
+          {
+            "tx": "0x3fc60add80d9fc1f...",
+            "from": "0x059ff12b...",
+            "to": "0x9b5ba753...",
+            "value": 30064.5763,
+            "usd": 270581.19,
+            "direction": null
+          },
+          {
+            "tx": "0xdac9395455f3fcd5...",
+            "from": "0x9b5ba753...",
+            "to": "0x059ff12b...",
+            "value": 30064.5763,
+            "usd": 270581.19,
+            "direction": null
+          },
+          {
+            "tx": "0x1c82ae098a7e4d92...",
+            "from": "0x059ff12b...",
+            "to": "0x9b5ba753...",
+            "value": 30064.5763,
+            "usd": 270581.19,
+            "direction": null
+          },
+          {
+            "tx": "0xa355d00d90db263d...",
+            "from": "0x9b5ba753...",
+            "to": "0x059ff12b...",
+            "value": 30064.5763,
+            "usd": 270581.19,
+            "direction": null
+          },
+          {
+            "tx": "0x6afaadd82f11f2d9...",
+            "from": "0x059ff12b...",
+            "to": "0x9b5ba753...",
+            "value": 30064.5763,
+            "usd": 270581.19,
+            "direction": null
+          },
+          {
+            "tx": "0x5c63d4dabd9f9889...",
+            "from": "0x9b5ba753...",
+            "to": "0x059ff12b...",
+            "value": 30064.5763,
+            "usd": 270581.19,
+            "direction": null
+          },
+          {
+            "tx": "0xe54655b86ea7bd75...",
+            "from": "0x059ff12b...",
+            "to": "0x9b5ba753...",
+            "value": 30064.5763,
+            "usd": 270581.19,
+            "direction": null
+          },
+          {
+            "tx": "0xbfe5f2796ec9e3b6...",
+            "from": "0x9b5ba753...",
+            "to": "0x059ff12b...",
+            "value": 30064.5763,
+            "usd": 270581.19,
+            "direction": null
+          },
+          {
+            "tx": "0x9d4f9458bd1cb863...",
+            "from": "0x059ff12b...",
+            "to": "0x9b5ba753...",
+            "value": 30064.5763,
+            "usd": 270581.19,
+            "direction": null
+          },
+          {
+            "tx": "0x9b64f61aec6c6aa6...",
+            "from": "0x9b5ba753...",
+            "to": "0x059ff12b...",
+            "value": 30064.5763,
+            "usd": 270581.19,
             "direction": null
           }
         ],
         "net_exchange_flow": 0,
-        "count": 1
-      },
-      "LINK": {
-        "large_transfers": [],
-        "net_exchange_flow": 0,
-        "count": 0
+        "count": 13
       },
       "UNI": {
         "large_transfers": [],
@@ -3304,19 +3409,62 @@
         "count": 0
       },
       "LDO": {
-        "large_transfers": [],
+        "large_transfers": [
+          {
+            "tx": "0xdfc6fcf047a294cb...",
+            "from": "0x431696ee...",
+            "to": "0x96dfbd28...",
+            "value": 85866.8661,
+            "usd": 171733.73,
+            "direction": null
+          }
+        ],
         "net_exchange_flow": 0,
-        "count": 0
+        "count": 1
       },
       "CRV": {
-        "large_transfers": [],
+        "large_transfers": [
+          {
+            "tx": "0x1750a0b5192bdcf3...",
+            "from": "0x8fa129f8...",
+            "to": "0xf8191d98...",
+            "value": 270342.0,
+            "usd": 135171.0,
+            "direction": null
+          }
+        ],
         "net_exchange_flow": 0,
-        "count": 0
+        "count": 1
       },
       "PENDLE": {
-        "large_transfers": [],
-        "net_exchange_flow": 0,
-        "count": 0
+        "large_transfers": [
+          {
+            "tx": "0xd9071cdcd05a5413...",
+            "from": "0x8a850efb...",
+            "to": "0x28c6c062...",
+            "value": 66754.93,
+            "usd": 200264.79,
+            "direction": "to_exchange"
+          },
+          {
+            "tx": "0x8416642162f733f1...",
+            "from": "0x65798fe5...",
+            "to": "0x187c9fbf...",
+            "value": 68432.277,
+            "usd": 205296.83,
+            "direction": null
+          },
+          {
+            "tx": "0xa9911d889b717fdd...",
+            "from": "0x031dde93...",
+            "to": "0x28c6c062...",
+            "value": 48861.07,
+            "usd": 146583.21,
+            "direction": "to_exchange"
+          }
+        ],
+        "net_exchange_flow": 346848.0,
+        "count": 3
       },
       "ARB": {
         "large_transfers": [],
@@ -3326,112 +3474,104 @@
       "ENA": {
         "large_transfers": [
           {
-            "tx": "0xd02205262b5b42de...",
-            "from": "0x51c72848...",
-            "to": "0x9008d19f...",
-            "value": 367291.6307,
-            "usd": 183645.82,
+            "tx": "0x90d5e09c1f1e3e3b...",
+            "from": "0xa5e52507...",
+            "to": "0x4defb3cb...",
+            "value": 799706.5,
+            "usd": 399853.25,
             "direction": null
           },
           {
-            "tx": "0xd02205262b5b42de...",
-            "from": "0x9008d19f...",
-            "to": "0x663e5144...",
-            "value": 367218.1724,
-            "usd": 183609.09,
+            "tx": "0x6c5f7cfd54babc30...",
+            "from": "0x15f46551...",
+            "to": "0x4defb3cb...",
+            "value": 285230.7274,
+            "usd": 142615.36,
             "direction": null
           },
           {
-            "tx": "0xd8bd2f8c2d5b5141...",
-            "from": "0xdfd5293d...",
-            "to": "0x15f46551...",
-            "value": 305114.3024,
-            "usd": 152557.15,
+            "tx": "0xc995143c2057102b...",
+            "from": "0xe14a46dd...",
+            "to": "0x0c36fda8...",
+            "value": 657181.8404,
+            "usd": 328590.92,
             "direction": null
           },
           {
-            "tx": "0x72bdf7fff34d69c8...",
+            "tx": "0x577aef211c47ddd7...",
+            "from": "0x4defb3cb...",
+            "to": "0x0c36fda8...",
+            "value": 731538.6948,
+            "usd": 365769.35,
+            "direction": null
+          },
+          {
+            "tx": "0x085231e6d2f0af88...",
             "from": "0x28c6c062...",
-            "to": "0x51c72848...",
-            "value": 230648.0,
-            "usd": 115324.0,
+            "to": "0xa7a5c760...",
+            "value": 238540.42,
+            "usd": 119270.21,
             "direction": "from_exchange"
           },
           {
-            "tx": "0xec762c872b3a4d8d...",
-            "from": "0x9008d19f...",
-            "to": "0x663e5144...",
-            "value": 283019.0614,
-            "usd": 141509.53,
+            "tx": "0x71edcb74930f8c5e...",
+            "from": "0xa7a5c760...",
+            "to": "0xb334a61a...",
+            "value": 238540.42,
+            "usd": 119270.21,
             "direction": null
           },
           {
-            "tx": "0x458f889f5199ee35...",
-            "from": "0x15f46551...",
-            "to": "0x79f3d1fa...",
-            "value": 501409.0227,
-            "usd": 250704.51,
+            "tx": "0x1a2dae9b5ac9fae5...",
+            "from": "0x4655b6a1...",
+            "to": "0x40e9b406...",
+            "value": 204715.1313,
+            "usd": 102357.57,
             "direction": null
           },
           {
-            "tx": "0xda1ff83389a3948b...",
-            "from": "0xee38e2d6...",
-            "to": "0x79f3d1fa...",
-            "value": 410593.67,
-            "usd": 205296.83,
+            "tx": "0x4620e9adf4186dc5...",
+            "from": "0x40e9b406...",
+            "to": "0x33f5d91c...",
+            "value": 221157.4832,
+            "usd": 110578.74,
             "direction": null
           },
           {
-            "tx": "0xc60e9327b923e75a...",
-            "from": "0xfcb94e6c...",
-            "to": "0x0c36fda8...",
-            "value": 637172.8385,
-            "usd": 318586.42,
+            "tx": "0x8e9bf83f1b9efc4d...",
+            "from": "0x4655b6a1...",
+            "to": "0x3189fb72...",
+            "value": 2000166.2097,
+            "usd": 1000083.1,
             "direction": null
           },
           {
-            "tx": "0x62497007ad7d5cef...",
-            "from": "0xe14a46dd...",
-            "to": "0x0c36fda8...",
-            "value": 908058.6919,
-            "usd": 454029.35,
+            "tx": "0x28f0d0a22732a3e7...",
+            "from": "0x3189fb72...",
+            "to": "0x33f5d91c...",
+            "value": 2000166.2097,
+            "usd": 1000083.1,
             "direction": null
           },
           {
-            "tx": "0xa178f2cf707c0e26...",
-            "from": "0x642708f0...",
-            "to": "0x8a850efb...",
-            "value": 410589.67,
-            "usd": 205294.83,
-            "direction": null
-          },
-          {
-            "tx": "0x32e96c40238a05ba...",
-            "from": "0xdfd5293d...",
-            "to": "0x680dd69e...",
-            "value": 299994.67,
-            "usd": 149997.33,
-            "direction": null
-          },
-          {
-            "tx": "0x81eff6865539ff40...",
-            "from": "0x8a850efb...",
+            "tx": "0xf0c97838836ff9e5...",
+            "from": "0x33f5d91c...",
             "to": "0x28c6c062...",
-            "value": 410589.67,
-            "usd": 205294.83,
+            "value": 2221323.6928,
+            "usd": 1110661.85,
             "direction": "to_exchange"
           },
           {
-            "tx": "0xf1ddfcaad0571671...",
-            "from": "0x680dd69e...",
-            "to": "0x3cc936b7...",
-            "value": 299994.67,
-            "usd": 149997.33,
-            "direction": null
+            "tx": "0x90f60c3534ad5b0b...",
+            "from": "0x28c6c062...",
+            "to": "0x8afd8542...",
+            "value": 480889.0,
+            "usd": 240444.5,
+            "direction": "from_exchange"
           }
         ],
-        "net_exchange_flow": 89970.83,
-        "count": 13
+        "net_exchange_flow": 750947.14,
+        "count": 12
       },
       "ZRO": {
         "large_transfers": [],
@@ -3440,34 +3580,34 @@
       }
     },
     "gas": {
-      "avg_gwei": 0.0398,
-      "min_gwei": 0.0298,
-      "max_gwei": 0.0801,
+      "avg_gwei": 0.0508,
+      "min_gwei": 0.0398,
+      "max_gwei": 0.073,
       "trend": "rising"
     },
     "exchange_eth_reserves": {
-      "total_eth": 237879.2194,
-      "change_1h": 855.911
+      "total_eth": 198881.2877,
+      "change_1h": -5891.156
     },
     "stablecoin_supply": {
       "usdt": 96121766396.86,
       "usdt_change": 0.0,
-      "usdc": 52300610559.58,
-      "usdc_change": -239792.13
+      "usdc": 52292450256.43,
+      "usdc_change": 331703.89
     }
   },
   "protocol_data": {
-    "timestamp": "2026-02-21T22:21:25.180439+00:00",
-    "block": 24508191,
+    "timestamp": "2026-02-22T14:14:26.508281+00:00",
+    "block": 24512938,
     "aave": {
       "WETH": {
-        "supply_rate_apy": 6.0035,
-        "borrow_rate_apy": 9.1871,
+        "supply_rate_apy": 6.0073,
+        "borrow_rate_apy": 9.1919,
         "utilization": 0.6535
       },
       "LINK": {
-        "supply_rate_apy": 0.0886,
-        "borrow_rate_apy": 1.2236,
+        "supply_rate_apy": 0.0887,
+        "borrow_rate_apy": 1.2246,
         "utilization": 0.0724
       },
       "CRV": {
@@ -3477,60 +3617,60 @@
       },
       "UNI": {
         "supply_rate_apy": 0.3073,
-        "borrow_rate_apy": 2.7134,
-        "utilization": 0.1133
+        "borrow_rate_apy": 2.7137,
+        "utilization": 0.1132
       }
     },
     "curve_3pool": {
-      "dai_balance": 40032000.21,
-      "usdc_balance": 37444968.07,
-      "usdt_balance": 84756595.92,
-      "dai_pct": 24.68,
-      "usdc_pct": 23.08,
-      "usdt_pct": 52.24,
-      "total_tvl": 162233564.2,
-      "stress_signal": "USDT heavy (52.24%) \u2014 flight to safety"
+      "dai_balance": 40054961.21,
+      "usdc_balance": 37098731.44,
+      "usdt_balance": 84844124.99,
+      "dai_pct": 24.73,
+      "usdc_pct": 22.9,
+      "usdt_pct": 52.37,
+      "total_tvl": 161997817.64,
+      "stress_signal": "USDT heavy (52.37%) \u2014 flight to safety"
     },
     "uniswap": {
       "eth_usdc_pool": {
-        "current_tick": 200417,
-        "sqrt_price": "1781060872247593380926915608399103",
-        "liquidity": "14669633108924202554"
+        "current_tick": 200560,
+        "sqrt_price": "1793854621256092943751373251545375",
+        "liquidity": "13835206798275181256"
       }
     },
     "ethena": {
-      "usde_supply": 6220999045.07,
-      "susde_supply": 2929610742.07,
-      "staking_ratio": 0.4709
+      "usde_supply": 6173061014.77,
+      "susde_supply": 2924559468.87,
+      "staking_ratio": 0.4738
     },
     "pendle": {
       "token_supply": 281527448.46
     },
     "arb_bridge": {
-      "eth_locked": 831741.88,
+      "eth_locked": 832592.28,
       "signal": "stable"
     },
     "link_staking": {
       "total_staked": 458820.96
     },
     "lido": {
-      "steth_supply": 9470681.31,
-      "wsteth_supply": 3505621.7,
-      "steth_per_wsteth": 1.227572,
-      "wrap_ratio": 0.3702,
+      "steth_supply": 9468723.0,
+      "wsteth_supply": 3504725.79,
+      "steth_per_wsteth": 1.227649,
+      "wrap_ratio": 0.3701,
       "ldo_total_supply": 1000000000.0,
       "signal": "healthy"
     },
     "eip1559_burn": {
-      "current_base_fee_gwei": 0.0371,
-      "past_1h_base_fee_gwei": 0.0417,
-      "base_fee_trend": "falling",
-      "estimated_burn_1h_eth": 0.2488,
+      "current_base_fee_gwei": 0.0706,
+      "past_1h_base_fee_gwei": 0.0442,
+      "base_fee_trend": "rising",
+      "estimated_burn_1h_eth": 0.4203,
       "signal": "low_activity"
     },
     "dex_volume": {
-      "eth_usdc_swaps_1h": 107,
-      "activity": "medium"
+      "eth_usdc_swaps_1h": 374,
+      "activity": "high"
     }
   },
   "news": {

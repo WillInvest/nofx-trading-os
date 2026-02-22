@@ -1,14 +1,32 @@
 {
-  "timestamp": "2026-02-21T22:21:25.564884+00:00",
+  "timestamp": "2026-02-22T14:14:26.958444+00:00",
   "coins": {
     "ETH": {
-      "funding_rate": 9.3047e-06,
+      "funding_rate": 1.25e-05,
       "funding_signal": "neutral",
-      "price": 1977.8,
-      "oi_usd": 1065886584.52,
-      "oi_change_pct": 0.37,
+      "price": 1950.5,
+      "oi_usd": 1086461770.85,
+      "oi_change_pct": 1.93,
       "oi_signal": "neutral",
-      "orderbook_imbalance": 0.1278,
+      "orderbook_imbalance": 0.3456,
+      "orderbook_signal": "buying_pressure",
+      "liquidations_1h": {
+        "long_count": 0,
+        "short_count": 0,
+        "long_usd": 0,
+        "short_usd": 0
+      },
+      "cvd": -1158.26,
+      "cvd_signal": "sellers_dominant"
+    },
+    "AAVE": {
+      "funding_rate": 1.25e-05,
+      "funding_signal": "neutral",
+      "price": 117.9,
+      "oi_usd": 27646656.32,
+      "oi_change_pct": -4.21,
+      "oi_signal": "long_unwinding",
+      "orderbook_imbalance": 0.0805,
       "orderbook_signal": "neutral",
       "liquidations_1h": {
         "long_count": 0,
@@ -16,71 +34,53 @@
         "long_usd": 0,
         "short_usd": 0
       },
-      "cvd": 3627.77,
-      "cvd_signal": "buyers_dominant"
-    },
-    "AAVE": {
-      "funding_rate": -9.0826e-06,
-      "funding_signal": "neutral",
-      "price": 121.98,
-      "oi_usd": 28863190.59,
-      "oi_change_pct": -0.81,
-      "oi_signal": "neutral",
-      "orderbook_imbalance": -0.3507,
-      "orderbook_signal": "selling_pressure",
-      "liquidations_1h": {
-        "long_count": 0,
-        "short_count": 0,
-        "long_usd": 0,
-        "short_usd": 0
-      },
-      "cvd": -1921.66,
+      "cvd": -4282.21,
       "cvd_signal": "sellers_dominant"
     },
     "LINK": {
-      "funding_rate": 1.25e-05,
+      "funding_rate": 3.2375e-06,
       "funding_signal": "neutral",
-      "price": 8.9021,
-      "oi_usd": 20994155.37,
-      "oi_change_pct": 0.18,
-      "oi_signal": "neutral",
-      "orderbook_imbalance": 0.5801,
-      "orderbook_signal": "buying_pressure",
+      "price": 8.7175,
+      "oi_usd": 20264974.23,
+      "oi_change_pct": -3.47,
+      "oi_signal": "long_unwinding",
+      "orderbook_imbalance": 0.0331,
+      "orderbook_signal": "neutral",
       "liquidations_1h": {
         "long_count": 0,
         "short_count": 0,
         "long_usd": 0,
         "short_usd": 0
       },
-      "cvd": -5353.04,
-      "cvd_signal": "sellers_dominant"
+      "cvd": -29.49,
+      "cvd_signal": "balanced"
     },
     "ZRO": {
-      "funding_rate": -7.37e-08,
+      "funding_rate": 1.25e-05,
       "funding_signal": "neutral",
-      "price": 1.7241,
-      "oi_usd": 34934908.66,
-      "oi_change_pct": 0.22,
+      "price": 1.7293,
+      "oi_usd": 35221126.24,
+      "oi_change_pct": 0.82,
       "oi_signal": "neutral",
-      "orderbook_imbalance": 0.0894,
-      "orderbook_signal": "neutral",
+      "orderbook_imbalance": -0.4355,
+      "orderbook_signal": "selling_pressure",
       "liquidations_1h": {
         "long_count": 0,
         "short_count": 0,
         "long_usd": 0,
         "short_usd": 0
       },
-      "cvd": -1940.44,
-      "cvd_signal": "sellers_dominant"
+      "cvd": 447.07,
+      "cvd_signal": "buyers_dominant"
     },
     "ENA": {
-      "funding_rate": -1.76985e-05,
+      "funding_rate": 3.514e-06,
       "funding_signal": "neutral",
-      "price": 0.10832,
-      "oi_usd": 14125707.9,
-      "oi_change_pct": 0.26,
-      "oi_signal": "neutral",
-      "orderbook_imbalance": 0.0225,
+      "price": 0.10148,
+      "oi_usd": 13554509.66,
+      "oi_change_pct": -4.04,
+      "oi_signal": "long_unwinding",
+      "orderbook_imbalance": 0.1733,
       "orderbook_signal": "neutral",
       "liquidations_1h": {
         "long_count": 0,
@@ -88,53 +88,53 @@
         "long_usd": 0,
         "short_usd": 0
       },
-      "cvd": 13.8,
+      "cvd": 127.25,
       "cvd_signal": "balanced"
     },
     "UNI": {
-      "funding_rate": -2.66052e-05,
+      "funding_rate": -7.239e-07,
       "funding_signal": "neutral",
-      "price": 3.6253,
-      "oi_usd": 14537767.68,
-      "oi_change_pct": 0.29,
-      "oi_signal": "neutral",
-      "orderbook_imbalance": -0.2162,
-      "orderbook_signal": "selling_pressure",
+      "price": 3.4767,
+      "oi_usd": 13103264.4,
+      "oi_change_pct": -9.87,
+      "oi_signal": "long_unwinding",
+      "orderbook_imbalance": 0.0693,
+      "orderbook_signal": "neutral",
       "liquidations_1h": {
         "long_count": 0,
         "short_count": 0,
         "long_usd": 0,
         "short_usd": 0
       },
-      "cvd": -1193.99,
-      "cvd_signal": "sellers_dominant"
+      "cvd": 447.8,
+      "cvd_signal": "buyers_dominant"
     },
     "LDO": {
-      "funding_rate": 1.19193e-05,
+      "funding_rate": 1.25e-05,
       "funding_signal": "neutral",
-      "price": 0.32936,
-      "oi_usd": 4229467.09,
-      "oi_change_pct": 0.1,
+      "price": 0.31053,
+      "oi_usd": 4199582.94,
+      "oi_change_pct": -0.71,
       "oi_signal": "neutral",
-      "orderbook_imbalance": 0.2095,
-      "orderbook_signal": "buying_pressure",
+      "orderbook_imbalance": 0.0339,
+      "orderbook_signal": "neutral",
       "liquidations_1h": {
         "long_count": 0,
         "short_count": 0,
         "long_usd": 0,
         "short_usd": 0
       },
-      "cvd": -12.91,
+      "cvd": 8.17,
       "cvd_signal": "balanced"
     },
     "CRV": {
-      "funding_rate": 1.25e-05,
+      "funding_rate": -4.0075e-05,
       "funding_signal": "neutral",
-      "price": 0.24142,
-      "oi_usd": 5240227.18,
-      "oi_change_pct": -0.15,
-      "oi_signal": "neutral",
-      "orderbook_imbalance": 0.0117,
+      "price": 0.22895,
+      "oi_usd": 4978355.24,
+      "oi_change_pct": -5.0,
+      "oi_signal": "long_unwinding",
+      "orderbook_imbalance": 0.0007,
       "orderbook_signal": "neutral",
       "liquidations_1h": {
         "long_count": 0,
@@ -142,17 +142,17 @@
         "long_usd": 0,
         "short_usd": 0
       },
-      "cvd": 656.44,
-      "cvd_signal": "buyers_dominant"
+      "cvd": -1628.59,
+      "cvd_signal": "sellers_dominant"
     },
     "PENDLE": {
-      "funding_rate": -3.1427e-06,
+      "funding_rate": -7.8785e-06,
       "funding_signal": "neutral",
-      "price": 1.2241,
-      "oi_usd": 4477970.79,
-      "oi_change_pct": 0.18,
-      "oi_signal": "neutral",
-      "orderbook_imbalance": -0.0871,
+      "price": 1.1944,
+      "oi_usd": 4383966.37,
+      "oi_change_pct": -2.1,
+      "oi_signal": "long_unwinding",
+      "orderbook_imbalance": -0.1441,
       "orderbook_signal": "neutral",
       "liquidations_1h": {
         "long_count": 0,
@@ -160,17 +160,17 @@
         "long_usd": 0,
         "short_usd": 0
       },
-      "cvd": 1055.28,
+      "cvd": 416.68,
       "cvd_signal": "buyers_dominant"
     },
     "ARB": {
-      "funding_rate": -3.8595e-06,
+      "funding_rate": -5.01609e-05,
       "funding_signal": "neutral",
-      "price": 0.09884,
-      "oi_usd": 3175336.96,
-      "oi_change_pct": 0.35,
+      "price": 0.09403,
+      "oi_usd": 3203559.96,
+      "oi_change_pct": 0.89,
       "oi_signal": "neutral",
-      "orderbook_imbalance": -0.3529,
+      "orderbook_imbalance": -0.5101,
       "orderbook_signal": "selling_pressure",
       "liquidations_1h": {
         "long_count": 0,
@@ -178,25 +178,25 @@
         "long_usd": 0,
         "short_usd": 0
       },
-      "cvd": -142.67,
+      "cvd": -1740.13,
       "cvd_signal": "sellers_dominant"
     }
   },
   "macro": {
     "fear_greed": {
-      "value": 8,
+      "value": 9,
       "label": "Extreme Fear"
     },
     "eth_options": {
-      "put_call_ratio": 0.673,
-      "total_put_oi": 835829.0,
-      "total_call_oi": 1241148.0,
+      "put_call_ratio": 0.674,
+      "total_put_oi": 833555.0,
+      "total_call_oi": 1235948.0,
       "signal": "neutral"
     },
     "btc_options": {
-      "put_call_ratio": 0.751,
-      "total_put_oi": 185560.9,
-      "total_call_oi": 247229.1,
+      "put_call_ratio": 0.754,
+      "total_put_oi": 185588.6,
+      "total_call_oi": 246056.6,
       "signal": "neutral"
     }
   }

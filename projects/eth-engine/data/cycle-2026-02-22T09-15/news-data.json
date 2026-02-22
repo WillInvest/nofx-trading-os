@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-22T14:23:17.645977+00:00",
+  "generated_at": "2026-02-22T14:15:41.842903+00:00",
   "top_stories": [
     {
       "headline": "Supreme Court Ruling Boosts Bitcoin Liquidity",
@@ -219,23 +219,6 @@
       "scraped_at": "2026-02-22T14:01:34.243208+00:00"
     },
     {
-      "headline": "SEC's Cardano ETF Shortcut Fuels ETF Hopes",
-      "summary": "Cardano's expedited ETF pathway, driven by the SEC's new generic listing standards, increases the likelihood of faster ETF approvals for other cryptocurrencies, potentially benefiting Ethereum's ecosystem.",
-      "impact": "bullish",
-      "importance": 4,
-      "tags": [
-        "eth",
-        "defi",
-        "etf",
-        "regulation",
-        "cardano"
-      ],
-      "source": "CryptoSlate",
-      "url": "https://cryptoslate.com/the-sec-just-gave-cardano-a-75-day-shortcut-to-a-spot-etf-that-took-bitcoin-240-days/",
-      "published": "2026-02-22",
-      "scraped_at": "2026-02-22T14:21:37.135236+00:00"
-    },
-    {
       "headline": "Trump Announces 10% Global Tariff",
       "summary": "The Supreme Court's approval of Trump's 10% global tariff plan introduces significant macroeconomic uncertainty, potentially impacting global trade and investor sentiment, affecting ETH's value.",
       "impact": "bearish",
@@ -332,6 +315,21 @@
       "url": "https://cointelegraph.com/news/crypto-investors-explore-assets-bitcoin-ethereum-market-uncertainty-robinhood",
       "published": "2024-02-22",
       "scraped_at": "2026-02-22T05:59:54.231564+00:00"
+    },
+    {
+      "headline": "Market Uncertainty Drives Asset Exploration",
+      "summary": "The ongoing market uncertainty is a key driver behind investor exploration of alternative crypto assets, creating opportunity for ETH within a broader DeFi context.",
+      "impact": "neutral",
+      "importance": 4,
+      "tags": [
+        "eth",
+        "defi",
+        "market volatility"
+      ],
+      "source": "CoinTelegraph",
+      "url": "https://cointelegraph.com/news/crypto-investors-explore-assets-bitcoin-ethereum-market-uncertainty-robinhood",
+      "published": "2024-02-22",
+      "scraped_at": "2026-02-22T06:10:05.021696+00:00"
     }
   ],
   "recent_news": [
@@ -449,37 +447,6 @@
       "scraped_at": "2026-02-22T14:01:34.243217+00:00"
     },
     {
-      "headline": "Faster ETF Approvals Could Boost Institutional Demand",
-      "summary": "Reduced ETF approval timelines could accelerate institutional investment into crypto assets, increasing demand and potentially driving up ETH prices.",
-      "impact": "bullish",
-      "importance": 3,
-      "tags": [
-        "eth",
-        "defi",
-        "etf",
-        "institutional"
-      ],
-      "source": "General Analysis",
-      "url": null,
-      "published": "2026-02-22",
-      "scraped_at": "2026-02-22T14:21:37.135244+00:00"
-    },
-    {
-      "headline": "Regulatory Clarity Benefits DeFi",
-      "summary": "SEC’s approach to ETFs creates regulatory clarity, which is generally positive for the broader DeFi ecosystem, including Ethereum-based protocols.",
-      "impact": "neutral",
-      "importance": 2,
-      "tags": [
-        "eth",
-        "defi",
-        "regulation"
-      ],
-      "source": "Market Sentiment",
-      "url": null,
-      "published": "2026-02-22",
-      "scraped_at": "2026-02-22T14:21:37.135245+00:00"
-    },
-    {
       "headline": "RWA & VC Push Ahead Despite Crypto Sell-Off",
       "summary": "CoinTelegraph highlights continued investment in tokenized real-world assets and venture capital within blockchain finance, indicating a shift in focus that could benefit ETH's broader ecosystem.",
       "impact": "bullish",
@@ -494,6 +461,38 @@
       "url": "https://cointelegraph.com/news/crypto-biz-crypto-slides-tokenized-rwa-vc-push-ahead",
       "published": "2026-02-20T20:00:00+00:00",
       "scraped_at": "2026-02-22T03:54:11.725995+00:00"
+    },
+    {
+      "headline": "RWA Issuers Prioritize Capital, Liquidity Lagging",
+      "summary": "Brickken survey reveals a shift in RWA issuers prioritizing capital formation over liquidity, potentially slowing the adoption and trading of tokenized assets, impacting ETH liquidity pools.",
+      "impact": "bearish",
+      "importance": 3,
+      "tags": [
+        "rwa",
+        "tokenization",
+        "defi",
+        "liquidity"
+      ],
+      "source": "CoinDesk",
+      "url": "https://www.coindesk.com/business/2026/02/20/rwa-issuers-prioritize-capital-formation-over-liquidity-according-to-brickken-survey",
+      "published": "2026-02-20T15:55:33+00:00",
+      "scraped_at": "2026-02-22T03:54:11.725985+00:00"
+    },
+    {
+      "headline": "Trump Crypto Summit Highlights Regulatory Uncertainty",
+      "summary": "The bizarre Trump-hosted crypto summit underscores ongoing regulatory uncertainty and potential policy shifts, creating volatility risks for ETH and related projects.",
+      "impact": "bearish",
+      "importance": 2,
+      "tags": [
+        "regulation",
+        "politics",
+        "defi",
+        "tokenization"
+      ],
+      "source": "CoinDesk",
+      "url": "https://www.coindesk.com/business/2026/02/20/goldman-sachs-franklin-templeton-and-nicki-minaj-inside-trump-s-surreal-mar-a-lago-crypto-summit",
+      "published": "2026-02-20T14:59:37+00:00",
+      "scraped_at": "2026-02-22T03:54:11.725993+00:00"
     }
   ],
   "indices": [

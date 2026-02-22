@@ -1,0 +1,46 @@
+{
+  "scan_mode": false,
+  "active_coin": "ETH",
+  "timestamp": "2026-02-22T14:16:50Z",
+  "valid_until": "2026-02-22T15:20:43.501281+00:00",
+  "brain": "MiniMax Trading Brain",
+  "position_review": {
+    "symbol": "ETH",
+    "action": "hold",
+    "confidence": 0,
+    "reasoning": "No existing position to review"
+  },
+  "new_candidate": {
+    "symbol": "ETH",
+    "action": "open_long",
+    "confidence": 0,
+    "entry_price": null,
+    "stop_loss": null,
+    "take_profit": null,
+    "size_usd": 0,
+    "leverage": 0
+  },
+  "market_context": "Bearish structure confirmed: price dropped from $1980 to $1950 over 2 hours with high volume (28k in 08:00 hour). Price now BELOW daily SMA 20, 1H EMA 12/26 bearish cross (1967 < 1970), MACD histogram negative (-3.04). 1H RSI at 33 is oversold but price continues down. Two big red candles with volume spike suggest selling pressure. Rules: if price below daily SMA 20 with bearish EMA cross, bias should be short or no_trade, NOT contrarian long. On-chain and market data unavailable = no on-chain c",
+  "strategies": [
+    {
+      "id": "brain_decision",
+      "name": "MiniMax Brain Decision",
+      "type": "no_trade",
+      "priority": 1,
+      "allocation_pct": 100,
+      "allocation_usd": 0,
+      "description": "Bearish structure confirmed: price dropped from $1980 to $1950 over 2 hours with high volume (28k in 08:00 hour). Price now BELOW daily SMA 20, 1H EMA 12/26 bearish cross (1967 < 1970), MACD histogram",
+      "symbol": "ETH",
+      "params": {
+        "direction": "NONE",
+        "leverage": 0,
+        "entry_price": null,
+        "entry_type": "market",
+        "stop_loss_pct": null,
+        "take_profit_pct": null
+      },
+      "rationale": "Bearish structure confirmed: price dropped from $1980 to $1950 over 2 hours with high volume (28k in 08:00 hour). Price now BELOW daily SMA 20, 1H EMA 12/26 bearish cross (1967 < 1970), MACD histogram negative (-3.04). 1H RSI at 33 is oversold but price continues down. Two big red candles with volume spike suggest selling pressure. Rules: if price below daily SMA 20 with bearish EMA cross, bias should be short or no_trade, NOT contrarian long. On-chain and market data unavailable = no on-chain confirmation. With <2 confirming signals and stale data, no_trade is the correct decision.",
+      "exit_condition": "Monitor for exit conditions"
+    }
+  ]
+}

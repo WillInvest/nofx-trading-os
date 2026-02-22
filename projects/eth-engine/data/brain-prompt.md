@@ -1,12 +1,12 @@
 # ETH Trading Brain Prompt
 
-**Generated:** 2026-02-22T14:01:00Z
-**Cycle ID:** 2026-02-22T09-00
+**Generated:** 2026-02-22T14:17:27Z
+**Cycle ID:** 2026-02-22T09-17
 
 ---
 
 ## CURRENT TIME (UTC)
-2026-02-22T14:01:00Z
+2026-02-22T14:17:27Z
 
 ---
 
@@ -40,7 +40,7 @@ Unrealized PnL: 0.0
 
 ## ETH PRICE & CANDLES
 
-**Current ETH Price:** $1950.45
+**Current ETH Price:** $1951.25
 
 ### 1H Candles (last 6)
 02-22 04:00 | O:1972.7 H:1975.5 L:1970.9 C:1974.8 V:6015
@@ -48,12 +48,9 @@ Unrealized PnL: 0.0
 02-22 06:00 | O:1976.9 H:1982.6 L:1976.8 C:1979.9 V:3339
 02-22 07:00 | O:1980.0 H:1980.6 L:1960.8 C:1965.6 V:14628
 02-22 08:00 | O:1965.8 H:1968.1 L:1944.6 C:1950.1 V:28451
-02-22 09:00 | O:1950.1 H:1950.7 L:1949.6 C:1950.4 V:441
+02-22 09:00 | O:1950.1 H:1951.7 L:1943.0 C:1951.3 V:1606
 
 ### 5m Candles (last 12)
-08:05 | O:1967.1 C:1965.3 V:386
-08:10 | O:1965.0 C:1966.1 V:270
-08:15 | O:1966.0 C:1966.0 V:496
 08:20 | O:1966.0 C:1965.3 V:110
 08:25 | O:1965.3 C:1964.3 V:87
 08:30 | O:1964.2 C:1960.8 V:2436
@@ -62,7 +59,10 @@ Unrealized PnL: 0.0
 08:45 | O:1946.6 C:1949.9 V:7037
 08:50 | O:1949.9 C:1950.2 V:5667
 08:55 | O:1950.2 C:1950.1 V:773
-09:00 | O:1950.1 C:1950.4 V:441
+09:00 | O:1950.1 C:1946.6 V:642
+09:05 | O:1946.7 C:1947.7 V:686
+09:10 | O:1947.8 C:1950.5 V:188
+09:15 | O:1950.5 C:1951.3 V:90
 
 ### Daily Candles (last 7)
 02-15 | O:1965.6 H:2021.9 L:1936.9 C:1997.5
@@ -71,33 +71,33 @@ Unrealized PnL: 0.0
 02-18 | O:1954.9 H:1986.6 L:1905.9 C:1948.3
 02-19 | O:1948.3 H:1980.0 L:1922.3 C:1968.1
 02-20 | O:1968.1 H:1995.0 L:1954.8 C:1972.6
-02-21 | O:1972.4 H:1982.6 L:1944.6 C:1950.4
+02-21 | O:1972.4 H:1982.6 L:1943.0 C:1951.3
 
 ---
 
 ## TECHNICAL INDICATORS
 
 ### 1H Indicators
-SMA 7: 1967.19, SMA 25: 1975.56, SMA 99: 1962.42
-EMA 12: 1967.48, EMA 26: 1970.63
-RSI 14: 32.8
-MACD: -3.1468 (signal: -0.0781, hist: -3.0686)
-Bollinger: U:1988.26 M:1972.54 L:1956.82
-ATR 14: 9.21
-Stoch RSI: K:3.33 D:1.11
-Williams %R: -84.74
-CCI 20: -306.39
-MFI 14: 43.08
-VWAP: 1982.71
+SMA 7: 1967.31, SMA 25: 1975.6, SMA 99: 1962.42
+EMA 12: 1967.62, EMA 26: 1970.69
+RSI 14: 33.74
+MACD: -3.075 (signal: -0.0638, hist: -3.0112)
+Bollinger: U:1988.31 M:1972.59 L:1956.86
+ATR 14: 9.75
+Stoch RSI: K:13.13 D:4.38
+Williams %R: -79.04
+CCI 20: -320.3
+MFI 14: 42.56
+VWAP: 1982.7
 
 ### 5m Indicators
-EMA 12: 1955.76, EMA 26: 1962.07
-RSI 14: 24.7
-Volume Ratio: 0.23
+EMA 12: 1953.15, EMA 26: 1959.34
+RSI 14: 33.49
+Volume Ratio: 0.05
 
 ### Daily Indicators
-SMA 20: 2016.91, SMA 50: 0.0
-RSI 14: 36.94
+SMA 20: 2016.95, SMA 50: 0.0
+RSI 14: 36.97
 
 ---
 
@@ -105,7 +105,14 @@ RSI 14: 36.94
 
 **Source:** /home/openclaw/.openclaw/workspace/projects/nofx-project/nofx/data/arena/onchain-hourly.json
 
-**ON-CHAIN DATA NOT AVAILABLE**
+Timestamp: 2026-02-22T14:13:48.034014+00:00
+Block: N/A
+block_range: [24512635, 24512935]
+stablecoin_exchange_flows: {'usdt_inflow_usd': 17632791.54, 'usdt_outflow_usd': 4013741.24, 'usdc_inflow_usd': 0, 'usdc_outflow_usd': 0, 'net_flow_usd': 13619050.29, 'signal': 'selling_pressure'}
+whale_transfers: {'ETH': {'large_transfers': [], 'net_exchange_flow': -11664488.96}, 'AAVE': {'large_transfers': [{'tx': '0x4c3a2546188faee7...', 'from': '0x215091c6...', 'to': '0x28c6c062...', 'value': 999.9749, 'usd
+gas: {'avg_gwei': 0.0508, 'min_gwei': 0.0398, 'max_gwei': 0.073, 'trend': 'rising'}
+exchange_eth_reserves: {'total_eth': 198881.2877, 'change_1h': -5891.156}
+stablecoin_supply: {'usdt': 96121766396.86, 'usdt_change': 0.0, 'usdc': 52292450256.43, 'usdc_change': 331703.89}
 
 ---
 
@@ -113,7 +120,7 @@ RSI 14: 36.94
 
 **Source:** /home/openclaw/.openclaw/workspace/projects/nofx-project/nofx/data/arena (market-live.json or market-data-hourly.json)
 
-**MARKET DATA NOT AVAILABLE**
+Timestamp: 2026-02-22T14:16:49.608358+00:00
 
 ---
 
