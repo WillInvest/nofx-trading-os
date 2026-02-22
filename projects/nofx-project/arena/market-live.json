@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-22T14:02:32.362569+00:00",
+  "timestamp": "2026-02-22T14:04:33.731465+00:00",
   "liquidations": {
     "long_liquidations_1h": 0,
     "short_liquidations_1h": 0,
@@ -8,9 +8,9 @@
   "options": {
     "put_call_ratio": 0.674,
     "total_put_oi": 833083.0,
-    "total_call_oi": 1235853.0,
+    "total_call_oi": 1235867.0,
     "signal": "neutral",
-    "avg_iv": 79.68
+    "avg_iv": 79.69
   },
   "btc_eth": {
     "btc_price": 0,
@@ -22,9 +22,9 @@
     "dex_volume_24h": 0
   },
   "stablecoins": {
-    "usdt_market_cap": 183604111396,
+    "usdt_market_cap": 183583163478,
     "usdc_market_cap": 0,
-    "total": 183604111396
+    "total": 183583163478
   },
   "fear_greed": {
     "value": 9,
