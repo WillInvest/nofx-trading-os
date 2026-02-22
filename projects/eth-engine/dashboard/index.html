@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ETH Engine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --card: #1f1f2e;
+      --border: #2a2a3a;
+      --accent: #6366f1;
+      --accent-dim: #4f46e5;
+      --green: #10b981;
+      --red: #ef4444;
+      --yellow: #f59e0b;
+      --text: #e2e8f0;
+      --text-dim: #94a3b8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 16px;
+      background-image: 
+        radial-gradient(ellipse at top, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.05) 0%, transparent 40%);
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .header {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dim));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .logo-text {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .price-display {
+      text-align: right;
+    }
+
+    .price {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+    }
+
+    .price-change {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 4px;
+    }
+
+    .price-change.positive { color: var(--green); }
+    .price-change.negative { color: var(--red); }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+    }
+
+    .card-header {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-dim);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .balance-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+    }
+
+    .balance-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .balance-label {
+      color: var(--text-dim);
+      font-size: 12px;
+    }
+
+    .balance-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
+    }
+
+    .position-card {
+      border-left: 3px solid var(--accent);
+    }
+
+    .position-side {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+
+    .position-side.long {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--green);
+    }
+
+    .position-side.short {
+      background: rgba(239, 68, 68, 0.15);
+      color: var(--red);
+    }
+
+    .position-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .position-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .position-detail-label {
+      font-size: 11px;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .position-detail-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .pnl-value {
+      font-weight: 600;
+    }
+
+    .pnl-value.positive { color: var(--green); }
+    .pnl-value.negative { color: var(--red); }
+
+    .position-empty {
+      color: var(--text-dim);
+      font-size: 14px;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .decision-strategy {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .decision-badge {
+      font-size: 10px;
+      padding: 3px 8px;
+      background: rgba(99, 102, 241, 0.2);
+      color: var(--accent);
+      border-radius: 4px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .confidence-section {
+      margin-bottom: 12px;
+    }
+
+    .confidence-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+
+    .confidence-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+    }
+
+    .confidence-bar {
+      height: 8px;
+      background: var(--bg);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .confidence-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.5s ease, background 0.3s ease;
+    }
+
+    .confidence-fill.low { background: var(--red); }
+    .confidence-fill.medium { background: var(--yellow); }
+    .confidence-fill.high { background: var(--green); }
+
+    .decision-range {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+    }
+
+    .decision-reasoning {
+      font-size: 14px;
+      font-style: italic;
+      color: var(--text-dim);
+      padding: 10px 12px;
+      background: var(--bg);
+      border-radius: 8px;
+      margin-bottom: 12px;
+      border-left: 2px solid var(--accent);
+    }
+
+    .decision-next {
+      font-size: 12px;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .decision-next-icon {
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .trades-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .trade-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 12px;
+      background: var(--bg);
+      border-radius: 8px;
+      font-size: 13px;
+    }
+
+    .trade-time {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-dim);
+      font-size: 12px;
+    }
+
+    .trade-details {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .trade-side {
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+    }
+
+    .trade-side.buy { color: var(--green); }
+    .trade-side.sell { color: var(--red); }
+
+    .trade-size {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-dim);
+    }
+
+    .trade-price {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .system-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    .system-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 8px var(--green);
+      animation: pulse 2s infinite;
+    }
+
+    .status-dot.disconnected {
+      background: var(--red);
+      box-shadow: 0 0 8px var(--red);
+    }
+
+    .status-text {
+      color: var(--text-dim);
+    }
+
+    .status-text strong {
+      color: var(--text);
+    }
+
+    .system-info {
+      color: var(--text-dim);
+      font-size: 12px;
+    }
+
+    .connecting-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 10, 15, 0.95);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      z-index: 100;
+      transition: opacity 0.3s ease;
+    }
+
+    .connecting-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .connecting-text {
+      color: var(--text-dim);
+      font-size: 14px;
+    }
+
+    .error-text {
+      color: var(--red);
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 12px;
+      }
+      
+      .header {
+        padding: 16px;
+      }
+      
+      .price {
+        font-size: 20px;
+      }
+      
+      .card {
+        padding: 14px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="connecting" class="connecting-overlay">
+    <div class="spinner"></div>
+    <div class="connecting-text">Connecting to ETH Engine...</div>
+  </div>
+
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="logo">
+        <div class="logo-icon">⚡</div>
+        <span class="logo-text">ETH Engine</span>
+      </div>
+      <div class="price-display">
+        <div class="price" id="price">---</div>
+        <div class="price-change" id="priceChange">---</div>
+      </div>
+    </div>
+
+    <!-- Balance -->
+    <div class="card">
+      <div class="card-header">💰 Balance</div>
+      <div class="balance-row">
+        <div class="balance-item">
+          <span class="balance-label">Equity</span>
+          <span class="balance-value" id="equity">---</span>
+        </div>
+        <div class="balance-item">
+          <span class="balance-label">Unrealized PnL</span>
+          <span class="balance-value" id="unrealizedPnl">---</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Position -->
+    <div class="card position-card">
+      <div class="card-header">📍 Position</div>
+      <div id="positionContent">
+        <div class="position-empty">No active position</div>
+      </div>
+    </div>
+
+    <!-- Opus Decision -->
+    <div class="card">
+      <div class="card-header">🧠 Opus Decision</div>
+      <div id="decisionContent">
+        <div class="position-empty">Waiting for decision...</div>
+      </div>
+    </div>
+
+    <!-- Recent Trades -->
+    <div class="card">
+      <div class="card-header">📜 Recent Trades</div>
+      <div class="trades-list" id="tradesList">
+        <div class="position-empty">No trades yet</div>
+      </div>
+    </div>
+
+    <!-- System -->
+    <div class="card">
+      <div class="card-header">⚙️ System</div>
+      <div class="system-row">
+        <div class="system-status">
+          <div class="status-dot" id="statusDot"></div>
+          <span class="status-text">Last update: <strong id="lastUpdate">---</strong></span>
+        </div>
+        <span class="system-info">Cron: hourly 9AM-11PM</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const API_BASE = '';
+    let lastFetchTime = null;
+    let connectionError = false;
+
+    function formatCurrency(value, decimals = 2) {
+      if (value === null || value === undefined) return '---';
+      return '$' + value.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+    }
+
+    function formatTime(isoString) {
+      if (!isoString) return '---';
+      const date = new Date(isoString);
+      return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+    }
+
+    function getTimeAgo(timestamp) {
+      if (!timestamp) return '---';
+      const now = new Date();
+      const then = new Date(timestamp);
+      const diff = Math.floor((now - then) / 1000);
+      
+      if (diff < 5) return 'just now';
+      if (diff < 60) return `${diff}s ago`;
+      if (diff < 3600) return `${Math.floor(diff / 60)}m ago`;
+      return `${Math.floor(diff / 3600)}h ago`;
+    }
+
+    function getConfidenceClass(confidence) {
+      if (confidence < 40) return 'low';
+      if (confidence < 70) return 'medium';
+      return 'high';
+    }
+
+    function renderPosition(data) {
+      const container = document.getElementById('positionContent');
+      
+      if (!data || !data.position) {
+        container.innerHTML = '<div class="position-empty">No active position</div>';
+        return;
+      }
+      
+      const pos = data.position;
+      const pnl = pos.unrealized_pnl || 0;
+      const pnlPercent = pos.entry_price ? ((pnl / (pos.entry_price * pos.size)) * 100).toFixed(2) : 0;
+      const pnlClass = pnl >= 0 ? 'positive' : 'negative';
+      const sideClass = pos.side === 'long' ? 'long' : 'short';
+      const sideArrow = pos.side === 'long' ? '▲' : '▼';
+      
+      container.innerHTML = `
+        <div class="position-side ${sideClass}">
+          ${sideArrow} ${pos.side.toUpperCase()}
+        </div>
+        <div class="position-details">
+          <div class="position-detail">
+            <span class="position-detail-label">Size</span>
+            <span class="position-detail-value">${pos.size} ETH</span>
+          </div>
+          <div class="position-detail">
+            <span class="position-detail-label">Entry</span>
+            <span class="position-detail-value">${formatCurrency(pos.entry_price)}</span>
+          </div>
+          <div class="position-detail">
+            <span class="position-detail-label">PnL</span>
+            <span class="position-detail-value pnl-value ${pnlClass}">
+              ${formatCurrency(pnl)} (${pnlPercent}%)
+            </span>
+          </div>
+          <div class="position-detail">
+            <span class="position-detail-label">Leverage</span>
+            <span class="position-detail-value">${pos.leverage}x</span>
+          </div>
+          <div class="position-detail">
+            <span class="position-detail-label">Stop Loss</span>
+            <span class="position-detail-value">${formatCurrency(pos.stop_loss)}</span>
+          </div>
+          <div class="position-detail">
+            <span class="position-detail-label">Take Profit</span>
+            <span class="position-detail-value">${formatCurrency(pos.take_profit)}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderDecision(data) {
+      const container = document.getElementById('decisionContent');
+      
+      if (!data) {
+        container.innerHTML = '<div class="position-empty">Waiting for decision...</div>';
+        return;
+      }
+      
+      const confidenceClass = getConfidenceClass(data.confidence);
+      const strategy = data.strategy ? data.strategy.replace(/_/g, ' ') : '---';
+      const timestamp = formatTime(data.timestamp);
+      const nextDecision = data.next_decision ? formatTime(data.next_decision) : '---';
+      const range = data.params ? `$${data.params.lower} - $${data.params.upper}` : '---';
+      
+      container.innerHTML = `
+        <div class="decision-strategy">
+          ${strategy}
+          <span class="decision-badge">Opus</span>
+        </div>
+        <div class="confidence-section">
+          <div class="confidence-label">
+            <span>Confidence</span>
+            <span class="confidence-value">${data.confidence}%</span>
+          </div>
+          <div class="confidence-bar">
+            <div class="confidence-fill ${confidenceClass}" style="width: ${data.confidence}%"></div>
+          </div>
+        </div>
+        <div class="decision-range">Range: ${range}</div>
+        <div class="decision-reasoning">"${data.reasoning || 'No reasoning provided'}"</div>
+        <div class="decision-next">
+          <div class="decision-next-icon"></div>
+          Next decision: ${nextDecision}
+        </div>
+      `;
+    }
+
+    function renderTrades(data) {
+      const container = document.getElementById('tradesList');
+      
+      if (!data || !data.length) {
+        container.innerHTML = '<div class="position-empty">No trades yet</div>';
+        return;
+      }
+      
+      const tradesHtml = data.slice(0, 5).map(trade => `
+        <div class="trade-item">
+          <span class="trade-time">${formatTime(trade.time)}</span>
+          <div class="trade-details">
+            <span class="trade-side ${trade.side}">${trade.side.toUpperCase()}</span>
+            <span class="trade-size">${trade.size} ETH</span>
+            <span class="trade-price">@ ${trade.price.toFixed(1)}</span>
+          </div>
+        </div>
+      `).join('');
+      
+      container.innerHTML = tradesHtml;
+    }
+
+    async function fetchAll() {
+      try {
+        const [statusRes, decisionRes, tradesRes] = await Promise.all([
+          fetch(API_BASE + '/api/status'),
+          fetch(API_BASE + '/api/decision'),
+          fetch(API_BASE + '/api/trades')
+        ]);
+        
+        const status = statusRes.ok ? await statusRes.json() : null;
+        const decision = decisionRes.ok ? await decisionRes.json() : null;
+        const trades = tradesRes.ok ? await tradesRes.json() : null;
+        
+        // Update price
+        if (status) {
+          document.getElementById('price').textContent = formatCurrency(status.price);
+          
+          const changeEl = document.getElementById('priceChange');
+          const change = status.price_change_24h || 0;
+          const arrow = change >= 0 ? '▲' : '▼';
+          changeEl.textContent = `${arrow} ${Math.abs(change).toFixed(2)}%`;
+          changeEl.className = `price-change ${change >= 0 ? 'positive' : 'negative'}`;
+          
+          // Balance
+          document.getElementById('equity').textContent = formatCurrency(status.balance?.equity);
+          
+          const pnlEl = document.getElementById('unrealizedPnl');
+          const pnl = status.balance?.unrealized_pnl || 0;
+          pnlEl.textContent = formatCurrency(pnl);
+          pnlEl.className = `balance-value ${pnl >= 0 ? 'positive' : 'negative'}`;
+          pnlEl.style.color = pnl >= 0 ? 'var(--green)' : 'var(--red)';
+          
+          // Position
+          renderPosition(status);
+          
+          lastFetchTime = status.timestamp;
+        }
+        
+        // Decision
+        renderDecision(decision);
+        
+        // Trades
+        renderTrades(trades);
+        
+        // Update last update time
+        document.getElementById('lastUpdate').textContent = getTimeAgo(lastFetchTime);
+        
+        // Connection state
+        if (connectionError) {
+          connectionError = false;
+          document.getElementById('statusDot').classList.remove('disconnected');
+          document.querySelector('.connecting-text').textContent = 'Connected';
+          setTimeout(() => {
+            document.getElementById('connecting').classList.add('hidden');
+          }, 500);
+        }
+        
+      } catch (err) {
+        console.error('Fetch error:', err);
+        if (!connectionError) {
+          connectionError = true;
+          document.getElementById('statusDot').classList.add('disconnected');
+          document.querySelector('.connecting-text').textContent = 'Connection lost. Retrying...';
+          document.querySelector('.connecting-text').classList.add('error-text');
+          document.getElementById('connecting').classList.remove('hidden');
+        }
+      }
+    }
+
+    // Initial fetch
+    fetchAll();
+
+    // Auto-refresh every 10 seconds
+    setInterval(fetchAll, 10000);
+  </script>
+</body>
+</html>

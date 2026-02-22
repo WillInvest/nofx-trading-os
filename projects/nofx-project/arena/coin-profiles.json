@@ -1,0 +1,174 @@
+{
+  "profiles": {
+    "ETH": {
+      "name": "Ethereum",
+      "category": "L1 Infrastructure",
+      "what_it_is": "Base layer blockchain. All DeFi protocols run on it. Gas fees are burned (deflationary when active).",
+      "on_chain_relevance": {
+        "aave": "ETH is the #1 collateral asset. High WETH utilization = high borrow demand (bullish demand signal) BUT also liquidation risk (bearish price pressure from forced sells).",
+        "curve_3pool": "Stablecoin stress = risk-off sentiment = bearish ETH. Balanced pool = stable market = neutral to bullish.",
+        "uniswap": "Direct price discovery. Liquidity depth shows conviction. LP range repositioning signals expected direction.",
+        "ethena": "USDe minting requires delta-neutral ETH positions. Rising USDe supply = more ETH being hedged = mixed signal.",
+        "gas": "Rising gas = more network activity = more ETH burned = bullish. Falling gas = quiet network = neutral.",
+        "exchange_flows": "ETH flowing TO exchanges = selling pressure. ETH leaving exchanges = accumulation.",
+        "arb_bridge": "ETH locked in Arbitrum bridge = ETH taken out of circulation = mildly bullish."
+      },
+      "key_debate_angles": [
+        "Is the current gas burn rate making ETH deflationary?",
+        "Are exchange reserves increasing (selling) or decreasing (holding)?",
+        "Is Aave liquidation risk a threat to ETH price?",
+        "What does stablecoin health tell us about market risk appetite?"
+      ]
+    },
+    "AAVE": {
+      "name": "Aave",
+      "category": "DeFi Lending",
+      "what_it_is": "Largest decentralized lending protocol. Revenue comes from interest rate spreads. AAVE token captures fees through governance.",
+      "on_chain_relevance": {
+        "aave": "THIS IS YOUR PROTOCOL. Utilization rate = direct revenue driver. High utilization = more fees BUT liquidation risk. Check each asset's utilization separately.",
+        "curve_3pool": "Stablecoin health directly affects Aave. If USDT depegs, Aave positions using USDT as collateral become risky. Pool imbalance = watch for bad debt.",
+        "ethena": "USDe is used as collateral on Aave. If USDe supply contracts, collateral leaves Aave = lower TVL = less revenue.",
+        "exchange_flows": "Large stablecoin inflows to exchanges could mean Aave depositors withdrawing to sell. Large outflows = fresh capital potentially entering Aave.",
+        "gas": "High gas makes Aave interactions expensive = fewer small liquidations get executed = liquidation risk compounds."
+      },
+      "key_debate_angles": [
+        "Is protocol revenue growing based on utilization and TVL trends?",
+        "Are we near a liquidation cascade that could cause bad debt?",
+        "How does stablecoin stability affect Aave's risk profile?",
+        "Are large wallets adding or removing collateral?"
+      ]
+    },
+    "LINK": {
+      "name": "Chainlink",
+      "category": "Oracle Infrastructure",
+      "what_it_is": "Decentralized oracle network. Provides price feeds to ALL DeFi protocols. Revenue from data feed subscriptions. LINK staking secures the network.",
+      "on_chain_relevance": {
+        "aave": "Aave DEPENDS on Chainlink oracles for all price feeds. More Aave activity = more oracle usage = bullish LINK. But Aave crisis could hurt confidence in oracle-dependent protocols.",
+        "link_staking": "THIS IS YOUR METRIC. Rising staking = confidence + supply reduction. Falling staking = potential sell pressure.",
+        "curve_3pool": "If stablecoins destabilize, oracle accuracy becomes critical. LINK benefits from being essential infrastructure during stress.",
+        "exchange_flows": "Large LINK transfers to exchanges = whale selling. From exchanges = accumulation.",
+        "gas": "Chainlink node operators pay gas to post price updates. Very high gas = oracle updates become expensive = potential delays."
+      },
+      "key_debate_angles": [
+        "Is LINK staking increasing (supply squeeze) or decreasing?",
+        "Does DeFi growth (Aave TVL, Uniswap volume) translate to oracle demand?",
+        "Are whales accumulating or distributing LINK?",
+        "Is LINK's role as critical infrastructure properly valued?"
+      ]
+    },
+    "UNI": {
+      "name": "Uniswap",
+      "category": "DEX",
+      "what_it_is": "Largest decentralized exchange. Revenue from trading fees. UNI token governs fee switch and treasury. V3 concentrated liquidity.",
+      "on_chain_relevance": {
+        "uniswap": "THIS IS YOUR PROTOCOL. Liquidity depth, volume trends, and fee revenue are direct value drivers.",
+        "aave": "Aave liquidations generate Uniswap volume (liquidators swap collateral via DEXs). High Aave stress = spike in Uniswap volume = bullish UNI.",
+        "curve_3pool": "Curve and Uniswap compete for stablecoin volume. Curve stress could push volume to Uniswap.",
+        "ethena": "Ethena hedging requires DEX trading. More USDe minting = more hedging swaps = more Uniswap volume.",
+        "exchange_flows": "When CEX trust drops (exchange outflows), DEX volume rises. Bullish for UNI."
+      },
+      "key_debate_angles": [
+        "Is DEX volume trending up vs CEX volume?",
+        "How is concentrated liquidity positioned around current price?",
+        "Could DeFi stress (Aave liquidations) actually boost Uniswap revenue?",
+        "Is the fee switch narrative alive? Governance updates?"
+      ]
+    },
+    "ENA": {
+      "name": "Ethena",
+      "category": "Synthetic Dollar / Yield",
+      "what_it_is": "Issues USDe (synthetic dollar) backed by delta-neutral ETH positions. Revenue from funding rate arbitrage. sUSDe = staked version earning yield.",
+      "on_chain_relevance": {
+        "ethena": "THIS IS YOUR PROTOCOL. USDe supply = direct demand metric. sUSDe staking ratio = yield demand. Supply growth = bullish. Contraction = bearish.",
+        "aave": "USDe is used as Aave collateral. If Aave utilization rises with USDe collateral, it validates ENA's product. If USDe gets flagged as risky collateral, bearish.",
+        "curve_3pool": "USDe must maintain its peg. Curve pool balance with USDe (if any) shows peg health. 3pool stress = general stablecoin anxiety = USDe confidence risk.",
+        "exchange_flows": "Stablecoin flows to exchanges could include USDe. Net stablecoin inflow = selling pressure on everything including ENA."
+      },
+      "key_debate_angles": [
+        "Is USDe supply growing or shrinking? What's the trend?",
+        "Is the sUSDe yield competitive? Are stakers staying?",
+        "Does funding rate environment support Ethena's delta-neutral strategy?",
+        "Is there any depeg risk based on on-chain data?"
+      ]
+    },
+    "CRV": {
+      "name": "Curve",
+      "category": "DEX / Stablecoin",
+      "what_it_is": "DEX optimized for stablecoin and pegged asset swaps. veCRV locking governs gauge rewards. Revenue from trading fees. Central to stablecoin infrastructure.",
+      "on_chain_relevance": {
+        "curve_3pool": "THIS IS YOUR PROTOCOL. 3pool balance IS your health metric. Balanced = healthy. Imbalanced = stress. Volume in 3pool = revenue.",
+        "aave": "Curve and Aave are deeply intertwined. crvUSD uses Aave-style lending. Aave stress can cascade into Curve pools.",
+        "ethena": "USDe pools on Curve provide liquidity for Ethena. If USDe grows, Curve benefits from more pool volume.",
+        "exchange_flows": "Stablecoin flows affect Curve directly. More stablecoins on-chain (not on exchanges) = more Curve volume potential."
+      },
+      "key_debate_angles": [
+        "Is the 3pool balanced? Any stablecoin showing stress?",
+        "Are gauge votes shifting? Which pools are attracting bribes?",
+        "Is Curve volume trending up or down?",
+        "How does veCRV locking affect circulating supply?"
+      ]
+    },
+    "PENDLE": {
+      "name": "Pendle",
+      "category": "Yield Trading",
+      "what_it_is": "Protocol for trading future yield. Splits yield-bearing assets into Principal Tokens (PT) and Yield Tokens (YT). Lets you go long/short on DeFi yields.",
+      "on_chain_relevance": {
+        "aave": "Aave supply rates directly affect Pendle yield markets. If Aave yields spike (high utilization), Pendle YT for Aave assets becomes more valuable.",
+        "ethena": "sUSDe yield is one of the most traded assets on Pendle. USDe supply/staking ratio changes directly impact Pendle's biggest market.",
+        "curve_3pool": "Stablecoin stress reduces yield farming confidence = less demand for yield trading = bearish Pendle.",
+        "gas": "High gas makes Pendle's yield trading expensive for smaller users."
+      },
+      "key_debate_angles": [
+        "Are DeFi yields rising or falling? (Check Aave rates, sUSDe yield)",
+        "Is yield trading volume on Pendle growing?",
+        "What does the PT discount tell us about market's yield expectations?",
+        "Is Pendle's TVL growing = more demand for yield trading?"
+      ]
+    },
+    "ZRO": {
+      "name": "LayerZero",
+      "category": "Cross-Chain Bridge",
+      "what_it_is": "Omnichain messaging protocol. Connects 50+ blockchains. Revenue from message fees. ZRO token used for gas on cross-chain transactions.",
+      "on_chain_relevance": {
+        "arb_bridge": "Competing/complementary signal. If Arbitrum bridge activity rises, cross-chain activity is growing = bullish ZRO. But native bridges competing with LayerZero = mixed.",
+        "exchange_flows": "Cross-chain capital movement visible from our ETH node. More bridging activity = more LayerZero usage potential.",
+        "gas": "LayerZero messages originate on ETH L1. High gas = expensive to send cross-chain messages = friction.",
+        "ethena": "Ethena is multichain. USDe bridging uses messaging protocols. More USDe cross-chain = more LayerZero messages."
+      },
+      "key_debate_angles": [
+        "Is cross-chain messaging volume increasing?",
+        "Are major protocols integrating LayerZero for new chains?",
+        "How does bridge volume trend correlate with ZRO price?",
+        "Is L2 growth (ARB bridge activity) driving cross-chain demand?"
+      ]
+    },
+    "ARB": {
+      "name": "Arbitrum",
+      "category": "L2 / Scaling",
+      "what_it_is": "Largest Ethereum L2 by TVL. Scales ETH with lower fees. ARB token governs treasury and protocol incentives. Revenue from sequencer fees.",
+      "on_chain_relevance": {
+        "arb_bridge": "THIS IS YOUR METRIC. ETH locked in bridge = capital committed to Arbitrum. Rising = growth. Falling = capital flight.",
+        "aave": "Aave is deployed on Arbitrum. L1 Aave stress could push users to cheaper Arbitrum Aave = bullish ARB.",
+        "uniswap": "Uniswap on Arbitrum = growing DEX volume on L2 = bullish ARB ecosystem.",
+        "gas": "High L1 gas = users migrate to L2 = bullish ARB. Low L1 gas = less incentive for L2 = bearish ARB.",
+        "exchange_flows": "Stablecoins bridging TO Arbitrum = ecosystem growth. Bridging back to L1 = capital leaving."
+      },
+      "key_debate_angles": [
+        "Is ETH locked in the bridge growing or shrinking?",
+        "Does high L1 gas drive users to Arbitrum?",
+        "Is Arbitrum DeFi TVL growing relative to other L2s?",
+        "Are sequencer revenues trending up = real usage growth?"
+      ]
+    },
+    "LDO": {
+      "what_it_is": "Lido DAO - Largest ETH liquid staking protocol. Controls ~30% of all staked ETH. LDO is the governance token.",
+      "on_chain_relevance": "Directly tied to ETH staking ecosystem. Aave utilization affects stETH demand. Exchange ETH reserves impact staking flows. Gas trends reflect network activity which drives staking yield.",
+      "key_debate_angles": [
+        "ETH staking yield vs DeFi yields \u2014 when Aave rates are high, capital may flow from staking to lending",
+        "stETH/ETH peg stability \u2014 Curve 3pool stress can indicate broader DeFi stress affecting Lido",
+        "Whale ETH movements to/from exchanges impact staking demand \u2014 outflows bullish for LDO",
+        "Regulatory risk around liquid staking derivatives \u2014 SEC scrutiny on staking services"
+      ]
+    }
+  }
+}

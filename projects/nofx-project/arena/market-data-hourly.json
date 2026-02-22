@@ -1,0 +1,203 @@
+{
+  "timestamp": "2026-02-21T22:21:25.564884+00:00",
+  "coins": {
+    "ETH": {
+      "funding_rate": 9.3047e-06,
+      "funding_signal": "neutral",
+      "price": 1977.8,
+      "oi_usd": 1065886584.52,
+      "oi_change_pct": 0.37,
+      "oi_signal": "neutral",
+      "orderbook_imbalance": 0.1278,
+      "orderbook_signal": "neutral",
+      "liquidations_1h": {
+        "long_count": 0,
+        "short_count": 0,
+        "long_usd": 0,
+        "short_usd": 0
+      },
+      "cvd": 3627.77,
+      "cvd_signal": "buyers_dominant"
+    },
+    "AAVE": {
+      "funding_rate": -9.0826e-06,
+      "funding_signal": "neutral",
+      "price": 121.98,
+      "oi_usd": 28863190.59,
+      "oi_change_pct": -0.81,
+      "oi_signal": "neutral",
+      "orderbook_imbalance": -0.3507,
+      "orderbook_signal": "selling_pressure",
+      "liquidations_1h": {
+        "long_count": 0,
+        "short_count": 0,
+        "long_usd": 0,
+        "short_usd": 0
+      },
+      "cvd": -1921.66,
+      "cvd_signal": "sellers_dominant"
+    },
+    "LINK": {
+      "funding_rate": 1.25e-05,
+      "funding_signal": "neutral",
+      "price": 8.9021,
+      "oi_usd": 20994155.37,
+      "oi_change_pct": 0.18,
+      "oi_signal": "neutral",
+      "orderbook_imbalance": 0.5801,
+      "orderbook_signal": "buying_pressure",
+      "liquidations_1h": {
+        "long_count": 0,
+        "short_count": 0,
+        "long_usd": 0,
+        "short_usd": 0
+      },
+      "cvd": -5353.04,
+      "cvd_signal": "sellers_dominant"
+    },
+    "ZRO": {
+      "funding_rate": -7.37e-08,
+      "funding_signal": "neutral",
+      "price": 1.7241,
+      "oi_usd": 34934908.66,
+      "oi_change_pct": 0.22,
+      "oi_signal": "neutral",
+      "orderbook_imbalance": 0.0894,
+      "orderbook_signal": "neutral",
+      "liquidations_1h": {
+        "long_count": 0,
+        "short_count": 0,
+        "long_usd": 0,
+        "short_usd": 0
+      },
+      "cvd": -1940.44,
+      "cvd_signal": "sellers_dominant"
+    },
+    "ENA": {
+      "funding_rate": -1.76985e-05,
+      "funding_signal": "neutral",
+      "price": 0.10832,
+      "oi_usd": 14125707.9,
+      "oi_change_pct": 0.26,
+      "oi_signal": "neutral",
+      "orderbook_imbalance": 0.0225,
+      "orderbook_signal": "neutral",
+      "liquidations_1h": {
+        "long_count": 0,
+        "short_count": 0,
+        "long_usd": 0,
+        "short_usd": 0
+      },
+      "cvd": 13.8,
+      "cvd_signal": "balanced"
+    },
+    "UNI": {
+      "funding_rate": -2.66052e-05,
+      "funding_signal": "neutral",
+      "price": 3.6253,
+      "oi_usd": 14537767.68,
+      "oi_change_pct": 0.29,
+      "oi_signal": "neutral",
+      "orderbook_imbalance": -0.2162,
+      "orderbook_signal": "selling_pressure",
+      "liquidations_1h": {
+        "long_count": 0,
+        "short_count": 0,
+        "long_usd": 0,
+        "short_usd": 0
+      },
+      "cvd": -1193.99,
+      "cvd_signal": "sellers_dominant"
+    },
+    "LDO": {
+      "funding_rate": 1.19193e-05,
+      "funding_signal": "neutral",
+      "price": 0.32936,
+      "oi_usd": 4229467.09,
+      "oi_change_pct": 0.1,
+      "oi_signal": "neutral",
+      "orderbook_imbalance": 0.2095,
+      "orderbook_signal": "buying_pressure",
+      "liquidations_1h": {
+        "long_count": 0,
+        "short_count": 0,
+        "long_usd": 0,
+        "short_usd": 0
+      },
+      "cvd": -12.91,
+      "cvd_signal": "balanced"
+    },
+    "CRV": {
+      "funding_rate": 1.25e-05,
+      "funding_signal": "neutral",
+      "price": 0.24142,
+      "oi_usd": 5240227.18,
+      "oi_change_pct": -0.15,
+      "oi_signal": "neutral",
+      "orderbook_imbalance": 0.0117,
+      "orderbook_signal": "neutral",
+      "liquidations_1h": {
+        "long_count": 0,
+        "short_count": 0,
+        "long_usd": 0,
+        "short_usd": 0
+      },
+      "cvd": 656.44,
+      "cvd_signal": "buyers_dominant"
+    },
+    "PENDLE": {
+      "funding_rate": -3.1427e-06,
+      "funding_signal": "neutral",
+      "price": 1.2241,
+      "oi_usd": 4477970.79,
+      "oi_change_pct": 0.18,
+      "oi_signal": "neutral",
+      "orderbook_imbalance": -0.0871,
+      "orderbook_signal": "neutral",
+      "liquidations_1h": {
+        "long_count": 0,
+        "short_count": 0,
+        "long_usd": 0,
+        "short_usd": 0
+      },
+      "cvd": 1055.28,
+      "cvd_signal": "buyers_dominant"
+    },
+    "ARB": {
+      "funding_rate": -3.8595e-06,
+      "funding_signal": "neutral",
+      "price": 0.09884,
+      "oi_usd": 3175336.96,
+      "oi_change_pct": 0.35,
+      "oi_signal": "neutral",
+      "orderbook_imbalance": -0.3529,
+      "orderbook_signal": "selling_pressure",
+      "liquidations_1h": {
+        "long_count": 0,
+        "short_count": 0,
+        "long_usd": 0,
+        "short_usd": 0
+      },
+      "cvd": -142.67,
+      "cvd_signal": "sellers_dominant"
+    }
+  },
+  "macro": {
+    "fear_greed": {
+      "value": 8,
+      "label": "Extreme Fear"
+    },
+    "eth_options": {
+      "put_call_ratio": 0.673,
+      "total_put_oi": 835829.0,
+      "total_call_oi": 1241148.0,
+      "signal": "neutral"
+    },
+    "btc_options": {
+      "put_call_ratio": 0.751,
+      "total_put_oi": 185560.9,
+      "total_call_oi": 247229.1,
+      "signal": "neutral"
+    }
+  }
+}

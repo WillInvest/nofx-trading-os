@@ -1,0 +1,196 @@
+{
+  "timestamp": "2026-02-21T22:21:00.805000+00:00",
+  "block_range": [
+    24507889,
+    24508189
+  ],
+  "stablecoin_exchange_flows": {
+    "usdt_inflow_usd": 3187043.65,
+    "usdt_outflow_usd": 2256862.89,
+    "usdc_inflow_usd": 0,
+    "usdc_outflow_usd": 0,
+    "net_flow_usd": 930180.76,
+    "signal": "neutral"
+  },
+  "whale_transfers": {
+    "ETH": {
+      "large_transfers": [],
+      "net_exchange_flow": 1694703.73
+    },
+    "AAVE": {
+      "large_transfers": [
+        {
+          "tx": "0xb5bcef2b84a7fd68...",
+          "from": "0x91d40e48...",
+          "to": "0x4a4aaa01...",
+          "value": 2164.0,
+          "usd": 259680.0,
+          "direction": null
+        }
+      ],
+      "net_exchange_flow": 0,
+      "count": 1
+    },
+    "LINK": {
+      "large_transfers": [],
+      "net_exchange_flow": 0,
+      "count": 0
+    },
+    "UNI": {
+      "large_transfers": [],
+      "net_exchange_flow": 0,
+      "count": 0
+    },
+    "LDO": {
+      "large_transfers": [],
+      "net_exchange_flow": 0,
+      "count": 0
+    },
+    "CRV": {
+      "large_transfers": [],
+      "net_exchange_flow": 0,
+      "count": 0
+    },
+    "PENDLE": {
+      "large_transfers": [],
+      "net_exchange_flow": 0,
+      "count": 0
+    },
+    "ARB": {
+      "large_transfers": [],
+      "net_exchange_flow": 0,
+      "count": 0
+    },
+    "ENA": {
+      "large_transfers": [
+        {
+          "tx": "0xd02205262b5b42de...",
+          "from": "0x51c72848...",
+          "to": "0x9008d19f...",
+          "value": 367291.6307,
+          "usd": 183645.82,
+          "direction": null
+        },
+        {
+          "tx": "0xd02205262b5b42de...",
+          "from": "0x9008d19f...",
+          "to": "0x663e5144...",
+          "value": 367218.1724,
+          "usd": 183609.09,
+          "direction": null
+        },
+        {
+          "tx": "0xd8bd2f8c2d5b5141...",
+          "from": "0xdfd5293d...",
+          "to": "0x15f46551...",
+          "value": 305114.3024,
+          "usd": 152557.15,
+          "direction": null
+        },
+        {
+          "tx": "0x72bdf7fff34d69c8...",
+          "from": "0x28c6c062...",
+          "to": "0x51c72848...",
+          "value": 230648.0,
+          "usd": 115324.0,
+          "direction": "from_exchange"
+        },
+        {
+          "tx": "0xec762c872b3a4d8d...",
+          "from": "0x9008d19f...",
+          "to": "0x663e5144...",
+          "value": 283019.0614,
+          "usd": 141509.53,
+          "direction": null
+        },
+        {
+          "tx": "0x458f889f5199ee35...",
+          "from": "0x15f46551...",
+          "to": "0x79f3d1fa...",
+          "value": 501409.0227,
+          "usd": 250704.51,
+          "direction": null
+        },
+        {
+          "tx": "0xda1ff83389a3948b...",
+          "from": "0xee38e2d6...",
+          "to": "0x79f3d1fa...",
+          "value": 410593.67,
+          "usd": 205296.83,
+          "direction": null
+        },
+        {
+          "tx": "0xc60e9327b923e75a...",
+          "from": "0xfcb94e6c...",
+          "to": "0x0c36fda8...",
+          "value": 637172.8385,
+          "usd": 318586.42,
+          "direction": null
+        },
+        {
+          "tx": "0x62497007ad7d5cef...",
+          "from": "0xe14a46dd...",
+          "to": "0x0c36fda8...",
+          "value": 908058.6919,
+          "usd": 454029.35,
+          "direction": null
+        },
+        {
+          "tx": "0xa178f2cf707c0e26...",
+          "from": "0x642708f0...",
+          "to": "0x8a850efb...",
+          "value": 410589.67,
+          "usd": 205294.83,
+          "direction": null
+        },
+        {
+          "tx": "0x32e96c40238a05ba...",
+          "from": "0xdfd5293d...",
+          "to": "0x680dd69e...",
+          "value": 299994.67,
+          "usd": 149997.33,
+          "direction": null
+        },
+        {
+          "tx": "0x81eff6865539ff40...",
+          "from": "0x8a850efb...",
+          "to": "0x28c6c062...",
+          "value": 410589.67,
+          "usd": 205294.83,
+          "direction": "to_exchange"
+        },
+        {
+          "tx": "0xf1ddfcaad0571671...",
+          "from": "0x680dd69e...",
+          "to": "0x3cc936b7...",
+          "value": 299994.67,
+          "usd": 149997.33,
+          "direction": null
+        }
+      ],
+      "net_exchange_flow": 89970.83,
+      "count": 13
+    },
+    "ZRO": {
+      "large_transfers": [],
+      "net_exchange_flow": 0,
+      "count": 0
+    }
+  },
+  "gas": {
+    "avg_gwei": 0.0398,
+    "min_gwei": 0.0298,
+    "max_gwei": 0.0801,
+    "trend": "rising"
+  },
+  "exchange_eth_reserves": {
+    "total_eth": 237879.2194,
+    "change_1h": 855.911
+  },
+  "stablecoin_supply": {
+    "usdt": 96121766396.86,
+    "usdt_change": 0.0,
+    "usdc": 52300610559.58,
+    "usdc_change": -239792.13
+  }
+}

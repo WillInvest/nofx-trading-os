@@ -1,0 +1,28 @@
+{
+  "active_coin": "BTCUSDT",
+  "coins_scanned": [
+    "BTCUSDT"
+  ],
+  "consensus": {
+    "bias": "open_short",
+    "confidence": 70,
+    "leverage": 3,
+    "reasoning": "Technical resistance confluence with institutional outflow and bearish OI pattern outweighs short-term bullish momentum, favoring a downside move",
+    "stop_loss": 0.015,
+    "symbol": "BTCUSDT",
+    "take_profit": 0.045
+  },
+  "generated_at": "2026-02-20T19:02:38-05:00",
+  "new_candidate": {
+    "symbol": "BTCUSDT",
+    "action": "open_short",
+    "confidence": 70,
+    "leverage": 3,
+    "stop_loss": 0.015,
+    "take_profit": 0.045,
+    "reasoning": "Technical resistance confluence with institutional outflow and bearish OI pattern outweighs short-term bullish momentum, favoring a downside move",
+    "debate_id": "89b3a096-b683-4072-aa92-f8b560af957c"
+  },
+  "scan_mode": true,
+  "total_oi_coins": 10
+}

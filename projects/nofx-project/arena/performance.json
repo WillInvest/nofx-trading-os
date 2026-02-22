@@ -1,0 +1,39 @@
+{
+  "last_updated": "2026-02-19T14:14:00-05:00",
+  "debates": [
+    {
+      "id": "0012c65f-d8cc-49cb-9d0a-6b97ffbd79aa",
+      "time": "2026-02-19T13:26:00-05:00",
+      "rounds": 3,
+      "bull_quality": 8,
+      "bear_quality": 8,
+      "used_real_data": true,
+      "consensus": "split (bull: long 80%, bear: wait 70%)",
+      "notes": "Good debate, both used real OI/funding/RSI data"
+    },
+    {
+      "id": "b8f4dcb0-1b17-44cb-81b0-c27920ea97e6",
+      "time": "2026-02-19T14:12:00-05:00",
+      "rounds": 3,
+      "bull_quality": 8,
+      "bear_quality": 7,
+      "used_real_data": true,
+      "consensus": "aligned bullish (bull: long 85%, bear: long 75%)",
+      "notes": "Strong consensus. Both cite institutional inflows. Bear more cautious on RSI."
+    }
+  ],
+  "issues": [
+    {
+      "type": "token_overflow",
+      "severity": "critical",
+      "description": "246K tokens vs 131K limit causing debate failures",
+      "first_seen": "2026-02-19T14:00:00-05:00"
+    },
+    {
+      "type": "kline_api_failure",
+      "severity": "medium",
+      "description": "Hyperliquid 500 errors for some altcoins (ORCA)",
+      "first_seen": "2026-02-19T11:19:00-05:00"
+    }
+  ]
+}

@@ -125,6 +125,23 @@
 - **Relevance**: Theoretical framework that could be extended to output-fee analysis
 - **Added**: 2026-02-07
 
+### Equilibrium Reward for Liquidity Providers in AMMs (Aqsha et al., Mar 2025)
+- **URL**: https://arxiv.org/abs/2503.22502
+- **Key contribution**: Leader-follower stochastic game model for optimal LP reward design
+- **Venue maximizes order flow**: Finds equilibrium contract between AMM venue and strategic LPs
+- **Key insight**: LPs add liquidity only when higher liquidity attracts more noise trading
+- **Key result**: Equilibrium contract depends on external price, pool reference price, and reserves
+- **Relevance**: Framework for analyzing how fee structures affect LP incentives — could extend to output fees
+- **Added**: 2026-02-07 (evening)
+
+### Automated Liquidity: Market Impact, Cycles, and De-pegging Risk (Meister, Jan 2026)
+- **URL**: https://arxiv.org/abs/2601.11375
+- **Key contribution**: Three-part analysis: (1) market impact function for optimal-growth LPs (recovers square-root impact), (2) CPMM as multi-phase Carnot engine, (3) stablecoin de-pegging as catastrophe risk
+- **Theoretical novelty**: Uses growth optimization and fractional Ornstein-Uhlenbeck processes
+- **Relevance**: Market impact framework could inform how output fees affect LP growth rates
+- **Note**: Mentions IL and LVR as future work, doesn't address fee structures directly
+- **Added**: 2026-02-07 (6:30 PM)
+
 ### A Derivative Pricing Perspective on Liquidity Tokens (Sep 2024)
 - **URL**: https://arxiv.org/html/2409.11339
 - **Key contribution**: LP token valuation framework
@@ -140,6 +157,32 @@
 - **URL**: https://arxiv.org/html/2508.08152
 - **Key contribution**: Empirical fee optimization
 - **Relevance**: Methodology for testing output fee impact
+
+### Strategic Analysis of Just-In-Time Liquidity Provision in CLMMs (Trotti et al., AFT 2025)
+- **URL**: https://arxiv.org/abs/2509.16157
+- **Key contribution**: First formal, transaction-level model of JIT liquidity provision
+- **Key findings**: JIT LPs erode passive LP profits by up to 44% per trade; optimal JIT could increase earnings by 69%
+- **Key insight**: JIT LPs often fail to account for price impact, leaving profit on the table
+- **Relevance**: **HIGH** — Output fees would directly affect JIT LP incentives (taxing their output profits)
+- **Future work direction**: Model how JIT behavior changes under output-fee regime
+- **Added**: 2026-02-08 (research cron)
+
+### Modeling LVR via Continuous-Installment Options (Singh et al., AFT 2025)
+- **URL**: https://arxiv.org/abs/2508.02971
+- **Key contribution**: Models CFAMM position as portfolio of perpetual American continuous-installment (CI) options
+- **Theoretical result**: LVR = theta (time decay) of at-the-money CI option in replicating portfolio
+- **Practical insight**: Framework for choosing position parameters with approximately constant LVR
+- **Relevance**: Alternative theoretical lens for understanding LVR; could extend to output-fee analysis
+- **Added**: 2026-02-08 (research cron)
+
+### Rebalancing-versus-Rebalancing: Improving LVR Fidelity (Willetts, Oct 2024)
+- **URL**: https://arxiv.org/abs/2410.23404
+- **Key contribution**: Introduces RVR — a higher-fidelity benchmark comparing AMM execution against realistic CEX rebalancing (with fees, spread, slippage)
+- **Key finding**: AMM pools often offer **superior execution** vs CEX rebalancing at realistic fee levels; noise traders further boost AMM advantage
+- **Methods**: 1000+ strategy simulations across varied CEX/AMM fees and gas costs
+- **Relevance**: Provides more realistic LP performance assessment framework; complements our output-fee research
+- **Note**: Doesn't address output-based fees, but validates AMMs can outperform traditional rebalancing
+- **Added**: 2026-02-08 (research cron)
 
 ---
 

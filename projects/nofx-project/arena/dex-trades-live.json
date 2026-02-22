@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-02-22T04:13:52.792100+00:00",
+  "blocks_scanned": 50,
+  "total_swaps": 29,
+  "large_swaps": [
+    {
+      "pool": "uni-v3-eth-usdc",
+      "block": 24509912,
+      "tx_hash": "0x3e98907e...",
+      "amount0": 79975305937,
+      "amount1": -40476613994532600052,
+      "usd_value": 80143.7,
+      "is_large": true
+    }
+  ],
+  "large_swap_count": 1,
+  "swap_volume_eth": 87.5278,
+  "net_buy_sell_eth": -26.2445,
+  "error": null
+}

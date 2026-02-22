@@ -1,0 +1,20 @@
+{
+  "api_key": "",
+  "web": {
+    "url": "http://localhost:3001",
+    "email": "",
+    "browser_profile": "clawd"
+  },
+  "api": {
+    "url": "http://localhost:8090"
+  },
+  "report": {
+    "enabled": true,
+    "interval": "30m",
+    "sections": ["ai500", "ai300", "flow", "oi_up", "oi_down", "price_gainers"]
+  },
+  "telegram": {
+    "enabled": true,
+    "chat_id": ""
+  }
+}

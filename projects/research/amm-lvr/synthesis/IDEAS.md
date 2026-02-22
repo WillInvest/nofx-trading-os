@@ -511,3 +511,214 @@ All recent theoretical advances converge on treating LP positions as derivatives
 - θ (options) ≈ S (entropy) ≈ AS (adverse selection) under appropriate mappings
 - Could lead to more general LVR mitigation principles
 - Research direction: Category-theoretic unification?
+
+---
+
+## New Insights (2026-02-07, Update #5)
+
+### From Paradigm MEV Tax Article — Missing Foundational Reference ⭐ ADDED
+
+The "Priority Is All You Need" article (Robinson & White, June 2024) was missing from our index despite being highly relevant.
+
+**Core mechanism**: On chains with competitive priority ordering:
+```
+Application charges: MEV_tax = α × priority_fee
+Searcher pays: total = priority_fee + MEV_tax = priority_fee × (1 + α)
+If α = 99: Application captures 99% of MEV
+```
+
+**Why this matters for LVR:**
+- AMMs can capture their own LVR without needing oracles or batch auctions
+- Works on OP Stack L2s today (Base, OP Mainnet, Blast)
+- Simple hook: read priority fee, charge proportional fee
+- Relies on priority ordering assumption — breaks if block builder deviates
+
+**Idea 30: Priority-Fee-Based LVR Capture**
+- Implement Uniswap v4 hook on OP Stack chain
+- Hook reads `tx.gasprice` (priority fee proxy)
+- Charges additional swap fee = k × priority_fee
+- Most informed trades (high priority) pay most; retail pays less
+- Surplus → LP rewards
+- **Key advantage**: No oracle, no batching, no latency — just fee structure
+
+**Idea 31: Hybrid MEV Tax + Dynamic Fee**
+- Combine priority-fee-based tax with volatility-reactive fees
+- Normal times: Low base fee + MEV tax captures arb attempts
+- High vol: Raise base fee as additional protection
+- Belt-and-suspenders approach
+
+**Limitation acknowledged:**
+- Requires trusted sequencer following priority ordering
+- Doesn't work on L1 (builder auction maximizes proposer revenue)
+- Research direction: Decentralized enforcement of priority ordering?
+
+### Connection to Existing Ideas
+
+The MEV tax mechanism complements:
+- **FM-AMM (Idea 1)**: Batching captures LVR collectively; MEV tax captures per-transaction
+- **Angstrom (Idea 4)**: Same-block-price enforces fairness; MEV tax prices urgency
+- **Dynamic fees (Idea 2)**: Vol-reactive fees; MEV tax is priority-reactive
+
+**Synthesis: Multi-Layer LVR Defense Stack**
+```
+Layer 1: MEV Tax (captures searcher surplus via priority fee)
+Layer 2: Dynamic Fees (protects during volatility spikes)
+Layer 3: Batch Clearing (eliminates remaining arbitrage)
+Layer 4: L2 Private Mempool (prevents sandwiching)
+```
+
+Each layer catches what the previous misses. Full stack on an L2 could achieve near-complete MEV protection.
+
+---
+
+## New Insights (2026-02-08, Update #3)
+
+### From Bergault et al. (2025) — Optimal Exit Time ⭐ ACTIONABLE
+
+The "Optimal Exit Time" paper addresses a gap in existing LP research: when should you exit?
+
+**Core framework**: LP exit as optimal stopping problem
+- State variables: pool state, price misalignment, accumulated fees
+- Arbitrage creates **both** fees (good) and IL (bad)
+- Optimal policy: exit when expected future IL > expected future fees
+
+**Key theoretical contribution**:
+- Value function satisfies HJB quasi-variational inequality
+- Unique viscosity solution (well-posed problem)
+- Numerical methods: Euler + operator splitting, Longstaff-Schwartz regression
+
+**Idea 32: Automated Exit Protocol**
+- Monitor pool state variables in real-time
+- Compute optimal exit boundary using Bergault framework
+- Auto-exit LP position when state crosses boundary
+- Could implement as vault or bot
+- Parameters: volatility, fee tier, expected trader mix
+- Key insight: "passive" LP is sub-optimal; active exit management improves returns
+
+**Idea 33: Optimal Fee Discovery via Exit Framework**
+- Bergault derives optimal fee level given LP plays optimal exit
+- Could reverse-engineer: given current fee, what's optimal exit?
+- Iterative: pool adjusts fees → LPs adjust exit → fees adjust → ...
+- Equilibrium: fees and LP behavior jointly optimized
+
+### From Brini et al. (2025) — DRL for LP Management
+
+**Core contribution**: Train RL agent to manage LP positions
+
+**Idea 34: DRL-Managed LP Vaults**
+- Deploy trained PPO agent on-chain (or hybrid off-chain computation)
+- Agent observes: price history, current position, accumulated fees
+- Agent acts: adjust tick range, deposit/withdraw, rebalance
+- Reward: risk-adjusted return (fees - IL - gas)
+- Advantage: Adapts to regime changes automatically
+- Challenge: Training data requirements; out-of-distribution behavior
+
+**Idea 35: Democratized LP Access via AI**
+- Retail LPs can't optimize concentrated positions effectively
+- AI agents level playing field with institutional LPs
+- Could offer as SaaS: "AI LP manager" vault
+- Social good angle: Makes DeFi more accessible
+
+### From Berezovskiy (2025) — τ-Reset Strategies
+
+**Core contribution**: Systematic framework for periodic LP rebalancing
+
+**τ-reset strategy**: Every τ time units, reset position to new optimal parameters
+
+**Idea 36: Optimal τ Discovery**
+- Too frequent rebalancing: gas costs dominate
+- Too infrequent: Position drifts, suboptimal ranges
+- Berezovskiy's ML approach finds optimal τ per pool
+- Could be dynamic: τ shorter during high vol, longer during low vol
+
+**Idea 37: Historical Liquidity Approximation Method**
+- Berezovskiy's parametric model doesn't need on-chain liquidity data
+- Useful for backtesting on pools without deep historical data
+- Could enable simulation-based LP strategy development
+- Open research: What parameters best approximate liquidity distribution?
+
+### Integration with Existing Ideas
+
+**Synthesis: Complete LP Management Stack**
+```
+Entry Decision: Use Singh constant-LVR boundaries to choose position
+Position Management: Use Brini DRL agent for dynamic adjustments  
+Exit Decision: Use Bergault optimal stopping framework
+Fee Protection: Use Paradigm MEV tax + dynamic fees
+```
+
+This covers the full LP lifecycle with research-backed approaches at each stage.
+
+**Research gap identified**: No paper yet combines all four elements. Opportunity for synthesis paper or unified protocol design.
+
+---
+
+## New Insights (2026-02-08, Update #4)
+
+### From Menasché et al. (2025) — JIT Liquidity Analysis ⭐ NEW
+
+The AFT 2025 paper on Just-In-Time (JIT) liquidity provision reveals another layer of LP exploitation:
+
+**The JIT threat model**:
+- JIT LPs detect large pending swaps in mempool
+- Momentarily deposit concentrated liquidity around current price
+- Capture majority of swap fees
+- Withdraw immediately after
+- Passive LPs get "sniped" — provide depth but earn less
+
+**Key findings**:
+1. Optimal JIT strategy exists (non-linear optimization)
+2. Current JIT bots are suboptimal — could earn 69% more by accounting for price impact
+3. JIT reduces slippage for traders (good for UX)
+4. BUT erodes passive LP profits by **up to 44% per trade**
+
+**Idea 38: JIT-Resistant Pool Design**
+- Design LP mechanics that penalize ultra-short-duration positions
+- Time-weighted fee distribution: fees accrue proportionally to time × liquidity
+- JIT LPs would earn ~0 fees despite providing momentary liquidity
+- Implementation: Uniswap v4 hook tracking position timestamps
+
+**Idea 39: JIT Detection and Defensive Withdrawal**
+- Passive LPs detect incoming JIT deposits
+- Auto-withdraw liquidity before JIT can capture fees
+- Re-deposit after JIT exits
+- Creates arms race — but levels playing field
+
+**Idea 40: Embrace JIT via am-AMM Extension**
+- Rather than fight JIT, incorporate it into mechanism design
+- Auction "JIT rights" per block/time window
+- Winner pays LPs for exclusive JIT privilege
+- Converts adversarial extraction to explicit LP revenue
+
+### Connection to Existing Research
+
+**JIT vs LVR — Complementary Threats**:
+| Threat | Source | Mechanism | Impact |
+|--------|--------|-----------|--------|
+| LVR | Arbitrageurs | Price staleness exploitation | ~50-80% of arb profit extracted |
+| JIT | Sophisticated LPs | Fee frontrunning | ~44% fee erosion per large swap |
+
+Both exploit information asymmetry; both target passive LPs. Complete LP protection requires addressing **both**.
+
+**Multi-Layer Protection Stack (Updated)**:
+```
+Layer 1: MEV Tax (captures arbitrageur surplus via priority fee)
+Layer 2: Dynamic Fees (protects during volatility spikes)
+Layer 3: Batch Clearing (eliminates price staleness exploitation)
+Layer 4: L2 Private Mempool (prevents sandwiching)
+Layer 5: Time-Weighted Fees (neutralizes JIT fee sniping) ← NEW
+```
+
+### Research Questions Added
+
+1. **Is there a unified mechanism that resists both LVR and JIT simultaneously?**
+   - Both exploit passive LPs; common defense might exist
+   
+2. **What is the equilibrium when JIT LPs are optimized?**
+   - Paper shows current JIT is suboptimal
+   - If all JIT LPs optimize, passive LP erosion could exceed 44%
+   
+3. **Can JIT be harnessed for LP benefit?**
+   - JIT improves slippage (good for traders)
+   - Value currently extracted by JIT bots
+   - Mechanism design could redirect this to passive LPs

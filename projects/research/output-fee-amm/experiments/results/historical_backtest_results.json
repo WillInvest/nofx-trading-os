@@ -1,0 +1,31 @@
+{
+  "data_source": "/home/openclaw/.openclaw/workspace/projects/research/output-fee-amm/experiments/data/eth_usdc_swaps_june2024.json",
+  "swap_count": 8860,
+  "start_block": 20000000,
+  "end_block": 20216000,
+  "main_result": {
+    "fee_rate": 0.003,
+    "input_fee": {
+      "model": "input_fee",
+      "initial_value": 70000000.0,
+      "final_value": 75569453.52305707,
+      "return_pct": 7.956362175795828,
+      "fees_usdc": 903932.3387847902,
+      "fees_eth": 282.3054951555019,
+      "num_swaps": 8860,
+      "final_price": 3673.7111368778983
+    },
+    "output_fee": {
+      "model": "output_fee",
+      "initial_value": 70000000.0,
+      "final_value": 75586025.32807802,
+      "return_pct": 7.980036182968586,
+      "fees_usdc": 901168.5371319881,
+      "fees_eth": 283.0854008450124,
+      "num_swaps": 8860,
+      "final_price": 3673.751024863501
+    },
+    "winner": "OUTPUT-FEE",
+    "advantage_pct": 0.023674007172758138
+  }
+}

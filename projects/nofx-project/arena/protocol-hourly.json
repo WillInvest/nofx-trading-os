@@ -1,0 +1,77 @@
+{
+  "timestamp": "2026-02-21T22:21:25.180439+00:00",
+  "block": 24508191,
+  "aave": {
+    "WETH": {
+      "supply_rate_apy": 6.0035,
+      "borrow_rate_apy": 9.1871,
+      "utilization": 0.6535
+    },
+    "LINK": {
+      "supply_rate_apy": 0.0886,
+      "borrow_rate_apy": 1.2236,
+      "utilization": 0.0724
+    },
+    "CRV": {
+      "supply_rate_apy": 5.7882,
+      "borrow_rate_apy": 29.8277,
+      "utilization": 0.1941
+    },
+    "UNI": {
+      "supply_rate_apy": 0.3073,
+      "borrow_rate_apy": 2.7134,
+      "utilization": 0.1133
+    }
+  },
+  "curve_3pool": {
+    "dai_balance": 40032000.21,
+    "usdc_balance": 37444968.07,
+    "usdt_balance": 84756595.92,
+    "dai_pct": 24.68,
+    "usdc_pct": 23.08,
+    "usdt_pct": 52.24,
+    "total_tvl": 162233564.2,
+    "stress_signal": "USDT heavy (52.24%) \u2014 flight to safety"
+  },
+  "uniswap": {
+    "eth_usdc_pool": {
+      "current_tick": 200417,
+      "sqrt_price": "1781060872247593380926915608399103",
+      "liquidity": "14669633108924202554"
+    }
+  },
+  "ethena": {
+    "usde_supply": 6220999045.07,
+    "susde_supply": 2929610742.07,
+    "staking_ratio": 0.4709
+  },
+  "pendle": {
+    "token_supply": 281527448.46
+  },
+  "arb_bridge": {
+    "eth_locked": 831741.88,
+    "signal": "stable"
+  },
+  "link_staking": {
+    "total_staked": 458820.96
+  },
+  "lido": {
+    "steth_supply": 9470681.31,
+    "wsteth_supply": 3505621.7,
+    "steth_per_wsteth": 1.227572,
+    "wrap_ratio": 0.3702,
+    "ldo_total_supply": 1000000000.0,
+    "signal": "healthy"
+  },
+  "eip1559_burn": {
+    "current_base_fee_gwei": 0.0371,
+    "past_1h_base_fee_gwei": 0.0417,
+    "base_fee_trend": "falling",
+    "estimated_burn_1h_eth": 0.2488,
+    "signal": "low_activity"
+  },
+  "dex_volume": {
+    "eth_usdc_swaps_1h": 107,
+    "activity": "medium"
+  }
+}

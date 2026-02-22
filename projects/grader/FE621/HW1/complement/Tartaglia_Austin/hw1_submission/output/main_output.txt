@@ -1,0 +1,319 @@
+﻿python : Failed to get 
+ticker 'TSLA' reason: 
+Failed to perform, curl: 
+(7) Failed to connect to 
+query1.finance.yahoo.com 
+port 443 after 2033 ms: 
+Could not connect to 
+server. See https://curl.s
+e/libcurl/c/libcurl-errors
+.html first for more 
+details.
+At line:1 char:1
++ python main.py 2>&1 | 
+Out-File -FilePath 
+output\main_output.txt 
+-Enco ...
++ ~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo        
+      : NotSpecified: (F  
+  ailed to get t...r mo   
+ re details.:String) [    
+], RemoteException
+    + FullyQualifiedError 
+   Id : NativeCommandErr  
+  or
+ 
+
+1 Failed download:
+['TSLA']: 
+ConnectionError('Failed 
+to perform, curl: (7) 
+Failed to connect to 
+query1.finance.yahoo.com 
+port 443 after 0 ms: 
+Could not connect to 
+server. See https://curl.s
+e/libcurl/c/libcurl-errors
+.html first for more 
+details.')
+
+1 Failed download:
+['SPY']: 
+ConnectionError('Failed 
+to perform, curl: (7) 
+Failed to connect to 
+query2.finance.yahoo.com 
+port 443 after 2041 ms: 
+Could not connect to 
+server. See https://curl.s
+e/libcurl/c/libcurl-errors
+.html first for more 
+details.')
+Failed to get ticker 
+'^VIX' reason: Failed to 
+perform, curl: (7) Failed 
+to connect to 
+query2.finance.yahoo.com 
+port 443 after 2041 ms: 
+Could not connect to 
+server. See https://curl.s
+e/libcurl/c/libcurl-errors
+.html first for more 
+details.
+==============================================================================
+  FE621 COMPUTATIONAL FINANCE - HOMEWORK 1
+==============================================================================
+
+==============================================================================
+QUESTION 3 - DESCRIPTIONS
+==============================================================================
+
+------------------------------------------------------------------------------
+  SPY
+------------------------------------------------------------------------------
+SPY is the SPDR S&P 500 ETF Trust, one of the most widely traded exchange-traded funds in the world.  It is designed to track the S&P 500 Index, which consists of 500 large-cap U.S. equities selected by Standard & Poor's.  Because SPY mirrors the index, its price movements serve as a barometer for the overall U.S. equity market.  Investors use SPY for broad market exposure, hedging, and as a benchmark.  SPY options are among the most liquid equity-index options, making them ideal for implied volatility analysis.
+
+------------------------------------------------------------------------------
+  VIX
+------------------------------------------------------------------------------
+The CBOE Volatility Index (^VIX) measures the market's expectation of 30-day forward-looking volatility, derived from the prices of S&P 500 index options.  It is often called the 'fear gauge' because it tends to rise during periods of market stress and fall when markets are calm.  VIX is quoted in annualized percentage points; for example, a VIX value of 20 implies the market expects approximately 20% annualized volatility over the next 30 days.  VIX is not directly investable, but VIX futures and options exist for trading volatility exposure.
+
+------------------------------------------------------------------------------
+  Option Symbols
+------------------------------------------------------------------------------
+Equity option ticker symbols follow the OCC (Options Clearing Corporation) format: ROOT + YYMMDD + C/P + STRIKE.  For example, 'TSLA260320C00300000' represents a TSLA call option expiring on March 20, 2026 with a strike price of $300.00.  The root is the underlying ticker (TSLA), '260320' encodes the expiration date (2026-03-20), 'C' indicates a call (vs 'P' for put), and '00300000' is the strike price in units of $0.001 (i.e., $300.00 = 300000 * 0.001).  Understanding this symbology is essential when working with option chain data from market data providers.
+
+------------------------------------------------------------------------------
+  Expiration Rules
+------------------------------------------------------------------------------
+Standard (monthly) equity options in the United States expire on the third Friday of the expiration month.  If that Friday is a market holiday, expiration moves to the preceding Thursday.  Options officially expire at 11:59 PM ET on the expiration date, but the last trading session is during regular market hours on that Friday.  In addition to monthly options, weekly options (expiring every Friday) and quarterly options (end of calendar quarter) are available on many underlyings.  For this homework, we use the next three monthly expiration dates: 2026-03-20 (March), 2026-04-17 (April), and 2026-05-15 (May), which are the third Fridays of those months.
+
+  -> Saved Q3 descriptions to output/q3_descriptions.txt
+==============================================================================
+PART 1 - DATA GATHERING
+==============================================================================
+  Using Federal Funds Effective Rate: 3.64% (2026-02-12) from H.15 release
+  Downloading equity history for TSLA ...
+  Downloading equity history for SPY ...
+  Downloading VIX data ...
+Traceback (most recent 
+call last):
+  File "C:\Users\austi\App
+Data\Local\Programs\Python
+\Python313\Lib\site-packag
+es\curl_cffi\requests\sess
+ion.py", line 652, in 
+request
+    c.perform()
+    ~~~~~~~~~^^
+  File "C:\Users\austi\App
+Data\Local\Programs\Python
+\Python313\Lib\site-packag
+es\curl_cffi\curl.py", 
+line 422, in perform
+    
+self._check_error(ret, 
+"perform")
+    ~~~~~~~~~~~~~~~~~^^^^^
+^^^^^^^^^^^
+  File "C:\Users\austi\App
+Data\Local\Programs\Python
+\Python313\Lib\site-packag
+es\curl_cffi\curl.py", 
+line 199, in _check_error
+    raise error
+curl_cffi.curl.CurlError: 
+Failed to perform, curl: 
+(7) Failed to connect to 
+query2.finance.yahoo.com 
+port 443 after 0 ms: 
+Could not connect to 
+server. See https://curl.s
+e/libcurl/c/libcurl-errors
+.html first for more 
+details.
+
+The above exception was 
+the direct cause of the 
+following exception:
+
+Traceback (most recent 
+call last):
+  File "C:\Users\austi\.ge
+mini\antigravity\scratch\f
+e621_hw1\main.py", line 
+58, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\austi\.ge
+mini\antigravity\scratch\f
+e621_hw1\main.py", line 
+17, in main
+    data = gather_all()
+  File "C:\Users\austi\.ge
+mini\antigravity\scratch\f
+e621_hw1\data_gathering.py
+", line 143, in gather_all
+    current_vix, vix_df = 
+download_vix()
+                          
+~~~~~~~~~~~~^^
+  File "C:\Users\austi\.ge
+mini\antigravity\scratch\f
+e621_hw1\data_gathering.py
+", line 57, in 
+download_vix
+    hist = 
+tk.history(period="5d")
+  File "C:\Users\austi\App
+Data\Local\Programs\Python
+\Python313\Lib\site-packag
+es\yfinance\utils.py", 
+line 92, in wrapper
+    result = func(*args, 
+**kwargs)
+  File "C:\Users\austi\App
+Data\Local\Programs\Python
+\Python313\Lib\site-packag
+es\yfinance\base.py", 
+line 132, in history
+    return self._lazy_load
+_price_history().history(*
+args, **kwargs)
+           ~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~^^
+  File "C:\Users\austi\App
+Data\Local\Programs\Python
+\Python313\Lib\site-packag
+es\yfinance\base.py", 
+line 138, in 
+_lazy_load_price_history
+    self._price_history = 
+PriceHistory(self._data, 
+self.ticker, self._get_tic
+ker_tz(timeout=10))
+                          
+                          
+            ~~~~~~~~~~~~~~
+~~~~~^^^^^^^^^^^^
+  File "C:\Users\austi\App
+Data\Local\Programs\Python
+\Python313\Lib\site-packag
+es\yfinance\base.py", 
+line 163, in 
+_get_ticker_tz
+    if k in self.info:
+            ^^^^^^^^^
+  File "C:\Users\austi\App
+Data\Local\Programs\Python
+\Python313\Lib\site-packag
+es\yfinance\ticker.py", 
+line 163, in info
+    return self.get_info()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\austi\App
+Data\Local\Programs\Python
+\Python313\Lib\site-packag
+es\yfinance\base.py", 
+line 329, in get_info
+    data = 
+self._quote.info
+           
+^^^^^^^^^^^^^^^^
+  File "C:\Users\austi\App
+Data\Local\Programs\Python
+\Python313\Lib\site-packag
+es\yfinance\scrapers\quote
+.py", line 511, in info
+    self._fetch_info()
+    ~~~~~~~~~~~~~~~~^^
+  File "C:\Users\austi\App
+Data\Local\Programs\Python
+\Python313\Lib\site-packag
+es\yfinance\scrapers\quote
+.py", line 610, in 
+_fetch_info
+    result = self._fetch(m
+odules=modules)
+  File "C:\Users\austi\App
+Data\Local\Programs\Python
+\Python313\Lib\site-packag
+es\yfinance\scrapers\quote
+.py", line 590, in _fetch
+    result = self._data.ge
+t_raw_json(_QUOTE_SUMMARY_
+URL_ + 
+f"/{self._symbol}", 
+params=params_dict)
+  File "C:\Users\austi\App
+Data\Local\Programs\Python
+\Python313\Lib\site-packag
+es\yfinance\data.py", 
+line 443, in get_raw_json
+    response = 
+self.get(url, 
+params=params, 
+timeout=timeout)
+  File "C:\Users\austi\App
+Data\Local\Programs\Python
+\Python313\Lib\site-packag
+es\yfinance\utils.py", 
+line 92, in wrapper
+    result = func(*args, 
+**kwargs)
+  File "C:\Users\austi\App
+Data\Local\Programs\Python
+\Python313\Lib\site-packag
+es\yfinance\data.py", 
+line 371, in get
+    response = 
+self._make_request(url, 
+request_method = 
+self._session.get, 
+params=params, 
+timeout=timeout)
+  File "C:\Users\austi\App
+Data\Local\Programs\Python
+\Python313\Lib\site-packag
+es\yfinance\utils.py", 
+line 92, in wrapper
+    result = func(*args, 
+**kwargs)
+  File "C:\Users\austi\App
+Data\Local\Programs\Python
+\Python313\Lib\site-packag
+es\yfinance\data.py", 
+line 417, in _make_request
+    response = request_met
+hod(**request_args)
+  File "C:\Users\austi\App
+Data\Local\Programs\Python
+\Python313\Lib\site-packag
+es\curl_cffi\requests\sess
+ion.py", line 675, in get
+    return self.request(me
+thod="GET", url=url, 
+**kwargs)
+           ~~~~~~~~~~~~^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^
+  File "C:\Users\austi\App
+Data\Local\Programs\Python
+\Python313\Lib\site-packag
+es\curl_cffi\requests\sess
+ion.py", line 659, in 
+request
+    raise error(str(e), 
+e.code, rsp) from e
+curl_cffi.requests.excepti
+ons.ConnectionError: 
+Failed to perform, curl: 
+(7) Failed to connect to 
+query2.finance.yahoo.com 
+port 443 after 0 ms: 
+Could not connect to 
+server. See https://curl.s
+e/libcurl/c/libcurl-errors
+.html first for more 
+details.

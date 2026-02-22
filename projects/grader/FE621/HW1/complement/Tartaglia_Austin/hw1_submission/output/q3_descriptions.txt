@@ -1,0 +1,18 @@
+QUESTION 3 - DESCRIPTIONS
+==============================================================================
+
+SPY
+---
+SPY is the SPDR S&P 500 ETF Trust, one of the most widely traded exchange-traded funds in the world.  It is designed to track the S&P 500 Index, which consists of 500 large-cap U.S. equities selected by Standard & Poor's.  Because SPY mirrors the index, its price movements serve as a barometer for the overall U.S. equity market.  Investors use SPY for broad market exposure, hedging, and as a benchmark.  SPY options are among the most liquid equity-index options, making them ideal for implied volatility analysis.
+
+VIX
+---
+The CBOE Volatility Index (^VIX) measures the market's expectation of 30-day forward-looking volatility, derived from the prices of S&P 500 index options.  It is often called the 'fear gauge' because it tends to rise during periods of market stress and fall when markets are calm.  VIX is quoted in annualized percentage points; for example, a VIX value of 20 implies the market expects approximately 20% annualized volatility over the next 30 days.  VIX is not directly investable, but VIX futures and options exist for trading volatility exposure.
+
+Option Symbols
+--------------
+Equity option ticker symbols follow the OCC (Options Clearing Corporation) format: ROOT + YYMMDD + C/P + STRIKE.  For example, 'TSLA260320C00300000' represents a TSLA call option expiring on March 20, 2026 with a strike price of $300.00.  The root is the underlying ticker (TSLA), '260320' encodes the expiration date (2026-03-20), 'C' indicates a call (vs 'P' for put), and '00300000' is the strike price in units of $0.001 (i.e., $300.00 = 300000 * 0.001).  Understanding this symbology is essential when working with option chain data from market data providers.
+
+Expiration Rules
+----------------
+Standard (monthly) equity options in the United States expire on the third Friday of the expiration month.  If that Friday is a market holiday, expiration moves to the preceding Thursday.  Options officially expire at 11:59 PM ET on the expiration date, but the last trading session is during regular market hours on that Friday.  In addition to monthly options, weekly options (expiring every Friday) and quarterly options (end of calendar quarter) are available on many underlyings.  For this homework, we use the next three monthly expiration dates: 2026-03-20 (March), 2026-04-17 (April), and 2026-05-15 (May), which are the third Fridays of those months.

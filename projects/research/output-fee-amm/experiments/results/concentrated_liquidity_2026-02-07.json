@@ -1,0 +1,84 @@
+{
+  "single_sim": {
+    "initial_price": 2000.0,
+    "final_price": 1615.3454645178388,
+    "price_return": -0.1923272677410806,
+    "initial_value": 8944271909.999159,
+    "range": {
+      "lower": 1661.7544564798775,
+      "upper": 2381.7986723452846,
+      "width": 0.2
+    },
+    "blocks_in_range_pct": 0.2943,
+    "input_fee": {
+      "final_value": 8171342115.155028,
+      "return": -0.08641617815532211,
+      "lvr": 0.10565318099022122,
+      "fees_x": 37724.96310297679,
+      "fees_y": 70886849.57662253
+    },
+    "output_fee": {
+      "final_value": 8171096139.444115,
+      "return": -0.08644367907584295,
+      "lvr": 0.10568068191074206,
+      "fees_x": 36989.43872572698,
+      "fees_y": 71829003.04423973
+    },
+    "rebalancing": {
+      "final_value": 9116332894.087921
+    },
+    "hodl": {
+      "final_value": 8084158220.807442
+    }
+  },
+  "monte_carlo": {
+    "n_simulations": 100,
+    "parameters": {
+      "range_width": 0.2,
+      "seed": 99
+    },
+    "avg_in_range_pct": 0.278045,
+    "input_fee_stats": {
+      "mean_return": 0.38608337618282135,
+      "std_return": 1.1136252321356024,
+      "mean_lvr": -0.04584727365800179
+    },
+    "output_fee_stats": {
+      "mean_return": 0.3862021554919133,
+      "std_return": 1.113877688183592,
+      "mean_lvr": -0.045966052967093704
+    },
+    "comparison": {
+      "output_minus_input_return": 0.00011877930909193202,
+      "lvr_reduction_pct": 0,
+      "output_better_pct": 71.0
+    }
+  },
+  "sensitivity": {
+    "\u00b12.5%": {
+      "lvr_reduction_pct": 0,
+      "output_better_pct": 71.0,
+      "avg_in_range": 0.08029499999999999
+    },
+    "\u00b15.0%": {
+      "lvr_reduction_pct": 0,
+      "output_better_pct": 74.0,
+      "avg_in_range": 0.148149
+    },
+    "\u00b110.0%": {
+      "lvr_reduction_pct": 0,
+      "output_better_pct": 71.0,
+      "avg_in_range": 0.278045
+    },
+    "\u00b125.0%": {
+      "lvr_reduction_pct": 0,
+      "output_better_pct": 65.0,
+      "avg_in_range": 0.5273319999999999
+    },
+    "\u00b150.0%": {
+      "lvr_reduction_pct": 1.711440084916037,
+      "output_better_pct": 64.0,
+      "avg_in_range": 0.72763
+    }
+  }
+}

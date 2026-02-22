@@ -1,0 +1,11 @@
+Defaulting to user installation because normal site-packages is not writeable
+Collecting stockstats
+  Downloading stockstats-0.6.8-py3-none-any.whl (32 kB)
+Requirement already satisfied: numpy>=1.16.6 in /home/openclaw/.local/lib/python3.10/site-packages (from stockstats) (2.2.6)
+Requirement already satisfied: pandas>=0.24.2 in /home/openclaw/.local/lib/python3.10/site-packages (from stockstats) (2.3.3)
+Requirement already satisfied: python-dateutil>=2.8.2 in /home/openclaw/.local/lib/python3.10/site-packages (from pandas>=0.24.2->stockstats) (2.9.0.post0)
+Requirement already satisfied: tzdata>=2022.7 in /home/openclaw/.local/lib/python3.10/site-packages (from pandas>=0.24.2->stockstats) (2025.3)
+Requirement already satisfied: pytz>=2020.1 in /home/openclaw/.local/lib/python3.10/site-packages (from pandas>=0.24.2->stockstats) (2025.2)
+Requirement already satisfied: six>=1.5 in /usr/lib/python3/dist-packages (from python-dateutil>=2.8.2->pandas>=0.24.2->stockstats) (1.16.0)
+Installing collected packages: stockstats
+Successfully installed stockstats-0.6.8

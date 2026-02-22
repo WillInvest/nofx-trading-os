@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Dashboard</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #0d1117; --card: #161b22; --card-hover: #1c2129;
+    --border: #30363d; --text: #e6edf3; --muted: #8b949e;
+    --green: #3fb950; --blue: #58a6ff; --yellow: #d29922;
+    --red: #f85149; --purple: #bc8cff;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+  }
+  body { background: var(--bg); color: var(--text); font-family: var(--font); min-height: 100vh; }
+  
+  /* Top bar */
+  .topbar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 24px; border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; background: var(--bg); z-index: 10;
+  }
+  .topbar h1 { font-size: 18px; font-weight: 600; }
+  .topbar h1 span { color: var(--blue); }
+  .topbar-right { display: flex; gap: 16px; align-items: center; color: var(--muted); font-size: 13px; }
+  .live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); display: inline-block; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  
+  /* Layout */
+  .container { max-width: 1200px; margin: 0 auto; padding: 24px; }
+  
+  /* Agent Cards */
+  .agents-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 16px; margin-bottom: 32px;
+  }
+  .agent-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 20px; transition: all 0.2s; cursor: pointer;
+  }
+  .agent-card:hover { background: var(--card-hover); border-color: var(--blue); }
+  .agent-card.active { border-color: var(--green); }
+  
+  .agent-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .agent-name { font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+  .status-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .status-dot.active { background: var(--green); box-shadow: 0 0 8px var(--green); }
+  .status-dot.idle { background: var(--muted); }
+  .status-dot.error { background: var(--red); }
+  
+  .agent-activity {
+    font-size: 14px; color: var(--blue); margin-bottom: 12px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  
+  .agent-meta {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+    font-size: 12px; color: var(--muted); font-family: var(--mono);
+  }
+  .meta-item { display: flex; flex-direction: column; gap: 2px; }
+  .meta-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); }
+  .meta-value { color: var(--text); font-size: 13px; }
+  
+  .agent-lastmsg {
+    margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--muted); line-height: 1.5;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+
+  /* Session Detail Panel */
+  .detail-panel {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 20px; margin-bottom: 24px; display: none;
+  }
+  .detail-panel.open { display: block; }
+  .detail-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border);
+  }
+  .detail-title { font-size: 15px; font-weight: 600; }
+  .detail-close { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 18px; }
+  .detail-close:hover { color: var(--text); }
+  
+  .messages { display: flex; flex-direction: column; gap: 8px; max-height: 400px; overflow-y: auto; }
+  .msg {
+    padding: 10px 14px; border-radius: 10px; font-size: 13px; line-height: 1.5;
+    max-width: 85%; word-wrap: break-word; white-space: pre-wrap;
+  }
+  .msg.user { background: #1f3a5f; align-self: flex-end; border-bottom-right-radius: 4px; }
+  .msg.assistant { background: #1a2332; align-self: flex-start; border-bottom-left-radius: 4px; }
+  .msg .role { font-size: 10px; color: var(--muted); margin-bottom: 4px; text-transform: uppercase; }
+  .msg .tools { font-size: 11px; color: var(--purple); margin-top: 4px; font-family: var(--mono); }
+  .msg .time { font-size: 10px; color: var(--muted); margin-top: 4px; }
+
+  /* All Sessions Table */
+  .section-title {
+    font-size: 14px; font-weight: 600; color: var(--muted); text-transform: uppercase;
+    letter-spacing: 0.5px; margin-bottom: 12px;
+  }
+  .sessions-table { width: 100%; border-collapse: collapse; }
+  .sessions-table th {
+    text-align: left; font-size: 11px; color: var(--muted); font-weight: 500;
+    padding: 8px 12px; border-bottom: 1px solid var(--border); text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .sessions-table td {
+    padding: 8px 12px; border-bottom: 1px solid var(--border);
+    font-size: 12px; font-family: var(--mono); color: var(--text);
+  }
+  .sessions-table tr:hover { background: var(--card-hover); }
+  .sessions-table tr { cursor: pointer; }
+  
+  .model-badge {
+    display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px;
+    font-family: var(--mono);
+  }
+  .model-opus { background: #2d1f3d; color: var(--purple); }
+  .model-minimax { background: #1f2d3d; color: var(--blue); }
+  .model-other { background: #2d2d1f; color: var(--yellow); }
+  
+  .kind-badge {
+    display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.3px;
+  }
+  .kind-direct { background: #1a2e1a; color: var(--green); }
+  .kind-cron { background: #2d2a1a; color: var(--yellow); }
+  .kind-subagent { background: #1a1a2e; color: var(--blue); }
+
+  /* Tabs */
+  .tabs { display: flex; gap: 4px; margin-bottom: 24px; border-bottom: 1px solid var(--border); }
+  .tab {
+    padding: 12px 20px; font-size: 14px; font-weight: 500; color: var(--muted);
+    cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s;
+  }
+  .tab:hover { color: var(--text); }
+  .tab.active { color: var(--blue); border-bottom-color: var(--blue); }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* Memory Tab */
+  .memory-search { margin-bottom: 16px; display: flex; gap: 8px; }
+  .memory-search input {
+    flex: 1; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border);
+    background: var(--card); color: var(--text); font-size: 14px;
+  }
+  .memory-search input:focus { outline: none; border-color: var(--blue); }
+  .memory-search button {
+    padding: 10px 20px; border-radius: 8px; border: none; background: var(--blue);
+    color: white; font-size: 14px; cursor: pointer;
+  }
+  .memory-list { display: flex; flex-direction: column; gap: 12px; }
+  .memory-item {
+    background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 16px;
+  }
+  .memory-score { font-size: 11px; color: var(--purple); margin-bottom: 6px; font-family: var(--mono); }
+  .memory-text { font-size: 13px; line-height: 1.6; color: var(--text); }
+  .memory-meta { font-size: 11px; color: var(--muted); margin-top: 8px; }
+
+  /* Cron Tab */
+  .cron-list { display: flex; flex-direction: column; gap: 12px; }
+  .cron-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 16px; cursor: pointer; transition: all 0.2s;
+  }
+  .cron-card:hover { background: var(--card-hover); border-color: var(--blue); }
+  .cron-card.disabled { opacity: 0.5; }
+  .cron-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .cron-schedule { font-size: 12px; color: var(--muted); }
+  .cron-status { padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 500; }
+  .cron-status.active { background: #1a2e1a; color: var(--green); }
+  .cron-status.disabled { background: #2d2a1a; color: var(--yellow); }
+  
+  /* Cron Detail Modal */
+  .cron-detail {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 20px; margin-bottom: 16px; display: none;
+  }
+  .cron-detail.open { display: block; }
+  .cron-detail h3 { margin-bottom: 12px; font-size: 16px; }
+  .cron-detail p { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 8px; }
+  .cron-detail .close-btn {
+    margin-top: 12px; padding: 8px 16px; border-radius: 6px; border: none;
+    background: var(--border); color: var(--text); cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    .container { padding: 12px; }
+    .agents-grid { grid-template-columns: 1fr; }
+    .topbar { padding: 12px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <h1>🤖 <span>Agent Dashboard</span></h1>
+  <div class="topbar-right">
+    <span class="live-dot"></span>
+    <span id="clock"></span>
+    <span id="refreshInfo" style="font-size:11px;">every 3s</span>
+  </div>
+</div>
+
+<div class="container">
+  <!-- Tabs -->
+  <div class="tabs">
+    <div class="tab active" data-tab="agents" onclick="switchTab('agents')">🤖 Agents</div>
+    <div class="tab" data-tab="memory" onclick="switchTab('memory')">💾 Vector DB</div>
+    <div class="tab" data-tab="memory-md" onclick="switchTab('memory-md')">📝 MEMORY.md</div>
+    <div class="tab" data-tab="cron" onclick="switchTab('cron')">⏰ Cron Jobs</div>
+  </div>
+
+  <!-- Agents Tab -->
+  <div class="tab-content active" id="tab-agents">
+    <!-- Agent Cards -->
+    <div class="agents-grid" id="agentsGrid"></div>
+
+    <!-- Detail Panel (click to expand) -->
+    <div class="detail-panel" id="detailPanel">
+      <div class="detail-header">
+        <div class="detail-title" id="detailTitle">Session Details</div>
+        <button class="detail-close" onclick="closeDetail()">✕</button>
+      </div>
+      <div class="messages" id="detailMessages"></div>
+    </div>
+
+    <!-- All Sessions -->
+    <div class="section-title">All Sessions</div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;">
+      <table class="sessions-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Session</th>
+            <th>Kind</th>
+            <th>Model</th>
+            <th>Tokens</th>
+            <th>Last Activity</th>
+          </tr>
+        </thead>
+        <tbody id="sessionsBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Memory Tab -->
+  <div class="tab-content" id="tab-memory">
+    <div class="memory-search">
+      <input type="text" id="memoryQuery" placeholder="Search memories..." onkeyup="if(event.key==='Enter')searchMemory()">
+      <button onclick="searchMemory()">Search</button>
+    </div>
+    <div class="memory-list" id="memoryList">
+      <div style="color:var(--muted);padding:20px;text-align:center;">Loading memories...</div>
+    </div>
+  </div>
+
+  <!-- Cron Tab -->
+  <div class="tab-content" id="tab-cron">
+    <div class="cron-detail" id="cronDetail">
+      <h3 id="cronDetailTitle"></h3>
+      <p id="cronDetailDesc"></p>
+      <p id="cronDetailSchedule" style="color: var(--blue);"></p>
+      <button class="close-btn" onclick="closeCronDetail()">Close</button>
+    </div>
+    <div class="cron-list" id="cronList">
+      <div style="color:var(--muted);padding:20px;text-align:center;">Loading cron jobs...</div>
+    </div>
+  </div>
+
+  <!-- MEMORY.md Tab -->
+  <div class="tab-content" id="tab-memory-md">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+      <span style="color:var(--muted);font-size:12px;">Long-term curated memory</span>
+      <button onclick="loadMemoryMd()" style="padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:var(--card);color:var(--text);cursor:pointer;">🔄 Refresh</button>
+    </div>
+    <div id="memoryMdContent" style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;font-size:13px;line-height:1.7;white-space:pre-wrap;overflow-y:auto;max-height:70vh;">
+      Loading...
+    </div>
+  </div>
+</div>
+
+<script>
+const API = '';
+
+// ─── State ───
+let sessions = [];
+let selectedSession = null;
+
+// ─── Helpers ───
+function timeAgo(ts) {
+  if (!ts) return 'never';
+  const diff = Date.now() - ts;
+  if (diff < 60000) return 'just now';
+  if (diff < 3600000) return Math.floor(diff/60000) + 'm ago';
+  if (diff < 86400000) return Math.floor(diff/3600000) + 'h ago';
+  return Math.floor(diff/86400000) + 'd ago';
+}
+
+function formatTokens(n) {
+  if (!n) return '0';
+  if (n >= 1000000) return (n/1000000).toFixed(1) + 'M';
+  if (n >= 1000) return (n/1000).toFixed(0) + 'K';
+  return n.toString();
+}
+
+function esc(s) {
+  if (!s) return '';
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function modelClass(model) {
+  if (!model) return 'model-other';
+  if (model.includes('opus')) return 'model-opus';
+  if (model.toLowerCase().includes('minimax')) return 'model-minimax';
+  return 'model-other';
+}
+
+function modelShort(model) {
+  if (!model || model === '-') return '?';
+  // Remove provider prefix
+  return model.replace(/^[^/]+\//, '').replace('claude-', '');
+}
+
+function kindClass(kind) {
+  if (kind === 'direct') return 'kind-direct';
+  if (kind === 'cron') return 'kind-cron';
+  return 'kind-subagent';
+}
+
+function getActivity(sessions) {
+  if (!sessions.length) return { icon: '😴', text: 'Sleeping', color: 'var(--muted)' };
+  
+  const latest = sessions[0]; // sorted by updatedAt desc
+  const isRecent = (Date.now() - latest.updatedAt) < 300000; // 5 min
+  
+  if (!isRecent) return { icon: '😴', text: 'Idle · ' + timeAgo(latest.updatedAt), color: 'var(--muted)' };
+  
+  if (latest.kind === 'direct' && latest.channel === 'telegram') {
+    return { icon: '💬', text: 'Chatting with Hao', color: 'var(--green)' };
+  }
+  if (latest.kind === 'cron') {
+    return { icon: '⏰', text: 'Running cron job', color: 'var(--yellow)' };
+  }
+  if (latest.key.includes('subagent') || latest.kind === 'subagent') {
+    return { icon: '🔧', text: 'Working on a task', color: 'var(--blue)' };
+  }
+  if (latest.kind === 'direct') {
+    return { icon: '💬', text: 'In conversation', color: 'var(--green)' };
+  }
+  return { icon: '⚡', text: 'Active', color: 'var(--green)' };
+}
+
+// ─── Group sessions into agents ───
+function groupAgents(sessions) {
+  const agents = {};
+  
+  for (const s of sessions) {
+    let agentName;
+    const key = s.key || '';
+    const model = (s.model || '').toLowerCase();
+    
+    if (key.startsWith('agent:coder') || model.includes('minimax')) {
+      agentName = 'MiniMax Coder';
+    } else if (key.startsWith('agent:main') || model.includes('opus') || model.includes('claude')) {
+      agentName = 'Opus';
+    } else {
+      agentName = 'Other';
+    }
+    
+    if (!agents[agentName]) agents[agentName] = [];
+    agents[agentName].push(s);
+  }
+  
+  // Sort sessions within each agent by updatedAt desc
+  for (const name in agents) {
+    agents[name].sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
+  }
+  
+  return agents;
+}
+
+// ─── Render ───
+function renderAgents(agents) {
+  const grid = document.getElementById('agentsGrid');
+  const agentOrder = ['Opus', 'MiniMax Coder', 'Other'];
+  
+  let html = '';
+  for (const name of agentOrder) {
+    const agentSessions = agents[name];
+    if (!agentSessions || !agentSessions.length) continue;
+    
+    const activity = getActivity(agentSessions);
+    const latest = agentSessions[0];
+    const isActive = (Date.now() - latest.updatedAt) < 300000;
+    const totalTokens = agentSessions.reduce((sum, s) => sum + (s.totalTokens || 0), 0);
+    const sessionCount = agentSessions.length;
+    
+    const emoji = name === 'Opus' ? '🧠' : name === 'MiniMax Coder' ? '⚡' : '🤖';
+    const statusClass = isActive ? 'active' : 'idle';
+    
+    html += `
+      <div class="agent-card ${isActive ? 'active' : ''}" onclick="showAgentDetail('${esc(name)}')">
+        <div class="agent-header">
+          <div class="agent-name">
+            <div class="status-dot ${statusClass}"></div>
+            ${emoji} ${esc(name)}
+          </div>
+          <span style="font-size:11px;color:var(--muted);">${sessionCount} session${sessionCount > 1 ? 's' : ''}</span>
+        </div>
+        
+        <div class="agent-activity" style="color:${activity.color}">
+          ${activity.icon} ${esc(activity.text)}
+        </div>
+        
+        <div class="agent-meta">
+          <div class="meta-item">
+            <span class="meta-label">Model</span>
+            <span class="meta-value"><span class="model-badge ${modelClass(latest.model)}">${esc(modelShort(latest.model))}</span></span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Tokens</span>
+            <span class="meta-value">${formatTokens(totalTokens)}</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Last Active</span>
+            <span class="meta-value">${timeAgo(latest.updatedAt)}</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Thinking</span>
+            <span class="meta-value">${latest.thinkingLevel || 'off'}</span>
+          </div>
+        </div>
+        
+        <div class="agent-lastmsg">${esc((latest.lastMessage || '').slice(0, 100))}</div>
+      </div>
+    `;
+  }
+  grid.innerHTML = html;
+}
+
+function renderSessions(sessions) {
+  const body = document.getElementById('sessionsBody');
+  const sorted = [...sessions].sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
+  
+  body.innerHTML = sorted.map(s => {
+    const isActive = (Date.now() - (s.updatedAt || 0)) < 300000;
+    const dot = isActive ? `<span class="status-dot active" style="width:6px;height:6px;display:inline-block;"></span>` 
+                         : `<span class="status-dot idle" style="width:6px;height:6px;display:inline-block;"></span>`;
+    return `
+      <tr onclick="showSessionMessages('${esc(s.sessionId)}', '${esc(s.label || s.key)}')">
+        <td>${dot}</td>
+        <td style="color:var(--text);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${esc(s.label || s.key)}</td>
+        <td><span class="kind-badge ${kindClass(s.kind)}">${esc(s.kind)}</span></td>
+        <td><span class="model-badge ${modelClass(s.model)}">${esc(modelShort(s.model))}</span></td>
+        <td>${formatTokens(s.totalTokens)}</td>
+        <td style="color:var(--muted);">${timeAgo(s.updatedAt)}</td>
+      </tr>
+    `;
+  }).join('');
+}
+
+// ─── Detail Panel ───
+async function showAgentDetail(agentName) {
+  const agents = groupAgents(sessions);
+  const agentSessions = agents[agentName];
+  if (!agentSessions || !agentSessions.length) return;
+  
+  // Show latest session's messages
+  const latest = agentSessions[0];
+  showSessionMessages(latest.sessionId, agentName + ' — ' + (latest.label || latest.key));
+}
+
+async function showSessionMessages(sessionId, title) {
+  const panel = document.getElementById('detailPanel');
+  const titleEl = document.getElementById('detailTitle');
+  const msgsEl = document.getElementById('detailMessages');
+  
+  titleEl.textContent = title || sessionId;
+  msgsEl.innerHTML = '<div style="color:var(--muted);padding:20px;text-align:center;">Loading...</div>';
+  panel.classList.add('open');
+  selectedSession = sessionId;
+  
+  try {
+    const res = await fetch(API + '/api/messages?sid=' + encodeURIComponent(sessionId) + '&limit=15');
+    const messages = await res.json();
+    
+    if (!messages.length) {
+      msgsEl.innerHTML = '<div style="color:var(--muted);padding:20px;text-align:center;">No messages</div>';
+      return;
+    }
+    
+    msgsEl.innerHTML = messages.map(m => `
+      <div class="msg ${m.role}">
+        <div class="role">${m.role === 'user' ? '👤 You' : '🤖 Agent'}${m.model ? ' · ' + esc(modelShort(m.model)) : ''}</div>
+        ${esc(m.text.slice(0, 300))}${m.text.length > 300 ? '...' : ''}
+        ${m.tools.length ? '<div class="tools">🔧 ' + m.tools.map(t => esc(t)).join(', ') + '</div>' : ''}
+        ${m.timestamp ? '<div class="time">' + new Date(m.timestamp).toLocaleTimeString() + '</div>' : ''}
+      </div>
+    `).join('');
+    
+    msgsEl.scrollTop = msgsEl.scrollHeight;
+  } catch (e) {
+    msgsEl.innerHTML = `<div style="color:var(--red);padding:20px;">Error: ${e.message}</div>`;
+  }
+}
+
+function closeDetail() {
+  document.getElementById('detailPanel').classList.remove('open');
+  selectedSession = null;
+}
+
+// ─── Tab Switching ───
+function switchTab(tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  document.querySelector(`.tab[data-tab="${tab}"]`).classList.add('active');
+  document.getElementById(`tab-${tab}`).classList.add('active');
+  
+  if (tab === 'memory') loadMemory();
+  if (tab === 'memory-md') loadMemoryMd();
+  if (tab === 'cron') loadCrons();
+}
+
+// ─── Memory Tab ───
+async function loadMemory(q = '') {
+  const list = document.getElementById('memoryList');
+  list.innerHTML = '<div style="color:var(--muted);padding:20px;text-align:center;">Loading...</div>';
+  
+  try {
+    const url = q ? `/api/memory?q=${encodeURIComponent(q)}` : '/api/memory';
+    const res = await fetch(url);
+    const data = await res.json();
+    
+    if (!data || !data.length) {
+      list.innerHTML = '<div style="color:var(--muted);padding:20px;text-align:center;">No memories found</div>';
+      return;
+    }
+    
+    list.innerHTML = data.slice(0, 50).map(m => `
+      <div class="memory-item">
+        ${m.score ? `<div class="memory-score">Score: ${(m.score * 100).toFixed(1)}%</div>` : ''}
+        <div class="memory-text">${esc((m.text || m.memory || m.content || '').slice(0, 500))}</div>
+        <div class="memory-meta">${m.created_at ? new Date(m.created_at).toLocaleString() : ''}</div>
+      </div>
+    `).join('');
+  } catch (e) {
+    list.innerHTML = `<div style="color:var(--red);padding:20px;">Error: ${e.message}</div>`;
+  }
+}
+
+function searchMemory() {
+  const q = document.getElementById('memoryQuery').value;
+  loadMemory(q);
+}
+
+// ─── Cron Tab ───
+const cronSummaries = {
+  'Mem0 Health Check': 'Runs daily at noon to check mem0 vector database health. Verifies Qdrant is running, embeddings work, and memories can be searched. Reports any issues — if all checks pass, replies HEARTBEAT_OK.',
+  'NOFX Weekly Strategy Review': 'Every Monday at 10AM. Comprehensive review of the past week: PnL, win rate, patterns, system evolution. Analyzes debate quality, trader performance, data collection. Generates a weekly report with scorecard, patterns found, and strategic plan for next week.',
+  'NOFX Monthly Retrospective': 'First day of every month at 10AM. Full monthly deep dive: financial performance, system evolution, deep pattern analysis, risk review. Generates investor-style monthly report with wins/losses, regime analysis, and strategic recommendations.',
+};
+
+async function loadCrons() {
+  const list = document.getElementById('cronList');
+  list.innerHTML = '<div style="color:var(--muted);padding:20px;text-align:center;">Loading...</div>';
+  
+  try {
+    const res = await fetch('/api/crons');
+    const crons = await res.json();
+    
+    if (!crons || !crons.length) {
+      list.innerHTML = '<div style="color:var(--muted);padding:20px;text-align:center;">No cron jobs found</div>';
+      return;
+    }
+    
+    list.innerHTML = crons.map(c => `
+      <div class="cron-card ${c.status === 'disabled' ? 'disabled' : ''}" onclick="showCronDetail('${esc(c.description)}', '${esc(c.schedule)}')">
+        <div class="cron-title">${esc(c.description)}</div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span class="cron-schedule">${formatSchedule(c.schedule)}</span>
+          <span class="cron-status ${c.status === 'disabled' ? 'disabled' : 'active'}">${c.status}</span>
+        </div>
+      </div>
+    `).join('');
+  } catch (e) {
+    list.innerHTML = `<div style="color:var(--red);padding:20px;">Error: ${e.message}</div>`;
+  }
+}
+
+function formatSchedule(schedule) {
+  if (!schedule) return '';
+  const parts = schedule.split(' ');
+  if (parts.length === 5) {
+    const [min, hour, dom, mon, dow] = parts;
+    let desc = '';
+    if (dow === '*') {}
+    else if (dow === '1') desc = 'Mon';
+    else if (dow === '1,2,3,4,5') desc = 'Weekdays';
+    else desc = `Dow ${dow}`;
+    if (dom === '1') desc = '1st of month' + (desc ? ', ' + desc : '');
+    if (hour !== '*') desc = `${hour}:00`.replace(/^0/, '') + (desc ? ', ' + desc : '');
+    return desc || schedule;
+  }
+  return schedule;
+}
+
+function showCronDetail(title, schedule) {
+  const detail = document.getElementById('cronDetail');
+  document.getElementById('cronDetailTitle').textContent = title;
+  document.getElementById('cronDetailDesc').textContent = cronSummaries[title] || 'No description available.';
+  document.getElementById('cronDetailSchedule').textContent = 'Schedule: ' + schedule;
+  detail.classList.add('open');
+  list.scrollIntoView({ behavior: 'smooth' });
+}
+
+function closeCronDetail() {
+  document.getElementById('cronDetail').classList.remove('open');
+}
+
+// ─── MEMORY.md Tab ───
+async function loadMemoryMd() {
+  const content = document.getElementById('memoryMdContent');
+  content.innerHTML = 'Loading...';
+  
+  try {
+    const res = await fetch('/api/memory-md');
+    if (res.status === 404) {
+      content.innerHTML = '<div style="color:var(--muted);">MEMORY.md not found</div>';
+      return;
+    }
+    const text = await res.text();
+    // Render as HTML (basic markdown)
+    let html = text
+      .replace(/^### (.+)$/gm, '<h3 style="margin:16px 0 8px;color:var(--blue);">$1</h3>')
+      .replace(/^## (.+)$/gm, '<h2 style="margin:20px 0 10px;border-bottom:1px solid var(--border);padding-bottom:8px;">$1</h2>')
+      .replace(/^# (.+)$/gm, '<h1 style="margin:20px 0 10px;">$1</h1>')
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\n\n/g, '</p><p>')
+      .replace(/\n/g, '<br>');
+    content.innerHTML = '<p>' + html + '</p>';
+  } catch (e) {
+    content.innerHTML = '<div style="color:var(--red);">Error: ' + e.message + '</div>';
+  }
+}
+
+// ─── Clock ───
+function updateClock() {
+  const now = new Date();
+  document.getElementById('clock').textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+}
+
+// ─── Fetch & Refresh ───
+async function refresh() {
+  try {
+    const res = await fetch(API + '/api/sessions');
+    sessions = await res.json();
+    const agents = groupAgents(sessions);
+    renderAgents(agents);
+    renderSessions(sessions);
+  } catch (e) {
+    console.error('Refresh failed:', e);
+  }
+}
+
+// ─── Init ───
+updateClock();
+setInterval(updateClock, 1000);
+refresh();
+setInterval(refresh, 3000);
+</script>
+</body>
+</html>

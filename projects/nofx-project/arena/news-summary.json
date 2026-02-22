@@ -1,0 +1,111 @@
+{
+  "generated_at": "2026-02-22T05:10:47.054653+00:00",
+  "top_stories": [
+    {
+      "headline": "Political Risk as Tradable Asset",
+      "summary": "Transforming 'political risk' into a tradable asset via ETFs could drive institutional interest in crypto, particularly ETH, as a hedge.",
+      "impact": "bullish",
+      "importance": 4,
+      "tags": [
+        "eth",
+        "defi",
+        "regulation",
+        "macro"
+      ],
+      "source": "CryptoSlate",
+      "url": "https://cryptoslate.com/election-betting-etfs-crypto-blast-radius/",
+      "published": "2026-02-22",
+      "scraped_at": "2026-02-22T04:10:26.999207+00:00"
+    },
+    {
+      "headline": "Trump Announces 10% Global Tariff",
+      "summary": "The Supreme Court's approval of Trump's 10% global tariff plan introduces significant macroeconomic uncertainty, potentially impacting global trade and investor sentiment, affecting ETH's value.",
+      "impact": "bearish",
+      "importance": 4,
+      "tags": [
+        "tariffs",
+        "macro",
+        "markets",
+        "global economy"
+      ],
+      "source": "CoinTelegraph",
+      "url": "https://cointelegraph.com/news/trump-10-global-tariff-scotus-ruling",
+      "published": "2026-02-20T19:55:07+00:00",
+      "scraped_at": "2026-02-22T03:54:11.725996+00:00"
+    },
+    {
+      "headline": "SCOTUS Strikes Down Tariffs – Alternative Plans Brewing",
+      "summary": "The Supreme Court's decision allows Trump to pursue alternative debt reduction strategies, creating uncertainty around the US economy and potentially impacting crypto markets, including ETH.",
+      "impact": "bearish",
+      "importance": 4,
+      "tags": [
+        "tariffs",
+        "scotus",
+        "economy",
+        "markets"
+      ],
+      "source": "CoinTelegraph",
+      "url": "https://cointelegraph.com/news/scotus-strikes-trump-tariffs-alternative-plan",
+      "published": "2026-02-20T19:27:39+00:00",
+      "scraped_at": "2026-02-22T03:54:11.725997+00:00"
+    },
+    {
+      "headline": "Wall Street Boosts Bitmine Stakes Amid DeFi Liquidity Crisis",
+      "summary": "Increased investment from Wall Street giants in Bitmine reflects a shift towards more traditional finance players within the crypto space, potentially signaling a decline in DeFi liquidity and impacting ETH's position.",
+      "impact": "bearish",
+      "importance": 4,
+      "tags": [
+        "bitmine",
+        "defi",
+        "wall street",
+        "liquidity"
+      ],
+      "source": "CoinTelegraph",
+      "url": "https://cointelegraph.com/news/wall-street-boosts-bitmine-stakes-defi-lenders-buckle-liquidity-finance-redefined",
+      "published": "2026-02-20T19:00:00+00:00",
+      "scraped_at": "2026-02-22T03:54:11.725997+00:00"
+    },
+    {
+      "headline": "Bitcoin Drops Amid Supreme Court Ruling",
+      "summary": "A Supreme Court decision striking down Trump tariffs triggered immediate selling pressure on Bitcoin, highlighting its sensitivity to macroeconomic events and potentially impacting ETH correlated assets.",
+      "impact": "bearish",
+      "importance": 4,
+      "tags": [
+        "bitcoin",
+        "macro",
+        "markets",
+        "defi"
+      ],
+      "source": "CoinDesk",
+      "url": "https://www.coindesk.com/markets/2026/02/20/bitcoin-pops-then-drops-as-supreme-court-strikes-down-trump-tariffs",
+      "published": "2026-02-20T15:20:45+00:00",
+      "scraped_at": "2026-02-22T03:54:11.725991+00:00"
+    },
+    {
+      "headline": "BlackRock’s UNI Purchase Signals Institutional DeFi Adoption",
+      "summary": "BlackRock's investment in UNI represents a significant milestone for institutional interest in DeFi, potentially driving further adoption and investment within the broader ecosystem, including ETH.",
+      "impact": "bullish",
+      "importance": 5,
+      "tags": [
+        "blackrock",
+        "defi",
+        "uni",
+        "institutional"
+      ],
+      "source": "<unused3595>",
+      "url": "https://www.coindesk.com/news/eth-denver-caitlin-long-clarity-act-problem",
+      "published": "2026-02-20T04:36:25+00:00",
+      "scraped_at": "2026-02-22T03:54:11.725998+00:00"
+    }
+  ],
+  "recent_news": [],
+  "indices": [
+    {
+      "name": "Fear & Greed Index",
+      "value": 9,
+      "label": "Extreme Fear",
+      "source": "Alternative.me",
+      "url": "https://alternative.me/crypto/fear-and-greed-index/"
+    }
+  ]
+}

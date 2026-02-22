@@ -185,6 +185,14 @@ Over 50% of Uniswap v3 LPs are **unprofitable** due to impermanent loss exceedin
 - **Key finding**: LP with mean-variance utility prefers G3M as fees → 0
 - **Relevance**: Connects to long-term utility optimization
 
+### IL and LVR I: Statistical Properties (Oct 2024) ⭐⭐ NEW
+- **URL**: https://arxiv.org/abs/2410.00854
+- **Authors**: Fritz et al.
+- **Key finding**: For Brownian motion, IL and LVR have **identical expectation values but vastly different distribution functions**
+- **Method**: Statistical analysis using random walk properties + CFMM mechanics
+- **Relevance**: Foundation for time-regime analysis in Part II
+- **Priority**: HIGH — establishes statistical baseline
+
 ### IL and LVR II: Three Time Regimes (Feb 2025) ⭐⭐
 - **URL**: https://arxiv.org/abs/2502.04097
 - **Authors**: Fritz et al.
@@ -205,6 +213,19 @@ Over 50% of Uniswap v3 LPs are **unprofitable** due to impermanent loss exceedin
 - **Key contribution**: Leader-follower stochastic game for LP rewards
 - **Key finding**: Equilibrium contract depends on external price, pool reference price, and reserves
 - **Relevance**: Dynamic optimization over time
+
+### Liquidity Provision of Utility Indifference Type (Feb 2025, Digital Finance 2025) ⭐⭐ NEW
+- **URL**: https://arxiv.org/abs/2502.01931
+- **Authors**: Masaaki Fukasawa, Basile Maire, Marcus Wunsch
+- **Key contribution**: Rigorous mathematical framework for CFMMs of utility indifference type
+- **Key findings**:
+  - IL can be **super-hedged** by model-free rebalancing strategy irrespective of fee size (if external price is continuous)
+  - **No LVR under nonzero fee** if external price process is continuous
+  - Proves optimality of **Uniswap v3 concentrated liquidity construction** in a precise sense
+  - Multi-LP analysis reduces to representative LP (liquidity pooling theorem)
+- **Published**: Digital Finance (Springer), May 2025
+- **Relevance**: Foundational mathematical framework; connects hedging, LVR, and AMM design
+- **Priority**: HIGH — complements Singh (option-theta) and Fritz (time-regimes) approaches
 
 ---
 
@@ -364,15 +385,211 @@ Over 50% of Uniswap v3 LPs are **unprofitable** due to impermanent loss exceedin
 
 ---
 
+## Equilibrium & Long-Run Convergence Papers ⭐ NEW (Feb 7, 2026)
+
+### Liquidity Fragmentation or Optimization? (Oct 2024, updated Mar 2025) ⭐⭐ NEW
+- **URL**: https://arxiv.org/abs/2410.10324
+- **Authors**: Krzysztof Gogol et al.
+- **Key contribution**: Shows that **in equilibrium, AMM LP returns converge to a reference rate** (staking)
+- **Method**: Lagrangian optimization for optimal liquidity allocation across L1/L2
+- **Key findings**:
+  - LP returns converge to staking rate in equilibrium (long-run target)
+  - Ethereum L1 pools are **oversubscribed** vs L2s
+  - L1 pools often yield **lower than staking**
+  - LPs could improve returns by reallocating >2/3 of liquidity to L2s
+  - Trading volume elasticity wrt TVL is low on established chains
+- **Why Critical for Long-Term**: Provides **equilibrium bound** for long-term LP returns!
+- **Priority**: HIGH — equilibrium convergence to staking rate is key insight
+
+### Liquidity Pools as Mean Field Games (Dec 2024) ⭐⭐ NEW
+- **URL**: https://arxiv.org/abs/2412.09180
+- **Authors**: Agustin Muñoz Gonzalez et al.
+- **Key contribution**: First application of **mean field games** to AMM liquidity pools
+- **Key findings**:
+  - Proves existence of MFG solutions for AMM LP optimization
+  - Shows existence of approximate Nash equilibria
+  - Extends traditional order book MFG models to AMM setting
+- **Why Relevant for Long-Term**: MFG provides framework for understanding LP behavior with many strategic agents over time
+- **Priority**: MEDIUM-HIGH — new theoretical lens for equilibrium analysis
+
+### Game Theoretic Liquidity Provisioning in CLMMs (Nov 2024) NEW
+- **URL**: https://arxiv.org/abs/2411.10399
+- **Authors**: Weizhao Tang et al.
+- **Key contribution**: Nash equilibrium analysis of LP strategies in CLMMs
+- **Key findings**:
+  - Nash equilibrium follows **waterfilling strategy**
+  - Low-budget LPs use full budget; rich LPs do not
+  - Real-world LPs deviate significantly from Nash (use wider, fewer ranges)
+  - Adjusting to Nash equilibrium improves median daily returns by $116 (~0.009%)
+- **Why Relevant for Long-Term**: Understanding equilibrium LP behavior informs long-run profitability
+- **Priority**: MEDIUM — provides empirical evidence on LP behavior vs theory
+
+---
+
+---
+
+## LVR Extensions & New AMM Designs (Feb 2026 Update)
+
+### Arbitrage with Bounded Liquidity (Jul 2025, updated Dec 2025) NEW
+- **URL**: https://arxiv.org/abs/2507.02027
+- **Authors**: Christoph Schlegel et al.
+- **Key contribution**: Extends LVR to arbitrage between **two imperfectly liquid** markets (no infinite liquidity reference)
+- **Key finding**: LVR depends on relative liquidity and relative trading volume between the two markets
+- **Assumption**: Quadratic trading costs on at least one market (holds for most markets except highly liquid CEX pairs)
+- **Relevance**: More realistic LVR model when no truly liquid reference market exists
+- **Priority**: MEDIUM — refinement of LVR for real-world conditions
+
+### am-AMM: An Auction-Managed AMM (Mar 2024, updated Feb 2025) ⭐⭐ NEW
+- **URL**: https://arxiv.org/abs/2403.03367
+- **Authors**: Ciamac Moallemi et al. (same group as LVR paper!)
+- **Key contribution**: Single mechanism targeting BOTH informed orderflow losses AND uninformed orderflow revenue
+- **Innovation**: Runs censorship-resistant auction for the right to be "pool manager" 
+- **Pool manager benefits**: Sets swap fees, receives accrued fees, can capture arbitrage
+- **Key finding**: Proves this AMM has **higher equilibrium liquidity** than any fixed-fee AMM
+- **Relevance**: Design that could improve long-term LP profitability structurally
+- **Priority**: HIGH — from the leading LVR research group
+
+### Better Market Maker Algorithm (BMM) (Feb 2025) NEW
+- **URL**: https://arxiv.org/abs/2502.20001
+- **Authors**: Nate Leung et al.
+- **Key contribution**: Power-law invariant AMM (X^n Y = K, n=4) + dynamic rebate system
+- **Key findings**:
+  - Reduces IL by 36% compared to XY=K
+  - Retains 3.98x more liquidity during volatility
+  - 40% higher user engagement vs static fee models
+- **Method**: Market segmentation (high/mid/low volatility regimes)
+- **Relevance**: Alternative AMM design for improved long-term LP returns
+- **Priority**: MEDIUM — novel design approach
+
+### Concentrated Liquidity with Leverage (Sep 2024) NEW
+- **URL**: https://arxiv.org/abs/2409.12803
+- **Authors**: Atis Elsts et al.
+- **Key contribution**: Formalizes leveraged CL positions with overcollateralized lending
+- **Key findings**:
+  - Proves leveraged LP positions possess safety properties (bounded margin)
+  - Formalizes margin level, assets, and debt for leveraged CL
+- **Relevance**: Higher capital efficiency for concentrated liquidity — affects long-term return calculation
+- **Priority**: MEDIUM — practical extension of CL
+
+---
+
+---
+
+## NEW Papers (Feb 7, 2026 Evening Sweep)
+
+### Optimal Exiting for Liquidity Provision in CFMs (Feb 2025) ⭐⭐ NEW
+- **URL**: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5148585
+- **Authors**: Agostino Capponi, Brian Zhu
+- **Key contribution**: Concurrent work to Bergault on optimal exit time from CFMs
+- **Key finding**: Determines optimal exit strategy for liquidity providers under IL
+- **Relevance**: Alternative approach to Bergault for finite-horizon LP optimization
+- **Priority**: HIGH — complement to Bergault framework
+
+### Optimal Dynamic Fees in Automated Market Makers (Jun 2025) ⭐⭐ NEW
+- **URL**: https://arxiv.org/abs/2506.02869
+- **Authors**: Leonardo Baggiani, Martin Herdegen, Leandro Sánchez-Betancourt
+- **Key contribution**: Derives optimal dynamic fee structure via stochastic control
+- **Key finding**: **Dynamic fees linear in inventory + price-sensitive ≈ optimal**
+- **Implication**: Good approximation for practical fee design
+- **Relevance**: Direct application for long-term fee optimization
+- **Priority**: HIGH — practical optimal fee design
+
+### The Price of Liquidity: Implied Volatility of AMM Fees (Sep 2025) ⭐⭐ NEW
+- **URL**: https://arxiv.org/abs/2509.23222
+- **Authors**: Maxim Bichuch, Zachary Feinstein
+- **Key contribution**: Reinterprets LVR as **implied fee stream** from options perspective
+- **Key finding**: Links AMM fee structure to implied volatility pricing
+- **Relevance**: Connects options market data to LP expected returns
+- **Priority**: MEDIUM-HIGH — novel options-theoretic interpretation
+
+### Improving DeFi Accessibility with Deep RL (Jan 2025) NEW
+- **URL**: https://arxiv.org/abs/2501.07508
+- **Authors**: (multiple)
+- **Key contribution**: Applies deep RL to optimize LP in Uniswap v3
+- **Key finding**: Active LP outperforms heuristic passive strategies in 7/11 test windows
+- **Relevance**: RL-based approach to long-term LP strategy optimization
+- **Priority**: MEDIUM — empirical/algorithmic approach
+
+### Optimal Execution on Uniswap v2/v3 Under Transient Impact (Jan 2026) NEW
+- **URL**: https://arxiv.org/abs/2601.03799
+- **Authors**: (multiple)
+- **Key contribution**: Optimal liquidation on AMMs with transient price impact
+- **Key finding**: Derives optimal execution schedule accounting for AMM mechanics
+- **Relevance**: Understanding execution costs affects LP net returns
+- **Priority**: MEDIUM — execution side rather than provision side
+
+---
+
+---
+
+## NEW Papers (Feb 7, 2026 11:46PM Routine)
+
+### Defensive Rebalancing for Automated Market Makers (Jan 2026) ⭐⭐ NEW
+- **URL**: https://arxiv.org/abs/2601.19950
+- **Authors**: Maurice Herlihy et al.
+- **Key contribution**: Novel mechanism for protecting CFMMs from arbitrage via **defensive rebalancing**
+- **Key findings**:
+  - Direct asset transfers between CFMMs can eliminate arbitrage configurations
+  - Proves existence of Pareto-efficient rebalancing that increases liquidity without harming any participant
+  - For log-concave trading functions (including CPMM): optimal rebalancing is **convex optimization** with unique solution
+  - Extends to "mixed rebalancing" — harvesting arbitrage from non-participating CFMMs and CEXs
+- **Long-term relevance**: Proactive defense against arbitrage could structurally reduce LVR for participating pools
+- **Priority**: MEDIUM-HIGH — novel mechanism design for LP protection
+
+---
+
+## Papers (Feb 7, 2026 8:45PM Routine)
+
+### Automated Liquidity: Market Impact, Cycles, and De-pegging Risk (Jan 2026) ⭐⭐
+- **URL**: https://arxiv.org/abs/2601.11375
+- **Key contribution**: Derives market impact function for **optimal-growth liquidity providers**
+- **Key finding**: For standard random walk, recovers classic **square-root market impact**
+- **Relevance**: Connects LP wealth dynamics to market impact theory
+- **Priority**: HIGH — links optimal-growth LP framework to established market microstructure
+
+### A Formal Approach to AMM Fee Mechanisms with Lean 4 (Feb 2026) NEW
+- **URL**: https://arxiv.org/abs/2602.00101
+- **Authors**: Dessalvi et al. (DTU Denmark)
+- **Key contribution**: Formal verification of AMM fee mechanisms using Lean 4 theorem prover
+- **Key findings**:
+  - Extends foundational AMM model with trading fee parameter φ ∈ (0,1]
+  - Formally proves properties of swap behavior under fees
+  - Proves arbitrage solution differs from equilibrium solution when fees present
+- **Relevance**: Mathematically rigorous foundation for fee analysis
+- **Priority**: MEDIUM — verification rather than new insights, but useful for rigor
+
+### Stochastic Optimization for Profitable Liquidity Concentration (Apr 2025) NEW
+- **URL**: https://arxiv.org/abs/2504.16542
+- **Key contribution**: Stochastic optimization framework for CL position sizing
+- **Key finding**: Provides foundation for more profitable liquidity concentration decisions
+- **Relevance**: Optimization approach to concentrated liquidity profitability
+- **Priority**: MEDIUM — adds to strategy optimization literature
+
+### Liquidity Provision with τ-Reset Strategies (May 2025) NEW
+- **URL**: https://arxiv.org/abs/2505.15338
+- **Authors**: Rostislav Berezovskiy et al.
+- **Key contribution**: ML-based optimization of LP strategies using periodic reset schedules
+- **Key innovation**: Historical liquidity approximation without requiring liquidity data
+- **Method**: τ-reset strategies = LP repositions at fixed intervals with ML-optimized parameters
+- **Key finding**: Outperforms uniform benchmark across multiple Uniswap v3 pairs
+- **Relevance**: Practical approach to long-term LP strategy optimization
+- **Priority**: MEDIUM — practical ML approach to address optimal repositioning frequency
+
+---
+
 ## Next Steps
 1. Deep-read Tung et al. (2403.18177) for explicit long-term growth formula
 2. Deep-read Fritz et al. (2502.04097) for time-regime analysis
 3. **Deep-read Bergault et al. (2509.06510) for optimal exit/stopping framework** ⭐
-4. **Deep-read Yang et al. (2404.13291) for infinite-horizon utility optimization** ⭐
-5. **Deep-read Singh et al. (2508.02971) for perpetual CI option model** ⭐⭐ NEW
-6. Derive conditions for positive long-term LP return (fee vs LVR)
-7. Compare theoretical predictions to empirical LP data
-8. Model block-time effects on long-term fee accumulation
-9. **Integrate optimal stopping into long-term fee estimation framework** ⭐
-10. **Examine JIT LP effects on passive LP long-term returns**
-11. **Connect perpetual option theta to long-term fee estimation** ⭐ NEW
+4. **Deep-read Capponi & Zhu (SSRN 5148585) for comparison** ⭐ NEW
+5. **Deep-read Yang et al. (2404.13291) for infinite-horizon utility optimization** ⭐
+6. **Deep-read Singh et al. (2508.02971) for perpetual CI option model** ⭐⭐
+7. **Deep-read Baggiani et al. (2506.02869) for optimal dynamic fees** ⭐ NEW
+8. Derive conditions for positive long-term LP return (fee vs LVR)
+9. Compare theoretical predictions to empirical LP data
+10. Model block-time effects on long-term fee accumulation
+11. **Integrate optimal stopping into long-term fee estimation framework** ⭐
+12. **Examine JIT LP effects on passive LP long-term returns**
+13. **Connect perpetual option theta to long-term fee estimation** ⭐
+14. **NEW: Evaluate am-AMM auction mechanism for LP profitability** ⭐
+15. **NEW: Assess implied volatility approach (Bichuch-Feinstein)** NEW

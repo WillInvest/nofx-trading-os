@@ -1,0 +1,8 @@
+#!/bin/bash
+export ANTHROPIC_BASE_URL="https://api.minimax.io/anthropic"
+export ANTHROPIC_AUTH_TOKEN="sk-api-NtT2y3k09vXYmZA-v8_7AouZ51uDatdouQu0Y0WTrkSOY3R4QXbozTtc2xTKckpdI9tWFPwX6LeChqIjpQaWByQ89C0r3quBc79CtCu4_4yoqXBnCbrbCak"
+export ANTHROPIC_MODEL="MiniMax-M2.5"
+export ANTHROPIC_SMALL_FAST_MODEL="MiniMax-M2.5"
+export API_TIMEOUT_MS=3000000
+export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
+exec claude "$@"

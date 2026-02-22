@@ -1,0 +1,60 @@
+{
+  "last_update": "2026-02-16T23:25:30",
+  "account": {
+    "buying_power": 373682.49,
+    "portfolio_value": 99593.08,
+    "cash": 102461.83
+  },
+  "pending_orders": [
+    {
+      "symbol": "AAPL",
+      "side": "buy",
+      "qty": 45,
+      "type": "market",
+      "status": "accepted",
+      "order_id": "991b9024-3e1b-4861-9f44-74701ec591b4",
+      "estimated_value": 11509,
+      "recommendation": {
+        "action": "BUY",
+        "confidence": 65,
+        "reasoning": "Oversold bounce opportunity. 5-day selloff contradicts positive news cycle."
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "side": "buy",
+      "qty": 10,
+      "type": "market",
+      "status": "accepted",
+      "order_id": "f3f53440-3507-4d7b-952b-d5e4a6a13725",
+      "estimated_value": 1829,
+      "recommendation": {
+        "action": "BUY",
+        "confidence": 65,
+        "reasoning": "AI chip demand remains strong despite market fear."
+      }
+    }
+  ],
+  "analyses": {
+    "AAPL": {
+      "price": 255.755,
+      "recommendation": "BUY",
+      "confidence": 65,
+      "sentiment_score": 0.11,
+      "rsi": 50.6,
+      "trend": "bearish",
+      "fear_greed": 36
+    },
+    "NVDA": {
+      "price": 182.88,
+      "recommendation": "BUY",
+      "confidence": 65,
+      "sentiment_score": 0.16,
+      "rsi": 46.7,
+      "trend": "neutral",
+      "fear_greed": 36
+    }
+  },
+  "market_status": "CLOSED",
+  "next_open": "2026-02-17T09:30:00-05:00"
+}

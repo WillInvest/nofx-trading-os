@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw Task Monitor</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a2e;
+            color: #eee;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        h1 { 
+            color: #ff6b6b; 
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h1::before { content: "🦞"; }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: #16213e;
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 4px solid #4ecdc4;
+        }
+        .stat-card.opus { border-left-color: #ff6b6b; }
+        .stat-card.llama { border-left-color: #4ecdc4; }
+        .stat-card h3 { font-size: 0.9em; color: #888; margin-bottom: 5px; }
+        .stat-card .value { font-size: 1.8em; font-weight: bold; }
+        .stat-card .sub { font-size: 0.8em; color: #666; margin-top: 5px; }
+        
+        h2 { 
+            color: #4ecdc4; 
+            margin: 20px 0 15px;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .task-list { display: flex; flex-direction: column; gap: 10px; }
+        
+        .task {
+            background: #16213e;
+            border-radius: 8px;
+            padding: 15px;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 15px;
+            align-items: center;
+        }
+        .task.running { border: 1px solid #f9ca24; }
+        .task .status {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+        }
+        .task.running .status { background: #f9ca24; }
+        .task.complete .status { background: #26de81; }
+        .task.failed .status { background: #ff6b6b; }
+        
+        .task .info h4 { margin-bottom: 5px; }
+        .task .info .meta { font-size: 0.85em; color: #888; }
+        .task .info .meta span { margin-right: 15px; }
+        
+        .task .tokens {
+            text-align: right;
+            font-size: 0.9em;
+        }
+        .task .tokens .count { font-size: 1.3em; font-weight: bold; color: #4ecdc4; }
+        .task .tokens .label { color: #666; }
+        
+        .model-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75em;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .model-badge.opus { background: #ff6b6b33; color: #ff6b6b; }
+        .model-badge.llama { background: #4ecdc433; color: #4ecdc4; }
+        
+        .empty { color: #666; font-style: italic; padding: 20px; text-align: center; }
+        
+        .refresh-info {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #16213e;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 0.8em;
+            color: #666;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .task.running .status { animation: pulse 2s infinite; }
+    </style>
+</head>
+<body>
+    <h1>Task Monitor</h1>
+    
+    <div class="stats" id="stats">
+        <div class="stat-card">
+            <h3>Total Tasks</h3>
+            <div class="value" id="total-tasks">0</div>
+        </div>
+        <div class="stat-card opus">
+            <h3>Opus Tokens</h3>
+            <div class="value" id="opus-tokens">0</div>
+            <div class="sub" id="opus-cost"></div>
+        </div>
+        <div class="stat-card llama">
+            <h3>Llama Tokens</h3>
+            <div class="value" id="llama-tokens">0</div>
+            <div class="sub">(local, free)</div>
+        </div>
+    </div>
+    
+    <h2>🔄 Running</h2>
+    <div class="task-list" id="running-tasks">
+        <div class="empty">No tasks running</div>
+    </div>
+    
+    <h2>✅ Completed</h2>
+    <div class="task-list" id="completed-tasks">
+        <div class="empty">No completed tasks yet</div>
+    </div>
+    
+    <div class="refresh-info">
+        Auto-refresh: <span id="countdown">5</span>s
+    </div>
+
+    <script>
+        const TASKS_URL = '../logs/tasks.jsonl';
+        const REFRESH_INTERVAL = 5000;
+        
+        // Rough token costs (per 1M tokens)
+        const COSTS = {
+            'opus': { input: 15, output: 75 },  // Claude Opus
+            'llama': { input: 0, output: 0 }    // Local
+        };
+        
+        function parseModel(model) {
+            if (!model) return 'unknown';
+            if (model.includes('opus')) return 'opus';
+            if (model.includes('llama') || model.includes('ollama')) return 'llama';
+            return 'other';
+        }
+        
+        function formatTokens(n) {
+            if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
+            if (n >= 1000) return (n / 1000).toFixed(1) + 'k';
+            return n.toString();
+        }
+        
+        function formatDuration(ms) {
+            if (!ms) return '-';
+            const s = Math.floor(ms / 1000);
+            if (s < 60) return s + 's';
+            const m = Math.floor(s / 60);
+            return m + 'm ' + (s % 60) + 's';
+        }
+        
+        function formatTime(ts) {
+            if (!ts) return '-';
+            return new Date(ts).toLocaleTimeString();
+        }
+        
+        function calculateCost(model, tokensIn, tokensOut) {
+            const m = parseModel(model);
+            const cost = COSTS[m] || COSTS['opus'];
+            return ((tokensIn * cost.input) + (tokensOut * cost.output)) / 1000000;
+        }
+        
+        async function loadTasks() {
+            try {
+                const resp = await fetch(TASKS_URL + '?t=' + Date.now());
+                const text = await resp.text();
+                const lines = text.trim().split('\n').filter(l => l);
+                
+                const tasksById = {};
+                
+                for (const line of lines) {
+                    try {
+                        const entry = JSON.parse(line);
+                        const id = entry.id;
+                        if (!tasksById[id]) {
+                            tasksById[id] = { id };
+                        }
+                        Object.assign(tasksById[id], entry);
+                    } catch (e) {
+                        console.warn('Failed to parse line:', line);
+                    }
+                }
+                
+                return Object.values(tasksById);
+            } catch (e) {
+                console.error('Failed to load tasks:', e);
+                return [];
+            }
+        }
+        
+        function renderTask(task) {
+            const model = parseModel(task.model);
+            const isRunning = task.status === 'running';
+            const duration = isRunning 
+                ? Date.now() - task.startedAt 
+                : (task.completedAt - task.startedAt);
+            
+            const totalTokens = (task.tokensIn || 0) + (task.tokensOut || 0);
+            
+            return `
+                <div class="task ${task.status || 'running'}">
+                    <div class="status">${isRunning ? '⏳' : task.status === 'complete' ? '✓' : '✗'}</div>
+                    <div class="info">
+                        <h4>${task.label || task.id}</h4>
+                        <div class="meta">
+                            <span class="model-badge ${model}">${model}</span>
+                            <span>⏱ ${formatDuration(duration)}</span>
+                            <span>🕐 ${formatTime(task.startedAt)}</span>
+                        </div>
+                        ${task.task ? `<div class="meta" style="margin-top:5px">${task.task.substring(0, 100)}${task.task.length > 100 ? '...' : ''}</div>` : ''}
+                    </div>
+                    <div class="tokens">
+                        ${totalTokens > 0 ? `
+                            <div class="count">${formatTokens(totalTokens)}</div>
+                            <div class="label">tokens</div>
+                        ` : `<div class="label">-</div>`}
+                    </div>
+                </div>
+            `;
+        }
+        
+        async function refresh() {
+            const tasks = await loadTasks();
+            
+            const running = tasks.filter(t => t.status === 'running');
+            const completed = tasks.filter(t => t.status !== 'running');
+            
+            // Sort completed by time desc
+            completed.sort((a, b) => (b.completedAt || 0) - (a.completedAt || 0));
+            
+            // Render running
+            const runningEl = document.getElementById('running-tasks');
+            runningEl.innerHTML = running.length 
+                ? running.map(renderTask).join('')
+                : '<div class="empty">No tasks running</div>';
+            
+            // Render completed
+            const completedEl = document.getElementById('completed-tasks');
+            completedEl.innerHTML = completed.length
+                ? completed.map(renderTask).join('')
+                : '<div class="empty">No completed tasks yet</div>';
+            
+            // Calculate stats
+            let opusTokens = 0, llamaTokens = 0, totalTasks = completed.length;
+            let opusCost = 0;
+            
+            for (const t of completed) {
+                const m = parseModel(t.model);
+                const tokens = (t.tokensIn || 0) + (t.tokensOut || 0);
+                if (m === 'opus') {
+                    opusTokens += tokens;
+                    opusCost += calculateCost(t.model, t.tokensIn || 0, t.tokensOut || 0);
+                } else if (m === 'llama') {
+                    llamaTokens += tokens;
+                }
+            }
+            
+            document.getElementById('total-tasks').textContent = totalTasks;
+            document.getElementById('opus-tokens').textContent = formatTokens(opusTokens);
+            document.getElementById('opus-cost').textContent = opusCost > 0 ? `~$${opusCost.toFixed(3)}` : '';
+            document.getElementById('llama-tokens').textContent = formatTokens(llamaTokens);
+        }
+        
+        // Countdown timer
+        let countdown = 5;
+        setInterval(() => {
+            countdown--;
+            if (countdown <= 0) {
+                countdown = 5;
+                refresh();
+            }
+            document.getElementById('countdown').textContent = countdown;
+        }, 1000);
+        
+        // Initial load
+        refresh();
+    </script>
+</body>
+</html>

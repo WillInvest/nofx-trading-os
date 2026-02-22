@@ -88,6 +88,21 @@
 
 ## Dynamic Fees
 
+### Priority Is All You Need: MEV Taxes (Robinson & White, Paradigm, 2024) ⭐ NEW
+- **URL**: https://www.paradigm.xyz/2024/06/priority-is-all-you-need
+- **Authors**: Dan Robinson, Dave White (Paradigm)
+- **Date**: June 2024
+- **Key contribution**: Introduces MEV taxes — applications capture their own MEV by charging fees as function of priority fee
+- **Core insights**:
+  - On chains with competitive priority ordering (OP Stack L2s), apps can tax searchers
+  - AMMs can charge `applicationFee = 99 × priorityFee` to capture 99% of MEV
+  - Works without oracles or custom infrastructure — hooks into block proposer's auction
+  - Can mitigate DEX router slippage, AMM LVR, and backrunning
+- **Limitation**: Requires trusted priority ordering (centralized sequencer today)
+- **Implementation**: Already possible on OP Mainnet, Base, Blast
+- **Relevance**: Direct mechanism for AMMs to capture LVR without oracle trust
+- **Connection to LVR**: "allowing AMMs to reduce the arbitrage losses of their LPs" — explicit use case
+
 ### Optimal Fees for Liquidity Provision in AMMs (Campbell, Bergault, Milionis, Nutz, 2025)
 - **arXiv**: 2508.08152
 - **URL**: https://arxiv.org/abs/2508.08152
@@ -255,6 +270,72 @@
 - **Hybrid oracle + batch**: Use oracle for continuous pricing, batch for rebalancing
 - **Priority ordering exploitation**: Paradigm's MEV tax concept
 - **Threshold-dynamic fees**: Near-optimal with simple implementation
+
+---
+
+## New Additions (2026-02-08, Update #3)
+
+### Optimal Exit Time for Liquidity Providers in Automated Market Makers (Bergault et al., 2025) ⭐ NEW
+- **arXiv**: 2509.06510
+- **URL**: https://arxiv.org/abs/2509.06510
+- **Authors**: Philippe Bergault, Sébastien Bieber, Leandro Sánchez-Betancourt
+- **Date**: September 8, 2025 (v2 October 20, 2025)
+- **Key contribution**: Characterizes optimal LP exit as stochastic control problem with endogenous stopping time
+- **Core insights**:
+  - LP's value function satisfies HJB quasi-variational inequality (unique viscosity solution)
+  - Optimal exit depends on oracle price vol, fee levels, and trader behavior mix
+  - Arbitrage generates both fees AND IL — LP optimally balances these opposing effects
+  - Derives optimal fee level for representative LP playing optimal exit strategy
+  - Two numerical approaches: Euler scheme with operator splitting + Longstaff-Schwartz regression
+- **Implication**: LPs should actively manage exit timing, not just set-and-forget
+- **Relevance**: Actionable framework for LP position management; complements LVR theory with exit optimization
+
+### Improving DeFi Accessibility through Efficient Liquidity Provisioning with Deep Reinforcement Learning (Brini et al., 2025) ⭐ NEW
+- **arXiv**: 2501.07508
+- **URL**: https://arxiv.org/abs/2501.07508
+- **Authors**: Alessio Brini et al.
+- **Date**: January 13, 2025
+- **Venue**: AAAI 2025 Workshop (AI for Social Impact)
+- **Key contribution**: DRL agent for dynamic LP position management in Uniswap v3
+- **Core insights**:
+  - Models LP as MDP; trains agent with PPO algorithm
+  - Agent dynamically adjusts positions using price dynamics
+  - Balances fee maximization vs IL mitigation
+  - Rolling window approach captures regime shifts
+  - Outperforms passive retail LP strategies
+- **Implication**: Data-driven LP management can improve accessibility for small participants
+- **Relevance**: Practical implementation path for automated LP optimization
+
+### Liquidity Provision with τ-Reset Strategies (Berezovskiy, 2025) ⭐ NEW
+- **arXiv**: 2505.15338
+- **URL**: https://arxiv.org/abs/2505.15338
+- **Author**: Rostislav Berezovskiy
+- **Date**: May 21, 2025
+- **Key contribution**: ML-based methodology for optimal LP in CLMMs within τ-reset strategy family
+- **Core insights**:
+  - Novel method to approximate historical liquidity without requiring liquidity data
+  - Uses parametric model + ML to find optimal strategies
+  - Custom backtesting framework for CLMMs developed
+  - Validated across multiple Uniswap v3 trading pairs
+  - τ-reset: Periodic strategy that resets position parameters every τ interval
+- **Implication**: Practical, backtested approach to concentrated liquidity optimization
+- **Relevance**: Ready-to-implement LP strategy framework with empirical validation
+
+### Strategic Analysis of Just-In-Time Liquidity Provision in CLMMs (Menasché et al., AFT 2025) ⭐ NEW
+- **arXiv**: 2509.16157
+- **URL**: https://arxiv.org/abs/2509.16157
+- **Venue**: AFT 2025 (Pittsburgh)
+- **Date**: September 19, 2025
+- **Key contribution**: First formal, transaction-level model of JIT liquidity provision in CLMMs (Uniswap v3-style)
+- **Core insights**:
+  - JIT LPs momentarily supply concentrated liquidity for single swaps to extract disproportionate fees
+  - Optimal JIT strategy exists (proven); formulated as non-linear optimization
+  - **Current JIT LPs are suboptimal**: Could increase earnings by up to 69% by properly accounting for price impact
+  - JIT improves market efficiency (lower slippage for traders)
+  - **BUT erodes passive LP profits by up to 44% per trade**
+- **Relevance to LVR**: JIT is a form of "informed LP" that front-runs passive LPs — similar to how arbitrageurs front-run on price discovery. JIT exacerbates passive LP losses beyond LVR from arbs.
+- **Connection**: Defensive strategies against JIT should complement LVR mitigation
+- **Implication**: Passive LPs face dual threat from both arbitrageurs (LVR) AND sophisticated LPs (JIT)
 
 ---
 
@@ -452,7 +533,7 @@
 - **Implication**: Continued investment in Angstrom development; expanding team
 - **Relevance**: Confirms industry confidence in hook-based MEV protection approach
 
-### Bitwise Files S-1 for Uniswap ETF (February 2026) ⭐ NEW
+### Bitwise Files S-1 for Uniswap ETF (February 2026)
 - **Source**: SEC S-1 Filing (Feb 6, 2026)
 - **URL**: https://www.hokanews.com/2026/02/defi-goes-wall-street-bitwise-files-for.html
 - **Key development**: First direct attempt to package DEX exposure in traditional ETF format
@@ -462,6 +543,42 @@
   - Regulatory scrutiny will focus on governance, decentralization, smart contract risks
   - Could accelerate similar filings for other DeFi protocols
 - **Relevance**: While not directly about LVR, institutional adoption of Uniswap increases importance of LP protection mechanisms — funds allocating to UNI ETF will care about LP profitability
+
+### 1inch Aqua — Shared Liquidity Layer (February 2026) ⭐ NEW
+- **URL**: https://blog.1inch.com/lp-efficiency-loss-and-what-aqua-changes/
+- **Date**: February 3, 2026
+- **Key contribution**: Protocol addressing LP capital utilization (complementary to LVR mitigation)
+- **Core insights**:
+  - 1inch research: 83-95% of liquidity in major pools sits idle (~$12B underutilized)
+  - Introduces "TVU" (Total Value Unlocked) metric as alternative to TVL
+  - Shared liquidity allows same assets to be deployed across strategies atomically
+  - LPs connect wallet once; Aqua reallocates to wherever demand exists
+- **Mechanism**: Atomic execution + automatic reallocation across venues
+- **Distinction from LVR**: Addresses utilization/fragmentation, not adverse selection
+- **Relevance**: Complementary solution — if LP capital is utilized more, fee income can better offset LVR
+- **Connection**: Could combine with LVR-mitigating venues (CoW AMM, Angstrom) for full LP protection
+
+### CoW DAO Transfers MEV Blocker to Consensys SMG (February 2026) ⭐ NEW
+- **Source**: https://cow.fi/learn/special-mechanisms-group-acquires-mev-blocker-rpc-to-advance-state-of-the-art-backrunning-auction-infrastructure
+- **Date**: February 2026
+- **Key development**: CoW DAO hands off MEV Blocker RPC to Consensys' Special Mechanisms Group (SMG)
+- **MEV Blocker stats**: 4.5M+ users benefited, 6,177 ETH returned to users
+- **Implications**:
+  - CoW DAO refocusing on CoW Swap and CoW Protocol's core MEV capabilities
+  - SMG to enhance user-centric backrunning auction infrastructure
+  - Signals maturation of MEV protection as standalone product category
+  - Institutional backing (Consensys) for MEV protection tooling
+- **Relevance**: MEV protection infrastructure now spans multiple organizations; ecosystem diversification
+
+### UNIfication Governance Passed (January 2026) ⭐ NEW
+- **Source**: https://coinmetrics.substack.com/p/state-of-the-network-issue-346
+- **URL**: OpenZeppelin audit: https://www.openzeppelin.com/news/uniswap-labs-phoenix-fees-audit
+- **Key development**: Uniswap "fee switch" now active
+- **Mechanism**:
+  - Protocol fees from v2/v3 on Ethereum mainnet activated
+  - Fees route to UNI burn mechanism
+  - Central controller governs fee policies per version
+- **Relevance**: Fee revenue now directly tied to protocol health; increases stakes for LP profitability research
 
 ### Uniswap CCA on Base (February 2026)
 - **Source**: https://www.ainvest.com/news/uniswap-cca-base-game-changer-chain-token-launches-2601/

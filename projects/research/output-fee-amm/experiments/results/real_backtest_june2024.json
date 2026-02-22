@@ -1,0 +1,19 @@
+{
+  "swaps_processed": 8860,
+  "initial_price": 3829.7480869225315,
+  "final_price": 3444.4300910411694,
+  "input_fee": {
+    "return_pct": 4.502754182200963,
+    "final_value": 40021922.29074197,
+    "fees_usdc": 903932.3387847902,
+    "fees_eth": 282.3054951555019
+  },
+  "output_fee": {
+    "return_pct": 4.575314683766174,
+    "final_value": 40049711.13494752,
+    "fees_usdc": 906835.3051076214,
+    "fees_eth": 281.52736723716686
+  },
+  "difference_pct": 0.07256050156521088,
+  "output_wins": true
+}
